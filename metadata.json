@@ -1,0 +1,6 @@
+{
+  "name": "GICD NGO Website",
+  "description": "Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to sustainable community development, education, healthcare, and youth empowerment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
