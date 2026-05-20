@@ -112,6 +112,58 @@ export const TEAM_DATA: TeamMember[] = [
   }
 ];
 
+export const TRUSTEES_DATA: TeamMember[] = [
+  {
+    id: "trust1",
+    name: "Rev Fr Hilary Naankot Longs",
+    role: "Catholic Priest & Episcopal Vicar",
+    bio: "Catholic priest, Cathedral Administrator and Episcopal vicar, Director of Pontifical Mission Societies, advancing youth development, faith-based leadership and community-centered pastoral engagement.",
+    initials: "HL"
+  },
+  {
+    id: "trust2",
+    name: "Ejilayomi Omokorede Damoeroem",
+    role: "PhD Science Educator & Lecturer",
+    bio: "PhD Science educator and University lecturer at Adeyemi Federal University of Education, advancing STEM education, teacher development and evidence-based learning strategies in Nigeria.",
+    initials: "ED"
+  },
+  {
+    id: "trust3",
+    name: "Abdulrazak Ishola",
+    role: "Child Protection & Humanitarian Leader",
+    bio: "Child protection and humanitarian leader with 10+ years of experience, currently serving as Child Protector Sub-Cluster Coordinator in Afghanistan, managing multi-million dollar donor portfolios and integrated protection programs.",
+    initials: "AI"
+  },
+  {
+    id: "trust4",
+    name: "Iliya John Dayok",
+    role: "Licensed Human Resources Professional",
+    bio: "A licensed HR professional with CIPM, specializing in HR and organizational management with 10+ years of experience in systems strengthening, people management, and operational effectiveness across humanitarian and development settings.",
+    initials: "ID"
+  },
+  {
+    id: "trust5",
+    name: "Atihong Lois Yengoet",
+    role: "Economist & Director General",
+    bio: "Economist and Director General, Plateau State Debt Management Department, providing government leadership in fiscal responsibility, debt strategy, risk management, and transparent public financial governance.",
+    initials: "AY"
+  },
+  {
+    id: "trust6",
+    name: "Dr. Terna Abege (PhD)",
+    role: "Head of MHPSS & Mental Health Specialist",
+    bio: "Head of MHPSS at Action Against Hunger, global mental health specialist, leading donor-funded psychosocial programs aligned with WHO, IASC, and Sphere standards.",
+    initials: "TA"
+  },
+  {
+    id: "trust7",
+    name: "Dorcas Bello (Sheffy)",
+    role: "Award-winning Journalist & Founder",
+    bio: "Award-winning multimedia journalist and founder of Unzipped Stories Africa, media strategist and youth mentor who has trained 3,700+ young Africans in digital storytelling and entrepreneurship.",
+    initials: "DB"
+  }
+];
+
 export const GALLERY_DATA: GalleryItem[] = [
   {
     id: "gal1",

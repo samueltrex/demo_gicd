@@ -722,3 +722,222 @@ export function PartnerModal({ isOpen, onClose }: PartnerModalProps) {
     </div>
   );
 }
+
+interface JobsModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  selectedJobId?: string;
+}
+
+export function JobsModal({ isOpen, onClose, selectedJobId }: JobsModalProps) {
+  const [selectedJob, setSelectedJob] = useState(selectedJobId || "child_protection");
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", experience: "", coverLetter: "" });
+  const [fileName, setFileName] = useState("");
+  const [step, setStep] = useState<"form" | "success">("form");
+
+  if (!isOpen) return null;
+
+  const positions = [
+    { id: "child_protection", title: "Child Protection Program Officer", type: "Full-Time", location: "Jos HQ, Plateau State" },
+    { id: "education_facilitator", title: "Education Development Facilitator", type: "Contract", location: "Plateau Rural Districts" },
+    { id: "me_specialist", title: "Monitoring & Evaluation Specialist", type: "Part-Time", location: "Jos / Remote Friendly" },
+  ];
+
+  const handleApply = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStep("success");
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFileName(e.target.files[0].name);
+    }
+  };
+
+  const activeRole = positions.find((p) => p.id === selectedJob) || positions[0];
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in" id="jobs-modal-overlay">
+      <div className="relative w-full max-w-lg overflow-hidden bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col" id="jobs-modal-container">
+        
+        {/* Modal Header */}
+        <div className="px-6 py-4 bg-brand-black text-white flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Briefcase className="w-5 h-5 text-brand-yellow" />
+            <h3 className="font-sans font-bold text-lg text-brand-yellow">Apply for GICD Careers</h3>
+          </div>
+          <button 
+            onClick={onClose}
+            className="p-1 rounded-full hover:bg-gray-800 transition text-gray-400 hover:text-white cursor-pointer"
+            aria-label="Close dialog"
+            id="close-jobs-modal-btn"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {step === "form" ? (
+          <form onSubmit={handleApply} className="p-6 overflow-y-auto max-h-[80vh] flex-1 space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-gray-650 uppercase mb-1">Select Desired Role *</label>
+              <select
+                value={selectedJob}
+                onChange={(e) => setSelectedJob(e.target.value)}
+                className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:outline-none bg-white font-sans text-gray-700"
+              >
+                {positions.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.title} ({p.type} — {p.location})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-semibold text-gray-650 uppercase mb-1">Full Name *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. John Doe"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:outline-none font-sans text-gray-700"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-650 uppercase mb-1">Email Address *</label>
+                <input
+                  type="email"
+                  required
+                  placeholder="e.g. john@gmail.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:outline-none font-sans text-gray-700"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-semibold text-gray-650 uppercase mb-1">Phone Number *</label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="0803XXXXXXX"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:outline-none font-sans text-gray-700"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-650 uppercase mb-1">Years of Grassroots Experience *</label>
+                <select
+                  value={formData.experience}
+                  onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                  className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:outline-none bg-white font-sans text-gray-700"
+                >
+                  <option value="">Select choice</option>
+                  <option value="0-1">0 - 1 Years</option>
+                  <option value="2-4">2 - 4 Years</option>
+                  <option value="5-9">5 - 9 Years</option>
+                  <option value="10+">10+ Years (Senior)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-gray-650 uppercase mb-1">Brief Suitability Statement / Cover Letter *</label>
+              <textarea
+                required
+                rows={3}
+                placeholder="Why are you passionate about serving Plateau communities with GICD?"
+                value={formData.coverLetter}
+                onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
+                className="w-full px-3 py-2 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-yellow focus:outline-none font-sans text-gray-700 resize-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-gray-650 uppercase mb-1">Attach CV / Resume (PDF / Word) *</label>
+              <div className="mt-1 border-2 border-dashed border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:border-brand-yellow transition relative">
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleFileChange}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+                <p className="text-xs text-gray-500">
+                  {fileName ? (
+                    <span className="text-green-600 font-bold flex items-center justify-center gap-1">
+                      <Check className="w-4 h-4" /> {fileName}
+                    </span>
+                  ) : (
+                    "Drag & drop your resume file, or click to browse"
+                  )}
+                </p>
+                <p className="text-[9px] text-gray-400 mt-1">Accepted formats: PDF, DOC, DOCX up to 5MB</p>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-brand-yellow hover:bg-brand-yellow/90 text-brand-black font-extrabold text-xs py-3 rounded-lg flex items-center justify-center gap-2 uppercase tracking-wide cursor-pointer transition active:scale-95 mt-2"
+              id="submit-job-app-btn"
+            >
+              <span>Submit Career Application</span>
+              <X className="w-3.5 h-3.5 rotate-45 text-brand-black" />
+            </button>
+          </form>
+        ) : (
+          <div className="p-8 text-center flex flex-col items-center justify-center space-y-5" id="job-success-screen">
+            <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center border border-green-200">
+              <Check className="w-8 h-8 text-green-600" />
+            </div>
+
+            <div className="space-y-1">
+              <h4 className="font-sans font-bold text-lg text-brand-black">Application Registered!</h4>
+              <p className="text-xs text-gray-500 max-w-sm mx-auto">
+                Thank you, <span className="font-bold text-brand-black">{formData.name}</span>! Your profile has been queued for review by the Human Resources Desk.
+              </p>
+            </div>
+
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-left w-full space-y-1.5 text-xs text-gray-600">
+              <div className="flex justify-between">
+                <span>Application Status:</span>
+                <span className="text-blue-600 font-bold">HR AUDIT UNDERWAY</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Application Reference:</span>
+                <span className="font-mono font-bold text-brand-black">GICD-HR-{Math.floor(4000+Math.random()*5000)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Targeted Role:</span>
+                <span className="font-semibold text-brand-black truncate max-w-[170px]">{activeRole.title}</span>
+              </div>
+            </div>
+
+            <p className="text-[10px] text-gray-400 max-w-xs leading-relaxed text-center">
+              Our Recruitment Desk led by Iliya John Dayok (licensed CIPM professional) will contact you at <span className="underline">{formData.email}</span> within 5–7 working days for initial screening.
+            </p>
+
+            <button
+              onClick={() => {
+                setStep("form");
+                setFormData({ name: "", email: "", phone: "", experience: "", coverLetter: "" });
+                setFileName("");
+                onClose();
+              }}
+              className="px-6 py-2 bg-brand-black text-brand-yellow font-bold rounded-lg text-xs tracking-wider uppercase transition active:scale-[0.97]"
+              id="dismiss-job-success-btn"
+            >
+              Dismiss Window
+            </button>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
+}
+

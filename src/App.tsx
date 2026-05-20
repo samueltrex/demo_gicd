@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { 
   GraduationCap, 
   HeartPulse, 
@@ -24,6 +25,7 @@ import {
   ShieldCheck, 
   Award, 
   ChevronRight, 
+  ChevronLeft, 
   Clock, 
   Compass, 
   Info, 
@@ -36,6 +38,7 @@ import {
   PROGRAMS_DATA, 
   STATS_DATA, 
   TEAM_DATA, 
+  TRUSTEES_DATA,
   GALLERY_DATA, 
   TESTIMONIALS_DATA, 
   PARTNERS_DATA,
@@ -43,14 +46,45 @@ import {
   ProgramItem
 } from "./types";
 import { StatCounter } from "./components/StatCounter";
-import { DonateModal, VolunteerModal, PartnerModal } from "./components/GicdModals";
+import { DonateModal, VolunteerModal, PartnerModal, JobsModal } from "./components/GicdModals";
 import { GalleryLightbox } from "./components/GalleryLightbox";
+import { GicdLogo } from "./components/GicdLogo";
+
+const CAROUSEL_IMAGES = [
+  {
+    url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop",
+    title: "Back-to-School Support",
+    description: "Equipping children with books, pens, backpacks, and uniforms for formal schooling."
+  },
+  {
+    url: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=800&auto=format&fit=crop",
+    title: "Guided Reading Circles",
+    description: "Creating community-based safe environments for early educational exposure."
+  },
+  {
+    url: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=800&auto=format&fit=crop",
+    title: "Eco Advocacy & Planting",
+    description: "Teaching youth community service through tree planting and environmental care."
+  },
+  {
+    url: "https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?q=80&w=800&auto=format&fit=crop",
+    title: "Child Protection Campaign",
+    description: "Reinforcing informal protection networks and raising grassroots safety awareness."
+  },
+  {
+    url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop",
+    title: "Empowering Rural Classrooms",
+    description: "Providing trained tutors, resources and structural assistance to distant schools."
+  }
+];
 
 export default function App() {
   // Modal visibility states
   const [isDonateOpen, setIsDonateOpen] = useState(false);
   const [isVolunteerOpen, setIsVolunteerOpen] = useState(false);
   const [isPartnerOpen, setIsPartnerOpen] = useState(false);
+  const [isJobsOpen, setIsJobsOpen] = useState(false);
+  const [selectedJobId, setSelectedJobId] = useState<string>("child_protection");
   
   // Gallery Lightbox states
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
@@ -70,10 +104,39 @@ export default function App() {
   // Jos Local Time Clock (West Africa Time, UTC+1)
   const [josTime, setJosTime] = useState("");
 
+  // Team tab visibility state (Board of Trustees vs Operational Officers)
+  const [teamTab, setTeamTab] = useState<"trustees" | "officers">("trustees");
+
+  // Program Updates and Resources download states
+  const [updateFilter, setUpdateFilter] = useState("All");
+  const [updateSearchQuery, setUpdateSearchQuery] = useState("");
+  const [selectedUpdate, setSelectedUpdate] = useState<any | null>(null);
+  const [downloadingResourceId, setDownloadingResourceId] = useState<string | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   // Contact Form states
   const [contactData, setContactData] = useState({ name: "", email: "", subject: "", message: "" });
   const [contactStatus, setContactStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [contactTicket, setContactTicket] = useState("");
+
+  // Moving Activity Pictures Carousel state
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
+  };
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + CAROUSEL_IMAGES.length) % CAROUSEL_IMAGES.length);
+  };
+
+  // Auto-slide effect for current activities gallery
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      handleNextSlide();
+    }, 5000);
+    return () => clearInterval(slideTimer);
+  }, []);
 
   // Update clock every second
   useEffect(() => {
@@ -107,7 +170,7 @@ export default function App() {
 
   // Intersection Observer for Active Nav highlight on scroll
   useEffect(() => {
-    const sections = ["home", "about", "programs", "impact", "team", "gallery", "partners", "testimonials", "contact"];
+    const sections = ["home", "who-we-are", "what-we-do", "programme-updates", "resources", "work-with-us"];
     const observerOptions = {
       root: null,
       rootMargin: "-25% 0px -60% 0px", // Trigger when section fills mid-screen area
@@ -144,6 +207,12 @@ export default function App() {
 
   const openPartner = () => {
     setIsPartnerOpen(true);
+    setIsMobileMenuOpen(false);
+  };
+
+  const openJobs = (jobId: string) => {
+    setSelectedJobId(jobId);
+    setIsJobsOpen(true);
     setIsMobileMenuOpen(false);
   };
 
@@ -217,23 +286,20 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
           
           {/* Top Logo */}
-          <a href="#home" className="flex flex-col group justify-center" aria-label="GICD Home">
-            <span className="text-[#F5C518] font-bold text-2xl leading-none tracking-tighter transition-transform duration-300 group-hover:scale-[1.03]">GICD</span>
-            <span className="text-[8px] uppercase tracking-widest text-white/70 font-bold mt-0.5">Guardian Initiative for Community Development</span>
+          <a href="#home" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]" aria-label="GICD Home">
+            <div className="bg-white px-3.5 py-2 rounded-lg border border-gray-200/40 shadow-sm inline-flex items-center justify-center min-w-[70px]">
+              <GicdLogo variant="full" theme="light" height={20} showSubText={false} />
+            </div>
           </a>
 
           {/* Nav links Desktop */}
           <nav className="hidden xl:flex items-center gap-6 text-[11px] font-semibold tracking-wider text-white/90 uppercase">
             {[
-              { id: "home", label: "Home" },
-              { id: "about", label: "About" },
-              { id: "programs", label: "Programs" },
-              { id: "impact", label: "Impact" },
-              { id: "team", label: "Team" },
-              { id: "gallery", label: "Gallery" },
-              { id: "partners", label: "Partners" },
-              { id: "testimonials", label: "Voices" },
-              { id: "contact", label: "Contact" }
+              { id: "who-we-are", label: "Who We Are" },
+              { id: "what-we-do", label: "What We Do" },
+              { id: "programme-updates", label: "Programme Updates" },
+              { id: "resources", label: "Resources" },
+              { id: "work-with-us", label: "Work With Us" }
             ].map((link) => (
               <a
                 key={link.id}
@@ -300,14 +366,11 @@ export default function App() {
               <nav className="flex flex-col gap-4 text-sm font-bold tracking-widest text-[#ffffff]/80 uppercase">
                 {[
                   { id: "home", label: "Home — Top" },
-                  { id: "about", label: "About GICD" },
-                  { id: "programs", label: "What We Do" },
-                  { id: "impact", label: "Our Real Impact" },
-                  { id: "team", label: "Meet the Team" },
-                  { id: "gallery", label: "Work Archive" },
-                  { id: "partners", label: "Supporters & Allies" },
-                  { id: "testimonials", label: "Beneficiary Voices" },
-                  { id: "contact", label: "Reach Out to Jos" }
+                  { id: "who-we-are", label: "Who We Are" },
+                  { id: "what-we-do", label: "What We Do" },
+                  { id: "programme-updates", label: "Programme Updates" },
+                  { id: "resources", label: "Resources" },
+                  { id: "work-with-us", label: "Work With Us" }
                 ].map((link) => (
                   <a
                     key={link.id}
@@ -461,75 +524,70 @@ export default function App() {
       </section>
 
 
-      {/* SECTION 3 — ABOUT US */}
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+      {/* =========================================================
+          PILLAR 1 — WHO WE ARE SECTION
+          ========================================================= */}
+      <section id="who-we-are" className="py-20 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-16">
           
+          {/* Header Title Block */}
+          <div className="space-y-4 max-w-4xl text-left">
+            <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest block bg-[#111111] text-white rounded px-2.5 py-1 w-max">
+              About Us
+            </span>
+            <h2 className="font-sans font-black text-3xl sm:text-5xl text-[#111111] tracking-tight leading-none uppercase">
+              The Guardian Initiative for <br className="hidden sm:inline" />Community Development (GICD)
+            </h2>
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-sans max-w-3xl">
+              The Guardian Initiative for Community Development (GICD) is a child-focused Nigerian charity that responds to and addresses humanitarian and development challenges affecting children. We strengthen protection systems, advance education and youth development, and improve the resilience of households and communities to achieve sustainable outcomes across both humanitarian and development contexts. We operate at the intersection of child protection, socio-economic empowerment, and the translation of global frameworks into meaningful grassroots outcomes.
+            </p>
+          </div>
+
+          {/* Row A: Story and Vision Blueprint */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* Left column content */}
-            <div className="lg:col-span-7 space-y-6">
-              
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest block bg-gray-50 rounded pl-2 border-l-4 border-[#F5C518] py-1 w-max">
-                  Who We Are
-                </span>
-                <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
-                  Guardian Initiative for Community Development
-                </h2>
-              </div>
+            {/* Story Box */}
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <span className="text-[9px] font-mono text-[#F5C518] uppercase tracking-widest font-black block bg-[#111111] w-max px-2 py-0.5 rounded">
+                Our Model
+              </span>
+              <h3 className="font-sans font-black text-xl sm:text-2xl text-[#111111] uppercase tracking-tight">
+                Protection through Exposure
+              </h3>
 
               <div className="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed font-sans">
-                <p className="font-medium text-[#111111]">
-                  Founded with a burning passion to serve the underserved on the Plateau, GICD has been at the direct forefront of community transformation in Plateau State and across Nigeria. 
+                <p className="font-semibold text-[#111111] text-sm">
+                  Our work is inspired by a persistent and widening gap; between learning and purpose, and between protection and the lived socio-economic realities of children, particularly in underserved communities.
                 </p>
-                <p>
-                  We firmly believe every community possesses the potential to flourish sustainably when provided the right tools, materials, technical training, and collaborative support structures. We operate transparently on-ground, bypassing bloated bureaucratic middlemen to deliver projects directly inside villages.
+                <p className="text-xs sm:text-sm">
+                  In these environments, curiosity, resilience, and talent often fade quietly, not from lack of potential, but from lack of intentional nurture and meaningful exposure. Young people follow the expected path through school, yet still arrive at adulthood unprepared; not because they failed, but because the system never fully revealed what was possible.
                 </p>
 
-                {/* Inline Full Story Expander */}
-                {showFullStory && (
-                  <div className="p-4 bg-gray-50 border border-gray-100 rounded-xl space-y-3 pt-4 text-xs animate-scale-up text-gray-700">
-                    <h4 className="font-bold text-[#111111] text-sm">Our Inception & Legacy in Jos</h4>
-                    <p>
-                      GICD was officially registered years ago following a massive community assessment conducted by young professionals in Jos who saw critical healthcare gaps and educational abandonment in distant settlements. Starting with simple local reading circles, we grew into multi-sectoral projects including rural sanitary clinics, high-yield agrarian distribution setups, and massive youth IT courses. 
-                    </p>
-                    <p>
-                      Today, GICD is supervised by structural trustees who publish periodic auditing metrics, giving international sponsors security in knowing that 100% of their donor capital represents tangible direct aid on-site.
-                    </p>
-                  </div>
-                )}
+                <div className="p-5 bg-stone-50 border-l-4 border-[#F5C518] rounded-r-xl space-y-3 text-xs text-gray-750">
+                  <p className="font-sans font-medium text-gray-700">
+                    We exist to intervene early and deliberately; to safeguard children, equip adolescents, and expand the worldview of young people. We see guided exposure as a form of protection, one that broadens perspective, strengthens decision-making, and inspire dreams.
+                  </p>
+                </div>
               </div>
-
-              <div className="pt-2">
-                <button
-                  onClick={() => setShowFullStory(!showFullStory)}
-                  className="font-sans font-extrabold text-xs text-[#111111] hover:text-[#F5C518] tracking-wider uppercase transition-colors flex items-center gap-1 border-b-2 border-[#F5C518]/60 pb-1 cursor-pointer"
-                >
-                  <span>{showFullStory ? "Collapse Story" : "Our Full Story →"}</span>
-                </button>
-              </div>
-
             </div>
 
-            {/* Right column: vision, mission, core values cards */}
-            <div className="lg:col-span-5 space-y-4">
-              
-              <div className="bg-[#111111] text-white p-6 rounded-2xl border border-white/10 shadow-xl space-y-6">
+            {/* Blueprint Grid Column */}
+            <div className="lg:col-span-5">
+              <div className="bg-[#111111] text-white p-6 sm:p-8 rounded-2xl border border-white/10 shadow-xl space-y-6">
                 
-                <h3 className="font-sans font-bold text-lg text-[#F5C518] pb-2 border-b border-white/10 uppercase tracking-tight">
+                <h3 className="font-sans font-bold text-base text-[#F5C518] pb-2 border-b border-white/10 uppercase tracking-wider">
                   Our Structural Blueprint
                 </h3>
 
                 {/* Vision row */}
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-[#F5C518]/10 rounded-lg text-[#F5C518] shrink-0 border border-[#F5C518]/20">
-                    <Compass className="w-5 h-5 text-[#F5C518]" />
+                     <Compass className="w-5 h-5 text-[#F5C518]" />
                   </div>
                   <div>
                     <h4 className="font-bold text-xs uppercase text-[#F5C518] tracking-wider">Vision</h4>
                     <p className="text-xs text-white/80 mt-1 leading-relaxed">
-                      A Nigeria where every community is fully empowered with resources and education to develop cleanly and sustainably from the grassroots.
+                      A world where the safety of children, the potentials of youth, and the prosperity of communities is a lived reality.
                     </p>
                   </div>
                 </div>
@@ -537,12 +595,12 @@ export default function App() {
                 {/* Mission row */}
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-[#F5C518]/10 rounded-lg text-[#F5C518] shrink-0 border border-[#F5C518]/20">
-                    <CheckCircle2 className="w-5 h-5 text-[#F5C518]" />
+                     <CheckCircle2 className="w-5 h-5 text-[#F5C518]" />
                   </div>
                   <div>
                     <h4 className="font-bold text-xs uppercase text-[#F5C518] tracking-wider">Mission Statement</h4>
                     <p className="text-xs text-white/80 mt-1 leading-relaxed">
-                      To design, implement, and track grassroots intervention programs in education, clean maternal healthcare, economic trade workshops, and climate advocacy that tangibly improve lives.
+                      To protect children’s rights, drive sustainable development, and build resilient communities through evidence-based approaches.
                     </p>
                   </div>
                 </div>
@@ -554,14 +612,233 @@ export default function App() {
                   </div>
                   <div>
                     <h4 className="font-bold text-xs uppercase text-[#F5C518] tracking-wider">Core Values</h4>
-                    <p className="text-xs text-[#F5C518] font-extrabold tracking-wider mt-1">
-                      INTEGRITY | COMPASSION | SUSTAINABILITY | COMMUNITY-FIRST
+                    <p className="text-[10px] text-[#F5C518] font-extrabold tracking-wider mt-1.5 uppercase leading-none">
+                      INTEGRITY | COMPASSION | SUSTAINABILITY | TRUST
                     </p>
                   </div>
                 </div>
 
               </div>
-              
+            </div>
+
+          </div>
+
+          {/* ==========================================
+              MOVING PICTURE CAROUSEL (Activities with Children)
+              ========================================== */}
+          <div className="pt-10 border-t border-gray-100 space-y-8">
+            <div className="space-y-2 text-center max-w-2xl mx-auto">
+              <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-[#111111] text-white rounded px-2.5 py-1">
+                GICD Operational Gallery
+              </span>
+              <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#111111] uppercase tracking-tight">
+                Our Primary Campaigns in Action
+              </h3>
+              <p className="text-xs text-gray-500 font-sans max-w-md mx-auto">
+                Interactive moving pictures highlighting our recent community intervention deployments, child-centric support events, and educational safety programs.
+              </p>
+            </div>
+
+            {/* Carousel Container */}
+            <div className="relative w-full h-[280px] sm:h-[420px] rounded-2xl overflow-hidden shadow-xl border border-stone-200 bg-[#111111] group">
+              {/* Slider Image wrapper */}
+              <div className="absolute inset-0 w-full h-full">
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0.3 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0.3 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0 w-full h-full"
+                  >
+                    <img
+                      src={CAROUSEL_IMAGES[currentSlide].url}
+                      alt={CAROUSEL_IMAGES[currentSlide].title}
+                      className="w-full h-full object-cover select-none"
+                      referrerPolicy="no-referrer"
+                    />
+                    {/* Shadow overlay gradient to read text clearly */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Slider Left Arrow */}
+              <button
+                type="button"
+                onClick={handlePrevSlide}
+                className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/60 hover:bg-[#F5C518] text-white hover:text-[#111111] border border-white/10 transition-all duration-200 backdrop-blur-sm z-30 cursor-pointer select-none"
+                aria-label="Previous Slide"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+
+              {/* Slider Right Arrow */}
+              <button
+                type="button"
+                onClick={handleNextSlide}
+                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/60 hover:bg-[#F5C518] text-white hover:text-[#111111] border border-white/10 transition-all duration-200 backdrop-blur-sm z-30 cursor-pointer select-none"
+                aria-label="Next Slide"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+
+              {/* Slide Details Card Overlay */}
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 z-20 flex flex-col md:flex-row md:items-end justify-between gap-4 text-left">
+                <div className="space-y-1 sm:space-y-2 max-w-2xl text-white">
+                  <span className="px-2 py-0.5 bg-[#F5C518] text-[#111111] font-black text-[8px] sm:text-[9px] uppercase tracking-widest rounded font-mono inline-block">
+                    Plateau Campaign Live Focus
+                  </span>
+                  <h4 className="font-sans font-black text-lg sm:text-2xl text-white uppercase tracking-tight">
+                    {CAROUSEL_IMAGES[currentSlide].title}
+                  </h4>
+                  <p className="text-xs text-white/95 leading-relaxed font-sans font-medium">
+                    {CAROUSEL_IMAGES[currentSlide].description}
+                  </p>
+                </div>
+
+                {/* Bullet Indicators */}
+                <div className="flex gap-1.5 shrink-0">
+                  {CAROUSEL_IMAGES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-1.5 sm:h-2 rounded-full cursor-pointer transition-all duration-300 ${
+                        idx === currentSlide ? "w-6 sm:w-8 bg-[#F5C518]" : "w-1.5 sm:w-2 bg-white/40 hover:bg-white/80"
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Row B: Governance & Working Team */}
+          <div className="space-y-8 pt-10 border-t border-gray-100 text-center">
+            
+            <div className="space-y-2 max-w-xl mx-auto">
+              <h3 className="font-sans font-extrabold text-xl text-[#111111] uppercase tracking-tight">
+                Our Team & Governance structure
+              </h3>
+              <p className="text-xs text-gray-500 leading-relaxed font-sans mt-2">
+                GICD is governed by a legally registered Board of Trustees who set policy guidelines, and is executed on-ground by dedicated operational management officers.
+              </p>
+            </div>
+
+            {/* Switchable Tabs Selector */}
+            <div className="flex items-center justify-center gap-6 border-b border-gray-100 max-w-md mx-auto pb-0.5">
+              <button
+                onClick={() => setTeamTab("trustees")}
+                className={`pb-3 text-xs uppercase tracking-wider font-extrabold transition-all relative cursor-pointer ${
+                  teamTab === "trustees" ? "text-[#111111]" : "text-gray-400 hover:text-gray-655"
+                }`}
+              >
+                Board of Trustees ({TRUSTEES_DATA.length})
+                {teamTab === "trustees" && (
+                  <motion.div layoutId="teamUnderline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F5C518]" />
+                )}
+              </button>
+              <button
+                onClick={() => setTeamTab("officers")}
+                className={`pb-3 text-xs uppercase tracking-wider font-extrabold transition-all relative cursor-pointer ${
+                  teamTab === "officers" ? "text-[#111111]" : "text-gray-400 hover:text-gray-655"
+                }`}
+              >
+                Working Team ({TEAM_DATA.length})
+                {teamTab === "officers" && (
+                  <motion.div layoutId="teamUnderline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F5C518]" />
+                )}
+              </button>
+            </div>
+
+            {/* Swappable Members Grid */}
+            <div className="pt-4 text-left">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={teamTab}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.18 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                >
+                  {teamTab === "trustees" ? (
+                    TRUSTEES_DATA.map((member) => (
+                      <div 
+                        key={member.id}
+                        className="bg-white rounded-xl p-5 border border-gray-150 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative overflow-hidden group hover:border-[#F5C518]/30"
+                      >
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#F5C518] to-amber-200 border border-[#111111]/10 text-[#111111] flex items-center justify-center font-sans font-black text-xs shadow-sm uppercase shrink-0 select-none">
+                              {member.initials}
+                            </div>
+                            <div>
+                              <h4 className="font-sans font-extrabold text-[#111111] text-xs uppercase tracking-tight leading-snug group-hover:text-[#F5C518] transition-colors leading-tight truncate max-w-[150px]">
+                                {member.name}
+                              </h4>
+                              <p className="text-[8px] uppercase font-mono text-gray-400 tracking-wider font-bold">
+                                Board Trustee
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="inline-block px-2 py-0.5 bg-gray-50 text-gray-800 text-[10px] font-sans font-semibold rounded border border-gray-100">
+                            {member.role}
+                          </div>
+
+                          <p className="text-xs text-gray-500 font-sans leading-relaxed line-clamp-4">
+                            {member.bio}
+                          </p>
+                        </div>
+
+                        <div className="mt-5 pt-3 border-t border-gray-100 w-full flex items-center justify-between text-[8px] font-mono text-gray-400 uppercase tracking-widest">
+                          <span>Verified Governance</span>
+                          <span className="text-[#F5C518] font-bold">● GICD BOARD</span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    TEAM_DATA.map((member) => (
+                      <div 
+                        key={member.id}
+                        className="bg-white rounded-xl p-5 border border-gray-150 hover:shadow-md transition-all duration-300 flex flex-col justify-between relative overflow-hidden group hover:border-[#F5C518]/30"
+                      >
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#F5C518] to-amber-200 border border-[#111111]/10 text-[#111111] flex items-center justify-center font-sans font-black text-xs shadow-sm uppercase shrink-0 select-none">
+                              {member.initials}
+                            </div>
+                            <div>
+                              <h4 className="font-sans font-extrabold text-[#111111] text-xs uppercase tracking-tight leading-snug group-hover:text-[#F5C518] transition-colors leading-tight truncate max-w-[150px]">
+                                {member.name}
+                              </h4>
+                              <p className="text-[8px] uppercase font-mono text-gray-400 tracking-wider font-bold">
+                                Operating Officer
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="inline-block px-2 py-0.5 bg-gray-50 text-gray-800 text-[10px] font-sans font-semibold rounded border border-gray-100">
+                            {member.role}
+                          </div>
+
+                          <p className="text-xs text-gray-500 font-sans leading-relaxed line-clamp-4">
+                            {member.bio}
+                          </p>
+                        </div>
+
+                        <div className="mt-5 pt-3 border-t border-gray-100 w-full flex items-center justify-between text-[8px] font-mono text-gray-400 uppercase tracking-widest">
+                          <span>Verified Officer</span>
+                          <span className="text-[#F5C518] font-bold">● OPERATIONAL</span>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </motion.div>
+              </AnimatePresence>
             </div>
 
           </div>
@@ -570,419 +847,742 @@ export default function App() {
       </section>
 
 
-      {/* SECTION 4 — PROGRAMS & FOCUS AREAS */}
-      <section id="programs" className="py-20 bg-gray-50 border-t border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+      {/* =========================================================
+          PILLAR 2 — WHAT WE DO SECTION (Highlight Child Protection & Education)
+          ========================================================= */}
+      <section id="what-we-do" className="py-20 bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-16">
           
-          <div className="space-y-3 max-w-2xl mx-auto">
+          {/* Section Heading */}
+          <div className="space-y-3 max-w-2xl mx-auto text-center">
             <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-white rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3">
               What We Do
             </span>
             <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
-              Our Programs
+              Our Primary Pathways & Actions
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-md mx-auto">
-              Accredited grassroots focus areas designed to support local families in Jos safely and transparently.
+            <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-xl mx-auto">
+              Our grassroots development is driven by three paramount pathways as detailed below, backed by additional supporting technical interventions.
             </p>
           </div>
 
-          {/* 6 Grid layout (3x2 Desktop, 2x3 Tablet, 1x6 Mobile) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-            {PROGRAMS_DATA.map((prog) => (
-              <div 
-                key={prog.id}
-                className="bg-white p-5 rounded-xl border border-gray-150 border-t-2 border-t-[#F5C518] shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="w-10 h-10 bg-[#F5C518]/10 rounded flex items-center justify-center p-2 text-[#F5C518]">
-                    {renderProgramIcon(prog.iconName)}
+          {/* Three Paramount Pillars Row */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            
+            {/* Paramount Pillar A — Child Protection */}
+            <div className="bg-white rounded-2xl border border-stone-200/80 p-6 sm:p-8 flex flex-col justify-between shadow-sm group hover:border-[#F5C518]/55 transition duration-300">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[8px] font-mono text-gray-400 tracking-wider">PATHWAY ONE</span>
+                  <span className="px-2 py-0.5 bg-amber-50 text-[#F5C518] font-bold text-[8px] uppercase tracking-wider rounded border border-[#F5C518]/10">Core focus</span>
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="w-10 h-10 bg-[#F5C518]/10 rounded-lg flex items-center justify-center text-[#F5C518]">
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <h3 className="font-sans font-bold text-base text-[#111111] leading-snug uppercase">
-                    {prog.title}
+                  <h3 className="font-sans font-black text-xl text-[#111111] tracking-tight uppercase">
+                    Child Protection
                   </h3>
                   <p className="text-xs text-gray-500 leading-relaxed font-sans">
-                    {prog.description}
+                    We strengthen child protection through community-based awareness and prevention initiatives, early identification and referral of vulnerable children, and targeted parenting support that promotes family stability. We also work to reinforce informal protection systems within communities, ensuring that children are surrounded by responsive, informed, and supportive structures that can safeguard their well-being.
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-gray-100/60">
+                <div className="bg-stone-50 p-3 rounded-xl border border-stone-150 space-y-1.5 text-xs">
+                  <span className="font-bold text-[#111111] text-[9px] uppercase tracking-wider block font-sans">Empirical Actions:</span>
+                  <div className="space-y-1 text-gray-600 font-sans text-[11px] leading-snug">
+                    <div>● Community awareness and prevention</div>
+                    <div>● Early ID and vulnerable referral</div>
+                    <div>● Target parenting & stability counseling</div>
+                    <div>● Informal systems reinforcement</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => openVolunteer()}
+                  className="px-3 py-1.5 bg-[#111111] text-white hover:bg-slate-950 font-bold rounded text-[10px] uppercase cursor-pointer"
+                >
+                  Join Campaign
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openDonate()}
+                  className="text-[10px] text-[#111111] font-extrabold underline hover:text-[#F5C518]"
+                >
+                  Fund Shelter & Protection
+                </button>
+              </div>
+            </div>
+
+            {/* Paramount Pillar B — Education */}
+            <div className="bg-white rounded-2xl border border-stone-200/80 p-6 sm:p-8 flex flex-col justify-between shadow-sm group hover:border-[#F5C518]/55 transition duration-300">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[8px] font-mono text-gray-400 tracking-wider">PATHWAY TWO</span>
+                  <span className="px-2 py-0.5 bg-amber-50 text-[#F5C518] font-bold text-[8px] uppercase tracking-wider rounded border border-[#F5C518]/10">Core focus</span>
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="w-10 h-10 bg-[#F5C518]/10 rounded-lg flex items-center justify-center text-[#F5C518]">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-sans font-black text-xl text-[#111111] tracking-tight uppercase">
+                    Education
+                  </h3>
+                  <p className="text-xs text-gray-500 leading-relaxed font-sans">
+                    We improve access to formal education by addressing barriers that prevent children from enrolling, attending, and staying in school, while promoting learning environments that support their growth, dignity, and long-term development. We also inspire learning through structured exposure that broadens learners’ worldview and gives them a clear sense of purpose to remain in school.
+                  </p>
+                </div>
+
+                <div className="bg-stone-50 p-3 rounded-xl border border-stone-150 space-y-1.5 text-xs">
+                  <span className="font-bold text-[#111111] text-[9px] uppercase tracking-wider block font-sans">Educational Actions:</span>
+                  <div className="space-y-1 text-gray-600 font-sans text-[11px] leading-snug">
+                    <div>● Address direct enrolment barriers</div>
+                    <div>● Support growth with dignity</div>
+                    <div>● Inspire via structured child exposure</div>
+                    <div>● Worldview and purpose broadening</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => openJobs("education_facilitator")}
+                  className="px-3 py-1.5 bg-[#111111] text-white hover:bg-slate-950 font-bold rounded text-[10px] uppercase cursor-pointer"
+                >
+                  Join Classroom
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openDonate()}
+                  className="text-[10px] text-[#111111] font-extrabold underline hover:text-[#F5C518]"
+                >
+                  Scholarship Orphans
+                </button>
+              </div>
+            </div>
+
+            {/* Paramount Pillar C — Youth Development & Empowerment */}
+            <div className="bg-white rounded-2xl border border-stone-200/80 p-6 sm:p-8 flex flex-col justify-between shadow-sm group hover:border-[#F5C518]/55 transition duration-300">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[8px] font-mono text-gray-400 tracking-wider">PATHWAY THREE</span>
+                  <span className="px-2 py-0.5 bg-amber-50 text-[#F5C518] font-bold text-[8px] uppercase tracking-wider rounded border border-[#F5C518]/10">Core focus</span>
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="w-10 h-10 bg-[#F5C518]/10 rounded-lg flex items-center justify-center text-[#F5C518]">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-sans font-black text-xl text-[#111111] tracking-tight uppercase">
+                    Youth Dev & Empowerment
+                  </h3>
+                  <p className="text-xs text-gray-500 leading-relaxed font-sans">
+                    We equip young people with the tools they need to transition successfully into adulthood by expanding access to education, providing psychosocial support and life-skills development, and creating pathways for vocational training and meaningful economic participation. We deliberately pursue alternative learning pathways that empower and prepare young people for the future workforce and self-sustenance.
+                  </p>
+                </div>
+
+                <div className="bg-stone-50 p-3 rounded-xl border border-stone-150 space-y-1.5 text-xs">
+                  <span className="font-bold text-[#111111] text-[9px] uppercase tracking-wider block font-sans">Empowerment Actions:</span>
+                  <div className="space-y-1 text-gray-600 font-sans text-[11px] leading-snug">
+                    <div>● Transition successfully to adulthood</div>
+                    <div>● Health, life-skills and mental support</div>
+                    <div>● Pathways to vocational training</div>
+                    <div>● Workforce sustenance tutoring</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => openJobs("youth_coordinator")}
+                  className="px-3 py-1.5 bg-[#111111] text-white hover:bg-slate-950 font-bold rounded text-[10px] uppercase cursor-pointer"
+                >
+                  Join Mentors
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openDonate()}
+                  className="text-[10px] text-[#111111] font-extrabold underline hover:text-[#F5C518]"
+                >
+                  Fund Vocational Kit
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Sub-grid of other Programs */}
+          <div className="space-y-6">
+            <h4 className="font-sans font-extrabold text-xs text-[#111111] uppercase tracking-widest text-center">
+              More Supporting Programs
+            </h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { title: "Healthcare Outreach", desc: "Setting up sanitary mobile clinics for maternal welfare, pre-natal packs, and clean nutrition tracking.", icon: <HeartPulse className="w-4 h-4 text-[#F5C518]" /> },
+                { title: "Sustainable Agriculture", desc: "Bilingual dry-season maize guidebooks and clean high-yield seed distributions to local Plateau unions.", icon: <Sprout className="w-4 h-4 text-[#F5C518]" /> },
+                { title: "Youth Advocacy", desc: "Digital capacity skills training, conflict resolution seminars, and enterprise startup kits.", icon: <Users className="w-4 h-4 text-[#F5C518]" /> },
+                { title: "Eco-Sustainability", desc: "Tree plantings and erosion safeguards across Jos East & Plateau rural boundaries.", icon: <Leaf className="w-4 h-4 text-[#F5C518]" /> },
+              ].map((sub, idx) => (
+                <div key={idx} className="bg-white p-4 rounded-xl border border-gray-150 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="p-1.5 bg-[#F5C518]/10 rounded w-max">
+                      {sub.icon}
+                    </div>
+                    <h5 className="font-sans font-bold text-xs text-[#111111] uppercase tracking-tight">{sub.title}</h5>
+                    <p className="text-[11px] text-gray-500 leading-relaxed font-sans">{sub.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Stats & Real Impact Section integrated within what we do */}
+          <div className="bg-[#111111] text-white p-8 sm:p-12 rounded-2xl relative overflow-hidden text-center space-y-8 shadow-2xl border border-white/5">
+            <div className="absolute inset-0 bg-[#F5C518]/5 pointer-events-none opacity-20" style={{ backgroundImage: "radial-gradient(#F5C518 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+            
+            <div className="space-y-2 max-w-xl mx-auto relative z-10">
+              <span className="text-[9px] font-mono font-bold text-[#F5C518] uppercase tracking-widest inline-block border border-[#F5C518]/25 px-2.5 py-0.5 rounded bg-[#111111]">
+                EMPIRICAL VERIFICATION
+              </span>
+              <h4 className="font-sans font-black text-xl sm:text-2xl text-white tracking-tight leading-none uppercase">
+                CHANGING LIVES ACROSS JOS
+              </h4>
+            </div>
+
+            {/* Stats list */}
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 relative z-10 pt-4">
+              {STATS_DATA.map((val) => (
+                <StatCounter
+                  key={val.id}
+                  targetNumber={val.number}
+                  suffix={val.suffix}
+                  label={val.label}
+                />
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          PILLAR 3 — PROGRAMME UPDATES SECTION (Interactive Feed)
+          ========================================================= */}
+      <section id="programme-updates" className="py-20 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-12">
+          
+          {/* Header Block and Mindmap context */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 overflow-hidden">
+            <div className="space-y-3 max-w-xl">
+              <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-gray-50 rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3">
+                Live Feed
+              </span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
+                Programme Activities Log
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 font-sans">
+                As detailed in GICD's website structure schema: <strong className="text-brand-black">All programme activities are posted here live</strong>. Check our recent missions across Plateau.
+              </p>
+            </div>
+
+            {/* Filter and Search parameters */}
+            <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+              <div className="relative flex-1 md:flex-initial animate-fade-in">
+                <input
+                  type="text"
+                  placeholder="Search activities..."
+                  value={updateSearchQuery}
+                  onChange={(e) => setUpdateSearchQuery(e.target.value)}
+                  className="w-full pl-3 pr-8 py-1.5 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#F5C518] focus:outline-none placeholder-gray-400 font-sans text-gray-750 font-normal"
+                />
+              </div>
+              
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 font-sans">
+                {["All", "Education", "Child Protection", "Youth Development"].map((cat) => (
                   <button
-                    onClick={() => setSelectedProgram(prog)}
-                    className="font-sans font-extrabold text-[10px] sm:text-xs text-[#111111] hover:text-[#F5C518] tracking-wider uppercase transition flex items-center gap-1 cursor-pointer"
+                    key={cat}
+                    onClick={() => setUpdateFilter(cat)}
+                    className={`px-3 py-1 text-[10px] font-extrabold uppercase rounded border tracking-wider transition duration-150 cursor-pointer ${
+                      updateFilter === cat
+                        ? "bg-[#F5C518] text-[#111111] border-[#F5C518] font-bold"
+                        : "border-gray-200 text-gray-500 bg-white hover:bg-gray-50"
+                    }`}
                   >
-                    <span>Learn More</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-[#F5C518]" />
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Dynamic Feed grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
+            {[
+              { id: "act1", title: "School Uniform & Sandals Distribution", tag: "Education", date: "May 12, 2026", details: "Supplied writing boards, custom canvas bags, uniforms, and sandals to children from 4 local primary clusters in Jos North.", loc: "Jos North, Plateau State" },
+              { id: "act2", title: "Safeguarding Seminar for Rural educators", tag: "Child Protection", date: "Apr 19, 2026", details: "Conducted child safeguarding protocols training for 45 community teachers under CAC-approved guides, addressing mental health safety.", loc: "Mangu LGA, Plateau State" },
+              { id: "act3", title: "Youth Vocational Training Launch", tag: "Youth Development", date: "Mar 28, 2026", details: "Equipped adolescents and young people with vocational materials, life-skills mentoring, and digital literacy tools to transition successfully into self-sustenance.", loc: "Jos South LGA, Plateau" },
+              { id: "act4", title: "Adolescent Life-Skills Mentorship", tag: "Youth Development", date: "Feb 15, 2026", details: "Conducted psychosocial support workshops and alternative learning pathway seminars to inspire and guide secondary students.", loc: "Riyom LGA, Plateau State" }
+            ].filter(act => {
+              const matchesCat = updateFilter === "All" || act.tag === updateFilter;
+              const matchesQuery = act.title.toLowerCase().includes(updateSearchQuery.toLowerCase()) || act.details.toLowerCase().includes(updateSearchQuery.toLowerCase());
+              return matchesCat && matchesQuery;
+            }).map((item) => (
+              <div 
+                key={item.id} 
+                className="bg-stone-50 border border-stone-200 p-5 rounded-xl flex flex-col justify-between group hover:border-[#F5C518] transition"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-[9px] font-mono font-bold">
+                    <span className="px-2 py-0.5 bg-white text-gray-800 rounded border border-gray-150">{item.tag}</span>
+                    <span className="text-gray-400">{item.date}</span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <h4 className="font-sans font-bold text-sm text-[#111111] group-hover:text-[#F5C518] transition duration-200 uppercase line-clamp-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-[10px] text-gray-400 font-mono tracking-tight flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5 text-[#F5C518] shrink-0" /> {item.loc}
+                    </p>
+                  </div>
+
+                  <p className="text-xs text-gray-550 leading-relaxed font-sans">
+                    {item.details}
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-6 border-t border-stone-200">
+                  <button
+                    onClick={() => setSelectedUpdate(item)}
+                    className="text-[10px] uppercase font-bold tracking-wider text-[#111111] flex items-center gap-1 hover:underline cursor-pointer"
+                  >
+                    <span>Read campaign logs</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
             ))}
           </div>
 
-        </div>
-      </section>
+          {/* Interactive Modal for Selected Update */}
+          {selectedUpdate && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in" id="update-details-modal">
+              <div className="relative w-full max-w-md overflow-hidden bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 space-y-4 font-sans">
+                <button
+                  onClick={() => setSelectedUpdate(null)}
+                  className="absolute right-4 top-4 p-1 rounded-full hover:bg-gray-100 transition text-gray-500 cursor-pointer"
+                  aria-label="Close dialog"
+                >
+                  <X className="w-5 h-5" />
+                </button>
 
-
-      {/* SECTION 4.5 — CUSTOM QUICK PROGRAM MODAL PANEL */}
-      {selectedProgram && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in" id="program-focus-modal">
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 relative border border-gray-100 space-y-4">
-            
-            <button
-              onClick={() => setSelectedProgram(null)}
-              className="absolute right-4 top-4 p-1 rounded-full hover:bg-gray-100 transition text-gray-500"
-              aria-label="Close"
-              id="close-program-modal-btn"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-2">
-              <div className="p-2 rounded-xl bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow">
-                {renderProgramIcon(selectedProgram.iconName)}
-              </div>
-              <div>
-                <span className="text-[10px] font-mono text-gray-400 block tracking-widest uppercase">GICD CORES</span>
-                <h4 className="font-sans font-black text-base text-brand-black">{selectedProgram.title}</h4>
-              </div>
-            </div>
-
-            <p className="text-xs text-gray-600 leading-relaxed pt-2">
-              Our <span className="font-bold text-brand-black">{selectedProgram.title}</span> program represents years of field design. In Jos and Plateau environments, we recruit local guides, purchase bulk supplies directly, and invite regional elders and traditional chiefs to observe our campaign milestones, ensuring extreme transparency.
-            </p>
-
-            <div className="bg-amber-50 p-3 rounded-lg border border-amber-100 text-[11px] text-gray-750">
-              <span className="font-bold text-brand-black block mb-1">Direct Field Milestones:</span>
-              <ul className="space-y-1 list-disc pl-3">
-                <li>Bi-weekly progress auditing records</li>
-                <li>Zero administrative expense deduction</li>
-                <li>Accredited personnel & Plateau safety protocols</li>
-              </ul>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2 pt-2">
-              <button
-                onClick={() => {
-                  setSelectedProgram(null);
-                  openDonate();
-                }}
-                className="w-full py-2 bg-brand-yellow text-brand-black hover:bg-brand-yellow/90 font-extrabold rounded-lg text-xs uppercase"
-              >
-                Donate Direct support
-              </button>
-              <button
-                onClick={() => {
-                  setSelectedProgram(null);
-                  openVolunteer();
-                }}
-                className="w-full py-2 bg-brand-black text-brand-yellow hover:bg-slate-900 font-bold rounded-lg text-xs uppercase"
-              >
-                Volunteer Spot
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
-
-
-      {/* SECTION 5 — IMPACT NUMBERS (Stats Counter) */}
-      <section id="impact" className="py-20 bg-[#111111] text-white relative overflow-hidden">
-        {/* Transparent global decoration with minimalist dot pattern */}
-        <div className="absolute inset-0 bg-[#F5C518]/5 pointer-events-none opacity-20" style={{ backgroundImage: "radial-gradient(#F5C518 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-        
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 w-full z-10 text-center space-y-12">
-          
-          <div className="space-y-3 max-w-2xl mx-auto">
-            <span className="text-[10px] font-mono font-bold text-[#F5C518] uppercase tracking-widest inline-block border border-[#F5C518]/25 px-3 py-1 rounded-full bg-[#111111]">
-              OUR IMPACT IN ACTION
-            </span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-white tracking-tight leading-none uppercase">
-              CHANGING LIVES ACROSS JOS
-            </h2>
-            <p className="text-xs text-white/70 max-w-sm mx-auto font-sans leading-relaxed">
-              We stand prepared with clear empirical verification. These metrics are dynamically logged, and audited in our public annual state reviews.
-            </p>
-          </div>
-
-          {/* Stats Counter Row */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
-            {STATS_DATA.map((val) => (
-              <StatCounter
-                key={val.id}
-                targetNumber={val.number}
-                suffix={val.suffix}
-                label={val.label}
-              />
-            ))}
-          </div>
-
-        </div>
-
-        {/* Thick yellow decorative visual underline below stats */}
-        <div className="h-1 w-full bg-[#F5C518] absolute bottom-0 left-0 shadow-[0_-4px_15px_rgba(245,197,24,0.3)] z-10"></div>
-      </section>
-
-
-      {/* SECTION 6 — TEAM */}
-      <section id="team" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-3 max-w-2xl mx-auto">
-            <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-gray-50 rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3">
-              THE PEOPLE BEHIND GICD
-            </span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
-              Meet Our Board & Officers
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500">
-              Plateau indigenes, health professionals, and advocacy specialists working around the clock.
-            </p>
-          </div>
-
-          {/* Responsive team cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            {TEAM_DATA.map((member) => (
-              <div 
-                key={member.id}
-                className="bg-white rounded-xl p-6 border border-gray-150 hover:shadow-md transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden"
-              >
-                {/* Yellow circle Initials avatar as placeholder */}
-                <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#F5C518] to-amber-200 border border-[#111111]/10 text-[#111111] flex items-center justify-center font-sans font-black text-xl shadow-sm uppercase select-none">
-                  {member.initials}
+                <div className="space-y-2">
+                  <span className="px-2 py-0.5 bg-amber-50 text-[#F5C518] text-[9px] uppercase font-bold rounded border border-[#F5C518]/20">{selectedUpdate.tag}</span>
+                  <p className="text-[10px] text-gray-400 block font-mono">{selectedUpdate.date} — {selectedUpdate.loc}</p>
+                  <h4 className="font-sans font-black text-lg text-[#111111] uppercase leading-tight">{selectedUpdate.title}</h4>
                 </div>
 
-                <div className="mt-5 space-y-1">
-                  <h4 className="font-sans font-extrabold text-sm text-[#111111] uppercase tracking-tight">{member.name}</h4>
-                  <p className="text-[10px] uppercase font-mono text-[#F5C518] tracking-widest font-bold">{member.role}</p>
-                </div>
-
-                <p className="text-xs text-gray-500 mt-3 font-sans leading-relaxed text-center px-1">
-                  {member.bio}
+                <p className="text-xs text-gray-650 leading-relaxed">
+                  {selectedUpdate.details} This program activity is part of our standard on-ground village deployment framework. GICD does not make use of regional intermediaries; instead, our working team handles 100% of material tracking, verified directly by our Board of Trustees during quarterly compliance cycles in Jos.
                 </p>
 
-                <div className="mt-5 pt-3 border-t border-gray-100 w-full flex justify-center gap-3">
-                  <span className="text-[9px] font-mono text-gray-400 uppercase tracking-wider">Verified Officer</span>
+                <div className="p-3.5 bg-yellow-50 rounded-xl border border-yellow-100 text-xs text-gray-750 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-[#F5C518] shrink-0" />
+                  <span>Verified with audited photographic logs on our ledger records.</span>
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    onClick={() => {
+                      setSelectedUpdate(null);
+                      openDonate();
+                    }}
+                    className="w-full py-2 bg-[#F5C518] hover:bg-[#F5C518]/90 text-brand-black font-extrabold text-[#111111] text-xs rounded-lg uppercase tracking-wider"
+                  >
+                    Donate to similar Campaign
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
 
-        </div>
-      </section>
+          {/* Core Media Gallery Area (Proof of Real Activities) */}
+          <div className="pt-10 border-t border-gray-100 space-y-6 text-center">
+            <div className="space-y-2">
+              <h3 className="font-sans font-black text-xl text-[#111111] uppercase">Campaign Media Tray</h3>
+              <p className="text-xs text-gray-550 max-w-xs mx-auto">Click on any high-resolution campaign banner to view real-life grassroots action.</p>
+            </div>
 
-
-      {/* SECTION 7 — GALLERY / MEDIA */}
-      <section id="gallery" className="py-20 bg-gray-50 border-t border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-white rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3">
-              OUR WORK IN ACTION
-            </span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
-              Media Archive
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-sans">
-              Live captures of health operations, back-to-school distributions, and eco advocacy in Plateau communities.
-            </p>
-
-            {/* Filtering category tabs */}
-            <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-              {categories.map((cat) => (
+            {/* Gallery tags */}
+            <div className="flex items-center justify-center gap-2 overflow-x-auto pb-1 max-w-md mx-auto">
+              {["All", "Education", "Healthcare", "Environment", "Economic"].map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setGalleryFilter(cat)}
-                  className={`px-3 py-1.5 rounded text-[10px] font-bold tracking-wider uppercase border transition cursor-pointer ${
+                  onClick={() => setGalleryFilter(cat === "Healthcare" ? "Healthcare Outreach" : cat === "Economic" ? "Economic Empowerment" : cat)}
+                  className={`px-3 py-1 text-[9px] font-bold uppercase rounded border tracking-wider transition-all duration-150 cursor-pointer ${
+                    (galleryFilter === "Healthcare Outreach" && cat === "Healthcare") ||
+                    (galleryFilter === "Economic Empowerment" && cat === "Economic") ||
                     galleryFilter === cat
-                      ? "bg-[#111111] text-[#F5C518] border-[#111111] shadow-sm"
-                      : "bg-white text-gray-500 border-gray-200 hover:border-[#F5C518] hover:text-[#111111]"
+                      ? "bg-[#F5C518] text-[#111111] border-[#F5C518]"
+                      : "border-gray-200 text-gray-400 bg-white hover:bg-gray-50"
                   }`}
                 >
-                  {cat === "All" ? "All Projects" : cat}
+                  {cat}
                 </button>
               ))}
             </div>
-          </div>
 
-          {/* 6 Grid Gallery */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredGallery.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setSelectedGalleryItem(item)}
-                className="group relative h-64 rounded-2xl border border-gray-200 shadow-sm overflow-hidden cursor-pointer shadow-md transition-transform duration-300 hover:scale-[1.02]"
-                style={{ background: item.gradient }}
-              >
-                {/* Visual subtle dotted panel overlay */}
-                <div className="absolute inset-0 bg-[#111111]/30 group-hover:bg-brand-black/90 transition duration-300 flex flex-col justify-end p-6 z-10" />
-
-                {/* Micro eye action and interactive banner */}
-                <div className="absolute top-4 right-4 p-2 bg-brand-black/80 rounded-full border border-gray-800 opacity-0 group-hover:opacity-100 transition duration-300 z-20 flex items-center justify-center">
-                  <Eye className="w-4 h-4 text-brand-yellow" />
+            {/* Gallery items list */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-left">
+              {GALLERY_DATA.filter((item) => galleryFilter === "All" || item.category === galleryFilter).map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => setSelectedGalleryItem(item)}
+                  className="group relative h-28 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition border border-gray-150 flex flex-col justify-between p-3.5"
+                  style={{ background: item.gradient || "linear-gradient(135deg, #111 0%, #333 100%)" }}
+                >
+                  <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white text-[10px] shrink-0 self-end">
+                    <Eye className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <span className="text-[8px] tracking-wider uppercase font-mono text-white/70 block">{item.category}</span>
+                    <h5 className="text-[9px] font-sans font-extrabold text-white uppercase leading-snug line-clamp-2 mt-0.5">{item.title}</h5>
+                  </div>
                 </div>
-
-                <div className="relative z-10 text-left space-y-1.5 text-white">
-                  <span className="inline-block text-[9px] font-mono text-brand-yellow uppercase tracking-widest font-black">
-                    {item.category}
-                  </span>
-                  <h4 className="font-sans font-extrabold text-sm sm:text-base tracking-tight line-clamp-2">
-                    {item.title}
-                  </h4>
-                  <p className="text-[10px] text-gray-400 group-hover:block hidden font-sans" id={`view-story-label-${item.id}`}>
-                    Click to browse archives and notes →
-                  </p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-
-        </div>
-      </section>
-
-      {/* RENDER GALLERY LIGHTBOX VIEW */}
-      {selectedGalleryItem && (
-        <GalleryLightbox
-          item={selectedGalleryItem}
-          onClose={() => setSelectedGalleryItem(null)}
-          onNext={handleNextGallery}
-          onPrev={handlePrevGallery}
-        />
-      )}
-
-
-      {/* SECTION 8 — PARTNERS & DONORS */}
-      <section id="partners" className="py-16 bg-white overflow-hidden border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-8">
+      {/* =========================================================
+          PILLAR 4 — RESOURCES CENTER (Technical Handbooks & Integrity Reports)
+          ==============      <section id="resources" className="py-20 bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-16 relative">
           
-          <div className="space-y-2">
-            <span className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-widest block">
-              TRUSTED COLLABORATORS
+          {/* Section Heading */}
+          <div className="space-y-3 max-w-2xl mx-auto text-center">
+            <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-white rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3">
+              Resource Center
             </span>
-            <h3 className="font-sans font-black text-2xl text-[#111111] tracking-tight leading-none uppercase">
-              Audited & Authorized Partnerships
-            </h3>
-            <p className="text-xs text-gray-500 max-w-xl mx-auto font-sans leading-relaxed">
-              We are blessed with strong cooperation networks with state ministries, private donors, and local town unions, making Plateau transformations a truly structured effort.
+            <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
+              Technical Documents & Reports
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-550 font-sans max-w-md mx-auto text-center">
+              Access our public financial statements, environmental risk assessments, and technical facilitator guides.
             </p>
           </div>
 
-          {/* Endless horizontal scrolling logo strip (CSS scrolling marquee) */}
-          <div className="relative w-full py-6 bg-gray-50 border-y border-gray-100 rounded-2xl overflow-hidden flex items-center">
+          {/* Left Column: Handbooks / Right Column: Public Reports */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             
-            {/* Visual fade-out overlays on flanks to give rich depth */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            {/* Column 1: Technical Handbooks */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 space-y-6">
+              <div className="flex items-center gap-2 pb-4 border-b border-gray-100">
+                <Compass className="w-5 h-5 text-[#F5C518]" />
+                <h3 className="font-sans font-black text-sm text-brand-black uppercase">
+                  Technical Facilitator Manuals
+                </h3>
+              </div>
 
-            {/* Marquee Ticker Block */}
-            <div className="flex gap-6 animate-pulse-soft overflow-x-auto scrollbar-hide py-2 flex-nowrap w-full justify-center">
-              {PARTNERS_DATA.map((partner, idx) => (
-                <div 
-                  key={idx}
-                  className="px-4 py-2 bg-white rounded-lg border border-gray-150 flex items-center gap-2 shrink-0 select-none shadow-sm hover:border-[#F5C518]/30 transition duration-300"
-                >
-                  <div className="w-8 h-8 rounded bg-[#111111] text-[#F5C518] font-mono font-black text-xs flex items-center justify-center">
-                    {partner.initials}
+              <div className="space-y-4">
+                {[
+                  { id: "res1", title: "Joint West Africa Child Safeguarding Policy Guidelines", details: "Official, legal-certified 42-page guidance outlining safe shelters and reporting structures.", format: "PDF Manual" },
+                  { id: "res2", title: "Community Teacher empowerment Module Book One", details: "Curriculum handbook used to retrain rural instructors across Plateau State schools.", format: "PDF Handbook" },
+                  { id: "res3", title: "Dry-Season High-Yield Agronomy Maize handbook", details: "Bilingual English-Hausa handbook detailing crop hydration schedules.", format: "PDF Toolkit" }
+                ].map((doc) => (
+                  <div key={doc.id} className="p-4 bg-stone-50 border border-stone-200 rounded-xl flex items-center justify-between gap-4 font-sans text-left text-left">
+                    <div className="space-y-1">
+                      <span className="text-[8px] font-mono uppercase bg-white px-1.5 py-0.5 rounded border border-gray-150 text-gray-500 font-bold">{doc.format}</span>
+                      <h4 className="font-sans font-extrabold text-xs text-[#111111] uppercase leading-tight">{doc.title}</h4>
+                      <p className="text-[10px] text-gray-400 font-sans leading-relaxed">{doc.details}</p>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setDownloadingResourceId(doc.id);
+                        setTimeout(() => {
+                          setDownloadingResourceId(null);
+                          setToastMessage(`Downloaded ${doc.title}.pdf`);
+                          setTimeout(() => setToastMessage(null), 3000);
+                        }, 1200);
+                      }}
+                      className="p-2 bg-[#111111] text-[#F5C518] hover:bg-slate-900 rounded-lg shrink-0 cursor-pointer disabled:opacity-40"
+                      disabled={downloadingResourceId !== null}
+                    >
+                      {downloadingResourceId === doc.id ? (
+                        <Clock className="w-4 h-4 animate-spin text-[#F5C518]" />
+                      ) : (
+                        <Award className="w-4 h-4 text-[#F5C518]" />
+                      )}
+                    </button>
                   </div>
-                  <span className="text-xs font-bold text-gray-700 font-sans">{partner.name}</span>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Column 2: Public Compliance Reports */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 space-y-6 font-sans text-left">
+              <div className="flex items-center gap-2 pb-4 border-b border-gray-100 font-sans">
+                <CheckCircle2 className="w-5 h-5 text-[#F5C518]" />
+                <h3 className="font-sans font-black text-sm text-[#111111] uppercase">
+                  Audits, Charters & Assessments
+                </h3>
+              </div>
+
+              <div className="space-y-4 font-sans text-left">
+                {[
+                  { id: "res4", title: "GICD 2025 Annual Financial stewardship Statement", details: "Audited financial breakdown of direct aid flows, certified by certified external public auditors.", format: "Audited Report" },
+                  { id: "res5", title: "Plateau State Rural Needs Assessment 2026", details: "Our survey identifying water supply gaps and school abandonments across rural districts.", format: "Field Assessment" },
+                  { id: "res6", title: "Joint CAC Anti-Corruption Covenant Certification", details: "Anti-corruption agreement and compliance certificate of the Executive Directorate.", format: "Official Charter" }
+                ].map((doc) => (
+                  <div key={doc.id} className="p-4 bg-stone-50 border border-stone-200 rounded-xl flex items-center justify-between gap-4 font-sans text-left">
+                    <div className="space-y-1">
+                      <span className="text-[8px] font-mono uppercase bg-white px-1.5 py-0.5 rounded border border-gray-150 text-gray-500 font-bold">{doc.format}</span>
+                      <h4 className="font-sans font-extrabold text-xs text-[#111111] uppercase leading-tight">{doc.title}</h4>
+                      <p className="text-[10px] text-gray-400 font-sans leading-relaxed">{doc.details}</p>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setDownloadingResourceId(doc.id);
+                        setTimeout(() => {
+                          setDownloadingResourceId(null);
+                          setToastMessage(`Downloaded ${doc.title}.pdf`);
+                          setTimeout(() => setToastMessage(null), 3000);
+                        }, 1200);
+                      }}
+                      className="p-2 bg-[#111111] text-[#F5C518] hover:bg-slate-900 rounded-lg shrink-0 cursor-pointer disabled:opacity-40"
+                      disabled={downloadingResourceId !== null}
+                    >
+                      {downloadingResourceId === doc.id ? (
+                        <Clock className="w-4 h-4 animate-spin text-[#F5C518]" />
+                      ) : (
+                        <Award className="w-4 h-4 text-[#F5C518]" />
+                      )}
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
 
-          <div className="pt-2 flex flex-col items-center gap-3">
-            <button
-              onClick={openPartner}
-              className="font-sans font-black text-xs text-[#111111] hover:text-[#F5C518] transition-colors border-b-2 border-[#F5C518] pb-0.5 uppercase tracking-wider cursor-pointer"
-              id="become-partner-btn"
-            >
-              Become a Technical Partner →
-            </button>
-          </div>
+          {/* Toast Notification for simulating resource download success */}
+          <AnimatePresence>
+            {toastMessage && (
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="fixed bottom-6 right-6 bg-[#111111] border border-[#F5C518] text-white text-xs px-4 py-2.5 rounded-lg shadow-2xl flex items-center gap-2.5 z-50 font-mono"
+              >
+                <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-[8px]">
+                  ✓
+                </div>
+                <div>
+                  <span className="text-gray-400 block text-[9px] uppercase tracking-wide font-medium">Secure Delivery</span>
+                  <span>{toastMessage} saved successfully.</span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </div>
       </section>
 
 
-      {/* SECTION 9 — TESTIMONIALS */}
-      <section id="testimonials" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+      {/* =========================================================
+          PILLAR 5 — WORK WITH US SECTION (Volunteering, Donation, Partners & Careers)
+          ========================================================= */}
+      <section id="work-with-us" className="py-20 bg-white border-b border-gray-100 font-sans">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-16">
           
-          <div className="space-y-3 max-w-2xl mx-auto">
-            <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-white rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3">
-              VOICES FROM THE COMMUNITY
+          {/* Section Heading */}
+          <div className="space-y-3 max-w-2xl mx-auto text-center">
+            <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-gray-50 rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3 font-sans">
+              Work With Us
             </span>
             <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
-              Grassroots Testimonials
+              Join Our Frontiers
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-sans">
-              Nothing stands as solid as stories of transformation directly from our beneficiaries in Nigeria.
+            <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-md mx-auto text-center">
+              Empower our collective. Whether by financial support, local volunteering, high-impact CSR funding, or a dedicated career desk position.
             </p>
           </div>
 
-          {/* 3 Testimonials layout grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left">
-            {TESTIMONIALS_DATA.map((test) => (
-              <div 
-                key={test.id}
-                className="bg-white rounded-xl p-6 border-l-4 border-[#F5C518] border-y border-r border-gray-150 shadow-sm flex flex-col justify-between hover:shadow-md transition duration-300"
-              >
-                <div className="space-y-4">
-                  {/* Yellow quote decoration */}
-                  <Quote className="w-8 h-8 text-[#F5C518] fill-[#F5C518]/10" />
-                  <p className="text-xs sm:text-sm text-gray-600 italic font-sans leading-relaxed">
-                    &quot;{test.quote}&quot;
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-gray-100">
-                  <h4 className="font-bold text-xs text-[#111111]">{test.author}</h4>
-                  <p className="text-[10px] text-gray-500 font-sans mt-0.5">{test.role} • {test.location}</p>
-                </div>
+          {/* Interactive Multi-stream Bento Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch font-sans text-left">
+            
+            {/* Bento Block A: Secure Donation */}
+            <div className="lg:col-span-4 bg-[#111111] text-white p-8 rounded-2xl flex flex-col justify-between border border-white/5 shadow-xl">
+              <div className="space-y-4">
+                <Heart className="w-8 h-8 text-[#F5C518] fill-[#F5C518] animate-pulse" />
+                <h3 className="font-sans font-bold text-lg text-[#F5C518] uppercase tracking-tight">Direct Donation</h3>
+                <p className="text-xs text-white/70 leading-relaxed font-sans">
+                  Support GICD with secure direct funds. 100% of your funds purchase direct materials (textbooks, uniforms, shelters) immediately without intermediate administration fees.
+                </p>
               </div>
-            ))}
+
+              <div className="mt-8">
+                <button
+                  onClick={() => openDonate()}
+                  className="w-full py-2.5 bg-[#F5C518] hover:bg-yellow-400 text-[#111111] font-extrabold text-xs rounded-lg uppercase tracking-wider cursor-pointer transition text-center"
+                >
+                  Configure Donation Portal (₦)
+                </button>
+              </div>
+            </div>
+
+            {/* Bento Block B: Partnerships & Ministries */}
+            <div className="lg:col-span-4 bg-stone-50 border border-stone-200 p-8 rounded-2xl flex flex-col justify-between">
+              <div className="space-y-4">
+                <Users className="w-8 h-8 text-[#111111]" />
+                <h3 className="font-sans font-bold text-lg text-[#111111] uppercase tracking-tight">Village & CSR Partnership</h3>
+                <p className="text-xs leading-relaxed font-sans text-gray-500">
+                  GICD works with ministries, international donors, and private trusts to establish schools or run healthcare interventions in Jos communities.
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <button
+                  onClick={() => openPartner()}
+                  className="w-full py-2.5 bg-[#111111] text-[#F5C518] hover:bg-[#111111]/90 font-extrabold text-xs rounded-lg uppercase tracking-wider cursor-pointer transition text-center"
+                >
+                  Submit CSR Partnership
+                </button>
+              </div>
+            </div>
+
+            {/* Bento Block C: Volunteering */}
+            <div className="lg:col-span-4 bg-stone-50 border border-stone-200 p-8 rounded-2xl flex flex-col justify-between text-left">
+              <div className="space-y-4">
+                <Compass className="w-8 h-8 text-[#111111]" />
+                <h3 className="font-sans font-bold text-lg text-[#111111] uppercase tracking-tight">Field Volunteering</h3>
+                <p className="text-xs leading-relaxed font-sans text-gray-500 font-medium">
+                  No experience is required. Register as an on-ground field team worker assisting GICD during campaign distributions and clean-ups.
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <button
+                  onClick={() => openVolunteer()}
+                  className="w-full py-2.5 bg-[#111111] text-[#F5C518] hover:bg-[#111111]/90 font-extrabold text-xs rounded-lg uppercase tracking-wider cursor-pointer transition text-center"
+                >
+                  Register As Volunteer
+                </button>
+              </div>
+            </div>
+
           </div>
 
-        </div>
-      </section>
+          {/* Open Careers Vacancy Board (Fulfils "Jobs" node of mindmap) */}
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-[#F5C518]/25 p-6 sm:p-10 rounded-2xl space-y-6 text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-[#F5C518]/20">
+              <div className="space-y-1">
+                <span className="px-2 py-0.5 bg-[#111111] text-[#F5C518] font-bold text-[8px] uppercase rounded tracking-wider font-mono">recruitments open</span>
+                <h3 className="font-sans font-black text-xl text-brand-black uppercase tracking-tight">
+                  GICD Career Openings
+                </h3>
+                <p className="text-xs text-gray-500">Apply for certified grassroots development jobs inside Plateau State.</p>
+              </div>
 
+              <div className="text-xs font-mono text-gray-400">
+                Latest updates: May 2026
+              </div>
+            </div>
 
-      {/* SECTION 10 — DONATE / CTA */}
-      <section className="relative py-16 bg-[#F5C518] text-[#111111] overflow-hidden">
-        
-        {/* visual background circle lines */}
-        <div className="absolute left-0 bottom-0 transform translate-y-12 w-64 h-64 bg-black/5 rounded-full blur-2xl pointer-events-none" />
-        <div className="absolute right-0 top-0 transform -translate-y-12 w-64 h-64 bg-black/5 rounded-full blur-2xl pointer-events-none" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
+              {[
+                { id: "child_protection", title: "Child Protection Specialist", loc: "Jos HQ, Plateau State", type: "Full-Time", salary: "₦200,000 / mo" },
+                { id: "education_facilitator", title: "Education Development Facilitator", loc: "Rural Plateau Districts", type: "Contract", salary: "₦150,000 / mo" },
+                { id: "me_specialist", title: "Monitoring & Evaluation Officer", loc: "Jos / Remote Friendly", type: "Part-Time", salary: "₦120,000 / mo" }
+              ].map((job) => (
+                <div key={job.id} className="bg-white p-5 rounded-xl border border-gray-150 flex flex-col justify-between shadow-sm hover:shadow transition font-sans">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between font-sans">
+                      <span className="text-[8px] font-mono font-bold uppercase bg-stone-100 text-gray-500 px-1.5 py-0.5 rounded">{job.type}</span>
+                      <span className="text-[10px] text-gray-500 font-bold font-sans">{job.salary}</span>
+                    </div>
 
-        <div className="relative max-w-4xl mx-auto px-6 text-center space-y-8 z-10">
-          
-          <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
-            Your Support Can Transform a Life Today.
-          </h2>
-          
-          <p className="text-sm text-[#111111]/90 max-w-2xl mx-auto font-sans leading-relaxed">
-            Every single naira or dollar donated goes directly on the ground to empower vulnerable Nigerian families. Partner with GICD volunteers to drive real educational, healthcare, and economic support.
-          </p>
+                    <div className="space-y-0.5">
+                      <h4 className="font-sans font-extrabold text-xs text-[#111111] uppercase leading-tight">{job.title}</h4>
+                      <p className="text-[10px] text-gray-400 tracking-tight font-mono">{job.loc}</p>
+                    </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <button
-              onClick={openDonate}
-              className="px-8 py-3 bg-[#111111] hover:bg-[#111111]/90 text-white font-sans font-bold text-xs tracking-widest uppercase rounded-full shadow-lg transition duration-300 text-center w-full sm:w-auto cursor-pointer"
-              id="cta-donate-btn"
-            >
-              Donate Now
-            </button>
-            <button
-              onClick={openVolunteer}
-              className="px-8 py-3 border border-[#111111] hover:bg-[#111111]/5 text-[#111111] font-sans font-bold text-xs tracking-widest uppercase rounded-full transition duration-300 text-center w-full sm:w-auto cursor-pointer"
-              id="cta-volunteer-btn"
-            >
-              Volunteer With Us
-            </button>
+                    <p className="text-[10px] text-gray-500 leading-relaxed font-sans">
+                      Requires deep familiarity with Plateau cultural norms and direct volunteer field logistics.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 mt-6 border-t border-gray-100">
+                    <button
+                      onClick={() => openJobs(job.id)}
+                      className="w-full py-1.5 bg-[#F5C518] hover:bg-[#F5C518]/90 text-[#111111] font-extrabold text-[10px] rounded uppercase tracking-wide transition cursor-pointer text-center"
+                    >
+                      Apply for role
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Trusted Partners and Allies Row (Proof of Credibility) */}
+          <div className="pt-10 border-t border-gray-150 text-center space-y-6">
+            <h4 className="font-sans font-extrabold text-xs text-gray-400 uppercase tracking-widest">
+              Aligned Ministries & Alliances
+            </h4>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-sans">
+              {PARTNERS_DATA.map((p, idx) => (
+                <div key={idx} className="px-4 py-2 bg-stone-50 border border-stone-200 rounded-lg text-xs font-mono font-bold uppercase text-stone-600">
+                  {p.name} ({p.initials})
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Beneficiary Testimonials Area (Voices of Plateau State) */}
+          <div className="pt-10 border-t border-gray-150 text-center space-y-8">
+            <div className="space-y-2">
+              <h3 className="font-sans font-black text-xl text-brand-black uppercase animate-fade-in">
+                Voices of Plateau Beneficiaries
+              </h3>
+              <p className="text-xs text-gray-500 max-w-xs mx-auto font-sans leading-relaxed text-center">
+                Read direct statements from families and partners who experience GICD's integrity.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left font-sans">
+              {TESTIMONIALS_DATA.map((test) => (
+                <div key={test.id} className="bg-stone-50 border border-stone-200 p-5 rounded-xl flex flex-col justify-between relative shadow-sm">
+                  <div className="space-y-4">
+                    <div className="w-5 h-5 text-[#F5C518]/25 fill-[#F5C518]/10 text-left">
+                      <Quote className="w-5 h-5 text-[#F5C518]" />
+                    </div>
+                    <p className="text-xs text-gray-655 leading-relaxed font-sans italic text-left">
+                      &quot;{test.quote}&quot;
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-stone-200 text-left">
+                    <h5 className="font-sans font-extrabold text-xs text-brand-black uppercase tracking-tight">{test.author}</h5>
+                    <p className="text-[10px] text-gray-400 font-sans text-left">{test.role} — <span className="font-mono">{test.location}</span></p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Golden Badge Trust Icons */}
-          <div className="pt-8 border-t border-[#111111]/10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-[11px] font-sans font-extrabold uppercase tracking-wider text-[#111111]/80">
+          <div className="pt-8 border-t border-[#111111]/10 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-[11px] font-sans font-extrabold uppercase tracking-wider text-[#111111]/80 font-sans">
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-5 h-5 text-[#111111]" />
               <span>100% Transparent Audits</span>
@@ -1220,9 +1820,10 @@ export default function App() {
             
             {/* Column 1 - GICD Brand summary */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="flex items-center gap-1.5 pt-1">
-                <span className="text-[#F5C518] font-bold text-2xl leading-none tracking-tighter">GICD</span>
-                <span className="font-sans font-medium text-white/50 text-xs uppercase tracking-widest pl-1 border-l border-white/20">Guardian Initiative</span>
+              <div className="flex items-center pt-1">
+                <div className="bg-white px-3.5 py-2 rounded-lg border border-gray-200/40 shadow-sm inline-flex items-center justify-center min-w-[70px]">
+                  <GicdLogo variant="full" theme="light" height={20} showSubText={false} />
+                </div>
               </div>
               <p className="text-xs text-white/70 font-sans leading-relaxed max-w-sm">
                 Empowering Plateau State communities with education pipelines, free medical outreach camps, youth advocacy bootcamps, and food security initiatives. Transparently certified and driven.
