@@ -108,6 +108,8 @@ export default function App() {
   const [teamTab, setTeamTab] = useState<"trustees" | "officers">("trustees");
 
   // Program Updates and Resources download states
+  const [updatesActiveTab, setUpdatesActiveTab] = useState<"survey" | "feed">("survey");
+  const [surveyReportActiveTab, setSurveyReportActiveTab] = useState<"narrative" | "overview" | "risks" | "education" | "support">("narrative");
   const [updateFilter, setUpdateFilter] = useState("All");
   const [updateSearchQuery, setUpdateSearchQuery] = useState("");
   const [selectedUpdate, setSelectedUpdate] = useState<any | null>(null);
@@ -1078,108 +1080,718 @@ export default function App() {
           PILLAR 3 — PROGRAMME UPDATES SECTION (Interactive Feed)
           ========================================================= */}
       <section id="programme-updates" className="py-20 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-10">
           
           {/* Header Block and Mindmap context */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 overflow-hidden">
-            <div className="space-y-3 max-w-xl">
-              <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-gray-50 rounded pl-2 border-l-4 border-[#F5C518] py-1 px-3">
-                Live Feed
-              </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#111111] tracking-tight leading-none uppercase">
-                Programme Activities Log
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-500 font-sans">
-                As detailed in GICD's website structure schema: <strong className="text-brand-black">All programme activities are posted here live</strong>. Check our recent missions across Plateau.
-              </p>
-            </div>
-
-            {/* Filter and Search parameters */}
-            <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-              <div className="relative flex-1 md:flex-initial animate-fade-in">
-                <input
-                  type="text"
-                  placeholder="Search activities..."
-                  value={updateSearchQuery}
-                  onChange={(e) => setUpdateSearchQuery(e.target.value)}
-                  className="w-full pl-3 pr-8 py-1.5 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#F5C518] focus:outline-none placeholder-gray-400 font-sans text-gray-750 font-normal"
-                />
-              </div>
-              
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 font-sans">
-                {["All", "Education", "Child Protection", "Youth Development"].map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setUpdateFilter(cat)}
-                    className={`px-3 py-1 text-[10px] font-extrabold uppercase rounded border tracking-wider transition duration-150 cursor-pointer ${
-                      updateFilter === cat
-                        ? "bg-[#F5C518] text-[#111111] border-[#F5C518] font-bold"
-                        : "border-gray-200 text-gray-500 bg-white hover:bg-gray-50"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
+          <div className="space-y-4 max-w-3xl text-left">
+            <span className="text-[10px] font-bold text-[#F5C518] uppercase tracking-widest inline-block bg-[#111111] text-white rounded px-2.5 py-1">
+              Data-Driven Grassroots Advocacy
+            </span>
+            <h2 className="font-sans font-black text-3xl sm:text-5xl text-[#111111] tracking-tight leading-none uppercase">
+              Programme Activities & Research
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-sans max-w-2xl">
+              We translate global humanitarian standards into measurable, on-ground outcomes. Switch below to explore GICD’s latest empirical baseline survey findings or search our live field campaign logs.
+            </p>
           </div>
 
-          {/* Dynamic Feed grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
-            {[
-              { id: "act1", title: "School Uniform & Sandals Distribution", tag: "Education", date: "May 12, 2026", details: "Supplied writing boards, custom canvas bags, uniforms, and sandals to children from 4 local primary clusters in Jos North.", loc: "Jos North, Plateau State" },
-              { id: "act2", title: "Safeguarding Seminar for Rural educators", tag: "Child Protection", date: "Apr 19, 2026", details: "Conducted child safeguarding protocols training for 45 community teachers under CAC-approved guides, addressing mental health safety.", loc: "Mangu LGA, Plateau State" },
-              { id: "act3", title: "Youth Vocational Training Launch", tag: "Youth Development", date: "Mar 28, 2026", details: "Equipped adolescents and young people with vocational materials, life-skills mentoring, and digital literacy tools to transition successfully into self-sustenance.", loc: "Jos South LGA, Plateau" },
-              { id: "act4", title: "Adolescent Life-Skills Mentorship", tag: "Youth Development", date: "Feb 15, 2026", details: "Conducted psychosocial support workshops and alternative learning pathway seminars to inspire and guide secondary students.", loc: "Riyom LGA, Plateau State" }
-            ].filter(act => {
-              const matchesCat = updateFilter === "All" || act.tag === updateFilter;
-              const matchesQuery = act.title.toLowerCase().includes(updateSearchQuery.toLowerCase()) || act.details.toLowerCase().includes(updateSearchQuery.toLowerCase());
-              return matchesCat && matchesQuery;
-            }).map((item) => (
-              <div 
-                key={item.id} 
-                className="bg-stone-50 border border-stone-200 p-5 rounded-xl flex flex-col justify-between group hover:border-[#F5C518] transition"
+          {/* Section Selector Tab Menu */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between border-y border-stone-200 py-3 gap-4">
+            <div className="flex border border-stone-200 p-1 bg-stone-50 rounded-xl relative">
+              <button
+                type="button"
+                onClick={() => setUpdatesActiveTab("survey")}
+                className={`py-2 px-4 text-[11px] font-black uppercase tracking-wider rounded-lg transition-all flex items-center gap-2 cursor-pointer ${
+                  updatesActiveTab === "survey"
+                    ? "bg-[#111111] text-[#F5C518] shadow"
+                    : "text-gray-500 hover:text-gray-900 bg-transparent"
+                }`}
               >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between text-[9px] font-mono font-bold">
-                    <span className="px-2 py-0.5 bg-white text-gray-800 rounded border border-gray-150">{item.tag}</span>
-                    <span className="text-gray-400">{item.date}</span>
+                <Award className="w-4 h-4" />
+                <span>📊 Baseline Survey (April 2026)</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setUpdatesActiveTab("feed")}
+                className={`py-2 px-4 text-[11px] font-black uppercase tracking-wider rounded-lg transition-all flex items-center gap-2 cursor-pointer ${
+                  updatesActiveTab === "feed"
+                    ? "bg-[#111111] text-[#F5C518] shadow"
+                    : "text-gray-500 hover:text-gray-900 bg-transparent"
+                }`}
+              >
+                <Users className="w-4 h-4" />
+                <span>📋 Live Activities Feed</span>
+              </button>
+            </div>
+
+            {/* Render Filters dynamically based on chosen outer tab */}
+            {updatesActiveTab === "feed" && (
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="relative flex-1 sm:flex-initial">
+                  <input
+                    type="text"
+                    placeholder="Search campaigns..."
+                    value={updateSearchQuery}
+                    onChange={(e) => setUpdateSearchQuery(e.target.value)}
+                    className="w-full pl-3 pr-8 py-1.5 text-xs border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#F5C518] focus:outline-none placeholder-gray-400 font-sans text-gray-750 font-normal"
+                  />
+                </div>
+                <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 font-sans">
+                  {["All", "Education", "Child Protection", "Youth Development"].map((cat) => (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setUpdateFilter(cat)}
+                      className={`px-2.5 py-1 text-[9px] font-extrabold uppercase rounded border tracking-wider transition duration-150 cursor-pointer ${
+                        updateFilter === cat
+                          ? "bg-[#F5C518] text-[#111111] border-[#F5C518] font-bold"
+                          : "border-gray-200 text-gray-500 bg-white hover:bg-gray-50"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {updatesActiveTab === "survey" && (
+              <div className="text-right shrink-0">
+                <span className="text-[10px] font-mono text-gray-400 block font-bold uppercase tracking-widest">
+                  Assessment Focus:
+                </span>
+                <span className="text-xs font-black text-[#111111] uppercase tracking-tight font-sans">
+                  Angwan Rukuba Community, Jos
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Mode Switch Renderer */}
+          {updatesActiveTab === "survey" ? (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left animate-fade-in-up">
+              
+              {/* Left Column (4/12) - Recreated Report Cover Representation and GICD Dispatch */}
+              <div className="lg:col-span-4 space-y-6">
+                
+                {/* Visual Cover Replica */}
+                <div className="w-full bg-[#F5C518] border-2 border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow transition duration-200 text-left">
+                  <div className="p-6 pb-2 relative space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center py-1">
+                        <GicdLogo variant="badge" theme="dark" height={16} />
+                      </div>
+                      <span className="font-mono text-[8px] font-bold tracking-widest text-[#111111] bg-white px-2 py-0.5 rounded">
+                        OFFICIAL RELEASE
+                      </span>
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-[8px] font-black uppercase text-gray-900 tracking-widest block font-mono">
+                        THE GUARDIAN INITIATIVE FOR COMMUNITY DEVELOPMENT
+                      </span>
+                      <h4 className="font-sans font-black text-2xl text-[#111111] uppercase leading-none tracking-tight">
+                        Child Protection & <br />Adolescence <br />Baseline Survey
+                      </h4>
+                    </div>
+                  </div>
+                  
+                  {/* Styled middle block representing group photo */}
+                  <div className="bg-gradient-to-br from-[#111111] to-[#3a3006] relative h-36 border-y border-[#111111]/10 flex flex-col justify-between p-4 text-white">
+                    <div className="absolute inset-0 bg-stone-900/35 mix-blend-multiply" />
+                    <div className="relative z-10 flex gap-2">
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse shrink-0 mt-0.5" />
+                      <p className="text-[10px] text-white/90 leading-snug font-medium font-sans max-w-xs">
+                        An empirical study highlighting key protection and school boundaries affecting 54 adolescents in Plateau State.
+                      </p>
+                    </div>
+                    
+                    <span className="relative z-10 block w-full py-1 text-center bg-cyan-700 text-white font-black text-[9px] uppercase tracking-wider rounded-md font-sans border border-cyan-600">
+                      A community-level child protection assessment
+                    </span>
                   </div>
 
-                  <div className="space-y-1">
-                    <h4 className="font-sans font-bold text-sm text-[#111111] group-hover:text-[#F5C518] transition duration-200 uppercase line-clamp-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-[10px] text-gray-400 font-mono tracking-tight flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#F5C518] shrink-0" /> {item.loc}
+                  <div className="bg-stone-950 p-4 text-white flex items-center justify-between text-[10px] font-mono">
+                    <span className="text-stone-400 font-bold">April 2026</span>
+                    <span className="text-[#F5C518] hover:underline cursor-pointer select-none font-black tracking-tighter">www.thegicd.com</span>
+                  </div>
+                </div>
+
+                {/* Facebook Dispatch Box representation */}
+                <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm space-y-4 text-left">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 bg-[#111111] rounded-full flex items-center justify-center p-1 text-[#F5C518]">
+                      <GicdLogo variant="badge" theme="dark" height={20} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1">
+                        <span className="font-sans font-black text-xs text-stone-900 uppercase tracking-tight">
+                          GICD Nigeria
+                        </span>
+                        <div className="w-3.5 h-3.5 rounded-full bg-blue-500 text-white flex items-center justify-center p-0.5 text-[8px] font-bold">✓</div>
+                      </div>
+                      <span className="text-[9px] text-stone-400 font-mono tracking-tight block">
+                        Published Official Broadcast
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 font-sans text-stone-750 text-xs leading-relaxed">
+                    <div className="p-2.5 bg-red-50 border-l-4 border-red-500 rounded-r-md">
+                      <h5 className="font-black text-red-900 font-sans text-[11px] uppercase tracking-wide">
+                        New Evidence on Child Protection Risks
+                      </h5>
+                    </div>
+                    
+                    <p className="font-medium text-stone-700">
+                      The Guardian Initiative for Community Development (GICD) has released findings from our recent child-focused survey, highlighting critical protection and development gaps affecting children in Angwan Rukuba.
+                    </p>
+
+                    <div className="bg-stone-50 p-3 rounded-lg border border-stone-150 space-y-1 text-[11px]">
+                      <div className="flex items-center gap-1.5"><span className="text-red-500 font-bold">•</span><span><strong>96.9%</strong> face at least one active protection risk</span></div>
+                      <div className="flex items-center gap-1.5"><span className="text-red-500 font-bold">•</span><span><strong>65.6%</strong> experience physical violence</span></div>
+                      <div className="flex items-center gap-1.5"><span className="text-red-500 font-bold">•</span><span>Only <strong>1 in 6</strong> children can access institutional protection</span></div>
+                      <div className="flex items-center gap-1.5"><span className="text-yellow-600 font-bold">•</span><span><strong>88%</strong> of children want to attend school, yet access remains constrained</span></div>
+                    </div>
+
+                    <p className="text-stone-600 text-[11px]">
+                      These findings point to a high-acuity environment where risks are widespread, reporting systems are weak, and access to essential services is limited despite strong positive aspirations by children in Plateau.
+                    </p>
+
+                    <div className="text-[10px] text-blue-600 font-medium tracking-tight">
+                      #ChildProtection #DataForDevelopment #NGO #SocialImpact #Safeguarding #EducationAccess #Partnerships
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-400">
+                    <span>👍 412 Likes</span>
+                    <span>💬 84 Comments</span>
+                  </div>
+                </div>
+
+              </div>
+              
+              {/* Right Column (8/12) - Interactive Data Explorers */}
+              <div className="lg:col-span-8 bg-stone-50 border border-stone-200 rounded-2xl p-6 sm:p-8 space-y-6">
+                
+                {/* Sub Tab Navigation */}
+                <div className="flex flex-wrap gap-1.5 border-b border-stone-200 pb-3">
+                  {[
+                    { id: "narrative", label: "0. Foreword & Demographics", icon: <Info className="w-3.5 h-3.5" /> },
+                    { id: "overview", label: "1. Executive KPI Dashboard", icon: <Award className="w-3.5 h-3.5" /> },
+                    { id: "risks", label: "2. CP Risks & GBV Danger", icon: <AlertCircle className="w-3.5 h-3.5" /> },
+                    { id: "education", label: "3. Out-Of-School Barriers", icon: <GraduationCap className="w-3.5 h-3.5" /> },
+                    { id: "support", label: "4. Trusted Networks", icon: <Users className="w-3.5 h-3.5" /> }
+                  ].map((subtab) => (
+                    <button
+                      key={subtab.id}
+                      type="button"
+                      onClick={() => setSurveyReportActiveTab(subtab.id as any)}
+                      className={`px-3 py-1.5 text-[10px] font-extrabold uppercase rounded-lg tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
+                        surveyReportActiveTab === subtab.id
+                          ? "bg-[#111111] text-white"
+                          : "text-stone-500 hover:text-stone-900 hover:bg-stone-200/50"
+                      }`}
+                    >
+                      {subtab.icon}
+                      <span>{subtab.label}</span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Tab display pane */}
+                <div>
+                  
+                  {/* Narrative Profile View */}
+                  {surveyReportActiveTab === "narrative" && (
+                    <div className="space-y-6 animate-fade-in text-stone-750">
+                      <div className="space-y-3">
+                        <h4 className="font-sans font-black text-lg text-stone-900 uppercase">
+                          Foreword & Operational Context
+                        </h4>
+                        <p className="text-xs sm:text-xs leading-relaxed text-stone-600">
+                          This report presents the findings of GICD's inaugural child protection and adolescent life skills survey, administered to <strong>54 enrolled adolescents</strong> within GICD's custom Lifeskills program in Angwan Rukuba, Jos, Plateau State. With <strong>32 completed responses</strong> (59.3% rate), this assessment highlights severe safety indices while offering empirical proof to validate our localized hybrid support modeling.
+                        </p>
+                        <p className="text-xs sm:text-xs leading-relaxed text-stone-600 italic border-l-2 border-[#F5C518]/60 pl-3">
+                          "Every number in this report represents a real child in Angwan Rukuba community. GICD is actively conducting a targeted follow-up vulnerability assessment for the 22 non-respondents (40.7%) to ensure they represent an immediate operational priority." — GICD Mission Secretariat
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        {/* Demographics Profile - Sex & Age */}
+                        <div className="bg-white p-5 rounded-xl border border-stone-200 space-y-4">
+                          <h5 className="text-[10px] font-black uppercase text-stone-900 tracking-wider">
+                            Demographic Distribution (n=32)
+                          </h5>
+                          
+                          {/* Sex Split Ratio */}
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between text-xs">
+                              <span className="font-medium text-stone-600">Gender Representation</span>
+                              <span className="font-bold text-stone-900">M 56.2% | F 43.8%</span>
+                            </div>
+                            <div className="w-full h-3.5 bg-stone-100 rounded-lg overflow-hidden flex">
+                              <div className="h-full bg-stone-700" style={{ width: "56.2%" }} title="Male" />
+                              <div className="h-full bg-[#F5C518]" style={{ width: "43.8%" }} title="Female" />
+                            </div>
+                            <div className="flex justify-between text-[9px] font-mono text-stone-400">
+                              <span>Male (18 boys)</span>
+                              <span>Female (14 girls)</span>
+                            </div>
+                          </div>
+
+                          {/* Age representation */}
+                          <div className="space-y-2 pt-2">
+                            <div className="flex items-center justify-between text-xs">
+                              <span className="font-medium text-stone-600">Age Bracket</span>
+                              <span className="font-bold text-[#111111]">13-15 years: ~84.4%</span>
+                            </div>
+                            
+                            <div className="space-y-1.5 text-xs">
+                              <div>
+                                <div className="flex justify-between text-[11px] mb-0.5">
+                                  <span>13–15 Years</span>
+                                  <span className="font-bold">84.4% (27)</span>
+                                </div>
+                                <div className="w-full h-1.5 bg-stone-100 rounded-lg progress-bar-wrap">
+                                  <div className="h-full bg-[#111111] rounded-lg" style={{ width: "84.4%" }} />
+                                </div>
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-[11px] mb-0.5">
+                                  <span>16–18 Years</span>
+                                  <span className="font-bold">15.6% (5)</span>
+                                </div>
+                                <div className="w-full h-1.5 bg-stone-100 rounded-lg progress-bar-wrap">
+                                  <div className="h-full bg-[#F5C518]" style={{ width: "15.6%" }} />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Household setups */}
+                        <div className="bg-white p-5 rounded-xl border border-stone-200 space-y-4 text-xs">
+                          <h5 className="text-[10px] font-black uppercase text-stone-900 tracking-wider">
+                            Household Arrangement (Vulnerability Anchor)
+                          </h5>
+
+                          <div className="space-y-2">
+                            {[
+                              { label: "Both biological parents", rate: "56.2%", count: "18 children", color: "bg-emerald-600" },
+                              { label: "Mother only (Single-Parent)", rate: "25.0%", count: "8 children", color: "bg-amber-500" },
+                              { label: "Father only", rate: "9.4%", count: "3 children", color: "bg-stone-500" },
+                              { label: "Other relatives", rate: "9.4%", count: "3 children", color: "bg-stone-400" }
+                            ].map((item, index) => (
+                              <div key={index} className="space-y-1 ">
+                                <div className="flex items-center justify-between text-[11px]">
+                                  <span className="text-gray-600 font-medium">{item.label}</span>
+                                  <span className="font-bold text-stone-900">{item.rate} ({item.count})</span>
+                                </div>
+                                <div className="w-full h-1.5 bg-stone-100 rounded-lg">
+                                  <div className={`h-full ${item.color} rounded-lg`} style={{ width: item.rate }} />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          <span className="text-[9px] text-[#111111] font-mono leading-relaxed block bg-stone-50 p-2 rounded border border-gray-150 mt-1">
+                            ⚠️ <strong>43.8% of children surveyed</strong> do not reside with both biological parents, experiencing increased vulnerability risks for labor exploitation and tracking indicators.
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Overview KPIs Dashboard */}
+                  {surveyReportActiveTab === "overview" && (
+                    <div className="space-y-6 animate-fade-in text-stone-950">
+                      <div className="space-y-1">
+                        <h4 className="font-sans font-black text-lg text-stone-900 uppercase">
+                          Executive Dashboard Indicators
+                        </h4>
+                        <p className="text-xs text-stone-500">
+                          Empirical values representing critical needs and development baselines in Angwan Rukuba.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {[
+                          { val: "96.9%", label: "Protection Risk Exposure", status: "CRITICAL", desc: "Only 1 surveyed child (3.1%) faces zero protection risks.", color: "border-red-500", textBG: "bg-red-50 text-red-700" },
+                          { val: "53.1%", label: "Out-Of-School Rate", status: "CRITICAL", desc: "Structural educational abandonment affects over half of children.", color: "border-red-500", textBG: "bg-red-50 text-red-700" },
+                          { val: "65.6%", label: "Physical Violence Exposure", status: "IMMEDIATE NEED", desc: "Widespread exposure to abuse within immediate surroundings.", color: "border-red-500", textBG: "bg-red-50 text-red-700" },
+                          { val: "43.8%", label: "Labour & Income Pressure", status: "HIGH RISK", desc: "Children engage in labor to subsidize minimal family survival.", color: "border-amber-500", textBG: "bg-amber-50 text-amber-800" },
+                          { val: "81.3%", label: "Services Awareness Gap", status: "CRITICAL GAP", desc: "Unawareness of helplines or child-safe protective groups.", color: "border-red-500", textBG: "bg-red-50 text-red-700" },
+                          { val: "87.5%", label: "Aspiration to Learn", status: "STRONG SIGNAL", desc: "Children who would attend immediately if fees/materials are subsidized.", color: "border-emerald-500", textBG: "bg-emerald-50 text-emerald-800" }
+                        ].map((kpi, idx) => (
+                          <div key={idx} className={`bg-white rounded-xl border-l-4 ${kpi.color} p-4 flex flex-col justify-between shadow-xs border border-stone-200/50`}>
+                            <div className="space-y-2">
+                              <span className={`px-2 py-0.5 rounded font-mono font-bold text-[8px] tracking-wide inline-block ${kpi.textBG}`}>
+                                {kpi.status}
+                              </span>
+                              <h5 className="font-sans font-black text-2xl text-stone-900 leading-none">{kpi.val}</h5>
+                              <p className="font-sans font-black text-[10px] text-stone-800 uppercase tracking-tight">{kpi.label}</p>
+                            </div>
+                            <p className="text-[10px] text-stone-400 mt-2 font-sans leading-relaxed">{kpi.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Child Protection Dangers */}
+                  {surveyReportActiveTab === "risks" && (
+                    <div className="space-y-6 animate-fade-in text-stone-750">
+                      <div className="space-y-2">
+                        <h4 className="font-sans font-black text-lg text-stone-900 uppercase">
+                          Child Protection Risk prevalence
+                        </h4>
+                        <p className="text-xs text-stone-600">
+                          Prevalence rates of active security, community violence, and domestic exposure threats faced by children in Angwan Rukuba.
+                        </p>
+                      </div>
+
+                      <div className="bg-white p-5 rounded-xl border border-stone-200 space-y-4">
+                        {[
+                          { name: "Physical Violence Exposure", rate: 65.6, color: "bg-red-600", note: "Immediate need for trauma mitigation and school shelter safe-spaces." },
+                          { name: "Kidnapping / Abduction danger", rate: 34.4, color: "bg-orange-500", note: "Reflects macro-level regional insecurity inside Plateau State." },
+                          { name: "Peer Gang Involvement", rate: 31.3, color: "bg-amber-500", note: "Driven by absence of mentorship systems and school enrollment." },
+                          { name: "Sexual Violence / GBV", rate: 31.3, color: "bg-red-500", note: "GBV Alert: Disproportionally affect girls; requires targeted safe spaces and crisis counselor routing." },
+                          { name: "Unsafe Community Areas", rate: 25.0, color: "bg-stone-500", note: "Unregulated localized industrial environments." },
+                          { name: "Child Marriage threat", rate: 18.8, color: "bg-stone-600", note: "Practiced as family survival resource strategy; offset by scholarships." }
+                        ].map((item, idx) => (
+                          <div key={idx} className="space-y-1.5 ">
+                            <div className="flex items-center justify-between text-xs">
+                              <span className="font-bold text-[#111111] uppercase tracking-tight text-[11px]">{item.name}</span>
+                              <span className="font-mono font-bold text-red-600">{item.rate}%</span>
+                            </div>
+                            <div className="w-full h-2.5 bg-stone-100 rounded-lg overflow-hidden">
+                              <div className={`h-full ${item.color} rounded-lg`} style={{ width: `${item.rate}%` }} />
+                            </div>
+                            <p className="text-[10px] text-stone-400 font-sans">{item.note}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="p-4 bg-orange-50 border border-orange-200 rounded-xl text-xs text-orange-900 flex gap-2">
+                        <AlertCircle className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
+                        <div>
+                          <strong>Plateau Insecurity Alignment:</strong> The 34.4% kidnapping threat reflects active socio-communal realities in key Plateau LGAs. Local protection frameworks must incorporate safe-school protocols, emergency alert chains, and close alignment with traditional village chiefs.
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Out of school barriers & labor */}
+                  {surveyReportActiveTab === "education" && (
+                    <div className="space-y-6 animate-fade-in text-stone-750">
+                      <div className="space-y-2">
+                        <h4 className="font-sans font-black text-lg text-stone-900 uppercase">
+                          The Out-Of-School Crisis & Forced Labor
+                        </h4>
+                        <p className="text-xs text-stone-600">
+                          The critical educational gap is structural/economic, not motivational. Out of 32 children, 53.1% are out of school, yet 87.5% would resume immediately if barriers are lifted.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        {/* Cost barriers list */}
+                        <div className="bg-white p-5 rounded-xl border border-stone-200 space-y-4">
+                          <h5 className="text-[10px] font-black uppercase text-stone-900 tracking-wider">
+                            Primary Barriers to enrollment (n=17)
+                          </h5>
+
+                          <div className="space-y-3 text-xs">
+                            <div>
+                              <div className="flex justify-between mb-0.5">
+                                <span>Direct school fee costs</span>
+                                <span className="font-bold">56.2%</span>
+                              </div>
+                              <div className="w-full h-1.5 bg-stone-100 rounded">
+                                <div className="h-full bg-[#111111]" style={{ width: "56.2%" }} />
+                              </div>
+                            </div>
+
+                            <div>
+                              <div className="flex justify-between mb-0.5">
+                                <span>No books / supplies / uniforms</span>
+                                <span className="font-bold">25.0%</span>
+                              </div>
+                              <div className="w-full h-1.5 bg-stone-100 rounded">
+                                <div className="h-full bg-stone-600" style={{ width: "25%" }} />
+                              </div>
+                            </div>
+
+                            <div>
+                              <div className="flex justify-between mb-0.5">
+                                <span>Family reliance on child's labor</span>
+                                <span className="font-bold">12.5%</span>
+                              </div>
+                              <div className="w-full h-1.5 bg-stone-100 rounded">
+                                <div className="h-full bg-stone-400" style={{ width: "12.5%" }} />
+                              </div>
+                            </div>
+                          </div>
+
+                          <p className="text-[10px] text-stone-400 font-sans leading-relaxed">
+                            💡 Overwhelming evidence: Funding 100% direct scholarship packages (school fees, standard uniforms, writing pads, and footwear) directly bypasses the structural blockers keeping children on the streets.
+                          </p>
+                        </div>
+
+                        {/* Forced Child labor exploitation details */}
+                        <div className="bg-white p-5 rounded-xl border border-stone-200 space-y-4 text-xs">
+                          <h5 className="text-[10px] font-black uppercase text-stone-900 tracking-wider">
+                            Child Labour & Wages Utilisation (43.8% working)
+                          </h5>
+
+                          <p className="leading-relaxed text-stone-500 text-[11px]">
+                            While 43.8% of surveyed children work to earn money, their earnings are fully routed into basic family survival.
+                          </p>
+
+                          <div className="space-y-2">
+                            {[
+                              { label: "Direct personal expenses", rate: "71.4%", color: "bg-stone-800" },
+                              { label: "Subsidizing food for the household", rate: "42.9%", color: "bg-amber-600" },
+                              { label: "Direct cash handouts to parents", rate: "28.6%", color: "bg-stone-500" },
+                              { label: "Wages used for school fees", rate: "0.0% (Zero Children)", color: "bg-red-400" }
+                            ].map((item, idx) => (
+                              <div key={idx} className="space-y-1">
+                                <div className="flex justify-between text-[10px]">
+                                  <span>{item.label}</span>
+                                  <span className="font-bold">{item.rate}</span>
+                                </div>
+                                <div className="w-full h-1 bg-stone-100 rounded">
+                                  <div className={`h-full ${item.color} rounded`} style={{ width: item.rate.startsWith("0") ? "0%" : item.rate }} />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="p-2 bg-red-50 text-red-900 font-mono text-[9px] leading-snug rounded uppercase">
+                            <strong>System Conclusion:</strong> Not a single working child can save enough to afford school fees. Subsidies are an absolute unmet baseline.
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Trusted Networks & Services Gap */}
+                  {surveyReportActiveTab === "support" && (
+                    <div className="space-y-6 animate-fade-in text-stone-750">
+                      <div className="space-y-2">
+                        <h4 className="font-sans font-black text-lg text-stone-900 uppercase">
+                          Helpline Gaps & Community trust capital
+                        </h4>
+                        <p className="text-xs text-stone-600">
+                          Investigating who children trust, and how severe the protection service gap is. 
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        {/* Alert Circle Gap card */}
+                        <div className="bg-white p-5 rounded-xl border border-stone-200 space-y-4 flex flex-col justify-between">
+                          <div className="space-y-2">
+                            <h5 className="text-[10px] font-black uppercase text-stone-900 tracking-wider">
+                              Disclosure & Helpline Awareness Gap
+                            </h5>
+                            
+                            <div className="flex items-center gap-4 py-2">
+                              <div className="w-14 h-14 rounded-full border-4 border-red-500/20 border-r-red-500 flex items-center justify-center text-red-600 font-bold font-mono text-xs shrink-0">
+                                81.3%
+                              </div>
+                              <span className="text-xs text-stone-600 font-medium leading-relaxed">
+                                <strong>81.3% of surveyed children</strong> are not aware of any organization, helpline, or safe desk to report violence, abuse, or safety risks in Jos.
+                              </span>
+                            </div>
+                          </div>
+
+                          <p className="text-[10px] text-stone-400 font-sans leading-relaxed">
+                            This protection paradox is stark; 96.9% face active risk, yet 81.3% are blind to available local protection systems. Establishing readable community report systems is an urgent mandate.
+                          </p>
+                        </div>
+
+                        {/* Trusted Adults List */}
+                        <div className="bg-white p-5 rounded-xl border border-stone-200 space-y-3 text-xs">
+                          <h5 className="text-[10px] font-black uppercase text-stone-900 tracking-wider">
+                            Number of children who name group as trusted (n=32)
+                          </h5>
+
+                          <div className="space-y-2.5">
+                            {[
+                              { label: "Parent / Guardian", count: 32, labelCount: "32 (100%)", color: "bg-emerald-600" },
+                              { label: "Community Teacher", count: 10, labelCount: "10 (31.2%)", color: "bg-stone-700" },
+                              { label: "GICD NGO Staff Member", count: 7, labelCount: "7 (21.9%)", color: "bg-amber-500" },
+                              { label: "Community Religious Leader", count: 7, labelCount: "7 (21.9%)", color: "bg-stone-500" },
+                              { label: "No trusted adult", count: 0, labelCount: "0 (0.0%)", color: "" }
+                            ].map((item, idx) => (
+                              <div key={idx} className="space-y-1">
+                                <div className="flex justify-between text-[11px]">
+                                  <span className="font-semibold text-stone-700">{item.label}</span>
+                                  <span className="font-bold text-stone-900">{item.labelCount}</span>
+                                </div>
+                                <div className="w-full h-1.5 bg-stone-100 rounded">
+                                  <div className={`h-full ${item.color} rounded`} style={{ width: `${(item.count/32)*100}%` }} />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          <p className="text-[10px] text-[#111111] font-sans bg-stone-50 border border-stone-150 p-2.5 rounded-lg leading-relaxed">
+                            💎 <strong>GICD Impact Validation:</strong> Within just a short term on-ground, 21.9% of children already identify GICD staff as a trusted reference. This proves our community integration model has achieved deep localized trust.
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+
+                {/* Call to action for donor or partner to view full report */}
+                <div className="pt-6 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-left space-y-0.5">
+                    <span className="text-[9px] text-[#F5C518] uppercase tracking-widest block font-black bg-[#111111] w-max px-2 py-0.5 rounded font-mono">
+                      Next Milestones:
+                    </span>
+                    <p className="text-xs text-stone-500 font-sans max-w-md font-medium">
+                      Establishing Angwan Rukuba Child Friendly Space, subsidizing tuition for 54 enrolled adolescents, and setting up localized reporting desks.
                     </p>
                   </div>
 
-                  <p className="text-xs text-gray-550 leading-relaxed font-sans">
-                    {item.details}
-                  </p>
+                  <div className="flex gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => openPartner()}
+                      className="px-4 py-2 border border-stone-200 hover:bg-[#111111] hover:text-white rounded-lg text-xs uppercase font-extrabold cursor-pointer transition"
+                    >
+                      Receive Full PDF
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => openDonate()}
+                      className="px-4 py-2 bg-[#F5C518] hover:bg-[#F5C518]/90 text-[#111111] rounded-lg text-xs uppercase font-black tracking-wider cursor-pointer shadow-xs transition"
+                    >
+                      Fund protection kit
+                    </button>
+                  </div>
                 </div>
 
-                <div className="pt-4 mt-6 border-t border-stone-200">
-                  <button
-                    onClick={() => setSelectedUpdate(item)}
-                    className="text-[10px] uppercase font-bold tracking-wider text-[#111111] flex items-center gap-1 hover:underline cursor-pointer"
-                  >
-                    <span>Read campaign logs</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
               </div>
-            ))}
-          </div>
+
+            </div>
+          ) : (
+            // Render Live activities feed Grid
+            <div className="space-y-10 animate-fade-in">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-sans">
+                {[
+                  { 
+                    id: "act0", 
+                    title: "Caregivers Symposium & Mental Support Circle", 
+                    tag: "Child Protection", 
+                    date: "May 16, 2026", 
+                    details: "Every caregivers meeting is a step closer to achieving stronger families. Today's meeting saw GICD organize regular caregiver forums constructively reviewing personal concerns. Unlike previous meetings centered on parent shortcomings, this session experienced an unexpected expression of vulnerability-in-trust. Discussions expanded beyond missing responsibilities to underlying factors, including the loss of spouses and single parenting burdens (most are single mothers, widows, and grandparents). Shared communal experiences immediately sparked empathy, connection, and collaborative action for supportive home environments.", 
+                    loc: "Angwan Rukuba Community, Jos",
+                    images: [
+                      "/src/assets/images/caregivers_meeting_symposium_1779357789025.png",
+                      "/src/assets/images/caregivers_sharing_support_1779357808644.png"
+                    ],
+                    subtitles: [
+                      "Caregivers gathering for joint planning",
+                      "Caregiver active emotional sharing"
+                    ]
+                  },
+                  { id: "act1", title: "School Uniform & Sandals Distribution", tag: "Education", date: "May 12, 2026", details: "Supplied writing boards, custom canvas bags, uniforms, and sandals to children from 4 local primary clusters in Jos North.", loc: "Jos North, Plateau State" },
+                  { 
+                    id: "act_may_1", 
+                    title: "Interreligious Life Skills & Peer Coexistence Forum", 
+                    tag: "Youth Development", 
+                    date: "May 01, 2026", 
+                    details: "Today was yet another impactful Life Skills session in Chwelnyap-Angwan Rukuba. What made it especially remarkable is Muslim and Christian children coming together, working as a team, navigating complex tasks, and growing side by side. These young people are not just learning social skills, they are demonstrating tolerance, coexistence, and resilience. With support from the Plateau State Ministry of Education, our Life Skills Program now reaches both in-school and out-of-school children, increasing motivation to learning, school enrollment, and access to relevant services.", 
+                    loc: "Chwelnyap-Angwan Rukuba, Jos",
+                    images: [
+                      "/src/assets/images/youth_team_coexistence_workshop_1779358008348.png",
+                      "/src/assets/images/adolescents_collaboration_board_1779358032317.png"
+                    ],
+                    subtitles: [
+                      "Adolescent girls representing interreligious community unity",
+                      "Youth peer teams cooperating in schoolyard workshop sessions"
+                    ]
+                  },
+                  { id: "act2", title: "Safeguarding Seminar for Rural educators", tag: "Child Protection", date: "Apr 19, 2026", details: "Conducted child safeguarding protocols training for 45 community teachers under CAC-approved guides, addressing mental health safety.", loc: "Mangu LGA, Plateau State" },
+                  { id: "act3", title: "Youth Vocational Training Launch", tag: "Youth Development", date: "Mar 28, 2026", details: "Equipped adolescents and young people with vocational materials, life-skills mentoring, and digital literacy tools to transition successfully into self-sustenance.", loc: "Jos South LGA, Plateau" },
+                  { id: "act4", title: "Adolescent Life-Skills Mentorship", tag: "Youth Development", date: "Feb 15, 2026", details: "Conducted psychosocial support workshops and alternative learning pathway seminars to inspire and guide secondary students.", loc: "Riyom LGA, Plateau State" }
+                ].filter(act => {
+                  const matchesCat = updateFilter === "All" || act.tag === updateFilter;
+                  const matchesQuery = act.title.toLowerCase().includes(updateSearchQuery.toLowerCase()) || act.details.toLowerCase().includes(updateSearchQuery.toLowerCase());
+                  return matchesCat && matchesQuery;
+                }).map((item) => (
+                  <div 
+                    key={item.id} 
+                    className="bg-stone-50 border border-stone-200 rounded-xl overflow-hidden flex flex-col justify-between group hover:border-[#F5C518] transition text-left"
+                  >
+                    {item.images && item.images.length > 0 && (
+                      <div className="h-40 overflow-hidden relative border-b border-stone-200 bg-stone-100">
+                        <img 
+                          src={item.images[0]} 
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                          referrerPolicy="no-referrer"
+                        />
+                        <span className="absolute top-3 left-3 px-2 py-0.5 bg-[#111111] text-[#F5C518] font-bold text-[8px] uppercase tracking-wider rounded">
+                          Featured Photo
+                        </span>
+                      </div>
+                    )}
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between text-[9px] font-mono font-bold">
+                          <span className="px-2 py-0.5 bg-white text-gray-800 rounded border border-gray-150">{item.tag}</span>
+                          <span className="text-gray-400">{item.date}</span>
+                        </div>
+
+                        <div className="space-y-1">
+                          <h4 className="font-sans font-bold text-sm text-[#111111] group-hover:text-[#F5C518] transition duration-200 uppercase line-clamp-1">
+                            {item.title}
+                          </h4>
+                          <p className="text-[10px] text-gray-400 font-mono tracking-tight flex items-center gap-1">
+                            <MapPin className="w-3.5 h-3.5 text-[#F5C518] shrink-0" /> {item.loc}
+                          </p>
+                        </div>
+
+                        <p className="text-xs text-gray-550 leading-relaxed font-sans line-clamp-4">
+                          {item.details}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 mt-6 border-t border-stone-200">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedUpdate(item)}
+                          className="text-[10px] uppercase font-bold tracking-wider text-[#111111] flex items-center gap-1 hover:underline cursor-pointer"
+                        >
+                          <span>Read campaign logs</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </div>
+      </section>
 
           {/* Interactive Modal for Selected Update */}
           {selectedUpdate && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in" id="update-details-modal">
-              <div className="relative w-full max-w-md overflow-hidden bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 space-y-4 font-sans">
+              <div className="relative w-full max-w-lg overflow-hidden bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 space-y-4 font-sans max-h-[90vh] overflow-y-auto">
                 <button
+                  type="button"
                   onClick={() => setSelectedUpdate(null)}
-                  className="absolute right-4 top-4 p-1 rounded-full hover:bg-gray-100 transition text-gray-500 cursor-pointer"
+                  className="absolute right-4 top-4 p-1 rounded-full hover:bg-gray-100 transition text-gray-500 cursor-pointer z-10"
                   aria-label="Close dialog"
                 >
                   <X className="w-5 h-5" />
@@ -1190,6 +1802,26 @@ export default function App() {
                   <p className="text-[10px] text-gray-400 block font-mono">{selectedUpdate.date} — {selectedUpdate.loc}</p>
                   <h4 className="font-sans font-black text-lg text-[#111111] uppercase leading-tight">{selectedUpdate.title}</h4>
                 </div>
+
+                {selectedUpdate.images && selectedUpdate.images.length > 0 && (
+                  <div className="grid grid-cols-2 gap-3 pt-1">
+                    {selectedUpdate.images.map((imgUrl: string, imgIdx: number) => (
+                      <div key={imgIdx} className="space-y-1">
+                        <div className="h-32 rounded-lg overflow-hidden border border-stone-200 bg-stone-50">
+                          <img 
+                            src={imgUrl} 
+                            alt={selectedUpdate.subtitles?.[imgIdx] || selectedUpdate.title}
+                            className="w-full h-full object-cover hover:scale-105 transition duration-350"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                        <p className="text-[9px] font-medium text-stone-500 italic block leading-snug">
+                          {selectedUpdate.subtitles?.[imgIdx]}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <p className="text-xs text-gray-650 leading-relaxed">
                   {selectedUpdate.details} This program activity is part of our standard on-ground village deployment framework. GICD does not make use of regional intermediaries; instead, our working team handles 100% of material tracking, verified directly by our Board of Trustees during quarterly compliance cycles in Jos.
@@ -1202,6 +1834,7 @@ export default function App() {
 
                 <div className="pt-2">
                   <button
+                    type="button"
                     onClick={() => {
                       setSelectedUpdate(null);
                       openDonate();
@@ -1263,7 +1896,8 @@ export default function App() {
           </div>
       {/* =========================================================
           PILLAR 4 — RESOURCES CENTER (Technical Handbooks & Integrity Reports)
-          ==============      <section id="resources" className="py-20 bg-gray-50 border-b border-gray-100">
+          ========================================================= */}
+      <section id="resources" className="py-20 bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-16 relative">
           
           {/* Section Heading */}
@@ -1680,7 +2314,7 @@ export default function App() {
                   Connect on Social Media
                 </span>
                 <div className="flex items-center gap-3">
-                  <a href="https://facebook.com" target="_blank" rel="noreferrer" className="p-2 bg-gray-50 hover:bg-[#F5C518] rounded-full text-gray-500 hover:text-[#111111] transition duration-200" aria-label="GICD Facebook" id="social-fb">
+                  <a href="https://www.facebook.com/share/1BqVaP3TVA/" target="_blank" rel="noreferrer" className="p-2 bg-gray-50 hover:bg-[#F5C518] rounded-full text-gray-500 hover:text-[#111111] transition duration-200" aria-label="GICD Facebook" id="social-fb">
                     <Facebook className="w-4 h-4" />
                   </a>
                   <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-2 bg-gray-50 hover:bg-[#F5C518] rounded-full text-gray-500 hover:text-[#111111] transition duration-200" aria-label="GICD Instagram" id="social-ig">
@@ -1689,7 +2323,7 @@ export default function App() {
                   <a href="https://twitter.com" target="_blank" rel="noreferrer" className="p-2 bg-gray-50 hover:bg-[#F5C518] rounded-full text-gray-500 hover:text-[#111111] transition duration-200" aria-label="GICD Twitter" id="social-tw">
                     <Twitter className="w-4 h-4" />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 bg-gray-50 hover:bg-[#F5C518] rounded-full text-gray-500 hover:text-[#111111] transition duration-200" aria-label="GICD LinkedIn" id="social-li">
+                  <a href="https://www.linkedin.com/company/thegicd/" target="_blank" rel="noreferrer" className="p-2 bg-gray-50 hover:bg-[#F5C518] rounded-full text-gray-500 hover:text-[#111111] transition duration-200" aria-label="GICD LinkedIn" id="social-li">
                     <Linkedin className="w-4 h-4" />
                   </a>
                   <a href="https://youtube.com" target="_blank" rel="noreferrer" className="p-2 bg-gray-50 hover:bg-[#F5C518] rounded-full text-gray-500 hover:text-[#111111] transition duration-200" aria-label="GICD YouTube" id="social-yt">
@@ -1878,13 +2512,31 @@ export default function App() {
                 <p>Phone: <span className="text-white">+234 (0) 800 000 0000</span></p>
               </div>
 
-              <div className="pt-2 flex items-center gap-2">
+              <div className="pt-3 flex flex-col gap-2">
                 <button
+                  type="button"
                   onClick={openDonate}
-                  className="bg-[#F5C518] text-[#111111] text-[10px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-full cursor-pointer hover:brightness-105"
+                  className="bg-[#F5C518] text-[#111111] text-[10px] font-bold uppercase tracking-wider px-4 py-1.5 rounded-full cursor-pointer hover:brightness-105 self-start"
                 >
                   Direct Support
                 </button>
+                <div className="flex items-center gap-2 pt-1">
+                  <a href="https://www.facebook.com/share/1BqVaP3TVA/" target="_blank" rel="noreferrer" className="p-1.5 bg-white/10 hover:bg-[#F5C518] rounded-full text-white/70 hover:text-[#111111] transition duration-200" aria-label="GICD Facebook" id="footer-social-fb">
+                    <Facebook className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-1.5 bg-white/10 hover:bg-[#F5C518] rounded-full text-white/70 hover:text-[#111111] transition duration-200" aria-label="GICD Instagram" id="footer-social-ig">
+                    <Instagram className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noreferrer" className="p-1.5 bg-white/10 hover:bg-[#F5C518] rounded-full text-white/70 hover:text-[#111111] transition duration-200" aria-label="GICD Twitter" id="footer-social-tw">
+                    <Twitter className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/thegicd/" target="_blank" rel="noreferrer" className="p-1.5 bg-white/10 hover:bg-[#F5C518] rounded-full text-white/70 hover:text-[#111111] transition duration-200" aria-label="GICD LinkedIn" id="footer-social-li">
+                    <Linkedin className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noreferrer" className="p-1.5 bg-white/10 hover:bg-[#F5C518] rounded-full text-white/70 hover:text-[#111111] transition duration-200" aria-label="GICD YouTube" id="footer-social-yt">
+                    <Youtube className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
 
