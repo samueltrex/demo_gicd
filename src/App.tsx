@@ -223,93 +223,6 @@ const VIDEOS_DATA: VideoItem[] = [
   { id: "vid5", url: "/asset/vid 5.mp4", title: "Stakeholder Assessment Field Dialogue", desc: "Direct feedback session with community elders and GICD directors.", duration: "0:48" }
 ];
 
-// Helper to map placeholder image paths to high-resolution, relevant context photos
-const resolveMedia = (src: string) => {
-  const unsplashMapping: Record<string, string> = {
-    "/asset/logo.jpg": "https://images.unsplash.com/photo-1594708767771-a7502209ff51?auto=format&fit=crop&q=80&w=150", 
-    "/asset/cover.jpg": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1600", 
-    "/asset/1.jpg": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800", 
-    "/asset/2.jpg": "https://images.unsplash.com/photo-1531983412531-1f49a365f698?auto=format&fit=crop&q=80&w=800", 
-    "/asset/3.jpg": "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=800", 
-  };
-
-  if (unsplashMapping[src]) {
-    return unsplashMapping[src];
-  }
-
-  const num = parseInt(src.replace(/[^0-9]/g, "")) || 1;
-
-  if (src.includes("tik")) {
-    const ids = [
-      "photo-1517048676732-d65bc937f952", 
-      "photo-1523240795612-9a054b0db644", 
-      "photo-1517245386807-bb43f82c33c4", 
-      "photo-1544717305-2782549b5136", 
-      "photo-1531545514256-b1400bc00f31", 
-      "photo-1522202176988-66273c2fd55f", 
-      "photo-1509062522246-3755977927d7"
-    ];
-    return `https://images.unsplash.com/${ids[num % ids.length]}?auto=format&fit=crop&q=80&w=800`;
-  }
-
-  if (src.includes("care")) {
-    const ids = [
-      "photo-1488521787991-ed7bbaae773c", 
-      "photo-1509099836639-18ba1795216d", 
-      "photo-1531983412531-1f49a365f698", 
-      "photo-1513258496099-48168024addd", 
-      "photo-1573497019940-1c28c88b4f3e", 
-      "photo-1582213782179-e0d53f98f2ca"
-    ];
-    return `https://images.unsplash.com/${ids[num % ids.length]}?auto=format&fit=crop&q=80&w=800`;
-  }
-
-  if (src.includes("orph")) {
-    const ids = [
-      "photo-1503676260728-1c00da094a0b", 
-      "photo-1577896851231-70ef18881754", 
-      "photo-1427504494785-3a9ca7044f45", 
-      "photo-1544717305-2782549b5136", 
-      "photo-1588072405354-bcfa7b5e04a8"
-    ];
-    return `https://images.unsplash.com/${ids[num % ids.length]}?auto=format&fit=crop&q=80&w=800`;
-  }
-
-  if (src.includes("match")) {
-    const ids = [
-      "photo-1517649763962-0c623066013b", 
-      "photo-1516567727145-63b9941a5ca6", 
-      "photo-1508098682722-e99c43a406b2", 
-      "photo-1544698310-74ea9d1c8258", 
-      "photo-1574629810360-7efbbe195018", 
-      "photo-1569512441013-057cbcb2f35d"
-    ];
-    return `https://images.unsplash.com/${ids[num % ids.length]}?auto=format&fit=crop&q=80&w=800`;
-  }
-
-  if (src.includes("onboard") || src.includes("survey")) {
-    const ids = [
-      "photo-1454165804606-c3d57bc86b40", 
-      "photo-1551836022-d5d88e9218df", 
-      "photo-1531482615713-2afd69097998", 
-      "photo-1450133064473-71024230f91b"
-    ];
-    return `https://images.unsplash.com/${ids[num % ids.length]}?auto=format&fit=crop&q=80&w=800`;
-  }
-
-  if (src.includes("hon")) {
-    const ids = [
-      "photo-1516321318423-f06f85e504b3", 
-      "photo-1427504494785-3a9ca7044f45", 
-      "photo-1523240795612-9a054b0db644", 
-      "photo-1507679799987-c73779587ccf"
-    ];
-    return `https://images.unsplash.com/${ids[num % ids.length]}?auto=format&fit=crop&q=80&w=800`;
-  }
-
-  return src;
-};
-
 export default function App() {
   // Mobile menu control
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -422,7 +335,7 @@ export default function App() {
       {/* SECTION 2 — DOCKABLE NAVIGATION HEADER */}
       <nav className="sticky top-0 bg-white/95 backdrop-blur-md z-40 border-b border-gray-100 shadow-sm px-6 py-3.5 flex justify-between items-center transition duration-200" id="gicd-navbar">
         <a href="#gicd-app-root" className="flex items-center gap-3 active:scale-98 transition">
-          <img src={resolveMedia("/asset/logo.jpg")} alt="GICD Logo" className="w-10 h-10 rounded-full bg-slate-50 border border-brand-yellow/30" />
+          <img src="/asset/logo.jpg" alt="GICD Logo" className="w-10 h-10 rounded-full bg-slate-50 border border-brand-yellow/30" />
           <div className="flex flex-col text-left">
             <span className="font-sans font-black tracking-tight text-brand-black text-xl leading-none uppercase">GUARDIAN INITIATIVE</span>
             <span className="text-[9px] text-gray-400 font-mono tracking-wide uppercase mt-0.5">FOR COMMUNITY DEVELOPMENT</span>
@@ -547,7 +460,7 @@ export default function App() {
         {/* Real photo background with subtle dark lens crop */}
         <div className="absolute inset-0 z-0">
           <img 
-            src={resolveMedia("/asset/cover.jpg")} 
+            src="/asset/cover.jpg" 
             alt="GICD Volunteer Field Outreach" 
             className="w-full h-full object-cover object-top opacity-35"
           />
@@ -675,9 +588,9 @@ export default function App() {
               <div className="col-span-7 space-y-4">
                 <div 
                   className="h-56 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: resolveMedia("/asset/1.jpg"), caption: "GICD fieldwork and adolescent life support forum" })}
+                  onClick={() => setExpandedImage({ src: "/asset/1.jpg", caption: "GICD fieldwork and adolescent life support forum" })}
                 >
-                  <img src={resolveMedia("/asset/1.jpg")} alt="Field session" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <img src="/asset/1.jpg" alt="Field session" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
                     <span className="text-[10px] text-brand-yellow font-mono block">Field Session</span>
                     <p className="text-[11px] text-white font-semibold line-clamp-1">Peer peacebuilding and coexistence workshops</p>
@@ -686,9 +599,9 @@ export default function App() {
 
                 <div 
                   className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: resolveMedia("/asset/2.jpg"), caption: "Direct maternal outreach and parent meetings" })}
+                  onClick={() => setExpandedImage({ src: "/asset/2.jpg", caption: "Direct maternal outreach and parent meetings" })}
                 >
-                  <img src={resolveMedia("/asset/2.jpg")} alt="Staff dialogue" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <img src="/asset/2.jpg" alt="Staff dialogue" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
                     <span className="text-[10px] text-brand-yellow font-mono block">Outreach</span>
                     <p className="text-[11px] text-white font-semibold line-clamp-1">Direct community engagement meetings</p>
@@ -699,9 +612,9 @@ export default function App() {
               <div className="col-span-5 flex flex-col justify-between">
                 <div 
                   className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: resolveMedia("/asset/3.jpg"), caption: "Educator safety and child shielding audits" })}
+                  onClick={() => setExpandedImage({ src: "/asset/3.jpg", caption: "Educator safety and child shielding audits" })}
                 >
-                  <img src={resolveMedia("/asset/3.jpg")} alt="Children support" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <img src="/asset/3.jpg" alt="Children support" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
                     <span className="text-[10px] text-brand-yellow font-mono block">Interviews</span>
                     <p className="text-[11px] text-white font-semibold line-clamp-1">NGO staff consulting stakeholders</p>
@@ -864,11 +777,11 @@ export default function App() {
                       return (
                         <div
                           key={imgSrc}
-                          onClick={() => setExpandedImage({ src: resolveMedia(imgSrc), caption: caption })}
+                          onClick={() => setExpandedImage({ src: imgSrc, caption: caption })}
                           className="group h-24 sm:h-28 rounded-xl overflow-hidden shadow-sm border border-gray-150 cursor-pointer relative bg-slate-100"
                         >
                           <img 
-                            src={resolveMedia(imgSrc)} 
+                            src={imgSrc} 
                             alt={caption} 
                             className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                           />
@@ -1212,10 +1125,10 @@ export default function App() {
             {/* Logo description */}
             <div className="lg:col-span-4 space-y-4">
               <div className="flex items-center gap-3">
-                <img src={resolveMedia("/asset/logo.jpg")} alt="Logo" className="w-11 h-11 rounded-full bg-white text-brand-black border border-[#F5C518]" />
+                <img src="/asset/logo.jpg" alt="Logo" className="w-11 h-11 rounded-full bg-white text-brand-black border border-[#F5C518]" />
                 <div className="flex flex-col">
-                  <span className="font-sans font-black text-lg text-[#F5C518] leading-none uppercase tracking-tight">GICD NGO</span>
-                  <span className="text-[8px] text-gray-500 font-mono uppercase tracking-widest mt-0.5">CAC NO: 141566</span>
+                  <span className="font-sans font-black text-base text-[#F5C518] leading-none uppercase tracking-tight">GUARDIAN INITIATIVE</span>
+                  <span className="text-[8px] text-gray-500 font-mono uppercase tracking-widest mt-1">FOR COMMUNITY DEVELOPMENT</span>
                 </div>
               </div>
               <p className="text-[11px] text-gray-400 font-sans leading-relaxed tracking-wide">
