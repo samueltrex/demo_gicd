@@ -18,7 +18,7 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
   if (!isOpen) return null;
 
   const handleCopyBank = () => {
-    navigator.clipboard.writeText("1024567890"); // Placeholder GICD NGO account
+    navigator.clipboard.writeText("9020850040"); // Placeholder GICD NGO account
     setCopiedBank(true);
     setTimeout(() => setCopiedBank(false), 2000);
   };
