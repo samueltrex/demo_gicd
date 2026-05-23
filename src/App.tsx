@@ -337,8 +337,8 @@ export default function App() {
         <a href="#gicd-app-root" className="flex items-center gap-3 active:scale-98 transition">
           <img src="/asset/logo.jpg" alt="GICD Logo" className="w-10 h-10 rounded-full bg-slate-50 border border-brand-yellow/30" />
           <div className="flex flex-col text-left">
-            <span className="font-sans font-black tracking-tight text-brand-black text-xl leading-none">GICD NGO</span>
-            <span className="text-[9px] text-gray-400 font-mono tracking-wide uppercase mt-0.5">Community Development</span>
+            <span className="font-sans font-black tracking-tight text-brand-black text-xl leading-none uppercase">GUARDIAN INITIATIVE</span>
+            <span className="text-[9px] text-gray-400 font-mono tracking-wide uppercase mt-0.5">FOR COMMUNITY DEVELOPMENT</span>
           </div>
         </a>
 
@@ -468,23 +468,23 @@ export default function App() {
           <div className="absolute inset-0 bg-brand-black/45" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 w-full py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
           
-          <div className="lg:col-span-7 space-y-6">
+          <div className="space-y-8 flex flex-col items-center max-w-3xl">
             <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#F5C518]/10 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-xs tracking-widest uppercase font-black">
               <span className="w-2 h-2 rounded-full bg-[#F5C518] animate-ping"></span>
               Grassroots Impact in Plateau State
             </span>
             
-            <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold">
+            <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center">
               Empowering <span className="text-[#F5C518] block mt-1">Plateau Youths & Children</span>
             </h1>
             
-            <p className="text-sm sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed max-w-2xl">
+            <p className="text-sm sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl">
               Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to sustainable community development, child protection, education, public health, and interreligious youth peacebuilding.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3.5 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
               <button
                 type="button"
                 onClick={openDonate}
@@ -505,56 +505,6 @@ export default function App() {
                 <HelpingHand className="w-4 h-4" />
               </button>
             </div>
-          </div>
-
-          {/* Quick Support Card widget */}
-          <div className="lg:col-span-5 w-full bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 p-6 shadow-2xl relative overflow-hidden" id="hero-quick-donate-panel">
-            <div className="absolute right-0 top-0 w-24 h-24 bg-brand-yellow/10 rounded-full filter blur-xl pointer-events-none" />
-            
-            <span className="text-[10px] font-mono tracking-widest uppercase text-brand-yellow font-bold block mb-1">Empower A Child Today</span>
-            <h3 className="font-sans font-bold text-lg text-white mb-4">Direct Impact Gift</h3>
-            
-            <form onSubmit={handleQuickDonateSubmit} className="space-y-4">
-              <div>
-                <label className="block text-[10px] text-gray-400 font-mono uppercase mb-2">Select Donation Amount (NGN)</label>
-                <div className="grid grid-cols-4 gap-2">
-                  {["5000", "10000", "25000", "50000"].map((amt) => (
-                    <button
-                      key={amt}
-                      type="button"
-                      onClick={() => setQuickAmount(amt)}
-                      className={`py-2 text-xs font-bold rounded-lg border transition ${
-                        quickAmount === amt 
-                          ? "bg-brand-yellow text-brand-black border-brand-yellow" 
-                          : "border-white/10 text-white hover:bg-white/5 hover:border-brand-yellow"
-                      }`}
-                    >
-                      ₦{Number(amt).toLocaleString()}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-2 text-xs text-gray-300">
-                <div className="flex justify-between border-b border-white/5 pb-1">
-                  <span>Target Focus:</span>
-                  <span className="text-white font-semibold">Jos OVC Back-to-School pack</span>
-                </div>
-                <div className="flex justify-between border-b border-white/5 pb-1">
-                  <span>Direct Stewardship:</span>
-                  <span className="text-brand-yellow font-semibold">100% grassroot delivery</span>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-brand-yellow hover:bg-brand-yellow/95 transition py-3 rounded-xl text-brand-black text-xs font-black uppercase tracking-wider shadow-md text-center flex items-center justify-center gap-2"
-                id="hero-quick-submit-btn"
-              >
-                <span>Proceed to Support ₦{Number(quickAmount).toLocaleString()}</span>
-                <ChevronRight className="w-3.5 h-3.5" />
-              </button>
-            </form>
           </div>
 
         </div>
@@ -580,37 +530,61 @@ export default function App() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            <div className="lg:col-span-6 space-y-6 text-left">
-              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block">WHO WE ARE</span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-none">
-                OUR MISSION & VISION <span className="text-brand-yellow block mt-1">FOR NIGERIAN COMMUNITIES</span>
-              </h2>
-              
-              <div className="space-y-4 text-sm text-gray-600 font-sans leading-relaxed">
-                <p>
-                  Guardian Initiative for Community Development (GICD) was registered with the Corporate Affairs Commission (CAC) with reg number CAC/IT/NO/141566 out of a direct need to resolve systemic marginalization, low-school retention, post-conflict trauma, and lack of livelihoods in communities surrounding Jos, Plateau State.
+            <div className="lg:col-span-7 space-y-8 text-left">
+              <div>
+                <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block mb-2">ABOUT US</span>
+                <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-tight mb-4">
+                  GUARDIAN INITIATIVE FOR <span className="text-brand-yellow block mt-1">COMMUNITY DEVELOPMENT</span>
+                </h2>
+                <div className="space-y-4 text-xs sm:text-sm text-gray-600 font-sans leading-relaxed">
+                  <p>
+                    The Guardian Initiative for Community Development (GICD) is a child-focused Nigerian charity that responds to and addresses humanitarian and development challenges affecting children. We strengthen protection systems, advance education and youth development, and improve the resilience of households and communities to achieve sustainable outcomes across both humanitarian and development contexts. We operate at the intersection of child protection, socio-economic empowerment, and the translation of global frameworks into meaningful grassroots outcomes.
+                  </p>
+                </div>
+              </div>
+
+              {/* Our Model Callout Block */}
+              <div className="p-5 sm:p-6 bg-slate-50 border-l-4 border-brand-yellow rounded-r-2xl space-y-2.5">
+                <span className="text-[10px] font-mono text-amber-700 tracking-widest uppercase font-bold block">OUR MODEL</span>
+                <h3 className="font-sans font-extrabold text-sm uppercase text-brand-black tracking-tight">
+                  Protection through Exposure
+                </h3>
+                <p className="text-xs text-gray-650 leading-relaxed font-sans">
+                  Our work is inspired by a persistent and widening gap; between learning and purpose, and between protection and the lived socio-economic realities of children, particularly in underserved communities. In these environments, curiosity, resilience, and talent often fade quietly, not from lack of potential, but from lack of intentional nurture and meaningful exposure. Young people follow the expected path through school, yet still arrive at adulthood unprepared; not because they failed, but because the system never fully revealed what was possible.
                 </p>
-                <p className="border-l-4 border-brand-yellow pl-4 font-semibold italic text-slate-800">
-                  We envision a transparent, functional society where every child and adolescent has unhindered access to physical safety, quality schooling, structured primary maternal health, and sustainable economic self-reliance.
+                <p className="text-xs text-brand-black font-semibold leading-relaxed font-sans pt-1">
+                  We exist to intervene early and deliberately; to safeguard children, equip adolescents, and expand the worldview of young people. We see guided exposure as a form of protection, one that broadens perspective, strengthens decision-making, and inspire dreams.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                <div className="p-4 bg-gray-50 rounded-xl space-y-1">
-                  <span className="p-1 text-xs bg-brand-yellow rounded font-bold uppercase text-brand-black">Goal 1</span>
-                  <h4 className="font-bold text-xs text-brand-black pt-1">Child Protection Network</h4>
-                  <p className="text-[11px] text-gray-500">Creating safety pathways, training rural educators, and monitoring child rights violations on the Plateau.</p>
+              {/* Vision and Mission Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-5 bg-gradient-to-br from-brand-black to-slate-900 text-white rounded-xl space-y-2 relative overflow-hidden border border-gray-900 shadow-md">
+                  <div className="absolute right-0 top-0 w-20 h-20 bg-brand-yellow/5 rounded-full filter blur-xl pointer-events-none" />
+                  <div className="flex items-center gap-2 text-brand-yellow">
+                    <Sparkles className="w-4 h-4 shrink-0" />
+                    <h4 className="font-bold text-xs uppercase tracking-wider">VISION</h4>
+                  </div>
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    A world where the safety of children, the potentials of youth, and the prosperity of communities is a lived reality.
+                  </p>
                 </div>
-                <div className="p-4 bg-gray-50 rounded-xl space-y-1">
-                  <span className="p-1 text-xs bg-brand-yellow rounded font-bold uppercase text-brand-black">Goal 2</span>
-                  <h4 className="font-bold text-xs text-brand-black pt-1">Interreligious Peace Alliance</h4>
-                  <p className="text-[11px] text-gray-500">Bringing Muslim and Christian adolescents together to collaborate in sports, civic forums, and peer development.</p>
+
+                <div className="p-5 bg-gradient-to-br from-brand-black to-slate-900 text-white rounded-xl space-y-2 relative overflow-hidden border border-gray-900 shadow-md">
+                  <div className="absolute right-0 top-0 w-20 h-20 bg-brand-yellow/5 rounded-full filter blur-xl pointer-events-none" />
+                  <div className="flex items-center gap-2 text-brand-yellow">
+                    <Award className="w-4 h-4 shrink-0" />
+                    <h4 className="font-bold text-xs uppercase tracking-wider">MISSION</h4>
+                  </div>
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    To protect children’s rights, drive sustainable development, and build resilient communities through evidence-based approaches.
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Premium action photos layout from the uploaded files */}
-            <div className="lg:col-span-6 grid grid-cols-12 gap-4">
+            <div className="lg:col-span-5 grid grid-cols-12 gap-4">
               <div className="col-span-7 space-y-4">
                 <div 
                   className="h-56 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
@@ -682,6 +656,7 @@ export default function App() {
               // Map icon string dynamically
               const IconComp = (() => {
                 switch(prog.iconName) {
+                  case "ShieldCheck": return ShieldCheck;
                   case "GraduationCap": return GraduationCap;
                   case "HeartPulse": return HeartPulse;
                   case "Briefcase": return Briefcase;

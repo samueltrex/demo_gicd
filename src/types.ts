@@ -37,40 +37,22 @@ export interface TestimonialItem {
 
 export const PROGRAMS_DATA: ProgramItem[] = [
   {
-    id: "edu",
+    id: "child-protection",
+    iconName: "ShieldCheck",
+    title: "Child Protection",
+    description: "We strengthen child protection through community-based awareness and prevention initiatives, early identification and referral of vulnerable children, and targeted parenting support that promotes family stability. We also work to reinforce informal protection systems within communities, ensuring that children are surrounded by responsive, informed, and supportive structures that can safeguard their well-being."
+  },
+  {
+    id: "education",
     iconName: "GraduationCap",
-    title: "Education & Scholarships",
-    description: "Providing access to quality education, writing materials, uniforms, and primary/secondary scholarships for underprivileged children and youths in Jos."
+    title: "Education",
+    description: "We improve access to formal education by addressing barriers that prevent children from enrolling, attending, and staying in school, while promoting learning environments that support their growth, dignity, and long-term development. We also inspire learning through structured exposure that broadens learners’ worldview and gives them a clear sense of purpose to remain in school."
   },
   {
-    id: "health",
-    iconName: "HeartPulse",
-    title: "Healthcare Outreach",
-    description: "Organizing free medical camps, distributing essential maternal health kits, and conducting health education and sanitization programs to underserved rural communities."
-  },
-  {
-    id: "econ",
-    iconName: "Briefcase",
-    title: "Economic Empowerment",
-    description: "Fostering economic self-reliance through skills acquisition workshops, microfinance support, sewing machine grants, and vocational training for women and local youth."
-  },
-  {
-    id: "env",
-    iconName: "Leaf",
-    title: "Environmental Sustainability",
-    description: "Promoting green living and fighting deforestation on the Plateau with community tree planting events, plastic recycling drives, and ecological workshops."
-  },
-  {
-    id: "youth",
+    id: "youth-dev",
     iconName: "Users",
-    title: "Youth Development",
-    description: "Nurturing tomorrow's Nigerian leaders through formal mentorship networks, civic advocacy bootcamps, IT literacy workshops, and sports initiatives."
-  },
-  {
-    id: "farm",
-    iconName: "Sprout",
-    title: "Food Security & Agriculture",
-    description: "Training smallholder urban and rural farmers in sustainable dry-season techniques, providing high-yield seedlings, and supplying food aid to vulnerable elders."
+    title: "Youth Development & Empowerment",
+    description: "We equip young people with the tools they need to transition successfully into adulthood by expanding access to education, providing psychosocial support and life-skills development, and creating pathways for vocational training and meaningful economic participation. We deliberately pursue alternative learning pathways that empower and prepare young people for the future workforce and self-sustenance."
   }
 ];
 
