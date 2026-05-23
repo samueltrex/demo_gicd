@@ -78,12 +78,12 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     details: "Muslim and Christian children came together working as a single collaborative squad. By navigating community challenge tasks side-by-side, these adolescents demonstrate real tolerance, emotional resilience, and constructive group coexistence. Supported by local stakeholders, the forum establishes reliable peer peacebuilding bonds in Jos.",
     loc: "Chwelnyap-Angwan Rukuba, Jos",
     images: [
-      "/src/asset/tik 1.jpg",
-      "/src/asset/tik 2.jpg",
-      "/src/asset/tik 3.jpg",
-      "/src/asset/tik 4.jpg",
-      "/src/asset/tik 5.jpg",
-      "/src/asset/tik 6.jpg"
+      "asset/tik 1.jpg",
+      "asset/tik 2.jpg",
+      "asset/tik 3.jpg",
+      "asset/tik 4.jpg",
+      "asset/tik 5.jpg",
+      "asset/tik 6.jpg"
     ],
     subtitles: [
       "Interreligious adolescent groups collaborating",
@@ -102,12 +102,12 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     details: "Strong households foster safe communities. Our regular Caregiver Forums provide single mothers, widows, and vulnerable grandparents in Jos North with safe spaces to share psychosocial feedback, learn conflict de-escalation, and coordinate peer support networks.",
     loc: "Angwan Rukuba Community, Jos North",
     images: [
-      "/src/asset/care 1.jpg",
-      "/src/asset/care 2.jpg",
-      "/src/asset/care 3.jpg",
-      "/src/asset/care 4.jpg",
-      "/src/asset/care 5.jpg",
-      "/src/asset/care 6.jpg"
+      "asset/care 1.jpg",
+      "asset/care 2.jpg",
+      "asset/care 3.jpg",
+      "asset/care 4.jpg",
+      "asset/care 5.jpg",
+      "asset/care 6.jpg"
     ],
     subtitles: [
       "Caregivers gathering for joint planning",
@@ -126,11 +126,11 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     details: "Ensuring zero educational drop-outs on the Plateau. We provided tailored primary school uniforms, sturdy hand-crafted sandals, custom educational canvas bags, notebooks, and writing materials to vulnerable boys and girls from four cluster communities in Jos.",
     loc: "Jos North Primary Clusters, Plateau State",
     images: [
-      "/src/asset/orph 1.jpg",
-      "/src/asset/orph 2.jpg",
-      "/src/asset/orph 3.jpg",
-      "/src/asset/orph 4.jpg",
-      "/src/asset/orph 5.jpg"
+      "asset/orph 1.jpg",
+      "asset/orph 2.jpg",
+      "asset/orph 3.jpg",
+      "asset/orph 4.jpg",
+      "asset/orph 5.jpg"
     ],
     subtitles: [
       "Scholars receiving custom uniforms with dignity",
@@ -148,12 +148,12 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     details: "Sports as a universal bridge for youth interaction. GICD coordinated inter-community football matches where Christian and Muslim boys formed integrated teams, fostering sportsmanship and building lasting connections across sectarian margins.",
     loc: "Jos South General Playground, Plateau",
     images: [
-      "/src/asset/match 1.jpg",
-      "/src/asset/match 2.jpg",
-      "/src/asset/match 3.jpg",
-      "/src/asset/match 4.jpg",
-      "/src/asset/match 5.jpg",
-      "/src/asset/match 6.jpg"
+      "asset/match 1.jpg",
+      "asset/match 2.jpg",
+      "asset/match 3.jpg",
+      "asset/match 4.jpg",
+      "asset/match 5.jpg",
+      "asset/match 6.jpg"
     ],
     subtitles: [
       "Christian and Muslim players combining forces",
@@ -172,10 +172,10 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     details: "Scientific and evidence-driven community action. Our specialized programs team conducted thorough door-to-door welfare audits, community focus-group discussions, and delegate onboarding meetings to identify precise educational and health needs.",
     loc: "Mangu & Riyom LGAs, Plateau State",
     images: [
-      "/src/asset/onboard 1.jpg",
-      "/src/asset/onboard 2.jpg",
-      "/src/asset/survey 1.jpg",
-      "/src/asset/survey 2.jpg"
+      "asset/onboard 1.jpg",
+      "asset/onboard 2.jpg",
+      "asset/survey 1.jpg",
+      "asset/survey 2.jpg"
     ],
     subtitles: [
       "Onboarding community focal points in Riyom",
@@ -192,10 +192,10 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     details: "Strengthening community child protection protocols. GICD convened community tutors, neighborhood association leaders, and religious focal points for rigorous safeguarding briefings, culminating in honors presented to GICD support champions.",
     loc: "GICD Head Office conference Hall, Jos",
     images: [
-      "/src/asset/hon 1.jpg",
-      "/src/asset/hon 2.jpg",
-      "/src/asset/hon 3.jpg",
-      "/src/asset/hon 4.jpg"
+      "asset/hon 1.jpg",
+      "asset/hon 2.jpg",
+      "asset/hon 3.jpg",
+      "asset/hon 4.jpg"
     ],
     subtitles: [
       "Local tutors engaging during safeguarding lectures",
@@ -216,11 +216,11 @@ interface VideoItem {
 }
 
 const VIDEOS_DATA: VideoItem[] = [
-  { id: "vid1", url: "/src/asset/vid 1.mp4", title: "Youth Leadership Workshop Highlights", desc: "Peer conflict management and life-skills exercises in Jos North.", duration: "0:45" },
-  { id: "vid2", url: "/src/asset/vid 2.mp4", title: "Caregivers Circle Live Exchange", desc: "In-session sharing of single parenting challenges and community child support.", duration: "1:12" },
-  { id: "vid3", url: "/src/asset/vid 3.mp4", title: "Back-to-School Distribution Joy", desc: "Children holding custom canvas bags, uniforms, and shoes with pride.", duration: "0:56" },
-  { id: "vid4", url: "/src/asset/vid 4.mp4", title: "Coexistence Football Tournament Final", desc: "Youth penalty shootout action representing neighborhood team unity.", duration: "1:04" },
-  { id: "vid5", url: "/src/asset/vid 5.mp4", title: "Stakeholder Assessment Field Dialogue", desc: "Direct feedback session with community elders and GICD directors.", duration: "0:48" }
+  { id: "vid1", url: "asset/vid 1.mp4", title: "Youth Leadership Workshop Highlights", desc: "Peer conflict management and life-skills exercises in Jos North.", duration: "0:45" },
+  { id: "vid2", url: "asset/vid 2.mp4", title: "Caregivers Circle Live Exchange", desc: "In-session sharing of single parenting challenges and community child support.", duration: "1:12" },
+  { id: "vid3", url: "asset/vid 3.mp4", title: "Back-to-School Distribution Joy", desc: "Children holding custom canvas bags, uniforms, and shoes with pride.", duration: "0:56" },
+  { id: "vid4", url: "asset/vid 4.mp4", title: "Coexistence Football Tournament Final", desc: "Youth penalty shootout action representing neighborhood team unity.", duration: "1:04" },
+  { id: "vid5", url: "asset/vid 5.mp4", title: "Stakeholder Assessment Field Dialogue", desc: "Direct feedback session with community elders and GICD directors.", duration: "0:48" }
 ];
 
 export default function App() {
@@ -335,7 +335,7 @@ export default function App() {
       {/* SECTION 2 — DOCKABLE NAVIGATION HEADER */}
       <nav className="sticky top-0 bg-white/95 backdrop-blur-md z-40 border-b border-gray-100 shadow-sm px-6 py-3.5 flex justify-between items-center transition duration-200" id="gicd-navbar">
         <a href="#gicd-app-root" className="flex items-center gap-3 active:scale-98 transition">
-          <img src="/src/asset/logo.jpg" alt="GICD Logo" className="w-10 h-10 rounded-full bg-slate-50 border border-brand-yellow/30" />
+          <img src="asset/logo.jpg" alt="GICD Logo" className="w-10 h-10 rounded-full bg-slate-50 border border-brand-yellow/30" />
           <div className="flex flex-col text-left">
             <span className="font-sans font-black tracking-tight text-brand-black text-xl leading-none">GICD NGO</span>
             <span className="text-[9px] text-gray-400 font-mono tracking-wide uppercase mt-0.5">Community Development</span>
@@ -460,7 +460,7 @@ export default function App() {
         {/* Real photo background with subtle dark lens crop */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/asset/cover.jpg" 
+            src="asset/cover.jpg" 
             alt="GICD Volunteer Field Outreach" 
             className="w-full h-full object-cover object-top opacity-35"
           />
@@ -614,9 +614,9 @@ export default function App() {
               <div className="col-span-7 space-y-4">
                 <div 
                   className="h-56 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: "/src/asset/1.jpg", caption: "GICD fieldwork and adolescent life support forum" })}
+                  onClick={() => setExpandedImage({ src: "asset/1.jpg", caption: "GICD fieldwork and adolescent life support forum" })}
                 >
-                  <img src="/src/asset/1.jpg" alt="Field session" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <img src="asset/1.jpg" alt="Field session" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
                     <span className="text-[10px] text-brand-yellow font-mono block">Field Session</span>
                     <p className="text-[11px] text-white font-semibold line-clamp-1">Peer peacebuilding and coexistence workshops</p>
@@ -625,9 +625,9 @@ export default function App() {
 
                 <div 
                   className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: "/src/asset/2.jpg", caption: "Direct maternal outreach and parent meetings" })}
+                  onClick={() => setExpandedImage({ src: "asset/2.jpg", caption: "Direct maternal outreach and parent meetings" })}
                 >
-                  <img src="/src/asset/2.jpg" alt="Staff dialogue" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <img src="asset/2.jpg" alt="Staff dialogue" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
                     <span className="text-[10px] text-brand-yellow font-mono block">Outreach</span>
                     <p className="text-[11px] text-white font-semibold line-clamp-1">Direct community engagement meetings</p>
@@ -638,9 +638,9 @@ export default function App() {
               <div className="col-span-5 flex flex-col justify-between">
                 <div 
                   className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: "/src/asset/3.jpg", caption: "Educator safety and child shielding audits" })}
+                  onClick={() => setExpandedImage({ src: "asset/3.jpg", caption: "Educator safety and child shielding audits" })}
                 >
-                  <img src="/src/asset/3.jpg" alt="Children support" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                  <img src="asset/3.jpg" alt="Children support" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
                     <span className="text-[10px] text-brand-yellow font-mono block">Interviews</span>
                     <p className="text-[11px] text-white font-semibold line-clamp-1">NGO staff consulting stakeholders</p>
@@ -1150,7 +1150,7 @@ export default function App() {
             {/* Logo description */}
             <div className="lg:col-span-4 space-y-4">
               <div className="flex items-center gap-3">
-                <img src="/src/asset/logo.jpg" alt="Logo" className="w-11 h-11 rounded-full bg-white text-brand-black border border-[#F5C518]" />
+                <img src="asset/logo.jpg" alt="Logo" className="w-11 h-11 rounded-full bg-white text-brand-black border border-[#F5C518]" />
                 <div className="flex flex-col">
                   <span className="font-sans font-black text-lg text-[#F5C518] leading-none uppercase tracking-tight">GICD NGO</span>
                   <span className="text-[8px] text-gray-500 font-mono uppercase tracking-widest mt-0.5">CAC NO: 141566</span>
