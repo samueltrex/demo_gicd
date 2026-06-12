@@ -1205,7 +1205,6 @@ export default function App() {
                 scr="/asset/cover.jpg"
                 className="w-full h-full object-cover object-top opacity-30"
               />
-              <div className="absolute inset-x-0 bottom-0 h-40 " />
             </div>
 
             <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
