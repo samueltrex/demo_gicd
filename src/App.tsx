@@ -1196,7 +1196,7 @@ export default function App() {
       {view === "home" && (
         <>
           <section 
-            className="relative min-h-[550px] lg:min-h-[660px] flex items-center bg-brand-black text-white select-none"
+            className="relative min-h-[550px] lg:min-h-[660px] flex items-center bg-brand-black text-white"
             id="home-hero"
           >
             {/* Ambient video background with image poster fallback */}
@@ -1206,7 +1206,6 @@ export default function App() {
                 className="w-full h-full object-cover object-top opacity-30"
               />
               <div className="absolute inset-x-0 bottom-0 h-40 " />
-              <div className="absolute inset-0 bg-brand-black/45" />
             </div>
 
             <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
