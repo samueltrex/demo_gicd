@@ -2189,62 +2189,65 @@ export default function App() {
 
       {/* SECTION 13.7 — INTERACTIVE ANNUAL REPORT VIEWER */}
       {view === "annual-report" && (
-        <section className="py-16 bg-white min-h-[600px] animate-fade-in" id="annual-report-view">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <section className="py-10 sm:py-16 bg-white min-h-[500px] animate-fade-in" id="annual-report-view">
+          <div className="max-w-7xl mx-auto px-4 sm:px-8">
             
             {/* Narrative Intro */}
-            <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
               <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black px-2.5 py-1 bg-amber-50 rounded-full border border-amber-200 inline-block mb-3">
                 Evidence-Based Progress Snapshot
               </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
+              <h2 className="font-sans font-black text-2xl sm:text-4xl text-brand-black uppercase tracking-tight">
                 2025 RESULTS SNAPSHOT
               </h2>
-              <p className="text-xs sm:text-sm text-gray-500 font-sans leading-relaxed mt-2">
+              <p className="text-[11px] sm:text-sm text-gray-500 font-sans leading-relaxed mt-2">
                 Review our Maiden Edition 2025 Annual Results Summary covering community child protection, technical education partnerships, reproductive safety, and financial stewardship.
               </p>
             </div>
 
             {/* Main interactive window */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
               
               {/* Left column: Sidebar Pagination Index */}
-              <div className="lg:col-span-4 space-y-2 order-2 lg:order-1 select-none">
-                <div className="p-4 bg-slate-50 border border-gray-150 rounded-2xl">
-                  <h4 className="font-sans font-bold text-xs text-brand-black uppercase tracking-wider mb-3 pb-2 border-b border-gray-200 text-left">
+              <div className="lg:col-span-4 space-y-4 order-2 lg:order-1 select-none w-full">
+                <div className="p-3 sm:p-4 bg-slate-50 border border-gray-150 rounded-2xl">
+                  <h4 className="font-sans font-bold text-[10px] sm:text-xs text-brand-black uppercase tracking-wider mb-2.5 pb-2 border-b border-gray-200 text-left hidden lg:block">
                     REPORT SECTIONS
                   </h4>
-                  <div className="space-y-1.5 text-left">
+                  
+                  {/* Horizontally scrollable on mobile, vertical stack on desktop */}
+                  <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible gap-1.5 pb-2 lg:pb-0 scrollbar-none snap-x text-left">
                     {[
-                      { label: "0. Annual Report Cover", id: 0 },
-                      { label: "1. Executive Summary", id: 1 },
-                      { label: "2. Child Protection", id: 2 },
-                      { label: "3. Skills Development", id: 3 },
-                      { label: "4. Scholarship Support", id: 4 },
-                      { label: "5. GBV & Reproductive Health", id: 5 },
-                      { label: "6. Strategic Partnerships", id: 6 },
-                      { label: "7. Financial Snapshot", id: 7 }
+                      { label: "0. Cover", fullLabel: "0. Annual Report Cover", id: 0 },
+                      { label: "1. Summary", fullLabel: "1. Executive Summary", id: 1 },
+                      { label: "2. Protection", fullLabel: "2. Child Protection", id: 2 },
+                      { label: "3. Skills", fullLabel: "3. Skills Development", id: 3 },
+                      { label: "4. Support", fullLabel: "4. Scholarship Support", id: 4 },
+                      { label: "5. Safe Spaces", fullLabel: "5. GBV & Reproductive Health", id: 5 },
+                      { label: "6. Alliances", fullLabel: "6. Strategic Partnerships", id: 6 },
+                      { label: "7. Financials", fullLabel: "7. Financial Snapshot", id: 7 }
                     ].map((page) => (
                       <button
                         key={page.id}
                         onClick={() => setReportPage(page.id)}
-                        className={`w-full text-left px-3.5 py-2.5 rounded-xl font-sans text-xs transition flex items-center justify-between cursor-pointer border-none bg-transparent ${
+                        className={`snap-start shrink-0 text-center lg:text-left px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl font-sans text-xs transition flex items-center justify-between cursor-pointer border-none bg-transparent whitespace-nowrap lg:whitespace-normal ${
                           reportPage === page.id
                             ? "bg-[#F5C518] text-brand-black font-black font-extrabold shadow-sm"
-                            : "text-gray-600 hover:bg-gray-100 hover:text-brand-black font-medium"
+                            : "text-gray-650 hover:bg-gray-100 hover:text-brand-black font-medium bg-gray-100 lg:bg-transparent"
                         }`}
                       >
-                        <span>{page.label}</span>
-                        {reportPage === page.id && <span className="w-1.5 h-1.5 rounded-full bg-brand-black shrink-0" />}
+                        <span className="hidden lg:inline">{page.fullLabel}</span>
+                        <span className="inline lg:hidden">{page.label}</span>
+                        {reportPage === page.id && <span className="w-1.5 h-1.5 rounded-full bg-brand-black shrink-0 ml-1.5 hidden lg:inline-block" />}
                       </button>
                     ))}
                   </div>
                 </div>
                 
                 {/* Quick link to contact for inquiries */}
-                <div className="p-5 bg-brand-black text-white rounded-2xl text-left border border-gray-800 space-y-3">
-                  <h5 className="font-bold text-xs text-[#F5C518] uppercase">Full Audit Verification</h5>
-                  <p className="text-[11px] text-gray-400 font-sans leading-relaxed">
+                <div className="p-4 sm:p-5 bg-brand-black text-white rounded-2xl text-left border border-gray-800 space-y-2.5 sm:space-y-3">
+                  <h5 className="font-bold text-[10px] sm:text-xs text-[#F5C518] uppercase">Full Audit Verification</h5>
+                  <p className="text-[10px] sm:text-[11px] text-gray-400 font-sans leading-relaxed">
                     We provide raw invoices, volunteer time sheets, and localized video check points to institutional donors. Request full ledger access directly.
                   </p>
                   <button
@@ -2257,51 +2260,51 @@ export default function App() {
               </div>
 
               {/* Right column: Interactive slide preview and text description */}
-              <div className="lg:col-span-8 space-y-6 order-1 lg:order-2">
+              <div className="lg:col-span-8 space-y-4 sm:space-y-6 order-1 lg:order-2 w-full">
                 
                 {/* Slide Deck Area */}
-                <div className="bg-white border-2 border-brand-black/90 p-1 sm:p-2 rounded-3xl shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[410px]">
+                <div className="bg-white border-2 border-brand-black/99 p-0.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[340px] sm:min-h-[410px]">
                   
                   {/* Slide Body Wrapper */}
-                  <div className="flex-1 p-4 sm:p-6 flex flex-col justify-center">
+                  <div className="flex-1 p-2 sm:p-6 flex flex-col justify-center">
                     {reportPage === 0 && (
-                      <div className="flex flex-col items-center justify-center text-center space-y-5 py-6 bg-amber-500/5 border border-[#F5C518]/25 rounded-2xl p-6 relative">
-                        <span className="text-[9px] font-mono text-amber-600 tracking-widest uppercase font-black px-2 py-0.5 bg-amber-50 rounded-full border border-amber-200 font-bold">
+                      <div className="flex flex-col items-center justify-center text-center space-y-4 sm:space-y-5 py-4 sm:py-6 bg-amber-500/5 border border-[#F5C518]/25 rounded-2xl p-3 sm:p-6 relative">
+                        <span className="text-[9px] font-mono text-amber-605 text-amber-600 tracking-widest uppercase font-black px-2 py-0.5 bg-amber-50 rounded-full border border-amber-200 font-bold">
                           Maiden Edition Report
                         </span>
-                        <div className="space-y-2">
+                        <div className="space-y-1.5 sm:space-y-2">
                           <p className="font-mono text-[9px] text-[#111111] font-black tracking-widest bg-[#F5C518] px-2.5 py-0.5 inline-block rounded">
                             EST. 2025 ANNUAL REPORT
                           </p>
-                          <h3 className="font-sans font-black text-2xl sm:text-4xl text-brand-black uppercase tracking-tight mt-2 leading-none">
+                          <h3 className="font-sans font-black text-lg sm:text-3xl lg:text-4xl text-brand-black uppercase tracking-tight mt-1 sm:mt-2 leading-tight">
                             GUARDIAN INITIATIVE FOR <span className="text-amber-600">COMMUNITY DEVELOPMENT</span>
                           </h3>
-                          <p className="text-xs text-gray-400 font-sans tracking-wide mt-1 uppercase font-bold">
+                          <p className="text-[10px] sm:text-xs text-gray-400 font-sans tracking-wide mt-1 uppercase font-bold">
                             JOS, PLATEAU STATE, NIGERIA
                           </p>
                         </div>
-                        <div className="pt-4 flex flex-wrap gap-3 items-center justify-center">
-                          <div className="text-center px-4 py-2 bg-white border border-gray-150 rounded-xl min-w-[100px] shadow-sm">
-                            <span className="font-mono font-black text-lg text-brand-black">613</span>
-                            <p className="text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Kids Reached</p>
+                        <div className="pt-2 sm:pt-4 flex flex-wrap gap-2 sm:gap-3 items-center justify-center">
+                          <div className="text-center px-2.5 sm:px-4 py-1.5 sm:py-2 bg-white border border-gray-150 rounded-xl min-w-[85px] sm:min-w-[100px] shadow-sm">
+                            <span className="font-mono font-black text-sm sm:text-lg text-brand-black">613</span>
+                            <p className="text-[8px] sm:text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Kids Reached</p>
                           </div>
-                          <div className="text-center px-4 py-2 bg-white border border-gray-150 rounded-xl min-w-[100px] shadow-sm">
-                            <span className="font-mono font-black text-lg text-brand-black">32</span>
-                            <p className="text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Households</p>
+                          <div className="text-center px-2.5 sm:px-4 py-1.5 sm:py-2 bg-white border border-gray-150 rounded-xl min-w-[85px] sm:min-w-[100px] shadow-sm">
+                            <span className="font-mono font-black text-sm sm:text-lg text-brand-black">32</span>
+                            <p className="text-[8px] sm:text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Households</p>
                           </div>
-                          <div className="text-center px-4 py-2 bg-white border border-gray-150 rounded-xl min-w-[100px] shadow-sm">
-                            <span className="font-mono font-black text-lg text-brand-black">$4,046</span>
-                            <p className="text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Mobilized</p>
+                          <div className="text-center px-2.5 sm:px-4 py-1.5 sm:py-2 bg-white border border-gray-150 rounded-xl min-w-[85px] sm:min-w-[100px] shadow-sm">
+                            <span className="font-mono font-black text-sm sm:text-lg text-brand-black">$4,046</span>
+                            <p className="text-[8px] sm:text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Mobilized</p>
                           </div>
                         </div>
                       </div>
                     )}
 
                     {reportPage === 1 && (
-                      <div className="space-y-5 text-left bg-gray-50 border border-gray-150 rounded-2xl p-6 flex flex-col justify-between">
-                        <div className="space-y-3">
-                          <h3 className="font-sans font-black text-base text-brand-black uppercase tracking-tight flex items-center gap-2">
-                            <span className="w-1.5 h-5 bg-[#F5C518] rounded-full inline-block" />
+                      <div className="space-y-4 sm:space-y-5 text-left bg-gray-50 border border-gray-150 rounded-2xl p-4 sm:p-6 flex flex-col justify-between">
+                        <div className="space-y-2 sm:space-y-3">
+                          <h3 className="font-sans font-black text-sm sm:text-base text-brand-black uppercase tracking-tight flex items-center gap-2">
+                            <span className="w-1.5 h-4 sm:h-5 bg-[#F5C518] rounded-full inline-block" />
                             Executive Summary & Strategy
                           </h3>
                           <p className="text-[11px] sm:text-xs text-gray-700 font-sans leading-relaxed">
@@ -2312,44 +2315,44 @@ export default function App() {
                           </p>
                         </div>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-gray-200">
-                          <div className="p-3 bg-white border border-gray-150 rounded-xl">
-                            <span className="text-[8px] font-mono text-amber-600 block uppercase font-bold">RESOURCES MOBILIZED</span>
-                            <span className="font-mono font-black text-sm text-brand-black mt-1 block">$4,046 USD</span>
-                            <span className="text-[9px] text-gray-400 block leading-tight mt-0.5">1 Partner / 3 Private Donors</span>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 pt-3 border-t border-gray-200">
+                          <div className="p-2 sm:p-3 bg-white border border-gray-150 rounded-xl">
+                            <span className="text-[7px] sm:text-[8px] font-mono text-amber-600 block uppercase font-bold">RESOURCES MOBILIZED</span>
+                            <span className="font-mono font-black text-xs sm:text-sm text-brand-black mt-0.5 sm:mt-1 block">$4,046 USD</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 block leading-tight mt-0.5">1 Partner / 3 Private Donors</span>
                           </div>
-                          <div className="p-3 bg-white border border-gray-150 rounded-xl">
-                            <span className="text-[8px] font-mono text-amber-600 block uppercase font-bold">POPULATION REACH</span>
-                            <span className="font-mono font-black text-sm text-brand-black mt-1 block">613 children</span>
-                            <span className="text-[9px] text-gray-400 block leading-tight mt-0.5">340 Girls / 273 Boys</span>
+                          <div className="p-2 sm:p-3 bg-white border border-gray-150 rounded-xl">
+                            <span className="text-[7px] sm:text-[8px] font-mono text-amber-600 block uppercase font-bold">POPULATION REACH</span>
+                            <span className="font-mono font-black text-xs sm:text-sm text-brand-black mt-0.5 sm:mt-1 block">613 children</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 block leading-tight mt-0.5">340 Girls / 273 Boys</span>
                           </div>
-                          <div className="p-3 bg-white border border-gray-150 rounded-xl">
-                            <span className="text-[8px] font-mono text-amber-600 block uppercase font-bold">2026 PROJECTIONS</span>
-                            <span className="font-mono font-black text-rose-700 mt-1 block">$28,324 USD</span>
-                            <span className="text-[9px] text-gray-400 block leading-tight mt-0.5">Scope: 4,292 Vulnerable Kids</span>
+                          <div className="p-2 sm:p-3 bg-white border border-gray-150 rounded-xl">
+                            <span className="text-[7px] sm:text-[8px] font-mono text-amber-600 block uppercase font-bold">2026 PROJECTIONS</span>
+                            <span className="font-mono font-black text-xs sm:text-sm text-rose-700 mt-0.5 sm:mt-1 block">$28,324 USD</span>
+                            <span className="text-[8px] sm:text-[9px] text-gray-400 block leading-tight mt-0.5">Scope: 4,292 Vulnerable Kids</span>
                           </div>
                         </div>
                       </div>
                     )}
 
                     {reportPage === 2 && (
-                      <div className="space-y-4 text-left bg-slate-50 border border-gray-150 rounded-2xl p-6">
+                      <div className="space-y-3 sm:space-y-4 text-left bg-slate-50 border border-gray-150 rounded-2xl p-4 sm:p-6">
                         <span className="px-2 py-0.5 bg-[#F5C518]/10 text-amber-750 text-[9px] font-mono rounded border border-[#F5C518]/30 uppercase font-black inline-block">
                           Household Engagement
                         </span>
-                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                        <h3 className="font-sans font-black text-base sm:text-lg text-brand-black uppercase tracking-tight">
                           Child Protection & Caregiver Safeguards
                         </h3>
-                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                        <p className="text-[11px] sm:text-xs text-gray-700 font-sans leading-relaxed">
                           We successfully mobilized caregivers from <strong>32 target households</strong> in high-density suburbs, facilitating interactive training sessions to recognize and preempt abuse risks.
                         </p>
-                        <div className="p-3.5 bg-white border border-gray-150 rounded-xl flex items-start gap-3">
-                          <div className="w-8 h-8 rounded bg-amber-50 flex items-center justify-center shrink-0 border border-brand-yellow/30 mt-0.5">
-                            <ShieldCheck className="w-4 h-4 text-amber-600" />
+                        <div className="p-2.5 sm:p-3.5 bg-white border border-gray-150 rounded-xl flex items-start gap-2.5 sm:gap-3">
+                          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded bg-amber-50 flex items-center justify-center shrink-0 border border-brand-yellow/30 mt-0.5">
+                            <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-600" />
                           </div>
                           <div>
-                            <h4 className="font-sans font-bold text-xs text-brand-black uppercase">Sustainable Parenting Practices</h4>
-                            <p className="text-[11px] text-gray-500 mt-0.5 leading-snug">
+                            <h4 className="font-sans font-bold text-[11px] sm:text-xs text-brand-black uppercase">Sustainable Parenting Practices</h4>
+                            <p className="text-[10px] sm:text-[11px] text-gray-500 mt-0.5 leading-snug">
                               Caregivers reported a direct transition from aggressive physical responses to communicative household guidance, fostering highly protective local environments.
                             </p>
                           </div>
@@ -2358,46 +2361,46 @@ export default function App() {
                     )}
 
                     {reportPage === 3 && (
-                      <div className="space-y-4 text-left bg-emerald-500/5 border border-emerald-150 rounded-2xl p-6">
+                      <div className="space-y-3 sm:space-y-4 text-left bg-emerald-500/5 border border-emerald-150 rounded-2xl p-4 sm:p-6">
                         <div className="flex items-center justify-between flex-wrap gap-2">
                           <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[9px] font-mono rounded border border-emerald-200 uppercase font-black">
                             Skills Framework
                           </span>
                           <span className="text-[8px] text-emerald-800 font-bold uppercase tracking-wider">Plateau State</span>
                         </div>
-                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                        <h3 className="font-sans font-black text-base sm:text-lg text-brand-black uppercase tracking-tight">
                           Skills Development: Football Meets Tech
                         </h3>
-                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                        <p className="text-[11px] sm:text-xs text-gray-700 font-sans leading-relaxed">
                           GICD, in coordination with the <strong>Kavod Relief Initiative</strong>, pioneered digital skills and sports integration through "Goals for Skills" in Angwan Rukuba, engaging <strong>54 adolescents</strong> (23 girls, 31 boys).
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                          <div className="p-3 bg-white rounded-xl border border-emerald-100 flex flex-col justify-between">
-                            <span className="font-mono text-base font-black text-emerald-700 block">13 Beneficiaries</span>
-                            <span className="text-[10px] text-gray-500 font-sans mt-0.5 leading-snug font-medium">Graduated into advanced ICT mentorship and corporate internships.</span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 pt-1">
+                          <div className="p-2.5 sm:p-3 bg-white rounded-xl border border-emerald-100 flex flex-col justify-between">
+                            <span className="font-mono text-xs sm:text-sm lg:text-base font-black text-emerald-700 block text-left">13 Beneficiaries</span>
+                            <span className="text-[10px] text-gray-500 font-sans mt-0.5 leading-snug font-medium text-left">Graduated into advanced ICT mentorship and corporate internships.</span>
                           </div>
-                          <div className="p-3 bg-white rounded-xl border border-emerald-100 flex flex-col justify-between">
-                            <span className="font-mono text-base font-black text-emerald-700 block">1 Professional Trial</span>
-                            <span className="text-[10px] text-gray-500 font-sans mt-0.5 leading-snug font-medium">One outstanding candidate secured a formal professional athletic career entry.</span>
+                          <div className="p-2.5 sm:p-3 bg-white rounded-xl border border-emerald-100 flex flex-col justify-between">
+                            <span className="font-mono text-xs sm:text-sm lg:text-base font-black text-emerald-700 block text-left">1 Professional Trial</span>
+                            <span className="text-[10px] text-gray-500 font-sans mt-0.5 leading-snug font-medium text-left">One outstanding candidate secured a formal professional athletic career entry.</span>
                           </div>
                         </div>
                       </div>
                     )}
 
                     {reportPage === 4 && (
-                      <div className="space-y-4 text-left bg-teal-500/5 border border-teal-155 rounded-2xl p-6">
+                      <div className="space-y-3 sm:space-y-4 text-left bg-teal-500/5 border border-teal-155 rounded-2xl p-4 sm:p-6">
                         <span className="px-2 py-0.5 bg-teal-50 text-teal-700 text-[9px] font-mono rounded border border-teal-200 uppercase font-black inline-block">
                           High School Continuation
                         </span>
-                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                        <h3 className="font-sans font-black text-base sm:text-lg text-brand-black uppercase tracking-tight">
                           Education: WAEC & JAMB Sponsorships
                         </h3>
-                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                        <p className="text-[11px] sm:text-xs text-gray-700 font-sans leading-relaxed">
                           With support from an esteemed private donor, GICD secured access to uninterrupted learning for <strong>16 orphans</strong> (11 girls, 5 boys) from vulnerable regional orphanages in Jos North and Jos East.
                         </p>
-                        <div className="p-3.5 bg-white border border-teal-100 rounded-xl">
-                          <span className="text-[10.5px] font-mono text-teal-650 font-bold block mb-1 uppercase tracking-wide">Breaking Financial Dropout Cycles</span>
-                          <p className="text-[11px] text-gray-500 leading-relaxed font-sans mt-1">
+                        <div className="p-2.5 sm:p-3.5 bg-white border border-teal-100 rounded-xl">
+                          <span className="text-[10px] sm:text-[10.5px] font-mono text-teal-650 font-bold block mb-1 uppercase tracking-wide">Breaking Financial Dropout Cycles</span>
+                          <p className="text-[10px] sm:text-[11px] text-gray-500 leading-relaxed font-sans mt-1">
                             Full tuition coverage, curriculum materials, WAEC Exam clearances, and JAMB registration completed. Safeguarding secondary graduation and university pathways.
                           </p>
                         </div>
@@ -2405,43 +2408,43 @@ export default function App() {
                     )}
 
                     {reportPage === 5 && (
-                      <div className="space-y-4 text-left bg-rose-500/5 border border-rose-150 rounded-2xl p-6">
+                      <div className="space-y-3 sm:space-y-4 text-left bg-rose-500/5 border border-rose-150 rounded-2xl p-4 sm:p-6">
                         <span className="px-2 py-0.5 bg-rose-50 text-rose-700 text-[9px] font-mono rounded border border-rose-200 uppercase font-black inline-block">
                           Adolescent Safe Spaces
                         </span>
-                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                        <h3 className="font-sans font-black text-base sm:text-lg text-brand-black uppercase tracking-tight">
                           Reproductive Health & SGBV Prevention
                         </h3>
-                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                        <p className="text-[11px] sm:text-xs text-gray-700 font-sans leading-relaxed">
                            Strengthened school protection and confidence by providing rights education and sexual-violence prevention strategies to <strong>543 children</strong> (306 girls, 237 boys).
                         </p>
-                        <div className="p-3.5 bg-white border border-rose-100 rounded-xl flex items-center justify-between">
-                          <div>
-                            <span className="text-[9px] font-mono text-gray-400 block tracking-tight font-bold">INTERVENE POPULATION</span>
-                            <span className="font-mono font-bold text-rose-700 text-sm">543 High Schoolers</span>
+                        <div className="p-2.5 sm:p-3.5 bg-white border border-rose-100 rounded-xl flex items-center justify-between">
+                          <div className="text-left">
+                            <span className="text-[8px] sm:text-[9px] font-mono text-gray-400 block tracking-tight font-bold">INTERVENE POPULATION</span>
+                            <span className="font-mono font-bold text-rose-700 text-xs sm:text-sm">543 High Schoolers</span>
                           </div>
                           <div className="text-right">
-                            <span className="text-[10px] text-gray-500 block font-mono">306 Girls (56.3%)</span>
-                            <span className="text-[10px] text-gray-500 block font-mono">237 Boys (43.7%)</span>
+                            <span className="text-[9px] sm:text-[10px] text-gray-500 block font-mono">306 Girls (56.3%)</span>
+                            <span className="text-[9px] sm:text-[10px] text-gray-500 block font-mono">237 Boys (43.7%)</span>
                           </div>
                         </div>
                       </div>
                     )}
 
                     {reportPage === 6 && (
-                      <div className="space-y-4 text-left bg-slate-900 text-slate-100 rounded-2xl p-6 relative overflow-hidden">
+                      <div className="space-y-3 sm:space-y-4 text-left bg-slate-900 text-slate-100 rounded-2xl p-4 sm:p-6 relative overflow-hidden">
                         <span className="px-2 py-0.5 bg-amber-400/15 text-[#F5C518] text-[9px] font-mono rounded border border-[#F5C518]/30 uppercase font-black inline-block">
                           Strategic Alliance
                         </span>
-                        <h3 className="font-sans font-black text-lg text-white uppercase tracking-tight mt-1">
+                        <h3 className="font-sans font-black text-base sm:text-lg text-white uppercase tracking-tight mt-1">
                           Formalizing Bilateral Agreements
                         </h3>
-                        <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                        <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-sans">
                            GICD executed a formal strategic partnership with <strong>Kavod Relief Initiative</strong>, scaling sport-driven digital training and mentoring modules.
                         </p>
-                        <div className="p-3.5 bg-white/5 border border-white/10 rounded-xl text-xs space-y-1.5">
-                          <span className="text-[9px] text-[#F5C518] font-mono uppercase font-bold block">TARGET BLUEPRINT</span>
-                          <p className="text-slate-300 leading-relaxed text-[11px] font-sans">
+                        <div className="p-2.5 sm:p-3.5 bg-white/5 border border-white/10 rounded-xl text-xs space-y-1 sm:space-y-1.5 text-left">
+                          <span className="text-[8px] sm:text-[9px] text-[#F5C518] font-mono uppercase font-bold block">TARGET BLUEPRINT</span>
+                          <p className="text-slate-300 leading-relaxed text-[10px] sm:text-[11px] font-sans">
                             Expanding access to high-impact software literacy, sports-focused protective tracking, and employment options for over <strong>300 children</strong> in Plateau state.
                           </p>
                         </div>
@@ -2449,27 +2452,27 @@ export default function App() {
                     )}
 
                     {reportPage === 7 && (
-                      <div className="space-y-4 text-left bg-gray-50 border border-gray-150 rounded-2xl p-6">
-                        <span className="px-2 py-0.5 bg-slate-100 text-slate-705 text-[9px] font-mono rounded border border-gray-205 uppercase font-black inline-block">
+                      <div className="space-y-3 sm:space-y-4 text-left bg-gray-50 border border-gray-150 rounded-2xl p-4 sm:p-6">
+                        <span className="px-2 py-0.5 bg-slate-100 text-slate-750 text-[9px] font-mono rounded border border-gray-205 uppercase font-black inline-block font-sans">
                           Consolidated Ledger
                         </span>
-                        <h3 className="font-sans font-black text-base text-brand-black uppercase tracking-tight">
+                        <h3 className="font-sans font-black text-sm sm:text-base text-brand-black uppercase tracking-tight">
                           Stewardship Snapshot & Core Contacts
                         </h3>
-                        <p className="text-xs text-gray-650 font-sans">
+                        <p className="text-[11px] sm:text-xs text-gray-650 font-sans">
                            GICD practices rigorous, localized funds integration across our operational pathways.
                         </p>
                         
-                        <div className="bg-white rounded-xl border border-gray-150 p-3.5 space-y-1.5 font-mono text-[10.5px]">
-                          <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                        <div className="bg-white rounded-xl border border-gray-150 p-2.5 sm:p-3.5 space-y-1 sm:space-y-1.5 font-mono text-[9.5px] sm:text-[10.5px]">
+                          <div className="flex justify-between border-b border-gray-100 pb-1 sm:pb-1.5">
                             <span className="text-gray-400">Total Funds Mobilized:</span>
                             <span className="text-brand-black font-bold">$4,046 USD</span>
                           </div>
-                          <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                          <div className="flex justify-between border-b border-gray-100 pb-1 sm:pb-1.5">
                             <span className="text-gray-400 font-sans">Education & Orphan Support:</span>
                             <span className="text-emerald-700 font-bold">$1,630 USD</span>
                           </div>
-                          <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                          <div className="flex justify-between border-b border-gray-100 pb-1 sm:pb-1.5">
                             <span className="text-gray-400 font-sans">Sports & ICT Tech Mentorship:</span>
                             <span className="text-emerald-700 font-bold">$1,206 USD</span>
                           </div>
@@ -2484,17 +2487,17 @@ export default function App() {
                   </div>
 
                   {/* Slide Navigation footer */}
-                  <div className="bg-slate-50 border-t border-gray-150 px-4 py-3 sm:px-6 flex items-center justify-between rounded-b-2xl select-none">
+                  <div className="bg-slate-50 border-t border-gray-150 px-3 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between rounded-b-2xl select-none">
                     <button
                       disabled={reportPage === 0}
                       onClick={() => setReportPage((prev) => Math.max(0, prev - 1))}
-                      className={`flex items-center gap-1.5 font-sans font-bold text-[10px] uppercase tracking-wider py-1.5 px-3 rounded-lg border-0 transition ${
+                      className={`flex items-center gap-1 sm:gap-1.5 font-sans font-bold text-[9px] sm:text-[10px] uppercase tracking-wider py-1.5 px-2.5 sm:px-3 rounded-lg border-0 transition ${
                         reportPage === 0
                           ? "text-gray-300 bg-gray-100 cursor-not-allowed"
                           : "text-brand-black bg-white hover:bg-gray-100 cursor-pointer shadow-sm"
                       }`}
                     >
-                      <ArrowLeft className="w-3.5 h-3.5" />
+                      <ArrowLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       <span>Prev</span>
                     </button>
                     
@@ -2503,8 +2506,8 @@ export default function App() {
                         <button
                           key={num}
                           onClick={() => setReportPage(num)}
-                          className={`w-2 h-2 rounded-full cursor-pointer border-none p-0 transition-all ${
-                            reportPage === num ? "bg-[#F5C518] w-5" : "bg-gray-200 hover:bg-gray-300"
+                          className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full cursor-pointer border-none p-0 transition-all ${
+                            reportPage === num ? "bg-[#F5C518] w-4 sm:w-5" : "bg-gray-200 hover:bg-gray-300"
                           }`}
                         />
                       ))}
@@ -2513,27 +2516,27 @@ export default function App() {
                     <button
                       disabled={reportPage === 7}
                       onClick={() => setReportPage((prev) => Math.min(7, prev + 1))}
-                      className={`flex items-center gap-1.5 font-sans font-bold text-[10px] uppercase tracking-wider py-1.5 px-3 rounded-lg border-0 transition ${
+                      className={`flex items-center gap-1 sm:gap-1.5 font-sans font-bold text-[9px] sm:text-[10px] uppercase tracking-wider py-1.5 px-2.5 sm:px-3 rounded-lg border-0 transition ${
                         reportPage === 7
                           ? "text-gray-300 bg-gray-100 cursor-not-allowed"
                           : "text-brand-black bg-white hover:bg-gray-100 cursor-pointer shadow-sm"
                       }`}
                     >
                       <span>Next</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     </button>
                   </div>
 
                 </div>
 
                 {/* Qualitative Narrative description column */}
-                <div className="p-6 bg-slate-50 border border-gray-150 rounded-2xl text-left space-y-4 animate-fade-in">
-                  <h4 className="font-sans font-extrabold text-xs uppercase text-brand-black tracking-wider flex items-center gap-1.5">
+                <div className="p-4 sm:p-6 bg-slate-50 border border-gray-150 rounded-2xl text-left space-y-3 sm:space-y-4 animate-fade-in">
+                  <h4 className="font-sans font-extrabold text-[11px] sm:text-xs uppercase text-brand-black tracking-wider flex items-center gap-1.5">
                     <BookOpen className="w-4 h-4 text-amber-600" />
                     <span>Qualitative Impact & Strategic Narrative</span>
                   </h4>
                   
-                  <div className="text-xs text-gray-650 leading-relaxed space-y-3 font-sans">
+                  <div className="text-[11px] sm:text-xs text-gray-650 leading-relaxed space-y-2.5 sm:space-y-3 font-sans">
                     {reportPage === 0 && (
                       <>
                         <p>
