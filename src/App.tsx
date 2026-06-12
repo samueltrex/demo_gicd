@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   GraduationCap, 
   HeartPulse, 
@@ -943,6 +943,45 @@ const VIDEOS_DATA: VideoItem[] = [
   { id: "vid5", url: "/asset/vid 5.mp4", title: "Stakeholder Assessment Field Dialogue", desc: "Direct feedback session with community elders and GICD directors.", duration: "0:48" }
 ];
 
+interface HeroSlideItem {
+  img: string;
+  tag: string;
+  title: string;
+  desc: string;
+}
+
+const HERO_SLIDES_DATA: HeroSlideItem[] = [
+  {
+    img: "/asset/1.jpg",
+    tag: "Adolescent Life Support Forums",
+    title: "Adversity to Agency, Empowering Youth",
+    desc: "GICD is training children with peer lifeskills to confidently face risks, help their friends, and navigate localized trauma safely."
+  },
+  {
+    img: "/asset/2.jpg",
+    tag: "Maternal & Caregiver circles",
+    title: "Strengthening Household Child Protection",
+    desc: "Mobilizing caregivers from high-density suburbs for critical parenting clinics, transitioning to non-aggressive familial support structures."
+  },
+  {
+    img: "/asset/3.jpg",
+    tag: "Educator Safeguarding Audits",
+    title: "Securing Protected Learning Spaces",
+    desc: "Convening community tutors, regional teachers, and religious coordinators to address safety risks and reinforce protection mechanisms."
+  },
+  {
+    img: "/asset/4.jpg",
+    tag: "Community-Led Research & Data",
+    title: "Rigorous Auditing of Safe Futures",
+       desc: "Gathering verified household welfare information and qualitative protection needs across Angwan Rukuba community in Jos, Plateau state."
+  },
+  {
+    img: "/asset/5.jpg",
+    tag: "Sports-Driven Peacebuilding",
+    title: "Goals for Skills & Adolescent Literacy",
+    desc: "Combining technical computer education with local sports tournaments to build interreligious peace, teamwork, and career readiness."
+  }
+];
 export default function App() {
   // View/Tab control: home, about, programs, activities, media, trustees, careers, contact, annual-report
   const [view, setView] = useState<"home" | "about" | "programs" | "activities" | "media" | "trustees" | "careers" | "contact" | "annual-report">("home");
@@ -977,6 +1016,17 @@ export default function App() {
   // Custom Video Player controls state
   const [activePlayVideo, setActivePlayVideo] = useState<string | null>(null);
 
+  // Hero Carousel active slide index
+  const [activeHeroSlide, setActiveHeroSlide] = useState<number>(0);
+
+  // Automatic transition for Hero Carousel every 6 seconds
+  useEffect(() => {
+    if (view !== "home") return;
+    const timer = setInterval(() => {
+      setActiveHeroSlide((prev) => (prev + 1) % HERO_SLIDES_DATA.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [view]);
   const triggerToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 4000);
@@ -1192,35 +1242,88 @@ export default function App() {
         )}
       </nav>
 
-      {/* SECTION 3 — HERO STAGE WITH PARALLAX ACTION BACKDROP */}
+           {/* SECTION 3 — HERO STAGE WITH STUNNING 5-PICTURE INTERACTIVE CAROUSEL */}
       {view === "home" && (
         <>
           <section 
-            className="relative min-h-[550px] lg:min-h-[660px] flex items-center bg-brand-black text-white"
+           className="relative min-h-[580px] lg:min-h-[660px] flex items-center bg-brand-black text-white select-none overflow-hidden"
             id="home-hero"
           >
-            {/* Ambient video background with image poster fallback */}
+            {/* Carousel images layer */}
             <div className="absolute inset-0 z-0">
-              <img
-                src="/asset/cover.jpg"
-                className="w-full h-full object-cover object-top opacity-30"
-              />
+              {HERO_SLIDES_DATA.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out transform ${
+                    index === activeHeroSlide
+                      ? "opacity-40 scale-100"
+                      : "opacity-0 scale-105 pointer-events-none"
+                  }`}
+                >
+                  <img
+                    src={slide.img}
+                    alt={slide.title}
+                    className="w-full h-full object-cover object-top"
+                     </div>
+              ))}
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+              <div className="absolute inset-0 bg-brand-black/55" />
             </div>
 
-            <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
+            {/* Left carousel manual navigation arrow */}
+            <button
+              type="button"
+              onClick={() => setActiveHeroSlide((prev) => (prev - 1 + HERO_SLIDES_DATA.length) % HERO_SLIDES_DATA.length)}
+              className="absolute left-3 sm:left-6 z-20 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-[#F5C518] text-white hover:text-brand-black transition duration-200 border border-white/10 backdrop-blur-sm cursor-pointer active:scale-90"
+              aria-label="Previous Slide"
+              id="hero-carousel-prev"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+            {/* Right carousel manual navigation arrow */}
+            <button
+              type="button"
+              onClick={() => setActiveHeroSlide((prev) => (prev + 1) % HERO_SLIDES_DATA.length)}
+              className="absolute right-3 sm:right-6 z-20 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-[#F5C518] text-white hover:text-brand-black transition duration-200 border border-white/10 backdrop-blur-sm cursor-pointer active:scale-90"
+              aria-label="Next Slide"
+              id="hero-carousel-next"
+            >
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+                        {/* Slide Pagination Indicator Dots */}
+            <div className="absolute bottom-6 inset-x-0 z-20 flex justify-center items-center gap-2">
+              {HERO_SLIDES_DATA.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setActiveHeroSlide(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    index === activeHeroSlide
+                      ? "bg-[#F5C518] w-7"
+                      : "bg-white/30 hover:bg-white/60"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                  id={`hero-carousel-indicator-${index}`}
+                />
+              ))}
+            </div>
+<div className="relative z-10 max-w-5xl mx-auto px-10 sm:px-12 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
               
+               
               <div className="space-y-8 flex flex-col items-center max-w-3xl">
-                <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#F5C518]/10 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-xs tracking-widest uppercase font-black mx-auto">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#F5C518]/15 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-[10px] sm:text-xs tracking-widest uppercase font-black mx-auto shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-[#F5C518] animate-ping shrink-0"></span>
-                  Angwan Rukuba Community
+                  {HERO_SLIDES_DATA[activeHeroSlide].tag}
                 </span>
                 
-                <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center">
-                  GUARDIAN INITIATIVE <span className="text-[#F5C518] block mt-1">FOR COMMUNITY DEVELOPMENT</span>
+                <h1 className="font-sans font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center transition duration-500 min-h-[72px] sm:min-h-[120px] flex items-center justify-center">
+                  <div>
+                    GUARDIAN INITIATIVE <span className="text-[#F5C518] block mt-1">{HERO_SLIDES_DATA[activeHeroSlide].title}</span>
+                  </div>
                 </h1>
                 
-                <p className="text-sm sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl">
-                  Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to sustainable community development, child protection, education, public health, and interreligious youth peacebuilding.
+                <p className="text-xs sm:text-sm md:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl min-h-[64px] transition duration-500">
+                  {HERO_SLIDES_DATA[activeHeroSlide].desc}
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
