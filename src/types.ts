@@ -7,7 +7,8 @@ export interface ProgramItem {
 
 export interface StatItem {
   id: string;
-  number: number;
+  number?: number;
+  textValue?: string;
   suffix: string;
   label: string;
 }
@@ -57,10 +58,10 @@ export const PROGRAMS_DATA: ProgramItem[] = [
 ];
 
 export const STATS_DATA: StatItem[] = [
-  { id: "lives", number: 5000, suffix: "+", label: "Lives Impacted" },
-  { id: "comm", number: 12, suffix: "", label: "Communities Reached" },
-  { id: "vols", number: 300, suffix: "+", label: "Volunteers & Partners" },
-  { id: "years", number: 8, suffix: "", label: "Years of Service" }
+  { id: "lives", number: 613, suffix: "", label: "Children Directly Reached (2025)" },
+  { id: "comm", number: 32, suffix: "", label: "Caregiver Households Advised" },
+  { id: "vols", textValue: "$4,046", suffix: "", label: "Resources Mobilized" },
+  { id: "years", number: 543, suffix: "", label: "SGBV & Health Education Pupils" }
 ];
 
 export const TEAM_DATA: TeamMember[] = [
@@ -210,11 +211,11 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
 ];
 
 export const PARTNERS_DATA = [
+  { name: "Kavod Relief Initiative", initials: "KRI" },
   { name: "Plateau State Ministry of Health", initials: "PSMH" },
   { name: "Jos North Local Council", initials: "JNLC" },
   { name: "Anglican Health Initiative", initials: "AHI" },
   { name: "Plateau Youth Council", initials: "PYC" },
   { name: "Green Earth Africa Trust", initials: "GEAT" },
-  { name: "West Africa NGO Network", initials: "WANN" },
-  { name: "Jos business coalition", initials: "JBC" }
+  { name: "Jos Business Coalition", initials: "JBC" }
 ];

@@ -61,22 +61,210 @@ import {
 interface ActivityItem {
   id: string;
   title: string;
-  tag: "Coexistence Workshops" | "Caregiver Sessions" | "Education Support" | "Sports & Coexistence Matches" | "Staff Onboarding & Surveys" | "Honors & Certificates";
+  tag: "Coexistence Workshops" | "Caregiver Sessions" | "Education Support" | "Sports & Coexistence Matches" | "Staff Onboarding & Surveys" | "Honors & Certificates" | "Child Protection & Safeguarding" | "Volunteer Opportunities" | "Media & Press Coverage";
   date: string;
   details: string;
   loc: string;
   images: string[];
   subtitles: string[];
+  videos?: string[];
+  videoSubtitles?: string[];
+  externalLink?: {
+    label: string;
+    url: string;
+  };
 }
 
 const ACTIVITIES_DATA: ActivityItem[] = [
   {
-    id: "act-coexist",
-    title: "Interreligious Life Skills & Peer Coexistence Forum",
+    id: "act-youth-lifeskills-june-2026",
+    title: "✨ Adversity to Agency: Cultivating Peer Lifeskills and Coping Mastery",
+    tag: "Child Protection & Safeguarding",
+    date: "June 12, 2026",
+    details: "Children often possess the innate ability to push through and overcome challenges, setbacks, and localized adversity.\n\nAll they need is the right support structure and a foundational skill set of resilience, self-regulation, and positive coping mechanisms. Through our continuing adolescent curriculum under the Safe Futures Project in Angwan Rukuba, GICD is training children with peer lifeskills to confidently face risks, help their friends, and navigate trauma safely.\n\nOur interactive workshops empower them with confidence and psychosocial tools, confirming that when children are active drivers of protection, whole neighborhoods thrive.\n\n#lifeskills #YouthResilience #ChildProtection #GICD #SocialImpact #PsychosocialSupport",
+    loc: "Angwan Rukuba, Jos, Plateau State",
+    images: [],
+    subtitles: [],
+    videos: [
+      "/asset/social vid.mp4"
+    ],
+    videoSubtitles: [
+      "Adolescent peer lifeskills active workshops and cooperative coping exercises in Angwan Rukuba"
+    ]
+  },
+  {
+    id: "act-children-lead-june-2026",
+    title: "🗺️ Children Lead: Mapping Risks, Protective Factors & Driving Change in Angwan Rukuba",
+    tag: "Child Protection & Safeguarding",
+    date: "June 5, 2026",
+    details: "When children understand the nature of their community, then they are one step ahead in protecting themselves and contribute to making it safer for others.\n\nToday's workshop focused on mapping the community and identifying the risk and protective factors. These include the places, institutions present or absent, situations, and challenges they face, and the areas where they believe they can drive change Within their sphere of influence.\n\nFindings from today's community mapping will directly fit into the children's community action project coming soon.\n\n#YouthResilience #ChildProtection #CommunityDevelopment #PsychosocialSupport",
+    loc: "Angwan Rukuba, Jos, Plateau State",
+    images: [
+      "/asset/lead 1.jpg",
+      "/asset/lead 2.jpg",
+      "/asset/lead 3.jpg",
+      "/asset/lead 4.jpg",
+      "/asset/lead 5.jpg",
+      "/asset/lead 6.jpg",
+      "/asset/lead 7.jpg",
+      "/asset/lead 8.jpg"
+    ],
+    subtitles: [
+      "Youth taking the lead in mapping their community, highlighting key safety and infrastructure aspects",
+      "Adolescents identifying child-centric risk factors, dangerous paths, and protective havens in Angwan Rukuba",
+      "Collaborative drawing of localized resource maps pointing to educational and recreational opportunities",
+      "Young participants presenting their environmental surveys to peer groups and community mentors",
+      "Brainstorming institutions, service access points, and critical gaps in protection infrastructure",
+      "Analyzing spheres of influence to identify actions adolescents can actively take to support safety",
+      "Documenting the primary challenges and community pathways to feed into the upcoming Action Project",
+      "Celebrating agency, creative teamwork, and the power of young leadership in community child protection"
+    ]
+  },
+  {
+    id: "act-wellbeing-distress-may-2026",
+    title: "🧠 Navigating Stress: Adolescents Uncovering Wellbeing and Distress in Angwan Rukuba",
+    tag: "Child Protection & Safeguarding",
+    date: "May 30, 2026",
+    details: "Stress is one of the leading threats to the safety, mental health and development of young people, and living in a community affected by poverty, conflict, and multiple protection risks makes the burden heavier.\n\nAdolescents in GICD's Youth Resilience Programme are now understanding Wellbeing and Distress through structured exercises designed to help them identify the signs and root causes of distress.\n\nUnsafe home environments, family separation and bereavement, heartbreaks, religious unrest, lack of adequate food, decent clothing, corporal and humiliating punishment, and inadequate access to basic services among others, have emerged as everyday sources of stress among young people in  Angwan Rukuba.\n\nGICD continues to support young people to develop safe, effective stress management strategies and thrive.\n\n#ChildProtection #PsychosocialSupport #YouthResilience #PlateauState",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/stress 1.jpg",
+      "/asset/stress 2.jpg",
+      "/asset/stress 3.jpg",
+      "/asset/stress 4.jpg",
+      "/asset/stress 5.jpg",
+      "/asset/stress 6.jpg",
+      "/asset/stress 7.jpg"
+    ],
+    subtitles: [
+      "Adolescents gathering for a structured session on understanding mental health, stress, and wellbeing factors",
+      "Group breakout discussions mapping localized sources of adolescent psychological distress",
+      "Young participants listing common stressors including bereavement, family separation, and economic hardships",
+      "GICD community mentors encouraging open, safe expressions of vulnerability regarding mental health",
+      "Interactive activities to distinguish healthy coping mechanisms from harmful stress responses",
+      "Learning mindfulness, self-soothing, and localized community support-seeking strategies",
+      "Youth celebrating the safe spaces built to support their resilience and peer emotional connection"
+    ]
+  },
+  {
+    id: "act-childrens-day-walk-may-2026",
+    title: "🖤 National Children's Day 2026: A Walk of Reflections, Not Celebration",
+    tag: "Child Protection & Safeguarding",
+    date: "May 29, 2026",
+    details: "NATIONAL CHILDREN'S DAY 2026, A WALK OF REFLECTIONS, NOT CELEBRATION\n\n• Angwan Rukuba, Jos North LGA, 28 March 2025: Gunmen attacked the community, killing no fewer than 30 people, including children. (Channels Television)\n• Bokkos LGA, April 2025: Armed attackers struck communities in Bokkos, killing many people including children and entire families. (Amnesty International)\n• Kwall District, Bassa LGA, April 2025: At least 51 people were killed, including women, children, and the elderly. Homes were razed and properties destroyed. (Punch)\n• Kebbi and Niger States, 18 to 21 November 2025: Hundreds of schoolchildren were kidnapped by armed men, with the government failing to disclose perpetrators or confirm any prosecutions following the releases. (Human Rights Watch)\n• Lokoja, Kogi State, 27 April 2026: Gunmen raided an orphanage and abducted at least 23 children. Fifteen were rescued but eight remained missing. (Al Jazeera)\n\nTo all duty bearers: this is our score card.\n\nWe call on government at executive legislative and judicial arms, the security forces, humanitarian & development partners, and communities to refuse to normalise a reality in which a child in Bokkos, Bassa, or Angwan Rukuba has less right to safety than any child anywhere in the world.\n\n#SaveThePlateauChild | #ChildrensDay2026 | #ChildProtectionNetworkNigeria\n\nChild Protection Network CPN - Plateau State\n\nSources: Amnesty International (May 2025; December 2025); Human Rights Watch World Report 2026; Channels Television (22 April 2026); Al Jazeera (27 April 2026); Plateau State Government Fact-Finding Committee Report (May 2025).",
+    loc: "Plateau State, Nigeria",
+    images: [
+      "/asset/day 1.jpg",
+      "/asset/day 2.jpg",
+      "/asset/day 3.jpg",
+      "/asset/day 4.jpg",
+      "/asset/day 5.jpg"
+    ],
+    subtitles: [
+      "Staff and advocates gathering for the solemn walk of reflection, demanding safety first for every Nigerian child",
+      "Carrying advocacy banners pointing to the critical security score cards and school safety requirements",
+      "GICD team members joining hands with the Child Protection Network (CPN) Plateau State during the street march",
+      "Community leaders listening and pledging to refuse normalizing security threats against children",
+      "A collective call to duty bearers for immediate active security measures in vulnerable community settings"
+    ]
+  },
+  {
+    id: "act-childrens-day-may-2026",
+    title: "🎈 Happy Children's Day: Raising Our Voices with Child Protection Network (CPN) Plateau State",
+    tag: "Child Protection & Safeguarding",
+    date: "May 27, 2026",
+    details: "Attention Plateau:\nHappy Children's Day!\n\nThis Friday 29th May, the Child Protection Network CPN - Plateau State and members are taking it to the streets to mark this years Children's Day celebration and we need EVERYBODY outside.😁\n\nCome, let's demonstrate that Plateau State stands for its children and commitment to child protection rights.",
+    loc: "Jos, Plateau State",
+    images: [
+      "/asset/part d 1.jpg",
+      "/asset/part d 2.jpg",
+      "/asset/rr.jpg"
+    ],
+    subtitles: [
+      "CPN Plateau State advocacy banner calling for school and family-level child security",
+      "GICD team members and local representatives standing together in support of children's protection rights",
+      "Young advocates and CPN Plateau State members preparing materials for the street march"
+    ]
+  },
+  {
+    id: "act-lifeline-exercises-may-2026",
+    title: "🌱 Nurturing Strengths: Lifeline and Support-Mapping Exercises in Angwan Rukuba",
+    tag: "Child Protection & Safeguarding",
+    date: "May 22, 2026",
+    details: "As part of GICD’s Safe Futures Project supporting resilience building and wellbeing among adolescents in Angwan Rukuba through life skills and psychosocial support, young participants engaged in two foundational activities: the “Lifeline” and “Who Matters in My Life?” exercises.\n\nThrough the Lifeline activity, adolescents reflected on both difficult and positive moments in their personal journeys and identified the coping strategies that have helped them navigate challenges. For many, the session created a new awareness of their own strengths, resilience, and ability to overcome adversity.\n\nParticipants also mapped their social support systems, identifying trusted individuals they can turn to for guidance, encouragement, and support. The exercise strengthened their understanding of the important role healthy relationships play in emotional wellbeing and resilience.\n\n#YouthResilience #LifeSkills #PsychosocialSupport #AngwanRukuba #GICD #AdolescentDevelopment #JosNigeria",
+    loc: "Angwan Rukuba, Jos, Plateau State",
+    images: [
+      "/asset/future 1.jpg",
+      "/asset/future 2.jpg",
+      "/asset/future 3.jpg",
+      "/asset/future 4.jpg",
+      "/asset/future 5.jpg",
+      "/asset/future 6.jpg"
+    ],
+    subtitles: [
+      "Adolescents carefully mapping their unique life journeys and key milestones in the Lifeline exercise",
+      "Young participants sharing and reflecting on positive coping strategies for adversity",
+      "Exploring personal strengths, protective habits, and emotional resilience techniques",
+      "Mapping social support circles to identify trusted guidance figures and helpful community members",
+      "Adolescents discussing the critical role healthy, supportive connections play in wellbeing",
+      "A group showing their completed journey maps, celebrating self-awareness and unity in Angwan Rukuba"
+    ]
+  },
+  {
+    id: "act-child-protection-findings-may-2026",
+    title: "📊 Data for Impact: GICD Releases Child Protection Assessment & Survey Findings",
+    tag: "Child Protection & Safeguarding",
+    date: "May 19, 2026",
+    details: "The Guardian Initiative for Community Development -GICD has released findings from a recent child-focused survey, highlighting critical protection and development gaps affecting children in Angwan Rukuba.\n\nKey insights include:\n• 96.9% of children face at least one active protection risk\n• 65.6% experience physical violence\n• Only 1 in 6 children can access institutional protection\n• 88% of children want to attend school, yet access remains constrained\n\nThese findings point to a high-acuity environment where risks are widespread, reporting systems are weak, and access to essential services is limited despite strong positive aspirations by children.\n\n#ChildProtection #DataForDevelopment #NGO #SocialImpact #Safeguarding #EducationAccess #Partnerships",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/summary 1.jpg",
+      "/asset/summary 2.jpg",
+      "/asset/summary 3.jpg",
+      "/asset/summary 4.jpg",
+      "/asset/summary 5.jpg",
+      "/asset/summary 6.jpg",
+      "/asset/summary 7.jpg"
+    ],
+    subtitles: [
+      "Page 1: Baseline Survey Foreword & Community Programme Context",
+      "Page 2: Executive Dashboard & Key Performance Indicators (KPIs)",
+      "Page 3: Demographic Profile of Survey Respondents by Age, Sex, and Living Arrangements",
+      "Page 4: Seven-Domain Analysis covering Education, Labour, and Safety",
+      "Page 5: Consolidated Risk Register & High-Acuity Risk Heat Map",
+      "Page 6: Cross-Domain Vulnerability & Compounding Risk Pathways Analysis",
+      "Page 7: Program Recommendations, Immediate Case Management & Next Steps"
+    ]
+  },
+  {
+    id: "act-caregivers-meeting-may-2026",
+    title: "🗣️ Vulnerability & Connection: Caregivers Strengthening Families",
+    tag: "Caregiver Sessions",
+    date: "May 16, 2026",
+    details: "Every caregivers meeting is a step closer to achieving stronger families.\n\nAs children participating in our life skills and psychosocial support programme share personal concerns and challenges, GICD organizes regular caregivers meetings where these issues are discussed constructively with parents and caregivers. The goal is not only awareness, but collaborative action toward safer, healthier, and more supportive home environments.\n\nTodays meeting was a significant shift from pointing out parents inability to meet children's needs, to an unexpected expression of vulnerability-in-trust among parents themselves. Discussions expanded beyond merely missing out on responsibilities to the underlying factors including the loss of spouses and the burden of single parenting. (Most are single mothers, widows, and grand parents caring for children of their children.) Realizing this community-wide vulnerability shared by many immediately sparked empathy and stronger feeling of connection among the parents and caregivers in the room.\n\nSupporting children to build resilience and wellbeing also requires strengthening the emotional wellbeing, communication capacity, and support networks of the adults who care for them.\n\n#PsychosocialSupport #ChildProtection #StrongerFamilies #CommunityDevelopment #GICD",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/step 1.jpg",
+      "/asset/step 2.jpg",
+      "/asset/step 3.jpg",
+      "/asset/step 4.jpg",
+      "/asset/step 5.jpg"
+    ],
+    subtitles: [
+      "Caregivers gathering to discuss child psychosocial support and challenges",
+      "Parents sharing honest personal and financial caregiving experiences",
+      "Expressing vulnerability and emotional trust in a supportive group circle",
+      "Single mothers and grandparents bonding over shared household challenges",
+      "Strengthening direct communication, resilience networks, and peer support systems"
+    ]
+  },
+  {
+    id: "act-lifeskills-may-2026",
+    title: "🤝 Interreligious Unity: High-Impact Life Skills Session in Chwelnyap",
     tag: "Coexistence Workshops",
-    date: "May 01, 2026",
-    details: "Muslim and Christian children came together working as a single collaborative squad. By navigating community challenge tasks side-by-side, these adolescents demonstrate real tolerance, emotional resilience, and constructive group coexistence. Supported by local stakeholders, the forum establishes reliable peer peacebuilding bonds in Jos.",
-    loc: "Chwelnyap-Angwan Rukuba, Jos",
+    date: "May 1, 2026",
+    details: "Todays was yet another impactful Life Skills session in Chwelnyap-Angwan Rukuba.\n\nWhat made it especially remarkable is Muslim and Christian children coming together, working as a team, navigating complex tasks, and growing side by side. These young people are not just learning social skills, they are demonstrating tolerance, coexistence, and resilience.\n\nWith support from the Plateau State Ministry of Education, our Life Skills Program now reaches both in-school and out-of-school children, increasing motivation to learning, school enrollment, and access to relevant services.\n\n#LifeSkills #Protection #EducationForAll  #YouthDevelopment #Resilience #PeaceBuilding #Nigeria #GICD",
+    loc: "Chwelnyap-Angwan Rukuba, Jos, Plateau State",
     images: [
       "/asset/tik 1.jpg",
       "/asset/tik 2.jpg",
@@ -86,12 +274,544 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "/asset/tik 6.jpg"
     ],
     subtitles: [
-      "Interreligious adolescent groups collaborating",
-      "Youth core teams navigating joint tasks",
-      "Life skills lessons in a bright, sunlit space",
-      "Creative card-sorting and coordination exercises",
-      "Joyful smiles representing unity in Jos",
-      "Group celebration of conflict resolution milestones"
+      "Muslim and Christian adolescents collaborating beautifully in team challenge tasks",
+      "Youth core teams navigating complex structural life-skills problems together",
+      "Interactive life skills session hosted in a bright and safe learning environment",
+      "Coordination, leadership, and proactive problem-solving exercises in action",
+      "Joyful smiles and genuine teamwork demonstrating tolerance and shared hope",
+      "Group milestone celebration representing robust peacebuilding and community resilience"
+    ]
+  },
+  {
+    id: "act-child-protection-risks-apr-2026",
+    title: "🔍 New Evidence on Child Protection Risks in Angwan Rukuba Community",
+    tag: "Child Protection & Safeguarding",
+    date: "April 20, 2026",
+    details: "New Evidence on Child Protection Risks in Angwan Rukuba community.\n\nKey highlights & critical findings:\n• Uncovered localized risk dynamics and safety gaps affecting vulnerable adolescents.\n• Developed collaborative strategies to strengthen community-based protective networks.\n• Gathered direct qualitative and quantitative data to improve intervention responses.\n• Provided strategic blueprints for localized prevention and timely referral actions.\n\n#ChildProtection #EvidenceForImpact #Safeguarding #SafeFutures #JosPlateauState",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/1.jpg",
+      "/asset/2.jpg",
+      "/asset/3.jpg",
+      "/asset/4.jpg",
+      "/asset/5.jpg",
+      "/asset/ss.jpg"
+    ],
+    subtitles: [
+      "GICD research teams organizing community data on localized adolescent safety risks",
+      "Interactive data collection sessions conducted with community focal points",
+      "Analysis of environmental vulnerability factors influencing child safety structures",
+      "Community stakeholders reviewing documented protective mechanisms and support gaps",
+      "Strategic brainstorming with local volunteers and youth team leaders",
+      "Comprehensive research evidence summary detailing actionable child protection goals"
+    ]
+  },
+  {
+    id: "act-womens-day-mar-2026",
+    title: "💜 Celebrating our Leaders: International Women's Day at GICD",
+    tag: "Child Protection & Safeguarding",
+    date: "March 8, 2026",
+    details: "Today, on International Women's Day, we celebrate the remarkable women whose leadership, professionalism, and commitment strengthen the work of GICD. From governance and management to finance and frontline programming, their contributions help ensure that the children we serve are safer, better supported, and exposed to opportunities that shape their future.\n\n#GivetoGain",
+    loc: "GICD Head Office, Jos, Plateau State",
+    images: [],
+    subtitles: [],
+    videos: [
+      "/asset/vid 5.mp4"
+    ],
+    videoSubtitles: [
+      "Honoring the power, guidance, and expertise of the women leading GICD's programs"
+    ]
+  },
+  {
+    id: "act-conclude-consultation-mar-2026",
+    title: "🏫 Strategic Integration: Safe Futures Project Approved for GSS Chwelnyap",
+    tag: "Education Support",
+    date: "March 4, 2026",
+    details: "Today The Guardian Initiative for Community Development -GICD concluded over a month of consultations with school leadership and senior officials of the Plateau State Ministry of Education and secured government approval to commence implementation of the Safe Futures Project at Government Secondary School Chwelnyap.\n\nThis milestone strengthens GICDs partnership with government and positions GICDs program within the formal education setting, making it more central, accessible, and serving as a convergent point for both students and out-of-school children in the community. This provides greater opportunities for identification and referral for enrollment into formal learning, while making life skills education possible for all children.\n\n#ChildProtection\n#YouthDevelopment\n#AccessToEducation",
+    loc: "GSS Chwelnyap, Jos, Plateau State",
+    images: [
+      "/asset/conclude 1.jpg",
+      "/asset/conclude 2.jpg",
+      "/asset/conclude 3.jpg",
+      "/asset/conclude 4.jpg"
+    ],
+    subtitles: [
+      "GICD team members concluding formal consultations with Chwelnyap school leadership",
+      "Securing administrative and infrastructural approval to initiate localized Safe Futures programs",
+      "Aligning student and community-focused child protection and youth development curriculum goals",
+      "Engaging Plateau State Ministry of Education school officials and management on project strategies"
+    ]
+  },
+  {
+    id: "act-safe-futures-survey-mar-2026",
+    title: "📝 Evidence for Action: Safe Futures Adolescent Perspective Survey",
+    tag: "Child Protection & Safeguarding",
+    date: "March 2, 2026",
+    details: "Today, The Guardian Initiative for Community Development -GICD engaged adolescents enrolled in our Safe Futures Project in Angwan Rukuba Community, in a structured survey designed to better understand their lived realities, aspirations, and challenges.\n\nThis survey is part of GICDs commitment to improved programme design and ensuring that adolescent perspectives directly influence our interventions. We are grateful to the brave young participants who shared openly and responsibly their realities. Their experiences matter.\n\nResults and key insights shortly.\n\n#DataForImpact \n#evidencebasedprogramming \n#ChildProtection\n#ParticipatoryApproach\n#plateaustate",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/survey 1.jpg",
+      "/asset/survey 2.jpg",
+      "/asset/survey 3.jpg",
+      "/asset/survey 4.jpg"
+    ],
+    subtitles: [
+      "Adolescent participants in Angwan Rukuba carefully filling out the GICD Safe Futures survey",
+      "GICD session leaders introducing the purpose of the structured survey to adolescent group",
+      "Fostering transparent, comfortable, and responsive spaces for children to voice their perspectives",
+      "Safe Futures participants actively detailing their educational support and community safety views"
+    ],
+    videos: [
+      "/asset/vid 4.mp4"
+    ],
+    videoSubtitles: [
+      "Safe Futures video: Adolescent engagement and field insights in motion"
+    ]
+  },
+  {
+    id: "act-board-induction-feb-2026",
+    title: "🏛️ Expansion & Official Induction of the GICD Board of Trustees",
+    tag: "Staff Onboarding & Surveys",
+    date: "February 22, 2026",
+    details: "Yesterday The Guardian Initiative for Community Development -GICD concluded the Induction of the Board of Trustees of The Guardian Initiative for Community Development. This milestone marks the expansion of our Board from 3 to 7 Trustees, strengthening our institutional leadership and governance framework.\n\nThe Trustees diverse expertise across humanitarian work, organizational management, and community development positions GICD for stronger oversight and sustainable growth. We look forward to the collective leadership that will guide our mission to protect and empower vulnerable children and adolescents.\n\nWelcome on Board, Ladies and Gentlemen.\n\nAssociated Networks & Foundations:\n• Nigeria Network of NGOs\n• TY Danjuma Foundation",
+    loc: "GICD Head Office, Jos, Plateau State",
+    images: [
+      "/asset/a.jpg",
+      "/asset/b.jpg",
+      "/asset/c.jpg",
+      "/asset/d.jpg",
+      "/asset/e.jpg",
+      "/asset/f.jpg",
+      "/asset/g.jpg"
+    ],
+    subtitles: [
+      "The newly-inducted GICD Board of Trustees alongside key leadership team members",
+      "Official presentation of the trustee leadership portfolio, highlighting core objectives",
+      "Reviewing and strengthening GICD's long-term community outreach governance framework",
+      "Collaborative strategy session emphasizing robust monitoring and public trust accountability",
+      "Discussions on child safety, safeguarding policies, and adolescent development targets",
+      "Executive board members charting institutional pathways for sustainable impact in Plateau State",
+      "Committing to collective leadership of GICD to better serve vulnerable youth populations"
+    ]
+  },
+  {
+    id: "act-caregiver-meetings-feb",
+    title: "🗣️ Reflective Caregiver & Parent Dialogues on Adolescent Connection",
+    tag: "Caregiver Sessions",
+    date: "February 11, 2026",
+    details: "Caregiver meetings remain one of the most critical components of our program. Today, we learned from caregivers and parents point of view, the factors behind the widening gap in parental connection with children, especially adolescents. Caregiver commitment, environmental influences and compounding economic pressures dominated the discussion, emerging as key forces pulling parents and children apart.\n\nSome parents also shared honest reflections about how they perceive the bonding opportunities our programs provide. While they see the immediate outcome and benefits, they are simultaneously navigating concerns about values, identity, and new behaviors that can feel unfamiliar or misaligned with long standing norms.\n\nThrough these meetings we understand that sustainable change can happen when parents are not relegated to bystanders in the growth and development of the child, but engaged beyond their current understanding and aspirations for the child. This is what makes the opportunities we provide to children translate into growth, not tension.\n\n#GICD #ParentEngagement #ChildDevelopment #CommunityImpact",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/care 1.jpg",
+      "/asset/care 2.jpg",
+      "/asset/care 3.jpg",
+      "/asset/care 4.jpg",
+      "/asset/care 5.jpg",
+      "/asset/care 6.jpg"
+    ],
+    subtitles: [
+      "Caregivers and GICD mentors gathering to explore root challenges in parent-child connections",
+      "GICD facilitator leading an open, supportive dialogue with local mothers and fathers",
+      "A caregiver sharing personal reflections on guiding adolescents through changing modern values",
+      "Engaging training session focused on positive parenting techniques and active listening",
+      "Community parents actively discussing solutions for environmental and economic pressures",
+      "Collaborative support circle reinforcing the integrated adolescent protection model"
+    ]
+  },
+  {
+    id: "act-results-summary-2025",
+    title: "📊 GICD 2025 Annual Results Summary & Report",
+    tag: "Child Protection & Safeguarding",
+    date: "January 28, 2026",
+    details: "In 2025, GICD worked with communities and partners to strengthen child protection systems and secure safer futures for children and families.\n\nOur results summary captures the outcome of our work. It contains structural data, program successes, outreach coverage, and policy achievements across our focal operational zones in Plateau State.",
+    loc: "GICD Head Office, Jos, Plateau State",
+    images: [
+      "/asset/sum 1.jpg",
+      "/asset/sum 2.jpg",
+      "/asset/sum 3.jpg",
+      "/asset/sum 4.jpg",
+      "/asset/sum 5.jpg",
+      "/asset/sum 6.jpg",
+      "/asset/sum 7.jpg",
+      "/asset/sum 8.jpg"
+    ],
+    subtitles: [
+      "GICD 2025 Annual Results Summary: Key achievements and strategic program pillars",
+      "Overview of direct child protection interventions, case management, and safe spaces mapping",
+      "Community engagements and advocacy sessions reach statistics for parents and caregivers",
+      "Empowerment indicators, youth enrollment numbers, and educational support outcomes",
+      "Partnership and collaborative framework outputs with state ministries and local organizations",
+      "Governance, transparency compliance, and financial management highlights",
+      "Looking forward to 2026: Continuing our commitment to lasting community-led stability",
+      "Community acknowledgment and gratitude to our donors, stakeholders, and community leaders"
+    ]
+  },
+  {
+    id: "act-football-tech-highlights",
+    title: "⚽💻 Goals for Skills: Football Meets Tech Official Highlights",
+    tag: "Sports & Coexistence Matches",
+    date: "January 10, 2027",
+    details: "A beautiful and energetic highlight of the Joint Goals for Skills: Football Meets Tech initiative.\n\nSuccessfully supported and certified by GICD, Kavod Relief Initiative, and the Plateau State Ministry of Women Affairs and Social Development, the outreach brought unmatched joy, inspiration, and technological curiosity to our adolescent group.\n\nThe fun...\nThe excitement...\nThe learning...\n\nWatch our official field and classroom highlight reel below to see their path to the digital future!",
+    loc: "Mees Palace Academy, Jos, Plateau State",
+    images: [],
+    subtitles: [],
+    videos: [
+      "/asset/vid 3.mp4"
+    ],
+    videoSubtitles: [
+      "Official highlight video: Joy, excitement, and learning in motion"
+    ]
+  },
+  {
+    id: "act-media-brief",
+    title: "Media Brief: GICD & Kavod Relief Strategic Partnership Featured on Vanguard",
+    tag: "Media & Press Coverage",
+    date: "December 24, 2026",
+    details: "The Guardian Initiative for Community Development -GICD and Kavod Relief Initiative held a comprehensive Media Briefing to share the vision, strategic milestones, and expected community impacts of our joint 'Goals for Skills: Football Meets Tech' initiative.\n\nThis media briefing highlights our collaborative dedication to boosting child protection, digital literacy, and sustainable development pathways for local adolescents in Angwan Rukuba and wider Plateau State.\n\nRead more details in the official press release.",
+    loc: "Jos, Plateau State",
+    images: [],
+    subtitles: [],
+    videos: [
+      "/asset/vid 2.mp4"
+    ],
+    videoSubtitles: [
+      "Official GICD and Kavod Relief Initiative joint media brief highlight video"
+    ],
+    externalLink: {
+      label: "Vanguard News Coverage",
+      url: "https://www.vanguardngr.com"
+    }
+  },
+  {
+    id: "act-mou-announcement",
+    title: "Partnership Announcement: Strategic MoU Signed Between GICD & Kavod Relief",
+    tag: "Media & Press Coverage",
+    date: "December 23, 2025",
+    details: "We are proud to announce the signing of a Memorandum of Understanding (MoU) between Kavod Relief Initiative and The Guardian Initiative for Community Development -GICD formalizing a strategic collaboration aimed at expanding access to protection, skills development, and opportunity for adolescents in Plateau State.\n\nThis partnership anchors the implementation of Goals for Skills: Football Meets Tech, an integrated programme that combines sport-based engagement with digital skills training, mentorship, and employability pathways for adolescents. The initiative responds to critical child protection and youth unemployment challenges by providing safe spaces, relevant skills, and structured pathways toward sustainable futures.\n\nAs we close the year, this MoU represents more than a partnership; it reflects strong governance, shared accountability, and a joint commitment to measurable impact. It positions both organizations to effectively leverage resources, strengthen community systems, and deliver scalable, youth-centered interventions in the year ahead.\n\nWe are ending the year with renewed momentum and a clear focus on results.\n\n#StrategicPartnership #YouthDevelopment #ChildProtection #GoalsForSkills #FootballMeetsTech #DonorReady #CollectiveImpact #NGOCollaboration #PlateauStateNGOs",
+    loc: "GICD Head Office, Jos, Plateau State",
+    images: [
+      "/asset/partners.jpg"
+    ],
+    subtitles: [
+      "The official signing of the strategic MoU between the Kavod Relief Initiative and GICD teams for sustainable youth empowerment pathways."
+    ]
+  },
+  {
+    id: "act-goals-for-skills-match",
+    title: "⚽💻 Goals for Skills: Football Meets Tech Phase 1 & 2 in Angwan Rukuba",
+    tag: "Sports & Coexistence Matches",
+    date: "December 21, 2026",
+    details: "In Angwan Rukuba, where children especially adolescents face the risks of abuse, exploitation, neglect, and the resort to wide adoption of harmful coping mechanisms, The Guardian Initiative for Community Development -GICD in partnership with Kavod Relief Initiative is implementing the Goals for Skills- Football Meets Tech initiative that not only addresses the prevailing challenges but offers sustainable protection and prosperity for children and the community.\n\nIn this phase, the initiative engaged adolescents aged 12 to 18 using football as a gateway to digital skills and career pathways. The energy discipline and talent displayed by the young participants reaffirmed our belief that when given the right opportunities children can truly thrive.\n\nWe are now ready to implement the second phase of the initiative which includes fully funded tech scholarships for the winning team of 11 players, the award of laptops to three outstanding players, and the placement of beneficiaries into ICT mentorship and internship opportunities to deepen their skills and exposure.\n\nWe extend our sincere appreciation to Mees Palace Football Academy for generously offering a trial session to the best player who is set to resume at the academy in January, a remarkable step toward nurturing professional football talent. We also acknowledge the Plateau State Ministry of Women Affairs and Social Development and #TerryEnvohFoundation whose support and partnership contributed greatly to the success of this phase.\n\nWatch the outreach video here: https://drive.google.com/file/d/1ocJlx7kenQvdDi7tAFYd-62C_7G_g0W6/view",
+    loc: "Angwan Rukuba Community & Mees Palace, Jos, Plateau State",
+    images: [
+      "/asset/match 1.jpg",
+      "/asset/match 2.jpg",
+      "/asset/match 3.jpg",
+      "/asset/match 4.jpg",
+      "/asset/match 5.jpg",
+      "/asset/match 6.jpg",
+      "/asset/match 7.jpg",
+      "/asset/match 8.jpg",
+      "/asset/match 9.jpg",
+      "/asset/match 10.jpg",
+      "/asset/match 11.jpg",
+      "/asset/match 12.jpg",
+      "/asset/match 13.jpg",
+      "/asset/match 14.jpg",
+      "/asset/match 15.jpg",
+      "/asset/match 16.jpg",
+      "/asset/match 17.jpg",
+      "/asset/match 18.jpg",
+      "/asset/match 19.jpg",
+      "/asset/match 20.jpg",
+      "/asset/match 21.jpg",
+      "/asset/match 22.jpg",
+      "/asset/match 23.jpg"
+    ],
+    subtitles: [
+      "Adolescents from Angwan Rukuba take the pitch for the Football Meets Tech initiative",
+      "Warmups and team strategy talks under the guidance of joint GICD and Kavod Relief coaches",
+      "Spectators and community members gathering to cheer on the youth players",
+      "Exciting match moments showcasing great energy, discipline, and athletic talent",
+      "Players demonstrating sportsmanship and teamwork on the Mees Palace pitch",
+      "GICD facilitator introducing digital skills and tech scholarship opportunities at halftime",
+      "Winning match moments representing hope and sustainable protection for the community's youth",
+      "Dynamic defensive play as teams compete passionately for the championship title",
+      "Offensive coordination highlighting structured skill development and confidence-building",
+      "Coaching staff from Mees Palace Academy monitoring the trial session contenders",
+      "Excited players celebrating a hard-earned goal together with immense team spirit",
+      "GICD organizers explaining phase two: fully-funded hardware and ICT mentorship awards",
+      "Adolescent girls sharing in the active sports-meets-digital-empowerment curriculum",
+      "Interactive workshop segment illustrating tech careers compatible with young sports enthusiasts",
+      "High-fives and mutual respect between rivals at the final whistle of the tournament",
+      "Spectators showing community ownership and local backing for the safe youth pathways",
+      "The outstanding player selected for the exclusive Mees Palace Football Academy trial session",
+      "Organizers awarding tournament medals and presenting symbolic laptop gifts to MVP standouts",
+      "Ministry of Women Affairs & Social Development representatives affirming child protection policies",
+      "Kavod Relief Initiative and GICD teams delivering post-match care and motivational speeches",
+      "The elite eleven players who earned full technology and digital skills scholarships",
+      "Teachers and community mentors standing proud alongside the resilient student athletes",
+      "Unified group portrait of the Angwan Rukuba cohort advancing toward professional futures"
+    ],
+    externalLink: {
+      label: "Watch Drive Video",
+      url: "https://drive.google.com/file/d/1ocJlx7kenQvdDi7tAFYd-62C_7G_g0W6/view"
+    }
+  },
+  {
+    id: "act-onboarding-mentors",
+    title: "Onboarding & Training of GICD Community Mentors on Youth Resilience",
+    tag: "Staff Onboarding & Surveys",
+    date: "December 18, 2025",
+    details: "Today we concluded the onboarding and training of our Community Mentors for adolescent children, using the Save the Children Youth Resilience Program- Psychosocial Support in-and-Out of School. An eight-themed framework that supports adolescents to build resilience by learning and applying context relevant skills including decision making, managing emotions, building interpersonal relationships, effective communication skills etc which enables them to thrive especially in troubled times. With the youth resilience program, we are moving our initiative to a more structured support that establishes safety net for adolescents in Angwan Rukuba community where great negative influences tend to affect the healthy development of children.\n\nThe program is also reinforced by a series of parents/caregiver engagements, that ensures all the skills and resilience acquired by the children is supported by positive parenting at home. The Guardian Initiative for Community Development -GICD is committed to strengthening community-led protection approaches that provides lasting stability for all children.\n\n#YouthResilience #ChildProtection #communitydevelopment #PositiveChange",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/onboard 1.jpg",
+      "/asset/onboard 2.jpg",
+      "/asset/onboard 3.jpg",
+      "/asset/onboard 4.jpg",
+      "/asset/onboard 5.jpg",
+      "/asset/onboard 6.jpg"
+    ],
+    subtitles: [
+      "Onboarding session with GICD Community Mentors on Psychosocial Support strategies",
+      "Interactive group exercises utilizing the eight-themed Youth Resilience Program framework",
+      "Mentors collaborating and discussing context-relevant skills for adolescent guidance",
+      "Comprehensive training on building safety nets for adolescents in troubled times",
+      "Presenting community-led child protection approaches to local mentors and leaders",
+      "The newly trained cohort of GICD Community Mentors set to empower local youth"
+    ]
+  },
+  {
+    id: "act-football-meets-tech",
+    title: "⚽💻 Football Meets Tech: Goals for Skills Outreach at Mees Palace",
+    tag: "Sports & Coexistence Matches",
+    date: "December 16, 2025",
+    details: "We’re excited to invite you to witness an inspiring blend of sports and technology as adolescents from Angwan Rukuba Community take the field and step into the digital future.\n\nEvent Details:\n📅 Date: Saturday, 20th December 2025\n🏟️ Venue: Mees Palace Academy, Jos – Plateau State\n⏰ Time: 09:00 am\n\nKindly join us and cheer them on!\n\n#FootballMeetsTech #GoalsForSkills #YouthEmpowerment #DigitalLiteracy #CommunityDevelopment #GICD #KAVODRelief",
+    loc: "Mees Palace Academy, Jos, Plateau State",
+    images: [],
+    subtitles: [],
+    videos: [
+      "/asset/vid 1.mp4"
+    ],
+    videoSubtitles: [
+      "Inspiring GICD sports and digital skills hybrid outreach at Mees Palace Academy"
+    ]
+  },
+  {
+    id: "act-donor-orphanages",
+    title: "Courtesy of a Donor: Supporting Orphanages & Educational Scholarships",
+    tag: "Education Support",
+    date: "December 20, 2025",
+    details: "Today we spotlight the action of a generous donor, on whose request we visited two orphanages in Jos East and Jos North to extend care, promote dignity of life and encouragement to the children.\n\nOn the donors goodwill we delivered food items that ensured the children could go to bed with warm stomachs, strengthened bodies, and a renewed sense of dignity. For many of them, having enough to eat is not just about nutrition, it is about feeling cared for.\n\nWAEC and JAMB registrations of 16 boys and girls, were also covered, removing a major financial barrier that often limits the chances of children from low income backgrounds to beat illiteracy. This scholarship allows them to complete their secondary education and places then on the vantage position to pursue higher learning.\n\n\"Aunty, we are speechless… we won’t fail you.” they said.",
+    loc: "Jos East & Jos North, Plateau State",
+    images: [
+      "/asset/orph 1.jpg",
+      "/asset/orph 2.jpg",
+      "/asset/orph 3.jpg",
+      "/asset/orph 4.jpg",
+      "/asset/orph 5.jpg"
+    ],
+    subtitles: [
+      "Orphanage children receiving essential food items and resources on behalf of the donor",
+      "Scholars of the WAEC & JAMB enrollment scholarship program celebrating educational support",
+      "GICD team unloading nutritious food provisions to ensure healthy meals for the kids",
+      "Interactive session extending words of encouragement and child rights information",
+      "Caregivers and community stakeholders posing with sponsored children to express deep gratitude"
+    ]
+  },
+  {
+    id: "act-gssfobur",
+    title: "Impact Moments: SGBV and Reproductive Health Session at GSS Fobur",
+    tag: "Child Protection & Safeguarding",
+    date: "December 19, 2025",
+    details: "Impact Moments.\n\nIt was wrapt attention at GSS Fobur as The Guardian Initiative for Community Development -GICD, on the invitation of the First Lady, Jos East Local Government Area, engaged adolescent girls from both host and invited schools in a high impact learning session focused on strengthening awareness of sexual and gender-based violence (SGBV) and reproductive health. These are silent topics in the rural communities often characterised by misconceptions. Unfortunately, these are not taught in schools but on this day, over 150 adolescents were reached, with myths dismantled through essential, life-shaping information designed to protect, empower, and guide them.\n\nThe session exposed the girls to their rights, their worth, and the importance of personal safety. This will help them navigate challenges, make informed choices, and stand up for themselves and ourselves with confidence. We appreciate the first lady for the collaborative space to contribute meaningfully to the protection and development of young people as we advance our mission of reaching especially girls and boys in rural communities to whom this knowledge matters and makes a difference.\n\nTogether, we continue to create safer, informed, and empowered communities.\n\n#GICD #GrassrootsImpact #ChildProtection #ReproductiveHealth #SGBVPrevention #YouthEmpowerment #CommunityDevelopment #plateaustatengos",
+    loc: "GSS Fobur, Jos East LGA, Plateau State",
+    images: [
+      "/asset/gss 1.jpg",
+      "/asset/gss 2.jpg",
+      "/asset/gss 3.jpg"
+    ],
+    subtitles: [
+      "Adolescent girls at GSS Fobur listening with rapt attention during the GICD SGBV awareness session",
+      "Facilitator addressing common reproductive health myths and leading discussions on bodily safety",
+      "First Lady of Jos East LGA and school management partnering with the GICD delegation to protect and empower rural students"
+    ]
+  },
+  {
+    id: "act-countdown-yearend",
+    title: "Tik... Tak... Countdown to Year-End: Grassroots Reproductive Health & SGBV School Outreach",
+    tag: "Child Protection & Safeguarding",
+    date: "December 18, 2025",
+    details: "Tik... Tak... Countdown to Year-End.\n\nAs we reflect on our journey so far, we are proud to highlight one of our most impactful grassroots engagements.\n\nIn this activity, we engaged 167 girls and boys from United Faith Tabernacle School, Jarawan Kogi, and Government Secondary School, Federe, Angware, discussing their points of view and equipping them with essential reproductive health information and raising awareness on sexual and gender-based violence.\n\nThe engagement strengthened the children’s understanding of their bodies, their rights, and how to seek help or support when needed. The knowledge they gained will empower them to make safer decisions, protect themselves, speak up confidently, and support one another.\n\nThe confidence and eagerness these students showed reaffirm our belief that informed children are better protected and better prepared for the future.\n\nWe deeply appreciate the warm acceptance of this initiative and the remarkable cooperation of the teachers and school management. Their openness and support played a major role in making this outreach a success.\n\nTogether, we continue to build safer, informed, and empowered communities.\n\n#GICD #GrassrootsImpact #ChildProtection #ReproductiveHealth #SGBVPrevention #CommunityDevelopment #YouthEmpowerment #PlateauState #theguardianinitiativeforcommunitydevelopment",
+    loc: "Jarawan Kogi & Angware, Plateau State",
+    images: [
+      "/asset/tik 1.jpg",
+      "/asset/tik 2.jpg",
+      "/asset/tik 3.jpg",
+      "/asset/tik 4.jpg",
+      "/asset/tik 5.jpg",
+      "/asset/tik 6.jpg",
+      "/asset/tik 7.jpg"
+    ],
+    subtitles: [
+      "Interactive learning session with United Faith Tabernacle School students in Jarawan Kogi",
+      "Adolescent SGBV awareness and reproductive health empowerment circle",
+      "Students actively engaging in peer discussions on bodily autonomy and rights",
+      "Dedicated teachers collaborating with GICD facilitators to support the outreach",
+      "Lively Q&A segment reflecting the high curiosity and confidence of the students",
+      "Distributing SGBV advocacy materials and outlining critical care referral channels",
+      "Group keepsake emphasizing our shared commitment to safer, informed, and resilient futures"
+    ]
+  },
+  {
+    id: "act-parents-safeguarding",
+    title: "Safe Futures Project: Safeguarding Engagement with Parents & Caregivers",
+    tag: "Caregiver Sessions",
+    date: "December 14, 2025",
+    details: "On Friday, The Guardian Initiative for Community Development conducted a safeguarding-focused engagement with parents and caregivers in Angwan Rukuba community as part of the Safe Futures Project, reinforcing our commitment to informed consent and child protection. We engaged caregivers to clearly explain the purpose of the project, planned activities, expected benefits, and potential risks. Caregivers asked critical questions about our organizational practices and safety measures, which were openly addressed, helping to allay concerns and build trust. Participation was emphasized as voluntary, with transparency and respect guiding the process.\n\nAs an outcome of the engagement, GICD secured the full consent of all caregivers present to work with their children, strengthening our program acceptance and fostering community ownership. This aligns with our ongoing commitment to ethical practice, accountability, and building safer families and resilient communities through the Safe Futures Project.\n\n#ChildProtection #SafeguardingChildren #CommunityEngagement #EthicalPractice #SafeFuturesProject #plateaustatengos",
+    loc: "Angwan Rukuba Community, Jos, Plateau State",
+    images: [
+      "/asset/parent 1.jpg",
+      "/asset/parent 2.jpg",
+      "/asset/parent 3.jpg",
+      "/asset/parent 4.jpg",
+      "/asset/parent 5.jpg"
+    ],
+    subtitles: [
+      "GICD team facilitating the safeguarding-focused dialogue with Angwan Rukuba parents",
+      "Caregivers actively participating and discussing child rights, consent, and safety measures",
+      "Reviewing the Safe Futures Project objectives and transparently outlining proposed activities",
+      "Addressing caregivers' questions on organizational ethics and community safeguarding workflows",
+      "Securing formal caregiver consent forms to establish mutual collaboration and local ownership"
+    ]
+  },
+  {
+    id: "act-nnngo-capacity",
+    title: "GICD Selected for Nigeria Network of NGOs & TY Danjuma Foundation Capacity Training Program",
+    tag: "Honors & Certificates",
+    date: "June 12, 2026",
+    details: "The Guardian Initiative for Community Development -GICD is honored to be invited to participate in a two-phased capacity development programme which includes intensive training and mentorship for non-profits, led by Nigeria Network of NGOs with support from TY Danjuma Foundation.\n\nThe program targets non-profit founders, Executives and Senior Managers in Plateau State. Fortunately for us, this opportunity aligns strongly with our organizational capacity development needs and aspirations to strengthen leadership, governance and accountability systems for greater community impact.\n\nWe appreciate the TY Danjuma Foundation for funding this initiative and the Nigeria Network of NGOs for delivering such a valuable learning experience.\n\n#GICD #NigeriaNetworkofNGOs #TYDanjumaFoundation #NGOCapacityBuilding #NonprofitLeadership #SocialImpact #CommunityDevelopment #OrganizationalStrengthening #GoodGovernance #Accountability #DevelopmentSector #ImpactDriven #PlateauStateNGOs",
+    loc: "Plateau State, Nigeria",
+    images: [
+      "/asset/hon 1.jpg",
+      "/asset/hon 2.jpg",
+      "/asset/hon 3.jpg",
+      "/asset/hon 4.jpg",
+      "/asset/hon 5.jpg",
+      "/asset/hon 6.jpg",
+      "/asset/hon 7.jpg"
+    ],
+    subtitles: [
+      "GICD representatives participating in the Nigeria Network of NGOs capacity building kickoff",
+      "Intensive workshop on non-profit leadership, governance, and organizational planning",
+      "Deep-dive session focusing on transparent financial accountability systems",
+      "Mentorship circle connecting Plateau State NGO executives with domain specialists",
+      "GICD team leads reviewing strategic guidelines funded by the TY Danjuma Foundation",
+      "Distinguished delegates and non-profit founders sharing developmental best practices",
+      "Group photo of cohort participants in Plateau State eager for community-driven impact"
+    ]
+  },
+  {
+    id: "act-womensaffairs",
+    title: "Research Protocol Approved by Plateau State Ministry of Women Affairs",
+    tag: "Child Protection & Safeguarding",
+    date: "June 12, 2026",
+    details: "Laughs at Last! We are happy to complete a series of engagement with the Honorable Commissioner, Plateau State Ministry of Women Affairs and Social Development, as part of our preparatory activities for the launch of GICD’s Child Protection Assessment in select communities within Jos North. The Commissioner’s signing and approval of the Research Protocol signifies that the assessment will spotlight the critical knowledge gaps in the situation of children in these communities and serve as the corner stone for designing effective, evidence-based child protection interventions in the State. As a community-driven organization, GICD remains committed to advancing locally grounded research that amplifies the voices of children, families, and communities, ensuring that development initiatives are not only context-specific, but ethically responsive to the real situations on the ground. #ChildProtection #CommunityDevelopment #EvidenceBasedIntervention",
+    loc: "Ministry of Women Affairs, Jos",
+    images: [
+      "/asset/part a 1.jpg",
+      "/asset/part a 2.jpg"
+    ],
+    subtitles: [
+      "Honorable Commissioner signing the Research Protocol for the Child Protection Assessment",
+      "GICD delegates presenting preparatory roadmap and strategic milestones inside the state ministry"
+    ]
+  },
+  {
+    id: "act-speaksout",
+    title: "GICD Speaks Out: Media Feature on Substance Abuse Crisis",
+    tag: "Media & Press Coverage",
+    date: "June 12, 2026",
+    details: "GICD Speaks Out! Our recent media feature exposes the alarming rise of substance abuse among adolescents in local schools and communities. A silent crisis demanding urgent attention. At GICD, we are committed to building safe communities for every child. #ChildProtection #YouthResilience #CommunityDevelopment",
+    loc: "Plateau State, Nigeria",
+    images: [],
+    subtitles: [],
+    externalLink: {
+      label: "Red alert: Young people hooked on hard drugs | ThisNigeria",
+      url: "https://thisnigeria.com"
+    }
+  },
+  {
+    id: "act-tudunwada",
+    title: "Safe Futures Project Design & Consultation with Tudun Wada Community",
+    tag: "Child Protection & Safeguarding",
+    date: "June 11, 2026",
+    details: "Protection for Every Child; Empowerment for Every Youth; Resilience for Every Community. Today, The Guardian Initiative for Community Development (GICD) is excited to share an inspiring step in our mission to protect and empower children and young people. Earlier today, we sat with the Sarkin Tudun Wada and his community leaders to consult and incorporate their insights into the design of The GICD Safe Futures Project, an initiative to engage and work with children and youth on their rights, support them to develop positive coping skills and the resilience to overcome socio-economic pressures leading to the twin menace of drug abuse & teenage pregnancy, as well as strengthen family and community support systems. The meeting was deeply interactive as community leaders raised critical questions on the legal status of GICD as an organization, the projects implementation approach, and the rationale for target group selection, while offering suggestions to project activities timing, effective ways to mobilize and engage community members, as well as expressed optimism on the success of the initiative. The communities openness to ask and discuss the tough questions today assures of readiness and commitment to take ownership and lead a change. Hope is not just rising, it is taking root in Tudun Wada. #GICD #SafeFuturesProject #ChildProtection #YouthEmpowerment #CommunityDevelopment",
+    loc: "Tudun Wada Community, Jos North",
+    images: [
+      "/asset/part b 1.jpg",
+      "/asset/part b 2.jpg",
+      "/asset/part b 3.jpg",
+      "/asset/part b 4.jpg",
+      "/asset/part b 5.jpg"
+    ],
+    subtitles: [
+      "Consultation circle with Sarkin Tudun Wada and senior community elders",
+      "Dialogue addressing organizational compliance of GICD as a registered NGO",
+      "Briefing community delegates on the youth drug prevention agenda",
+      "Tudun Wada leaders offering tactical scheduling suggestions for adolescent mobilization",
+      "Mutual commitment and handshake representing local project ownership and grassroots buy-in"
+    ]
+  },
+  {
+    id: "act-safeschools",
+    title: "Advocacy Alert: Urgent Call for School Protection and Safety",
+    tag: "Child Protection & Safeguarding",
+    date: "November 21, 2025",
+    details: "47 Unity schools closed Nation wide as Government Junior Model Secondary Schools (GJMSSs) are set to close effective Saturday, 22 November 2025 while Primary and Day Schools close effective Monday, 24 November 2025 in Plateau State. Insecurity is denying many Nigerian children their right to safe and quality education. We call on the government to take urgent preventative action to protect schools and ensure children can learn without fear. Our children deserve safe classrooms, not crises. #SafeSchoolsNow #ProtectOurChildren #RightToEducation",
+    loc: "Plateau State, Nigeria",
+    images: [
+      "/asset/part c 1.jpg"
+    ],
+    subtitles: [
+      "Advocacy representation emphasizing classroom security and the fundamental right to education"
+    ]
+  },
+  {
+    id: "act-volunteers",
+    title: "Call for Volunteers: Community Child & Adolescent Mentors",
+    tag: "Volunteer Opportunities",
+    date: "October 15, 2025",
+    details: "CALL FOR VOLUNTEERS! Are you passionate about Children and Community Development? The Guardian Initiative for Community Development (GICD) is looking for dedicated individuals to serve as Mentors to children and adolescents. Requirements: Prospective Volunteers must hold a BSc, HND, or ND certificate; must reside in the community; and must be of proven character and integrity verifiable by the community. No experience? No problem, training will be provided! Deadline: Thursday, 23rd October 2025. Apply via: gicdoperations@gmail.com or submit a hard-copy application letter at GICD Office: No 28A, Tafawa Balewa Street, Opp. United Baptist Church, Jos. Let's build a brighter future, together. #VolunteerOpportunity #GICD #AngwanRukuba #CommunityDevelopment #LifeSkills #Resilience #ChildProtection",
+    loc: "Angwan Rukuba Community, Jos North",
+    images: [
+      "/asset/vol 1.jpg",
+      "/asset/vol 2.jpg",
+      "/asset/vol 3.jpg"
+    ],
+    subtitles: [
+      "Mentors during the previous orientation and training sessions",
+      "Interactive focus group on adolescent trauma-informed guardianship",
+      "GICD team leads detailing field assignments in Jos"
+    ]
+  },
+  {
+    id: "act-safefutures",
+    title: "Safe Futures Project Launch & Ministry Sensitization",
+    tag: "Child Protection & Safeguarding",
+    date: "June 10, 2026",
+    details: "Hope is Rising in Angwan Rukuba Community! The Guardian Initiative for Community Development (GICD) is thrilled to share a new chapter in our mission to protect and empower young people. This week, we engaged with the Plateau State Ministry of Women Affairs and Social Development and key community stakeholders in Angwan Rukuba to set the stage for the launch of our Safe Futures Project, a bold initiative aimed at supporting adolescent boys and girls break free from drug use, prevent teenage pregnancy, and strengthen community and family support for every child. This collaboration is not just a meeting, it is the building blocks for safer, stronger, and more resilient communities across Plateau State. #GICD #SafeFuturesProject #ChildProtection #CommunityDevelopment",
+    loc: "Angwan Rukuba Community, Jos North",
+    images: [
+      "/asset/start 1.jpg",
+      "/asset/start 2.jpg",
+      "/asset/start 3.jpg"
+    ],
+    subtitles: [
+      "Sensitization meeting with ministry representatives and advisors",
+      "GICD management detailing Safe Futures core initiatives in Jos",
+      "Angwan Rukuba community delegates pledging strategic support"
     ]
   },
   {
@@ -216,7 +936,7 @@ interface VideoItem {
 }
 
 const VIDEOS_DATA: VideoItem[] = [
-  { id: "vid1", url: "/asset/vid 1.mp4", title: "Youth Leadership Workshop Highlights", desc: "Peer conflict management and life-skills exercises in Jos North.", duration: "0:45" },
+  { id: "vid1", url: "/asset/social vid.mp4", title: "Youth Leadership Workshop Highlights", desc: "Peer conflict management and life-skills exercises in Jos North.", duration: "0:45" },
   { id: "vid2", url: "/asset/vid 2.mp4", title: "Caregivers Circle Live Exchange", desc: "In-session sharing of single parenting challenges and community child support.", duration: "1:12" },
   { id: "vid3", url: "/asset/vid 3.mp4", title: "Back-to-School Distribution Joy", desc: "Children holding custom canvas bags, uniforms, and shoes with pride.", duration: "0:56" },
   { id: "vid4", url: "/asset/vid 4.mp4", title: "Coexistence Football Tournament Final", desc: "Youth penalty shootout action representing neighborhood team unity.", duration: "1:04" },
@@ -224,8 +944,14 @@ const VIDEOS_DATA: VideoItem[] = [
 ];
 
 export default function App() {
+  // View/Tab control: home, about, programs, activities, media, trustees, careers, contact, annual-report
+  const [view, setView] = useState<"home" | "about" | "programs" | "activities" | "media" | "trustees" | "careers" | "contact" | "annual-report">("home");
+
   // Mobile menu control
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Active page for the 2025 Annual Results Report
+  const [reportPage, setReportPage] = useState<number>(0);
 
   // Modal control states
   const [isDonateOpen, setIsDonateOpen] = useState(false);
@@ -308,6 +1034,9 @@ export default function App() {
 
   const activityTags = [
     "All", 
+    "Media & Press Coverage",
+    "Volunteer Opportunities",
+    "Child Protection & Safeguarding",
     "Coexistence Workshops", 
     "Caregiver Sessions", 
     "Education Support", 
@@ -334,26 +1063,31 @@ export default function App() {
 
       {/* SECTION 2 — DOCKABLE NAVIGATION HEADER */}
       <nav className="sticky top-0 bg-white/95 backdrop-blur-md z-40 border-b border-gray-100 shadow-sm px-6 py-3.5 flex justify-between items-center transition duration-200" id="gicd-navbar">
-        <a href="#gicd-app-root" className="flex items-center gap-3 active:scale-98 transition">
+        <button onClick={() => setView("home")} className="flex items-center gap-3 active:scale-98 transition text-left cursor-pointer bg-transparent border-0">
           <img src="/asset/logo.jpg" alt="GICD Logo" className="w-10 h-10 rounded-full bg-slate-50 border border-brand-yellow/30" />
           <div className="flex flex-col text-left">
             <span className="font-sans font-black tracking-tight text-brand-black text-xl leading-none uppercase">GUARDIAN INITIATIVE</span>
             <span className="text-[9px] text-gray-400 font-mono tracking-wide uppercase mt-0.5">FOR COMMUNITY DEVELOPMENT</span>
           </div>
-        </a>
+        </button>
 
         {/* Desktop Menu links */}
-        <div className="hidden lg:flex items-center gap-7 text-[#111111] font-sans font-semibold text-xs py-1">
-          <a href="#about" className="hover:text-amber-600 transition tracking-wide uppercase">About Us</a>
-          <a href="#programs" className="hover:text-amber-600 transition tracking-wide uppercase">Core Programs</a>
-          <a href="#activities" className="hover:text-amber-600 transition tracking-wide uppercase flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-brand-yellow fill-brand-yellow" />
-            <span>Field Activities</span>
-          </a>
-          <a href="#trustees" className="hover:text-amber-600 transition tracking-wide uppercase">Trustees & Team</a>
-          <a href="#video-hub" className="hover:text-amber-600 transition tracking-wide uppercase text-slate-800">Media Center</a>
-          <a href="#careers" className="hover:text-amber-600 transition tracking-wide uppercase">Careers</a>
-          <a href="#contact" className="hover:text-amber-600 transition tracking-wide uppercase text-slate-500">Contact</a>
+        <div className="hidden lg:flex items-center gap-6 text-[#111111] font-sans font-semibold text-xs py-1">
+          <button onClick={() => setView("home")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "home" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Home</button>
+          <button onClick={() => setView("about")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "about" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>About Us</button>
+          <button onClick={() => setView("programs")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "programs" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Core Programs</button>
+          <button onClick={() => setView("activities")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none flex items-center gap-1 ${view === "activities" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>
+            <Sparkles className="w-3.5 h-3.5 text-brand-yellow fill-brand-yellow shrink-0" />
+            <span>Activities</span>
+          </button>
+          <button onClick={() => setView("annual-report")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none flex items-center gap-1 ${view === "annual-report" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>
+            <AwardIcon className="w-3.5 h-3.5 text-brand-yellow" />
+            <span>2025 Results</span>
+          </button>
+          <button onClick={() => setView("media")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "media" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Media Center</button>
+          <button onClick={() => setView("trustees")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Board & Team</button>
+          <button onClick={() => setView("careers")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "careers" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Careers</button>
+          <button onClick={() => setView("contact")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "contact" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Contact</button>
         </div>
 
         {/* Call to action */}
@@ -361,7 +1095,7 @@ export default function App() {
           <button 
             type="button"
             onClick={openDonate}
-            className="px-5 py-2 bg-brand-yellow text-brand-black font-sans font-black text-xs uppercase tracking-wider rounded-full hover:brightness-105 transition active:scale-95 shadow-sm inline-flex items-center gap-1.5"
+            className="px-5 py-2 bg-brand-yellow text-brand-black font-sans font-black text-xs uppercase tracking-wider rounded-full hover:brightness-105 transition active:scale-95 shadow-sm inline-flex items-center gap-1.5 cursor-pointer"
             id="nav-donate-cta"
           >
             <span>Direct Support</span>
@@ -372,7 +1106,7 @@ export default function App() {
         {/* Mobile menu trigger button */}
         <button
           onClick={() => setMobileMenuOpen(prev => !prev)}
-          className="lg:hidden p-2 rounded-lg text-brand-black hover:bg-gray-100 transition focus:outline-none"
+          className="lg:hidden p-2 rounded-lg text-brand-black hover:bg-gray-100 transition focus:outline-none cursor-pointer"
           aria-label="Toggle navigation menu"
           id="nav-mobile-hamburger"
         >
@@ -382,56 +1116,62 @@ export default function App() {
         {/* Mobile menu overlay panel */}
         {mobileMenuOpen && (
           <div className="absolute top-full left-0 right-0 bg-white border-b border-gray-150 p-6 flex flex-col gap-4 shadow-xl z-50 lg:hidden animate-fade-in" id="mobile-menu-dropdown">
-            <a 
-              href="#about" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-brand-black hover:text-amber-600 py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider"
+            <button 
+              onClick={() => { setView("home"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "home" ? "text-amber-600" : "text-brand-black"}`}
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => { setView("about"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "about" ? "text-amber-600" : "text-brand-black"}`}
             >
               Who We Are
-            </a>
-            <a 
-              href="#programs" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-brand-black hover:text-amber-600 py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider"
+            </button>
+            <button 
+              onClick={() => { setView("programs"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "programs" ? "text-amber-600" : "text-brand-black"}`}
             >
               Core Programs
-            </a>
-            <a 
-              href="#activities" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-brand-black hover:text-amber-600 py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider flex items-center justify-between"
+            </button>
+            <button 
+              onClick={() => { setView("activities"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider flex items-center justify-between cursor-pointer bg-transparent border-none ${view === "activities" ? "text-amber-600" : "text-brand-black"}`}
             >
               <span>Field Activities</span>
               <span className="px-2 py-0.5 bg-[#F5C518] text-brand-black text-[9px] font-black rounded">NEW</span>
-            </a>
-            <a 
-              href="#trustees" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-brand-black hover:text-amber-600 py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider"
+            </button>
+            <button 
+              onClick={() => { setView("annual-report"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider flex items-center justify-between cursor-pointer bg-transparent border-none ${view === "annual-report" ? "text-amber-600" : "text-brand-black"}`}
+            >
+              <span>2025 Annual Results</span>
+              <span className="px-2 py-0.5 bg-brand-yellow text-brand-black text-[9px] font-black rounded font-bold">REPORT</span>
+            </button>
+            <button 
+              onClick={() => { setView("trustees"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600" : "text-brand-black"}`}
             >
               Trustees & Team
-            </a>
-            <a 
-              href="#video-hub" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-brand-black hover:text-amber-600 py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider"
+            </button>
+            <button 
+              onClick={() => { setView("media"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "media" ? "text-amber-600" : "text-brand-black"}`}
             >
               Media Center
-            </a>
-            <a 
-              href="#careers" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-brand-black hover:text-amber-600 py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider"
+            </button>
+            <button 
+              onClick={() => { setView("careers"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "careers" ? "text-amber-600" : "text-brand-black"}`}
             >
               Careers
-            </a>
-            <a 
-              href="#contact" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-bold text-brand-black hover:text-amber-600 py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider"
+            </button>
+            <button 
+              onClick={() => { setView("contact"); setMobileMenuOpen(false); }}
+              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "contact" ? "text-amber-600" : "text-brand-black"}`}
             >
               Contact Office
-            </a>
+            </button>
 
             <div className="grid grid-cols-2 gap-3 pt-3">
               <button 
@@ -453,668 +1193,1437 @@ export default function App() {
       </nav>
 
       {/* SECTION 3 — HERO STAGE WITH PARALLAX ACTION BACKDROP */}
-      <section 
-        className="relative min-h-[550px] lg:min-h-[660px] flex items-center bg-brand-black text-white relative select-none"
-        id="home-hero"
-      >
-        {/* Real photo background with subtle dark lens crop */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/asset/cover.jpg" 
-            alt="GICD Volunteer Field Outreach" 
-            className="w-full h-full object-cover object-top opacity-35"
-          />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
-          <div className="absolute inset-0 bg-brand-black/45" />
-        </div>
+      {view === "home" && (
+        <>
+          <section 
+            className="relative min-h-[550px] lg:min-h-[660px] flex items-center bg-brand-black text-white select-none"
+            id="home-hero"
+          >
+            {/* Ambient video background with image poster fallback */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              <video 
+                src="/asset/social vid.mp4" 
+                poster="/asset/cover.jpg"
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="w-full h-full object-cover object-top opacity-30"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+              <div className="absolute inset-0 bg-brand-black/45" />
+            </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
-          
-          <div className="space-y-8 flex flex-col items-center max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#F5C518]/10 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-xs tracking-widest uppercase font-black">
-              <span className="w-2 h-2 rounded-full bg-[#F5C518] animate-ping"></span>
-              Grassroots Impact in Plateau State
-            </span>
-            
-            <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center">
-              Empowering <span className="text-[#F5C518] block mt-1">Plateau Youths & Children</span>
-            </h1>
-            
-            <p className="text-sm sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl">
-              Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to sustainable community development, child protection, education, public health, and interreligious youth peacebuilding.
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
-              <button
-                type="button"
-                onClick={openDonate}
-                className="px-7 py-3.5 bg-brand-yellow hover:bg-brand-yellow/90 active:scale-95 transition font-sans font-black text-brand-black text-xs uppercase tracking-widest rounded-full shadow-lg cursor-pointer flex items-center gap-2"
-                id="hero-donate-btn"
-              >
-                <span>SUPPORT OUR CAUSE</span>
-                <Heart className="w-4 h-4 fill-brand-black" />
-              </button>
+            <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
               
-              <button
-                type="button"
-                onClick={openVolunteer}
-                className="px-7 py-3.5 bg-white/10 hover:bg-white/20 active:scale-95 transition font-sans font-black text-white text-xs uppercase tracking-widest rounded-full border border-white/20 cursor-pointer flex items-center gap-2"
-                id="hero-volunteer-btn"
-              >
-                <span>JOIN AS A VOLUNTEER</span>
-                <HelpingHand className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 4 — STAT COUNTERS STRIP */}
-      <section className="bg-brand-black py-10 border-y border-gray-900 select-none" id="gicd-quick-impact-stats">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {STATS_DATA.map((st) => (
-            <StatCounter 
-              key={st.id} 
-              targetNumber={st.number} 
-              suffix={st.suffix} 
-              label={st.label} 
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* SECTION 5 — CHRONOLOGY & FOCUS VALUES */}
-      <section className="py-20 bg-white" id="about">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            <div className="lg:col-span-7 space-y-8 text-left">
-              <div>
-                <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block mb-2">ABOUT US</span>
-                <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-tight mb-4">
-                  GUARDIAN INITIATIVE FOR <span className="text-brand-yellow block mt-1">COMMUNITY DEVELOPMENT</span>
-                </h2>
-                <div className="space-y-4 text-xs sm:text-sm text-gray-600 font-sans leading-relaxed">
-                  <p>
-                    The Guardian Initiative for Community Development (GICD) is a child-focused Nigerian charity that responds to and addresses humanitarian and development challenges affecting children. We strengthen protection systems, advance education and youth development, and improve the resilience of households and communities to achieve sustainable outcomes across both humanitarian and development contexts. We operate at the intersection of child protection, socio-economic empowerment, and the translation of global frameworks into meaningful grassroots outcomes.
-                  </p>
-                </div>
-              </div>
-
-              {/* Our Model Callout Block */}
-              <div className="p-5 sm:p-6 bg-slate-50 border-l-4 border-brand-yellow rounded-r-2xl space-y-2.5">
-                <span className="text-[10px] font-mono text-amber-700 tracking-widest uppercase font-bold block">OUR MODEL</span>
-                <h3 className="font-sans font-extrabold text-sm uppercase text-brand-black tracking-tight">
-                  Protection through Exposure
-                </h3>
-                <p className="text-xs text-gray-650 leading-relaxed font-sans">
-                  Our work is inspired by a persistent and widening gap; between learning and purpose, and between protection and the lived socio-economic realities of children, particularly in underserved communities. In these environments, curiosity, resilience, and talent often fade quietly, not from lack of potential, but from lack of intentional nurture and meaningful exposure. Young people follow the expected path through school, yet still arrive at adulthood unprepared; not because they failed, but because the system never fully revealed what was possible.
+              <div className="space-y-8 flex flex-col items-center max-w-3xl">
+                <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#F5C518]/10 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-xs tracking-widest uppercase font-black mx-auto">
+                  <span className="w-2 h-2 rounded-full bg-[#F5C518] animate-ping shrink-0"></span>
+                  Angwan Rukuba Community
+                </span>
+                
+                <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center">
+                  GUARDIAN INITIATIVE <span className="text-[#F5C518] block mt-1">FOR COMMUNITY DEVELOPMENT</span>
+                </h1>
+                
+                <p className="text-sm sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl">
+                  Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to sustainable community development, child protection, education, public health, and interreligious youth peacebuilding.
                 </p>
-                <p className="text-xs text-brand-black font-semibold leading-relaxed font-sans pt-1">
-                  We exist to intervene early and deliberately; to safeguard children, equip adolescents, and expand the worldview of young people. We see guided exposure as a form of protection, one that broadens perspective, strengthens decision-making, and inspire dreams.
-                </p>
-              </div>
 
-              {/* Vision and Mission Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 bg-gradient-to-br from-brand-black to-slate-900 text-white rounded-xl space-y-2 relative overflow-hidden border border-gray-900 shadow-md">
-                  <div className="absolute right-0 top-0 w-20 h-20 bg-brand-yellow/5 rounded-full filter blur-xl pointer-events-none" />
-                  <div className="flex items-center gap-2 text-brand-yellow">
-                    <Sparkles className="w-4 h-4 shrink-0" />
-                    <h4 className="font-bold text-xs uppercase tracking-wider">VISION</h4>
-                  </div>
-                  <p className="text-xs text-gray-300 leading-relaxed">
-                    A world where the safety of children, the potentials of youth, and the prosperity of communities is a lived reality.
-                  </p>
-                </div>
-
-                <div className="p-5 bg-gradient-to-br from-brand-black to-slate-900 text-white rounded-xl space-y-2 relative overflow-hidden border border-gray-900 shadow-md">
-                  <div className="absolute right-0 top-0 w-20 h-20 bg-brand-yellow/5 rounded-full filter blur-xl pointer-events-none" />
-                  <div className="flex items-center gap-2 text-brand-yellow">
-                    <Award className="w-4 h-4 shrink-0" />
-                    <h4 className="font-bold text-xs uppercase tracking-wider">MISSION</h4>
-                  </div>
-                  <p className="text-xs text-gray-300 leading-relaxed">
-                    To protect children’s rights, drive sustainable development, and build resilient communities through evidence-based approaches.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Premium action photos layout from the uploaded files */}
-            <div className="lg:col-span-5 grid grid-cols-12 gap-4">
-              <div className="col-span-7 space-y-4">
-                <div 
-                  className="h-56 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: "/asset/1.jpg", caption: "GICD fieldwork and adolescent life support forum" })}
-                >
-                  <img src="/asset/1.jpg" alt="Field session" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
-                    <span className="text-[10px] text-brand-yellow font-mono block">Field Session</span>
-                    <p className="text-[11px] text-white font-semibold line-clamp-1">Peer peacebuilding and coexistence workshops</p>
-                  </div>
-                </div>
-
-                <div 
-                  className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: "/asset/2.jpg", caption: "Direct maternal outreach and parent meetings" })}
-                >
-                  <img src="/asset/2.jpg" alt="Staff dialogue" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
-                    <span className="text-[10px] text-brand-yellow font-mono block">Outreach</span>
-                    <p className="text-[11px] text-white font-semibold line-clamp-1">Direct community engagement meetings</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-span-5 flex flex-col justify-between">
-                <div 
-                  className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                  onClick={() => setExpandedImage({ src: "/asset/3.jpg", caption: "Educator safety and child shielding audits" })}
-                >
-                  <img src="/asset/3.jpg" alt="Children support" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
-                    <span className="text-[10px] text-brand-yellow font-mono block">Interviews</span>
-                    <p className="text-[11px] text-white font-semibold line-clamp-1">NGO staff consulting stakeholders</p>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-brand-black to-slate-900 rounded-2xl p-4 text-left border border-brand-yellow/30 shadow-md">
-                  <Award className="w-7 h-7 text-[#F5C518]" />
-                  <h4 className="font-bold text-white text-xs mt-3 uppercase">CAC Registered</h4>
-                  <p className="text-[10px] text-gray-400 mt-1 leading-snug">
-                    Operating on robust frameworks approved by the Plateau state ministry of education.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 6 — CORE TRANSFORMATIVE PROGRAMS */}
-      <section className="py-20 bg-gray-50 border-y border-gray-100" id="programs">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">WHAT WE DO</span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-              GICD CORE PROGRAMS MATRIX
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-              We align our activities with global developmental criteria and standard national guidelines to ensure audited progress of each donor contribution.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-            {PROGRAMS_DATA.map((prog) => {
-              // Map icon string dynamically
-              const IconComp = (() => {
-                switch(prog.iconName) {
-                  case "ShieldCheck": return ShieldCheck;
-                  case "GraduationCap": return GraduationCap;
-                  case "HeartPulse": return HeartPulse;
-                  case "Briefcase": return Briefcase;
-                  case "Leaf": return Leaf;
-                  case "Users": return Users;
-                  case "Sprout": return Sprout;
-                  default: return Info;
-                }
-              })();
-
-              return (
-                <div 
-                  key={prog.id}
-                  className="bg-white p-6 rounded-2xl border border-gray-150 hover:border-brand-yellow transition duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
-                  id={`program-card-${prog.id}`}
-                >
-                  <div className="space-y-4">
-                    <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center border border-brand-yellow/30">
-                      <IconComp className="w-5 h-5 text-amber-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-sans font-extrabold text-sm uppercase text-brand-black tracking-tight">{prog.title}</h3>
-                      <p className="text-xs text-gray-500 leading-relaxed mt-2">{prog.description}</p>
-                    </div>
-                  </div>
+                <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
+                  <button
+                    type="button"
+                    onClick={openDonate}
+                    className="px-7 py-3.5 bg-brand-yellow hover:bg-brand-yellow/90 active:scale-95 transition font-sans font-black text-brand-black text-xs uppercase tracking-widest rounded-full shadow-lg cursor-pointer flex items-center gap-2"
+                    id="hero-donate-btn"
+                  >
+                    <span>SUPPORT OUR CAUSE</span>
+                    <Heart className="w-4 h-4 fill-brand-black" />
+                  </button>
                   
-                  <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between text-[11px] font-mono">
-                    <span className="text-gray-400">Target: Jos District</span>
+                  <button
+                    type="button"
+                    onClick={openVolunteer}
+                    className="px-7 py-3.5 bg-white/10 hover:bg-white/20 active:scale-95 transition font-sans font-black text-white text-xs uppercase tracking-widest rounded-full border border-white/20 cursor-pointer flex items-center gap-2"
+                    id="hero-volunteer-btn"
+                  >
+                    <span>JOIN AS A VOLUNTEER</span>
+                    <HelpingHand className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          {/* SECTION 4 — STAT COUNTERS STRIP */}
+          <section className="bg-brand-black py-10 border-y border-gray-900 select-none" id="gicd-quick-impact-stats">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+              {STATS_DATA.map((st) => (
+                <StatCounter 
+                  key={st.id} 
+                  targetNumber={st.number} 
+                  textValue={st.textValue}
+                  suffix={st.suffix} 
+                  label={st.label} 
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* HOME VIEW: focused, concise and modern */}
+          <div className="space-y-16 py-16 bg-white animate-fade-in" id="gicd-home-content">
+            {/* Core intro bento or cards */}
+            <div className="max-w-7xl mx-auto px-6 sm:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-6 space-y-6 text-left">
+                  <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block">WELCOME TO GICD</span>
+                  <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-tight">
+                    BUILDING SECURE AND RESILIENT <span className="text-[#F5C518]">COMMUNITIES</span>
+                  </h2>
+                  <p className="text-sm text-gray-600 font-sans leading-relaxed">
+                    We intervene early and deliberately to safeguard child rights, expand the worldview of young people on the Plateau, and empower caregivers through grassroots, evidence-driven initiatives.
+                  </p>
+                  <p className="text-sm text-gray-600 font-sans leading-relaxed">
+                    By translating global protection frameworks into meaningful local action, GICD ensures vulnerable children and families find sustainable safety, proper education support, and peer coexistence opportunities directly inside Angwan Rukuba and wider Jos North communities.
+                  </p>
+                  <div className="pt-2 flex flex-wrap gap-3">
                     <button 
-                      onClick={openDonate}
-                      className="text-amber-600 hover:text-amber-700 font-bold uppercase tracking-wider flex items-center gap-1 active:scale-95 transition"
+                      onClick={() => setView("about")} 
+                      className="px-5 py-2.5 bg-brand-black text-[#F5C518] rounded-xl font-sans font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-97 cursor-pointer border-none"
                     >
-                      <span>Support</span>
-                      <ChevronRight className="w-3 h-3" />
+                      Read Our Whole Story
+                    </button>
+                    <button 
+                      onClick={() => setView("programs")} 
+                      className="px-5 py-2.5 bg-slate-100 text-brand-black rounded-xl font-sans font-bold text-xs uppercase tracking-wider hover:bg-slate-200 active:scale-97 cursor-pointer border border-slate-200"
+                    >
+                      Explore Programs
                     </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
 
-        </div>
-      </section>
-
-      {/* SECTION 7 — INTERACTIVE RECENT FIELD ACTIVITIES AND LIVE PHOTOS */}
-      <section className="py-20 bg-white" id="activities">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">LIVE CHRONICLES</span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-              FIELD CHRONICLES & LIVE PHOTOS
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-              Below are the actual, un-edited photographs from our recent campaigns in Jos. Filter the activities to audit direct field photos and notes.
-            </p>
-          </div>
-
-          {/* Tab filtration tags */}
-          <div className="flex flex-wrap justify-center items-center gap-1.5 pt-2 select-none">
-            {activityTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => handleActivityClick(tag)}
-                className={`px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-wider font-mono uppercase border transition cursor-pointer ${
-                  activeActivityTag === tag 
-                    ? "bg-brand-black text-[#F5C518] border-brand-black shadow-md" 
-                    : "border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-400"
-                }`}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-
-          {/* Activities List */}
-          <div className="space-y-12 text-left pt-6 max-w-5xl mx-auto">
-            {filteredActivities.map((act) => (
-              <div 
-                key={act.id}
-                className="bg-gray-50 rounded-2xl border border-gray-150 p-6 sm:p-8 space-y-6 hover:shadow-md transition duration-300"
-                id={`activity-feed-${act.id}`}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-gray-200/60 pb-4">
-                  <div>
-                    <span className="px-2.5 py-0.5 bg-[#F5C518]/20 border border-[#F5C518]/30 rounded text-amber-700 font-mono text-[9px] uppercase tracking-wider font-extrabold mr-2">
-                      {act.tag}
-                    </span>
-                    <h3 className="font-sans font-black text-base sm:text-lg text-brand-black mt-2 leading-tight uppercase font-extrabold">
-                      {act.title}
-                    </h3>
+                <div className="lg:col-span-6 grid grid-cols-2 gap-4">
+                  <div 
+                    onClick={() => setView("about")}
+                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
+                  >
+                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">01</div>
+                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">WHO WE ARE</h3>
+                    <p className="text-xs text-gray-500 leading-normal font-sans">Learn how exposure serves as a powerful instrument of child protection.</p>
                   </div>
-                  <div className="flex flex-col text-slate-500 font-mono text-[10px] sm:text-right shrink-0">
-                    <span className="flex items-center sm:justify-end gap-1 font-semibold text-slate-800">
-                      <MapPin className="w-3.5 h-3.5 text-brand-yellow shrink-0" />
-                      {act.loc}
-                    </span>
-                    <span className="flex items-center sm:justify-end gap-1 mt-1 text-xs">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                      {act.date}
-                    </span>
+
+                  <div 
+                    onClick={() => setView("activities")}
+                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
+                  >
+                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">02</div>
+                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">LIVE ACTIVITIES</h3>
+                    <p className="text-xs text-gray-500 leading-normal font-sans">Browse certified, un-edited photographs from our recent campaigns.</p>
+                  </div>
+
+                  <div 
+                    onClick={() => setView("trustees")}
+                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
+                  >
+                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">03</div>
+                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">GOVERNANCE</h3>
+                    <p className="text-xs text-gray-500 leading-normal font-sans">Inspect our qualified board trustees, specialists, and implementation team.</p>
+                  </div>
+
+                  <div 
+                    onClick={() => setView("media")}
+                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
+                  >
+                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">04</div>
+                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">MEDIA CENTER</h3>
+                    <p className="text-xs text-gray-500 leading-normal font-sans">Play video reports of our live distributions and youth workshops.</p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <p className="text-xs text-gray-600 sm:text-sm font-sans leading-relaxed tracking-wide">
-                  {act.details}
+            {/* Micro Highlight section: Back-to-School or Child protective focus */}
+            <div className="bg-brand-black text-white relative py-12 select-none overflow-hidden">
+              <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: "url('/asset/cover.jpg')" }} />
+              <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-4">
+                <span className="text-[10px] font-mono text-[#F5C518] tracking-widest uppercase font-bold px-2 py-0.5 bg-[#F5C518]/10 rounded border border-[#F5C518]/20">CURRENT HIGH-IMPACT DRIVE</span>
+                <h3 className="font-sans font-black text-xl sm:text-2xl uppercase tracking-tight text-white leading-tight">Back-to-School Distribution in Jos North</h3>
+                <p className="text-xs sm:text-sm text-gray-300 max-w-2xl mx-auto leading-relaxed font-sans">
+                  We are actively distributing primary school uniforms, hand-crafted sandals, educational canvas bags, and notebooks to vulnerable boys and girls in cluster communities. Help us sustain zero drop-outs.
                 </p>
-
-                {/* Grid of actual photographs representing this event */}
-                <div>
-                  <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase mb-3">
-                    Verified Field Photos (Click to Enlarge)
-                  </span>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                    {act.images.map((imgSrc, imgIdx) => {
-                      const caption = act.subtitles[imgIdx] || `Field photo of ${act.title}`;
-                      return (
-                        <div
-                          key={imgSrc}
-                          onClick={() => setExpandedImage({ src: imgSrc, caption: caption })}
-                          className="group h-24 sm:h-28 rounded-xl overflow-hidden shadow-sm border border-gray-150 cursor-pointer relative bg-slate-100"
-                        >
-                          <img 
-                            src={imgSrc} 
-                            alt={caption} 
-                            className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                            <span className="text-white opacity-0 group-hover:opacity-100 text-[10px] font-mono border border-white/40 px-2 py-1 rounded bg-black/40">
-                              View
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 8 — REAL FIELD VIDEOS AND CAMPAIGNS CENTER */}
-      <section className="py-20 bg-brand-black border-y border-gray-950 text-white relative" id="video-hub">
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff04_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-[#F5C518] tracking-widest uppercase font-bold">MEDIA HUB</span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
-              FIELD VIDEO RECORDS
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-400 font-sans max-w-lg mx-auto leading-relaxed">
-              Nothing provides audits better than live records. Play clips of GICD project workshops and distributions compiled directly by our field communication leads in Jos.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-6xl mx-auto">
-            {VIDEOS_DATA.map((video) => (
-              <div 
-                key={video.id}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 flex flex-col justify-between space-y-4 hover:border-brand-yellow/30 transition"
-              >
-                {/* HTML5 video wrapper */}
-                <div className="relative rounded-xl overflow-hidden bg-black aspect-video border border-white/5 flex items-center justify-center shadow-lg group">
-                  <video 
-                    id={`player-${video.id}`}
-                    src={video.url} 
-                    className="w-full h-full object-cover"
-                    controls
-                    preload="none"
-                    onPlay={() => setActivePlayVideo(video.id)}
-                    onPause={() => { if (activePlayVideo === video.id) setActivePlayVideo(null); }}
-                  />
-                  {activePlayVideo !== video.id && (
-                    <div 
-                      onClick={() => {
-                        const vElem = document.getElementById(`player-${video.id}`) as HTMLVideoElement;
-                        if (vElem) vElem.play();
-                      }}
-                      className="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer hover:bg-black/50 transition duration-300"
-                    >
-                      <span className="w-12 h-12 bg-brand-yellow text-brand-black rounded-full flex items-center justify-center shadow-md border-2 border-white hover:scale-105 active:scale-95 transition">
-                        <Play className="w-5 h-5 fill-brand-black" />
-                      </span>
-                    </div>
-                  )}
-
-                  <span className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-brand-black/80 font-mono text-[9px] text-gray-300 rounded border border-white/10">
-                    {video.duration} Mins
-                  </span>
-                </div>
-
-                <div className="space-y-1">
-                  <span className="inline-flex items-center gap-1 text-[#F5C518] font-mono text-[8px] uppercase tracking-widest font-black">
-                    <Video className="w-3.5 h-3.5 text-[#F5C518]" />
-                    Live Record
-                  </span>
-                  <h4 className="font-sans font-bold text-xs uppercase text-white mt-1 leading-snug">{video.title}</h4>
-                  <p className="text-[11px] text-gray-400 leading-normal line-clamp-2 pr-2">{video.desc}</p>
+                <div className="pt-2">
+                  <button 
+                    onClick={openDonate}
+                    className="px-6 py-2 bg-brand-yellow text-brand-black font-sans font-black text-xs uppercase tracking-wider rounded-full hover:brightness-105 active:scale-95 shadow-md flex items-center gap-1.5 mx-auto cursor-pointer border-none"
+                  >
+                    <span>Support This Drive</span>
+                    <Heart className="w-3.5 h-3.5 fill-brand-black" />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 9 — BOARD TRUSTEES & LEADERS DIRECTORY */}
-      <section className="py-20 bg-white" id="trustees">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-16">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">STRENGTH IN STRUCTURE</span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-              TRUSTEES & BOARD COUNCIL
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-              A highly qualified board of specialists, journalists, religious delegates, and debt management directors ensuring high accountability.
-            </p>
-          </div>
-
-          {/* Grid of Trustees */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left">
-            {TRUSTEES_DATA.map((tr) => (
-              <div 
-                key={tr.id}
-                className="p-5 bg-gray-50 border border-gray-150 rounded-2xl hover:border-brand-yellow transition flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-black text-brand-yellow rounded-xl flex items-center justify-center font-sans font-black text-xs border border-brand-yellow/30">
-                      {tr.initials}
-                    </div>
-                    <div>
-                      <h4 className="font-sans font-bold text-xs uppercase text-brand-black leading-tight line-clamp-1">{tr.name}</h4>
-                      <p className="text-[10px] text-amber-600 font-mono font-semibold mt-0.5">{tr.role}</p>
-                    </div>
-                  </div>
-                  <p className="text-[11px] text-gray-500 leading-relaxed font-sans line-clamp-4">{tr.bio}</p>
-                </div>
-                
-                <div className="pt-3 mt-4 border-t border-gray-200/60 text-[9px] font-mono text-gray-400 uppercase tracking-wider">
-                  Board Trustee
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <hr className="border-gray-100 max-w-2xl mx-auto" />
-
-          {/* Management leaders strip */}
-          <div className="space-y-8">
-            <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
-              EXECUTIVE IMPLEMENTATION TEAM
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-              {TEAM_DATA.map((tm) => (
-                <div 
-                  key={tm.id}
-                  className="p-5 bg-[#111111] text-white border border-gray-900 rounded-2xl relative overflow-hidden"
-                >
-                  <div className="absolute right-0 top-0 opacity-10 font-bold font-sans text-xl text-brand-yellow mt-2 mr-2">
-                    GICD
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 bg-[#F5C518] text-[#111111] rounded-lg flex items-center justify-center font-black text-xs">
-                        {tm.initials}
-                      </div>
-                      <div>
-                        <h4 className="font-sans font-bold text-xs uppercase text-white leading-tight">{tm.name}</h4>
-                        <p className="text-[9px] text-[#F5C518] font-mono uppercase font-black">{tm.role}</p>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-gray-400 font-sans leading-relaxed line-clamp-3">{tm.bio}</p>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
+        </>
+      )}
 
-        </div>
-      </section>
-
-      {/* SECTION 10 — PORTFOLIO GALLERY ARCHIVE GRID */}
-      <section className="py-20 bg-gray-50 border-y border-gray-100" id="gallery">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">PHOTO ARCHIVE</span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-              PORTFOLIO ARCHIVE & TILES
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-              Explore past program events structured in gradients representing the photographic collections of medical outreach, trees, and youth counseling.
-            </p>
-          </div>
-
-          {/* Gallery categories tabs */}
-          <div className="flex flex-wrap justify-center items-center gap-1.5 pt-2 select-none">
-            {["All", "Education", "Health Outreach", "Economic Empowerment", "Environment", "Youth Development"].map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setGalleryFilter(cat)}
-                className={`px-3 py-1 bg-white hover:bg-gray-50 text-[10px] font-semibold tracking-wider font-mono uppercase border rounded-md transition cursor-pointer ${
-                  galleryFilter === cat 
-                    ? "border-brand-black text-brand-black bg-slate-100" 
-                    : "border-gray-200 text-gray-500"
-                }`}
+      {/* COMPACT PAGE HEADER STRIP FOR SUB-PAGES */}
+      {view !== "home" && (
+        <div className="bg-brand-black text-white py-12 border-b border-gray-900 select-none relative overflow-hidden" id="gicd-page-header">
+          <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="text-left">
+              <span className="text-[10px] font-mono text-[#F5C518] tracking-widest uppercase font-black">
+                Guardian Initiative For Community Development
+              </span>
+              <h1 className="font-sans font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mt-1 leading-none">
+                {view === "about" && "Who We Are"}
+                {view === "programs" && "GICD Core Programs"}
+                {view === "activities" && "Field Chronicles"}
+                {view === "media" && "Media Center"}
+                {view === "trustees" && "Board & Trustees"}
+                {view === "careers" && "Careers & Internships"}
+                {view === "contact" && "Geographic Coordinates"}
+                {view === "annual-report" && "2025 Annual Results Summary"}
+              </h1>
+            </div>
+            <div className="text-left">
+              <button 
+                onClick={() => setView("home")}
+                className="px-4 py-2 bg-[#F5C518] hover:bg-[#F5C518]/90 text-[#111111] font-sans font-black text-[10px] uppercase tracking-wider rounded-lg border-none transition cursor-pointer flex items-center gap-1 shadow-sm"
               >
-                {cat}
+                <span>← Back to Home</span>
               </button>
-            ))}
+            </div>
           </div>
+        </div>
+      )}
 
-          {/* Gallery Grids */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-left">
-            {GALLERY_DATA.filter((item) => galleryFilter === "All" || item.category === galleryFilter).map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setSelectedGalleryItem(item)}
-                className="group relative h-28 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition border border-gray-150 flex flex-col justify-between p-3.5"
-                style={{ background: item.gradient || "linear-gradient(135deg, #111 0%, #333 100%)" }}
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:12px_12px] opacity-60 pointer-events-none" />
-                
-                <span className="text-[8px] font-mono text-brand-yellow tracking-wider font-bold uppercase bg-brand-black/45 px-1.5 py-0.5 rounded self-start">
-                  {item.category}
-                </span>
-
+      {/* SECTION 5 — CHRONOLOGY & FOCUS VALUES */}
+      {view === "about" && (
+        <section className="py-20 bg-white shadow-sm" id="about">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              <div className="lg:col-span-7 space-y-8 text-left">
                 <div>
-                  <h4 className="text-white font-sans font-bold text-[11px] leading-snug tracking-tight line-clamp-2 drop-shadow-md">
-                    {item.title}
-                  </h4>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 11 — TESTIMONIALS */}
-      <section className="py-20 bg-white" id="testimonials">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">TESTIMONIES OF GRACE</span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-              VOICES FROM THE COMMUNITIES
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
-            {TESTIMONIALS_DATA.map((test) => (
-              <div 
-                key={test.id}
-                className="p-6 bg-gray-50 border border-gray-150 rounded-2xl flex flex-col justify-between space-y-4"
-              >
-                <p className="text-xs text-gray-650 leading-relaxed font-sans italic">
-                  &quot;{test.quote}&quot;
-                </p>
-                
-                <div className="flex justify-between items-center border-t border-gray-200/60 pt-4">
-                  <div>
-                    <h5 className="font-bold text-xs uppercase text-brand-black">{test.author}</h5>
-                    <p className="text-[10px] text-slate-500 font-mono">{test.role}</p>
-                  </div>
-                  <span className="text-[9px] text-[#F5C518] bg-brand-black px-1.5 py-0.5 font-bold font-mono rounded">
-                    {test.location}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 12 — CAREERS AND ROLES IN JOS */}
-      <section className="py-20 bg-gray-50 border-y border-gray-100" id="careers">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-          
-          <div className="space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black font-extrabold pb-1 block">CAREERS</span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-              GICD CAREER INTERNSHIPS
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 font-sans max-w-lg mx-auto leading-relaxed">
-              We seek certified, dedicated, and community-connected specialists in Jos. Join a verified team that delivers.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
-            {[
-              { id: "child_protection", title: "Child Protection Program Officer", type: "Full-Time", location: "Jos HQ, Plateau State", pay: "Competitive NGO Scale" },
-              { id: "education_facilitator", title: "Education Development Facilitator", type: "Contract", location: "Plateau Rural Districts", pay: "Contract Rate" },
-              { id: "me_specialist", title: "Monitoring & Evaluation Specialist", type: "Part-Time", location: "Jos / Remote Friendly", pay: "Pro-Rated Scale" }
-            ].map((position) => (
-              <div 
-                key={position.id}
-                className="bg-white p-5 rounded-2xl border border-gray-150 hover:border-brand-yellow/80 hover:shadow-md transition flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="px-2 py-0.5 bg-brand-black text-brand-yellow text-[9px] font-mono rounded font-bold uppercase tracking-wide">
-                      {position.type}
-                    </span>
-                    <span className="text-[10px] text-slate-400 font-mono">{position.pay}</span>
-                  </div>
-                  <div>
-                    <h3 className="font-sans font-bold text-sm text-brand-black uppercase leading-tight">{position.title}</h3>
-                    <p className="text-[10px] text-slate-500 font-mono mt-1 flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-brand-yellow" />
-                      {position.location}
+                  <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block mb-2">ABOUT US</span>
+                  <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-tight mb-4">
+                    GUARDIAN INITIATIVE FOR <span className="text-brand-yellow block mt-1">COMMUNITY DEVELOPMENT</span>
+                  </h2>
+                  <div className="space-y-4 text-xs sm:text-sm text-gray-600 font-sans leading-relaxed">
+                    <p>
+                      The Guardian Initiative for Community Development (GICD) is a child-focused Nigerian charity that responds to and addresses humanitarian and development challenges affecting children. We strengthen protection systems, advance education and youth development, and improve the resilience of households and communities to achieve sustainable outcomes across both humanitarian and development contexts. We operate at the intersection of child protection, socio-economic empowerment, and the translation of global frameworks into meaningful grassroots outcomes.
                     </p>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => openJobs(position.id)}
-                  className="w-full bg-slate-50 hover:bg-brand-yellow hover:text-brand-black transition text-brand-black font-bold uppercase tracking-wider text-[10px] py-2 rounded-lg text-center mt-5 cursor-pointer block border border-gray-150"
-                  id={`apply-btn-job-${position.id}`}
-                >
-                  Quick Apply
-                </button>
-              </div>
-            ))}
-          </div>
+                {/* Our Model Callout Block */}
+                <div className="p-5 sm:p-6 bg-slate-50 border-l-4 border-brand-yellow rounded-r-2xl space-y-2.5">
+                  <span className="text-[10px] font-mono text-amber-700 tracking-widest uppercase font-bold block">OUR MODEL</span>
+                  <h3 className="font-sans font-extrabold text-sm uppercase text-brand-black tracking-tight">
+                    Protection through Exposure
+                  </h3>
+                  <p className="text-xs text-gray-650 leading-relaxed font-sans">
+                    Our work is inspired by a persistent and widening gap; between learning and purpose, and between protection and the lived socio-economic realities of children, particularly in underserved communities. In these environments, curiosity, resilience, and talent often fade quietly, not from lack of potential, but from lack of intentional nurture and meaningful exposure. Young people follow the expected path through school, yet still arrive at adulthood unprepared; not because they failed, but because the system never fully revealed what was possible.
+                  </p>
+                  <p className="text-xs text-brand-black font-semibold leading-relaxed font-sans pt-1">
+                    We exist to intervene early and deliberately; to safeguard children, equip adolescents, and expand the worldview of young people. We see guided exposure as a form of protection, one that broadens perspective, strengthens decision-making, and inspire dreams.
+                  </p>
+                </div>
 
-        </div>
-      </section>
+                {/* Vision and Mission Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="p-5 bg-gradient-to-br from-brand-black to-slate-900 text-white rounded-xl space-y-2 relative overflow-hidden border border-gray-900 shadow-md">
+                    <div className="absolute right-0 top-0 w-20 h-20 bg-brand-yellow/5 rounded-full filter blur-xl pointer-events-none" />
+                    <div className="flex items-center gap-2 text-brand-yellow">
+                      <Sparkles className="w-4 h-4 shrink-0" />
+                      <h4 className="font-bold text-xs uppercase tracking-wider">VISION</h4>
+                    </div>
+                    <p className="text-xs text-gray-300 leading-relaxed">
+                      A world where the safety of children, the potentials of youth, and the prosperity of communities is a lived reality.
+                    </p>
+                  </div>
+
+                  <div className="p-5 bg-gradient-to-br from-brand-black to-slate-900 text-white rounded-xl space-y-2 relative overflow-hidden border border-gray-900 shadow-md">
+                    <div className="absolute right-0 top-0 w-20 h-20 bg-brand-yellow/5 rounded-full filter blur-xl pointer-events-none" />
+                    <div className="flex items-center gap-2 text-brand-yellow">
+                      <Award className="w-4 h-4 shrink-0" />
+                      <h4 className="font-bold text-xs uppercase tracking-wider">MISSION</h4>
+                    </div>
+                    <p className="text-xs text-gray-300 leading-relaxed">
+                      To protect children’s rights, drive sustainable development, and build resilient communities through evidence-based approaches.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Premium action photos layout from the uploaded files */}
+              <div className="lg:col-span-5 grid grid-cols-12 gap-4">
+                <div className="col-span-7 space-y-4">
+                  <div 
+                    className="h-56 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
+                    onClick={() => setExpandedImage({ src: "/asset/1.jpg", caption: "GICD fieldwork and adolescent life support forum" })}
+                  >
+                    <img src="/asset/1.jpg" alt="Field session" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
+                      <span className="text-[10px] text-brand-yellow font-mono block">Field Session</span>
+                      <p className="text-[11px] text-white font-semibold line-clamp-1">Peer peacebuilding and coexistence workshops</p>
+                    </div>
+                  </div>
+
+                  <div 
+                    className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
+                    onClick={() => setExpandedImage({ src: "/asset/2.jpg", caption: "Direct maternal outreach and parent meetings" })}
+                  >
+                    <img src="/asset/2.jpg" alt="Staff dialogue" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
+                      <span className="text-[10px] text-brand-yellow font-mono block">Outreach</span>
+                      <p className="text-[11px] text-white font-semibold line-clamp-1">Direct community engagement meetings</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-5 flex flex-col justify-between">
+                  <div 
+                    className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
+                    onClick={() => setExpandedImage({ src: "/asset/3.jpg", caption: "Educator safety and child shielding audits" })}
+                  >
+                    <img src="/asset/3.jpg" alt="Children support" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
+                      <span className="text-[10px] text-brand-yellow font-mono block">Interviews</span>
+                      <p className="text-[11px] text-white font-semibold line-clamp-1">NGO staff consulting stakeholders</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-brand-black to-slate-900 rounded-2xl p-4 text-left border border-brand-yellow/30 shadow-md">
+                    <Award className="w-7 h-7 text-[#F5C518]" />
+                    <h4 className="font-bold text-white text-xs mt-3 uppercase">CAC Registered</h4>
+                    <p className="text-[10px] text-gray-400 mt-1 leading-snug">
+                      Operating on robust frameworks approved by the Plateau state ministry of education.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 6 — CORE TRANSFORMATIVE PROGRAMS */}
+      {view === "programs" && (
+        <section className="py-20 bg-gray-50 border-y border-gray-100 shadow-sm animate-fade-in" id="programs">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+            
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">WHAT WE DO</span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
+                GICD CORE PROGRAMS MATRIX
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
+                We align our activities with global developmental criteria and standard national guidelines to ensure audited progress of each donor contribution.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+              {PROGRAMS_DATA.map((prog) => {
+                // Map icon string dynamically
+                const IconComp = (() => {
+                  switch(prog.iconName) {
+                    case "ShieldCheck": return ShieldCheck;
+                    case "GraduationCap": return GraduationCap;
+                    case "HeartPulse": return HeartPulse;
+                    case "Briefcase": return Briefcase;
+                    case "Leaf": return Leaf;
+                    case "Users": return Users;
+                    case "Sprout": return Sprout;
+                    default: return Info;
+                  }
+                })();
+
+                return (
+                  <div 
+                    key={prog.id}
+                    className="bg-white p-6 rounded-2xl border border-gray-150 hover:border-brand-yellow transition duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
+                    id={`program-card-${prog.id}`}
+                  >
+                    <div className="space-y-4">
+                      <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center border border-brand-yellow/30">
+                        <IconComp className="w-5 h-5 text-amber-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-sans font-extrabold text-sm uppercase text-brand-black tracking-tight">{prog.title}</h3>
+                        <p className="text-xs text-gray-500 leading-relaxed mt-2">{prog.description}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between text-[11px] font-mono">
+                      <span className="text-gray-400">Target: Jos District</span>
+                      <button 
+                        onClick={openDonate}
+                        className="text-amber-600 hover:text-amber-700 font-bold uppercase tracking-wider flex items-center gap-1 active:scale-95 transition bg-transparent border-0"
+                      >
+                        <span>Support</span>
+                        <ChevronRight className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 7 — INTERACTIVE RECENT FIELD ACTIVITIES AND LIVE PHOTOS */}
+      {view === "activities" && (
+        <section className="py-20 bg-white shadow-sm animate-fade-in" id="activities">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+            
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">LIVE CHRONICLES</span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
+                FIELD CHRONICLES & LIVE PHOTOS
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
+                Below are the actual, un-edited photographs from our recent campaigns in Jos. Filter the activities to audit direct field photos and notes.
+              </p>
+            </div>
+
+            {/* Tab filtration tags */}
+            <div className="flex flex-wrap justify-center items-center gap-1.5 pt-2 select-none">
+              {activityTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => handleActivityClick(tag)}
+                  className={`px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-wider font-mono uppercase border transition cursor-pointer ${
+                    activeActivityTag === tag 
+                      ? "bg-brand-black text-[#F5C518] border-brand-black shadow-md" 
+                      : "border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-400"
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+
+            {/* Activities List */}
+            <div className="space-y-12 text-left pt-6 max-w-5xl mx-auto">
+              {filteredActivities.map((act) => (
+                <div 
+                  key={act.id}
+                  className="bg-gray-50 rounded-2xl border border-gray-150 p-6 sm:p-8 space-y-6 hover:shadow-md transition duration-300"
+                  id={`activity-feed-${act.id}`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-gray-200/60 pb-4">
+                    <div>
+                      <span className="px-2.5 py-0.5 bg-[#F5C518]/20 border border-[#F5C518]/30 rounded text-amber-700 font-mono text-[9px] uppercase tracking-wider font-extrabold mr-2">
+                        {act.tag}
+                      </span>
+                      <h3 className="font-sans font-black text-base sm:text-lg text-brand-black mt-2 leading-tight uppercase font-extrabold text-left">
+                        {act.title}
+                      </h3>
+                    </div>
+                    <div className="flex flex-col text-slate-500 font-mono text-[10px] sm:text-right shrink-0 text-left">
+                      <span className="flex items-center sm:justify-end gap-1 font-semibold text-slate-800">
+                        <MapPin className="w-3.5 h-3.5 text-brand-yellow shrink-0" />
+                        {act.loc}
+                      </span>
+                      <span className="flex items-center sm:justify-end gap-1 mt-1 text-xs">
+                        <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                        {act.date}
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-gray-600 sm:text-sm font-sans leading-relaxed tracking-wide">
+                    {act.details}
+                  </p>
+
+                  {/* Press External Source Button if present */}
+                  {act.externalLink && (
+                    <div className="pt-1">
+                      <a 
+                        href={act.externalLink.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 bg-amber-50 border border-brand-yellow/40 hover:border-brand-yellow hover:bg-amber-100/50 text-amber-800 text-xs font-semibold rounded-xl transition duration-200"
+                        id={`external-link-${act.id}`}
+                      >
+                        <ExternalLink className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                        <span className="font-sans tracking-tight">
+                          Press Source: <span className="underline decoration-amber-500/50 hover:decoration-amber-600">{act.externalLink.label}</span>
+                        </span>
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Grid of actual photographs representing this event */}
+                  {act.images && act.images.length > 0 && (
+                    <div>
+                      <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase mb-3 text-left">
+                        Verified Field Photos (Click to Enlarge)
+                      </span>
+                      
+                      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                        {act.images.map((imgSrc, imgIdx) => {
+                          const caption = act.subtitles[imgIdx] || `Field photo of ${act.title}`;
+                          return (
+                            <div
+                              key={imgSrc}
+                              onClick={() => setExpandedImage({ src: imgSrc, caption: caption })}
+                              className="group h-24 sm:h-28 rounded-xl overflow-hidden shadow-sm border border-gray-150 cursor-pointer relative bg-slate-100"
+                            >
+                              <img 
+                                src={imgSrc} 
+                                alt={caption} 
+                                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                              />
+                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
+                                <span className="text-white opacity-0 group-hover:opacity-100 text-[10px] font-mono border border-white/40 px-2 py-1 rounded bg-black/40">
+                                  View
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Videos representing this event if any */}
+                  {act.videos && act.videos.length > 0 && (
+                    <div className="mt-4">
+                      <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase mb-3 text-left">
+                        Verified Field Video
+                      </span>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {act.videos.map((vidSrc, vidIdx) => {
+                          const caption = act.videoSubtitles?.[vidIdx] || `Field video of ${act.title}`;
+                          return (
+                            <div key={vidSrc} className="rounded-xl overflow-hidden border border-gray-150 shadow-sm bg-black max-w-lg">
+                              <video 
+                                src={vidSrc} 
+                                controls 
+                                className="w-full h-auto aspect-video object-cover"
+                                preload="metadata"
+                                playsInline
+                              />
+                              <div className="p-2.5 bg-white">
+                                <p className="text-[11px] text-slate-500 font-sans italic text-left leading-normal">
+                                  {caption}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 8 — REAL FIELD VIDEOS AND CAMPAIGNS CENTER */}
+      {view === "media" && (
+        <section className="py-20 bg-brand-black border-y border-gray-950 text-white relative animate-fade-in" id="video-hub">
+          <div className="absolute inset-0 bg-[radial-gradient(#ffffff04_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+          
+          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+            
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <span className="text-xs font-mono text-[#F5C518] tracking-widest uppercase font-bold">MEDIA HUB</span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
+                FIELD VIDEO RECORDS
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-400 font-sans max-w-lg mx-auto leading-relaxed">
+                Nothing provides audits better than live records. Play clips of GICD project workshops and distributions compiled directly by our field communication leads in Jos.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-6xl mx-auto">
+              {VIDEOS_DATA.map((video) => (
+                <div 
+                  key={video.id}
+                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 flex flex-col justify-between space-y-4 hover:border-brand-yellow/30 transition"
+                >
+                  {/* HTML5 video wrapper */}
+                  <div className="relative rounded-xl overflow-hidden bg-black aspect-video border border-white/5 flex items-center justify-center shadow-lg group">
+                    <video 
+                      id={`player-${video.id}`}
+                      src={video.url} 
+                      className="w-full h-full object-cover"
+                      controls
+                      preload="none"
+                      onPlay={() => setActivePlayVideo(video.id)}
+                      onPause={() => { if (activePlayVideo === video.id) setActivePlayVideo(null); }}
+                    />
+                    {activePlayVideo !== video.id && (
+                      <div 
+                        onClick={() => {
+                          const vElem = document.getElementById(`player-${video.id}`) as HTMLVideoElement;
+                          if (vElem) vElem.play();
+                        }}
+                        className="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer hover:bg-black/50 transition duration-300"
+                      >
+                        <span className="w-12 h-12 bg-brand-yellow text-brand-black rounded-full flex items-center justify-center shadow-md border-2 border-white hover:scale-105 active:scale-95 transition">
+                          <Play className="w-5 h-5 fill-brand-black" />
+                        </span>
+                      </div>
+                    )}
+
+                    <span className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-brand-black/80 font-mono text-[9px] text-gray-300 rounded border border-white/10">
+                      {video.duration} Mins
+                    </span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="inline-flex items-center gap-1 text-[#F5C518] font-mono text-[8px] uppercase tracking-widest font-black">
+                      <Video className="w-3.5 h-3.5 text-[#F5C518]" />
+                      Live Record
+                    </span>
+                    <h4 className="font-sans font-bold text-xs uppercase text-white mt-1 leading-snug">{video.title}</h4>
+                    <p className="text-[11px] text-gray-400 leading-normal line-clamp-2 pr-2">{video.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 9 — BOARD TRUSTEES & LEADERS DIRECTORY */}
+      {view === "trustees" && (
+        <section className="py-20 bg-white shadow-sm animate-fade-in" id="trustees">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-16">
+            
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">STRENGTH IN STRUCTURE</span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
+                TRUSTEES & BOARD COUNCIL
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
+                A highly qualified board of specialists, journalists, religious delegates, and debt management directors ensuring high accountability.
+              </p>
+            </div>
+
+            {/* Grid of Trustees */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left">
+              {TRUSTEES_DATA.map((tr) => (
+                <div 
+                  key={tr.id}
+                  className="p-5 bg-gray-50 border border-gray-150 rounded-2xl hover:border-brand-yellow transition flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-brand-black text-brand-yellow rounded-xl flex items-center justify-center font-sans font-black text-xs border border-brand-yellow/30">
+                        {tr.initials}
+                      </div>
+                      <div>
+                        <h4 className="font-sans font-bold text-xs uppercase text-brand-black leading-tight line-clamp-1">{tr.name}</h4>
+                        <p className="text-[10px] text-amber-600 font-mono font-semibold mt-0.5">{tr.role}</p>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-gray-500 leading-relaxed font-sans line-clamp-4">{tr.bio}</p>
+                  </div>
+                  
+                  <div className="pt-3 mt-4 border-t border-gray-200/60 text-[9px] font-mono text-gray-400 uppercase tracking-wider">
+                    Board Trustee
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <hr className="border-gray-100 max-w-2xl mx-auto" />
+
+            {/* Management leaders strip */}
+            <div className="space-y-8 text-center">
+              <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                EXECUTIVE IMPLEMENTATION TEAM
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+                {TEAM_DATA.map((tm) => (
+                  <div 
+                    key={tm.id}
+                    className="p-5 bg-[#111111] text-white border border-gray-900 rounded-2xl relative overflow-hidden"
+                  >
+                    <div className="absolute right-0 top-0 opacity-10 font-bold font-sans text-xl text-brand-yellow mt-2 mr-2">
+                      GICD
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 bg-[#F5C518] text-[#111111] rounded-lg flex items-center justify-center font-black text-xs">
+                          {tm.initials}
+                        </div>
+                        <div>
+                          <h4 className="font-sans font-bold text-xs uppercase text-white leading-tight">{tm.name}</h4>
+                          <p className="text-[9px] text-[#F5C518] font-mono uppercase font-black">{tm.role}</p>
+                        </div>
+                      </div>
+                      <p className="text-[11px] text-gray-400 font-sans leading-relaxed line-clamp-3">{tm.bio}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 10 — PORTFOLIO GALLERY ARCHIVE GRID */}
+      {view === "media" && (
+        <section className="py-20 bg-gray-50 border-y border-gray-100 shadow-sm animate-fade-in" id="gallery">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+            
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">PHOTO ARCHIVE</span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
+                PORTFOLIO ARCHIVE & TILES
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
+                Explore past program events structured in gradients representing the photographic collections of medical outreach, trees, and youth counseling.
+              </p>
+            </div>
+
+            {/* Gallery categories tabs */}
+            <div className="flex flex-wrap justify-center items-center gap-1.5 pt-2 select-none">
+              {["All", "Education", "Health Outreach", "Economic Empowerment", "Environment", "Youth Development"].map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setGalleryFilter(cat)}
+                  className={`px-3 py-1 bg-white hover:bg-gray-50 text-[10px] font-semibold tracking-wider font-mono uppercase border rounded-md transition cursor-pointer ${
+                    galleryFilter === cat 
+                      ? "border-brand-black text-brand-black bg-slate-100" 
+                      : "border-gray-200 text-gray-500"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Gallery Grids */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-left">
+              {GALLERY_DATA.filter((item) => galleryFilter === "All" || item.category === galleryFilter).map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => setSelectedGalleryItem(item)}
+                  className="group relative h-28 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition border border-gray-150 flex flex-col justify-between p-3.5"
+                  style={{ background: item.gradient || "linear-gradient(135deg, #111 0%, #333 100%)" }}
+                >
+                  <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:12px_12px] opacity-60 pointer-events-none" />
+                  
+                  <span className="text-[8px] font-mono text-brand-yellow tracking-wider font-bold uppercase bg-brand-black/45 px-1.5 py-0.5 rounded self-start">
+                    {item.category}
+                  </span>
+
+                  <div>
+                    <h4 className="text-white font-sans font-bold text-[11px] leading-snug tracking-tight line-clamp-2 drop-shadow-md">
+                      {item.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 11 — TESTIMONIALS */}
+      {view === "about" && (
+        <section className="py-20 bg-white shadow-sm animate-fade-in" id="testimonials">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+            
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">TESTIMONIES OF GRACE</span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight text-center leading-none">
+                VOICES FROM THE COMMUNITIES
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
+              {TESTIMONIALS_DATA.map((test) => (
+                <div 
+                  key={test.id}
+                  className="p-6 bg-gray-50 border border-gray-150 rounded-2xl flex flex-col justify-between space-y-4"
+                >
+                  <p className="text-xs text-gray-650 leading-relaxed font-sans italic">
+                    &quot;{test.quote}&quot;
+                  </p>
+                  
+                  <div className="flex justify-between items-center border-t border-gray-200/60 pt-4">
+                    <div>
+                      <h5 className="font-bold text-xs uppercase text-brand-black">{test.author}</h5>
+                      <p className="text-[10px] text-slate-500 font-mono">{test.role}</p>
+                    </div>
+                    <span className="text-[9px] text-[#F5C518] bg-brand-black px-1.5 py-0.5 font-bold font-mono rounded">
+                      {test.location}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 12 — CAREERS AND ROLES IN JOS */}
+      {view === "careers" && (
+        <section className="py-20 bg-gray-50 border-y border-gray-100 shadow-sm animate-fade-in" id="careers">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
+            
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black font-extrabold pb-1 block">CAREERS</span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
+                GICD CAREER INTERNSHIPS
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-sans max-w-lg mx-auto leading-relaxed">
+                We seek certified, dedicated, and community-connected specialists in Jos. Join a verified team that delivers.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+              {[
+                { id: "child_protection", title: "Child Protection Program Officer", type: "Full-Time", location: "Jos HQ, Plateau State", pay: "Competitive NGO Scale" },
+                { id: "education_facilitator", title: "Education Development Facilitator", type: "Contract", location: "Plateau Rural Districts", pay: "Contract Rate" },
+                { id: "me_specialist", title: "Monitoring & Evaluation Specialist", type: "Part-Time", location: "Jos / Remote Friendly", pay: "Pro-Rated Scale" }
+              ].map((position) => (
+                <div 
+                  key={position.id}
+                  className="bg-white p-5 rounded-2xl border border-gray-150 hover:border-brand-yellow/80 hover:shadow-md transition flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="px-2 py-0.5 bg-brand-black text-brand-yellow text-[9px] font-mono rounded font-bold uppercase tracking-wide">
+                        {position.type}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-mono">{position.pay}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-sans font-bold text-sm text-brand-black uppercase leading-tight">{position.title}</h3>
+                      <p className="text-[10px] text-slate-500 font-mono mt-1 flex items-center gap-1">
+                        <MapPin className="w-3 h-3 text-brand-yellow" />
+                        {position.location}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => openJobs(position.id)}
+                    className="w-full bg-slate-50 hover:bg-brand-yellow hover:text-brand-black transition text-brand-black font-bold uppercase tracking-wider text-[10px] py-2 rounded-lg text-center mt-5 cursor-pointer block border border-gray-150"
+                    id={`apply-btn-job-${position.id}`}
+                  >
+                    Quick Apply
+                  </button>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+      )}
 
       {/* SECTION 13 — SYMMETRICAL MARQUEE PARTNERS */}
-      <section className="py-12 bg-white" id="partners">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-6">
-          <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">SYMMETRICAL COLLABORATORS DIRECTORY</span>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 items-center">
-            {PARTNERS_DATA.map((partner, idx) => (
-              <div 
-                key={idx}
-                className="p-3 bg-gray-50 border border-gray-150 rounded-lg text-[10px] font-mono text-gray-600 uppercase tracking-wider font-semibold hover:border-brand-yellow/30 hover:bg-white transition flex items-center justify-center text-center leading-tight min-h-[46px]"
-              >
-                {partner.name}
-              </div>
-            ))}
-          </div>
+      {view === "home" && (
+        <section className="py-12 bg-white" id="partners">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-6">
+            <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase mb-1 block">SYMMETRICAL COLLABORATORS DIRECTORY</span>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 items-center">
+              {PARTNERS_DATA.map((partner, idx) => (
+                <div 
+                  key={idx}
+                  className="p-3 bg-gray-50 border border-gray-150 rounded-lg text-[10px] font-mono text-gray-600 uppercase tracking-wider font-semibold hover:border-brand-yellow/30 hover:bg-white transition flex items-center justify-center text-center leading-tight min-h-[46px]"
+                >
+                  {partner.name}
+                </div>
+              ))}
+            </div>
 
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 13.5 — DEDICATED CONTACT FORM BODY */}
+      {view === "contact" && (
+        <section className="py-20 bg-white shadow-sm animate-fade-in" id="contact-page">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              
+              {/* Coordinates & Location Details */}
+              <div className="lg:col-span-5 space-y-8 text-left">
+                <div>
+                  <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block mb-2">HEADQUARTERS</span>
+                  <h2 className="font-sans font-black text-2xl sm:text-3xl text-brand-black uppercase tracking-tight mb-4">
+                    VISIT OUR JOS OFFICE
+                  </h2>
+                  <p className="text-xs sm:text-sm text-gray-600 font-sans leading-relaxed">
+                    Guardian Initiative for Community Development is headquartered in Rayfield, Jos. We welcome stakeholders, local authority delegates, international monitors, and individual donors to review field logs, audit receipts, and discuss collaborative frameworks.
+                  </p>
+                </div>
+
+                <div className="space-y-4 font-mono text-xs text-slate-650 bg-slate-50 p-6 rounded-2xl border border-gray-150">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-sans font-bold text-slate-800 text-xs uppercase">Physical Coordinates</p>
+                      <p className="mt-1 leading-relaxed">Directly behind Federal Government College, Rayfield Road, Jos, Plateau State, Nigeria.</p>
+                    </div>
+                  </div>
+
+                  <hr className="border-gray-200 my-3" />
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-sans font-bold text-slate-800 text-xs uppercase">Electronic Inbox</p>
+                      <p className="mt-1 text-slate-900">info@gicdnigeria.org</p>
+                      <p className="text-gray-400">gicdnigeria@gmail.com</p>
+                    </div>
+                  </div>
+
+                  <hr className="border-gray-200 my-3" />
+
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-sans font-bold text-slate-800 text-xs uppercase">Direct Mobile Hotlines</p>
+                      <p className="mt-1 text-slate-900 font-black">+234 (0) 902 085 0040</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 bg-brand-black text-white rounded-2xl space-y-3">
+                  <h4 className="font-bold text-xs uppercase tracking-wide text-[#F5C518]">Accountability Guarantee</h4>
+                  <p className="text-[11px] text-gray-400 leading-relaxed font-sans">
+                    All GICD transactions are processed under certified national audits. Receipts, distribution lists, and field video validations are fully accessible to verification partners.
+                  </p>
+                </div>
+              </div>
+
+              {/* Contact Message Box */}
+              <div className="lg:col-span-7 bg-slate-50 p-6 sm:p-8 rounded-3xl border border-gray-150 text-left">
+                <span className="text-[10px] font-mono text-amber-700 tracking-widest uppercase font-bold block mb-1">DIRECT PORTAL</span>
+                <h3 className="font-sans font-black text-xl uppercase text-brand-black tracking-tight mb-4 text-left leading-none">
+                  Send an Official Inquiry
+                </h3>
+
+                <form onSubmit={handleContactSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-mono uppercase text-slate-400 font-bold">Your Name</label>
+                      <input 
+                        type="text" 
+                        required 
+                        placeholder="e.g. John Doe" 
+                        value={contactData.name}
+                        onChange={(e) => setContactData({ ...contactData, name: e.target.value })}
+                        className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-mono uppercase text-slate-400 font-bold">Your Email Address</label>
+                      <input 
+                        type="email" 
+                        required 
+                        placeholder="e.g. john@domain.com" 
+                        value={contactData.email}
+                        onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
+                        className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1 block md:text-left">
+                    <label className="text-[10px] font-mono uppercase text-slate-400 font-bold block text-left">WhatsApp or Phone (Optional)</label>
+                    <input 
+                      type="text" 
+                      placeholder="e.g. +234 902..." 
+                      value={contactData.phone}
+                      onChange={(e) => setContactData({ ...contactData, phone: e.target.value })}
+                      className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm"
+                    />
+                  </div>
+
+                  <div className="space-y-1 block md:text-left">
+                    <label className="text-[10px] font-mono uppercase text-slate-400 font-bold block text-left">Detailed Message</label>
+                    <textarea 
+                      required 
+                      rows={5} 
+                      placeholder="Specify if your request concerns direct field sponsorship, strategic partnerships, volunteer applications, or program auditing..." 
+                      value={contactData.message}
+                      onChange={(e) => setContactData({ ...contactData, message: e.target.value })}
+                      className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm resize-none"
+                    />
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    className="w-full sm:w-auto px-8 py-3 bg-brand-yellow hover:brightness-105 font-sans font-black text-brand-black text-xs uppercase tracking-wider rounded-lg transition active:scale-95 cursor-pointer block text-center border-none shadow-sm"
+                    id="contact-page-submit-btn"
+                  >
+                    Send Verified Message
+                  </button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 13.7 — INTERACTIVE ANNUAL REPORT VIEWER */}
+      {view === "annual-report" && (
+        <section className="py-16 bg-white min-h-[600px] animate-fade-in" id="annual-report-view">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8">
+            
+            {/* Narrative Intro */}
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black px-2.5 py-1 bg-amber-50 rounded-full border border-amber-200 inline-block mb-3">
+                Evidence-Based Progress Snapshot
+              </span>
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
+                2025 RESULTS SNAPSHOT
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500 font-sans leading-relaxed mt-2">
+                Review our Maiden Edition 2025 Annual Results Summary covering community child protection, technical education partnerships, reproductive safety, and financial stewardship.
+              </p>
+            </div>
+
+            {/* Main interactive window */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Left column: Sidebar Pagination Index */}
+              <div className="lg:col-span-4 space-y-2 order-2 lg:order-1 select-none">
+                <div className="p-4 bg-slate-50 border border-gray-150 rounded-2xl">
+                  <h4 className="font-sans font-bold text-xs text-brand-black uppercase tracking-wider mb-3 pb-2 border-b border-gray-200 text-left">
+                    REPORT SECTIONS
+                  </h4>
+                  <div className="space-y-1.5 text-left">
+                    {[
+                      { label: "0. Annual Report Cover", id: 0 },
+                      { label: "1. Executive Summary", id: 1 },
+                      { label: "2. Child Protection", id: 2 },
+                      { label: "3. Skills Development", id: 3 },
+                      { label: "4. Scholarship Support", id: 4 },
+                      { label: "5. GBV & Reproductive Health", id: 5 },
+                      { label: "6. Strategic Partnerships", id: 6 },
+                      { label: "7. Financial Snapshot", id: 7 }
+                    ].map((page) => (
+                      <button
+                        key={page.id}
+                        onClick={() => setReportPage(page.id)}
+                        className={`w-full text-left px-3.5 py-2.5 rounded-xl font-sans text-xs transition flex items-center justify-between cursor-pointer border-none bg-transparent ${
+                          reportPage === page.id
+                            ? "bg-[#F5C518] text-brand-black font-black font-extrabold shadow-sm"
+                            : "text-gray-600 hover:bg-gray-100 hover:text-brand-black font-medium"
+                        }`}
+                      >
+                        <span>{page.label}</span>
+                        {reportPage === page.id && <span className="w-1.5 h-1.5 rounded-full bg-brand-black shrink-0" />}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Quick link to contact for inquiries */}
+                <div className="p-5 bg-brand-black text-white rounded-2xl text-left border border-gray-800 space-y-3">
+                  <h5 className="font-bold text-xs text-[#F5C518] uppercase">Full Audit Verification</h5>
+                  <p className="text-[11px] text-gray-400 font-sans leading-relaxed">
+                    We provide raw invoices, volunteer time sheets, and localized video check points to institutional donors. Request full ledger access directly.
+                  </p>
+                  <button
+                    onClick={() => { setView("contact"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                    className="text-[10px] text-brand-black bg-[#F5C518] hover:bg-[#F5C518]/90 py-1.5 px-3 font-bold uppercase rounded-md tracking-wider border-none cursor-pointer transition"
+                  >
+                    Contact Audit Dept
+                  </button>
+                </div>
+              </div>
+
+              {/* Right column: Interactive slide preview and text description */}
+              <div className="lg:col-span-8 space-y-6 order-1 lg:order-2">
+                
+                {/* Slide Deck Area */}
+                <div className="bg-white border-2 border-brand-black/90 p-1 sm:p-2 rounded-3xl shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[410px]">
+                  
+                  {/* Slide Body Wrapper */}
+                  <div className="flex-1 p-4 sm:p-6 flex flex-col justify-center">
+                    {reportPage === 0 && (
+                      <div className="flex flex-col items-center justify-center text-center space-y-5 py-6 bg-amber-500/5 border border-[#F5C518]/25 rounded-2xl p-6 relative">
+                        <span className="text-[9px] font-mono text-amber-600 tracking-widest uppercase font-black px-2 py-0.5 bg-amber-50 rounded-full border border-amber-200 font-bold">
+                          Maiden Edition Report
+                        </span>
+                        <div className="space-y-2">
+                          <p className="font-mono text-[9px] text-[#111111] font-black tracking-widest bg-[#F5C518] px-2.5 py-0.5 inline-block rounded">
+                            EST. 2025 ANNUAL REPORT
+                          </p>
+                          <h3 className="font-sans font-black text-2xl sm:text-4xl text-brand-black uppercase tracking-tight mt-2 leading-none">
+                            GUARDIAN INITIATIVE FOR <span className="text-amber-600">COMMUNITY DEVELOPMENT</span>
+                          </h3>
+                          <p className="text-xs text-gray-400 font-sans tracking-wide mt-1 uppercase font-bold">
+                            JOS, PLATEAU STATE, NIGERIA
+                          </p>
+                        </div>
+                        <div className="pt-4 flex flex-wrap gap-3 items-center justify-center">
+                          <div className="text-center px-4 py-2 bg-white border border-gray-150 rounded-xl min-w-[100px] shadow-sm">
+                            <span className="font-mono font-black text-lg text-brand-black">613</span>
+                            <p className="text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Kids Reached</p>
+                          </div>
+                          <div className="text-center px-4 py-2 bg-white border border-gray-150 rounded-xl min-w-[100px] shadow-sm">
+                            <span className="font-mono font-black text-lg text-brand-black">32</span>
+                            <p className="text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Households</p>
+                          </div>
+                          <div className="text-center px-4 py-2 bg-white border border-gray-150 rounded-xl min-w-[100px] shadow-sm">
+                            <span className="font-mono font-black text-lg text-brand-black">$4,046</span>
+                            <p className="text-[9px] font-mono text-gray-400 uppercase tracking-tight mt-0.5 font-bold">Mobilized</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {reportPage === 1 && (
+                      <div className="space-y-5 text-left bg-gray-50 border border-gray-150 rounded-2xl p-6 flex flex-col justify-between">
+                        <div className="space-y-3">
+                          <h3 className="font-sans font-black text-base text-brand-black uppercase tracking-tight flex items-center gap-2">
+                            <span className="w-1.5 h-5 bg-[#F5C518] rounded-full inline-block" />
+                            Executive Summary & Strategy
+                          </h3>
+                          <p className="text-[11px] sm:text-xs text-gray-700 font-sans leading-relaxed">
+                            In 2025, GICD delivered robust community-based protection safeguards, back-to-school support, public health education, and alternative technical pathways.
+                          </p>
+                          <p className="text-[11px] sm:text-xs text-brand-black font-sans leading-relaxed font-semibold">
+                            Direct focus resolved critical vulnerability benchmarks for <strong>613 children</strong> (340 girls and 273 boys).
+                          </p>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-gray-200">
+                          <div className="p-3 bg-white border border-gray-150 rounded-xl">
+                            <span className="text-[8px] font-mono text-amber-600 block uppercase font-bold">RESOURCES MOBILIZED</span>
+                            <span className="font-mono font-black text-sm text-brand-black mt-1 block">$4,046 USD</span>
+                            <span className="text-[9px] text-gray-400 block leading-tight mt-0.5">1 Partner / 3 Private Donors</span>
+                          </div>
+                          <div className="p-3 bg-white border border-gray-150 rounded-xl">
+                            <span className="text-[8px] font-mono text-amber-600 block uppercase font-bold">POPULATION REACH</span>
+                            <span className="font-mono font-black text-sm text-brand-black mt-1 block">613 children</span>
+                            <span className="text-[9px] text-gray-400 block leading-tight mt-0.5">340 Girls / 273 Boys</span>
+                          </div>
+                          <div className="p-3 bg-white border border-gray-150 rounded-xl">
+                            <span className="text-[8px] font-mono text-amber-600 block uppercase font-bold">2026 PROJECTIONS</span>
+                            <span className="font-mono font-black text-rose-700 mt-1 block">$28,324 USD</span>
+                            <span className="text-[9px] text-gray-400 block leading-tight mt-0.5">Scope: 4,292 Vulnerable Kids</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {reportPage === 2 && (
+                      <div className="space-y-4 text-left bg-slate-50 border border-gray-150 rounded-2xl p-6">
+                        <span className="px-2 py-0.5 bg-[#F5C518]/10 text-amber-750 text-[9px] font-mono rounded border border-[#F5C518]/30 uppercase font-black inline-block">
+                          Household Engagement
+                        </span>
+                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                          Child Protection & Caregiver Safeguards
+                        </h3>
+                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                          We successfully mobilized caregivers from <strong>32 target households</strong> in high-density suburbs, facilitating interactive training sessions to recognize and preempt abuse risks.
+                        </p>
+                        <div className="p-3.5 bg-white border border-gray-150 rounded-xl flex items-start gap-3">
+                          <div className="w-8 h-8 rounded bg-amber-50 flex items-center justify-center shrink-0 border border-brand-yellow/30 mt-0.5">
+                            <ShieldCheck className="w-4 h-4 text-amber-600" />
+                          </div>
+                          <div>
+                            <h4 className="font-sans font-bold text-xs text-brand-black uppercase">Sustainable Parenting Practices</h4>
+                            <p className="text-[11px] text-gray-500 mt-0.5 leading-snug">
+                              Caregivers reported a direct transition from aggressive physical responses to communicative household guidance, fostering highly protective local environments.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {reportPage === 3 && (
+                      <div className="space-y-4 text-left bg-emerald-500/5 border border-emerald-150 rounded-2xl p-6">
+                        <div className="flex items-center justify-between flex-wrap gap-2">
+                          <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[9px] font-mono rounded border border-emerald-200 uppercase font-black">
+                            Skills Framework
+                          </span>
+                          <span className="text-[8px] text-emerald-800 font-bold uppercase tracking-wider">Plateau State</span>
+                        </div>
+                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                          Skills Development: Football Meets Tech
+                        </h3>
+                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                          GICD, in coordination with the <strong>Kavod Relief Initiative</strong>, pioneered digital skills and sports integration through "Goals for Skills" in Angwan Rukuba, engaging <strong>54 adolescents</strong> (23 girls, 31 boys).
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                          <div className="p-3 bg-white rounded-xl border border-emerald-100 flex flex-col justify-between">
+                            <span className="font-mono text-base font-black text-emerald-700 block">13 Beneficiaries</span>
+                            <span className="text-[10px] text-gray-500 font-sans mt-0.5 leading-snug font-medium">Graduated into advanced ICT mentorship and corporate internships.</span>
+                          </div>
+                          <div className="p-3 bg-white rounded-xl border border-emerald-100 flex flex-col justify-between">
+                            <span className="font-mono text-base font-black text-emerald-700 block">1 Professional Trial</span>
+                            <span className="text-[10px] text-gray-500 font-sans mt-0.5 leading-snug font-medium">One outstanding candidate secured a formal professional athletic career entry.</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {reportPage === 4 && (
+                      <div className="space-y-4 text-left bg-teal-500/5 border border-teal-155 rounded-2xl p-6">
+                        <span className="px-2 py-0.5 bg-teal-50 text-teal-700 text-[9px] font-mono rounded border border-teal-200 uppercase font-black inline-block">
+                          High School Continuation
+                        </span>
+                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                          Education: WAEC & JAMB Sponsorships
+                        </h3>
+                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                          With support from an esteemed private donor, GICD secured access to uninterrupted learning for <strong>16 orphans</strong> (11 girls, 5 boys) from vulnerable regional orphanages in Jos North and Jos East.
+                        </p>
+                        <div className="p-3.5 bg-white border border-teal-100 rounded-xl">
+                          <span className="text-[10.5px] font-mono text-teal-650 font-bold block mb-1 uppercase tracking-wide">Breaking Financial Dropout Cycles</span>
+                          <p className="text-[11px] text-gray-500 leading-relaxed font-sans mt-1">
+                            Full tuition coverage, curriculum materials, WAEC Exam clearances, and JAMB registration completed. Safeguarding secondary graduation and university pathways.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {reportPage === 5 && (
+                      <div className="space-y-4 text-left bg-rose-500/5 border border-rose-150 rounded-2xl p-6">
+                        <span className="px-2 py-0.5 bg-rose-50 text-rose-700 text-[9px] font-mono rounded border border-rose-200 uppercase font-black inline-block">
+                          Adolescent Safe Spaces
+                        </span>
+                        <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
+                          Reproductive Health & SGBV Prevention
+                        </h3>
+                        <p className="text-xs text-gray-700 font-sans leading-relaxed">
+                           Strengthened school protection and confidence by providing rights education and sexual-violence prevention strategies to <strong>543 children</strong> (306 girls, 237 boys).
+                        </p>
+                        <div className="p-3.5 bg-white border border-rose-100 rounded-xl flex items-center justify-between">
+                          <div>
+                            <span className="text-[9px] font-mono text-gray-400 block tracking-tight font-bold">INTERVENE POPULATION</span>
+                            <span className="font-mono font-bold text-rose-700 text-sm">543 High Schoolers</span>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-[10px] text-gray-500 block font-mono">306 Girls (56.3%)</span>
+                            <span className="text-[10px] text-gray-500 block font-mono">237 Boys (43.7%)</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {reportPage === 6 && (
+                      <div className="space-y-4 text-left bg-slate-900 text-slate-100 rounded-2xl p-6 relative overflow-hidden">
+                        <span className="px-2 py-0.5 bg-amber-400/15 text-[#F5C518] text-[9px] font-mono rounded border border-[#F5C518]/30 uppercase font-black inline-block">
+                          Strategic Alliance
+                        </span>
+                        <h3 className="font-sans font-black text-lg text-white uppercase tracking-tight mt-1">
+                          Formalizing Bilateral Agreements
+                        </h3>
+                        <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                           GICD executed a formal strategic partnership with <strong>Kavod Relief Initiative</strong>, scaling sport-driven digital training and mentoring modules.
+                        </p>
+                        <div className="p-3.5 bg-white/5 border border-white/10 rounded-xl text-xs space-y-1.5">
+                          <span className="text-[9px] text-[#F5C518] font-mono uppercase font-bold block">TARGET BLUEPRINT</span>
+                          <p className="text-slate-300 leading-relaxed text-[11px] font-sans">
+                            Expanding access to high-impact software literacy, sports-focused protective tracking, and employment options for over <strong>300 children</strong> in Plateau state.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    {reportPage === 7 && (
+                      <div className="space-y-4 text-left bg-gray-50 border border-gray-150 rounded-2xl p-6">
+                        <span className="px-2 py-0.5 bg-slate-100 text-slate-705 text-[9px] font-mono rounded border border-gray-205 uppercase font-black inline-block">
+                          Consolidated Ledger
+                        </span>
+                        <h3 className="font-sans font-black text-base text-brand-black uppercase tracking-tight">
+                          Stewardship Snapshot & Core Contacts
+                        </h3>
+                        <p className="text-xs text-gray-650 font-sans">
+                           GICD practices rigorous, localized funds integration across our operational pathways.
+                        </p>
+                        
+                        <div className="bg-white rounded-xl border border-gray-150 p-3.5 space-y-1.5 font-mono text-[10.5px]">
+                          <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                            <span className="text-gray-400">Total Funds Mobilized:</span>
+                            <span className="text-brand-black font-bold">$4,046 USD</span>
+                          </div>
+                          <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                            <span className="text-gray-400 font-sans">Education & Orphan Support:</span>
+                            <span className="text-emerald-700 font-bold">$1,630 USD</span>
+                          </div>
+                          <div className="flex justify-between border-b border-gray-100 pb-1.5">
+                            <span className="text-gray-400 font-sans">Sports & ICT Tech Mentorship:</span>
+                            <span className="text-emerald-700 font-bold">$1,206 USD</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-400 font-sans">SGBV School Prevention Outreach:</span>
+                            <span className="text-emerald-700 font-bold">$1,210 USD</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                  </div>
+
+                  {/* Slide Navigation footer */}
+                  <div className="bg-slate-50 border-t border-gray-150 px-4 py-3 sm:px-6 flex items-center justify-between rounded-b-2xl select-none">
+                    <button
+                      disabled={reportPage === 0}
+                      onClick={() => setReportPage((prev) => Math.max(0, prev - 1))}
+                      className={`flex items-center gap-1.5 font-sans font-bold text-[10px] uppercase tracking-wider py-1.5 px-3 rounded-lg border-0 transition ${
+                        reportPage === 0
+                          ? "text-gray-300 bg-gray-100 cursor-not-allowed"
+                          : "text-brand-black bg-white hover:bg-gray-100 cursor-pointer shadow-sm"
+                      }`}
+                    >
+                      <ArrowLeft className="w-3.5 h-3.5" />
+                      <span>Prev</span>
+                    </button>
+                    
+                    <div className="flex items-center gap-1">
+                      {[0, 1, 2, 3, 4, 5, 6, 7].map((num) => (
+                        <button
+                          key={num}
+                          onClick={() => setReportPage(num)}
+                          className={`w-2 h-2 rounded-full cursor-pointer border-none p-0 transition-all ${
+                            reportPage === num ? "bg-[#F5C518] w-5" : "bg-gray-200 hover:bg-gray-300"
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      disabled={reportPage === 7}
+                      onClick={() => setReportPage((prev) => Math.min(7, prev + 1))}
+                      className={`flex items-center gap-1.5 font-sans font-bold text-[10px] uppercase tracking-wider py-1.5 px-3 rounded-lg border-0 transition ${
+                        reportPage === 7
+                          ? "text-gray-300 bg-gray-100 cursor-not-allowed"
+                          : "text-brand-black bg-white hover:bg-gray-100 cursor-pointer shadow-sm"
+                      }`}
+                    >
+                      <span>Next</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                </div>
+
+                {/* Qualitative Narrative description column */}
+                <div className="p-6 bg-slate-50 border border-gray-150 rounded-2xl text-left space-y-4 animate-fade-in">
+                  <h4 className="font-sans font-extrabold text-xs uppercase text-brand-black tracking-wider flex items-center gap-1.5">
+                    <BookOpen className="w-4 h-4 text-amber-600" />
+                    <span>Qualitative Impact & Strategic Narrative</span>
+                  </h4>
+                  
+                  <div className="text-xs text-gray-650 leading-relaxed space-y-3 font-sans">
+                    {reportPage === 0 && (
+                      <>
+                        <p>
+                          This snapshot documents the foundational reach of the Guardian Initiative for Community Development (GICD) during our Maiden Edition 2025 results summary. Operating in the Rayfield/Angwan Rukuba sectors of Jos, Plateau State, we have prioritized localized interventions.
+                        </p>
+                        <p>
+                          Each milestone listed has been validated through on-the-ground volunteer coordination, ensuring secondary risk mitigation for youngsters in high-density suburban communities.
+                        </p>
+                      </>
+                    )}
+                    {reportPage === 1 && (
+                      <>
+                        <p>
+                          The 2025 financial period was characterized by deep economic transition across Northern Nigeria. High inflation and currency adjustment made schooling and youth basic support pathways increasingly volatile.
+                        </p>
+                        <p>
+                          By engaging caregivers inside communities, we maintained safe containment circles, preventing high school dropout and vulnerable adolescent vagrancy through our tailored activity streams.
+                        </p>
+                      </>
+                    )}
+                    {reportPage === 2 && (
+                      <>
+                        <p>
+                          Child safeguarding in high-density urban suburbs is traditionally limited by severe systemic isolation. Caregivers facing extreme household pressure are assisted through interactive focal parenting meetings.
+                        </p>
+                        <p>
+                          GICD led training for parents across 32 key households to act as localized protective networks, tracking and mitigating threats such as child labor, exploitation, and street vulnerabilities.
+                        </p>
+                      </>
+                    )}
+                    {reportPage === 3 && (
+                      <>
+                        <p>
+                          Our focal digital skills program, Goals for Skills - Football Meets Tech, successfully engaged 54 teenagers who were previously exposed to regional vagrancy. Modern technical skills were successfully introduced through this program.
+                        </p>
+                        <p>
+                          Thirteen participants demonstrated high proficiency and advanced to specialized ICT mentoring tracks, locking in local internships that provide sustainable pathways to digital employment.
+                        </p>
+                      </>
+                    )}
+                    {reportPage === 4 && (
+                      <>
+                        <p>
+                          Educational interruption amongst orphans typically happens due to high tertiary entry costs or final secondary registration fees.
+                        </p>
+                        <p>
+                          By covering tuition, WAEC examination fees, and JAMB registration for 16 orphans, we safeguarded secondary graduation and university pathways for gifted young minds in Plateau State schools.
+                        </p>
+                      </>
+                    )}
+                    {reportPage === 5 && (
+                      <>
+                        <p>
+                          Gender-Based Violence (SGBV) within peri-urban schools is catalyzed by deep cultural taboos. Adolescent girls are heavily exposed to reproductive health risks due to silence on body safety.
+                        </p>
+                        <p>
+                          By conducting school-wide learning events, GICD dismantled deep myths for 543 boys and girls, building confidence and providing direct, safe reporting hotlines to report harassment.
+                        </p>
+                      </>
+                    )}
+                    {reportPage === 6 && (
+                      <>
+                        <p>
+                          Our bilateral partnership with Kavod Relief Initiative serves as a shining template for collaborative impact. Sports discipline coupled with computer training enables rapid community integration.
+                        </p>
+                        <p>
+                          GICD delivers on-the-ground volunteer networks, local language facility, and validated child-welfare checks to maximize the value of each resource.
+                        </p>
+                      </>
+                    )}
+                    {reportPage === 7 && (
+                      <>
+                        <p>
+                          GICD maintains a rigorous zero-administrative-waste operational principle. Over 92% of mobilised resource contributions go directly to field assets, tuition, and school materials.
+                        </p>
+                        <p>
+                           For full audited ledgers, video checks, and partnership proposals for the 2026 phase ($28,324 budget target), please submit an official request to our admin team.
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+      )}
 
       {/* SECTION 14 — CONTACT & FOOTER BASE */}
       <footer className="bg-brand-black text-white pt-16 pb-8 border-t-4 border-[#F5C518] mt-auto select-none" id="contact">

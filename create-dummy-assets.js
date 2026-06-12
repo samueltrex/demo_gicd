@@ -21,6 +21,7 @@ const mp4Buffer = Buffer.from([
 
 const IMAGES = [
   "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
+  "start 1.jpg", "start 2.jpg", "start 3.jpg",
   "a.jpg", "b.jpg", "c.jpg", "d.jpg", "e.jpg", "f.jpg", "g.jpg",
   "care 1.jpg", "care 2.jpg", "care 3.jpg", "care 4.jpg", "care 5.jpg", "care 6.jpg",
   "conclude 1.jpg", "conclude 2.jpg", "conclude 3.jpg", "conclude 4.jpg",
@@ -47,7 +48,7 @@ const IMAGES = [
 ];
 
 const VIDEOS = [
-  "vid 1.mp4", "vid 2.mp4", "vid 3.mp4", "vid 4.mp4", "vid 5.mp4"
+  "vid 1.mp4", "vid 2.mp4", "vid 3.mp4", "vid 4.mp4", "vid 5.mp4", "social vid.mp4"
 ];
 
 let createdImages = 0;
