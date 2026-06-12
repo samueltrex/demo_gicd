@@ -1202,7 +1202,7 @@ export default function App() {
             {/* Ambient video background with image poster fallback */}
             <div className="absolute inset-0 z-0">
               <img
-                scr="/asset/cover.jpg"
+                src="/asset/cover.jpg"
                 className="w-full h-full object-cover object-top opacity-30"
               />
             </div>
