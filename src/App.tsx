@@ -963,6 +963,33 @@ export default function App() {
     "/asset/future 2.jpg",
     "/asset/hon 5.jpg"
   ];
+    // Mobile Touch Swipe Trackers for carousel
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchEndX(e.targetTouches[0].clientX); // initialize to avoid undefined behavior
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+    const diffX = touchStartX - touchEndX;
+    const minSwipeDistance = 40; // minimum distance to register a swipe in pixels
+    if (diffX > minSwipeDistance) {
+      // Swiped left -> Next slide
+      setHeroIndex((prev) => (prev + 1) % heroImages.length);
+    } else if (diffX < -minSwipeDistance) {
+      // Swiped right -> Prev slide
+      setHeroIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
 useEffect(() => {
     if (view !== "home") return;
     const interval = setInterval(() => {
@@ -1221,8 +1248,11 @@ useEffect(() => {
       {view === "home" && (
         <>
           <section 
-            className="relative min-h-[550px] lg:min-h-[660px] flex items-center bg-brand-black text-white select-none overflow-hidden group"
+            className="relative min-h-[460px] sm:min-h-[550px] lg:min-h-[660px] flex items-center bg-brand-black text-white select-none overflow-hidden group touch-pan-y"
             id="home-hero"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {/* Carousel images backdrop with smooth crossfade */}
             <div className="absolute inset-0 z-0">
@@ -1242,75 +1272,74 @@ useEffect(() => {
                 </div>
               ))}
               {/* Overlay shading to guarantee highly legible text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/60 to-brand-black/55 z-[1]" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/65 to-brand-black/60 z-[1]" />
             </div>
 
-            <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 w-full py-20 lg:py-32 text-center flex flex-col items-center justify-center">
-              
-              {/* Prev/Next arrows with subtle styling */}
+            {/* Prev/Next arrows with subtle styling (Hidden on cellular mobile view to bypass overlapping) */}
             <button
-                type="button"
-                onClick={() => setHeroIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-brand-black/50 hover:bg-[#F5C518] hover:text-brand-black text-white flex items-center justify-center transition border border-white/10 cursor-pointer z-25 opacity-0 group-hover:opacity-100 sm:opacity-80 focus:opacity-100"
-                aria-label="Previous slide"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-            
+              type="button"
+              onClick={() => setHeroIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-black/50 hover:bg-[#F5C518] hover:text-brand-black text-white hidden sm:flex items-center justify-center transition border border-white/10 cursor-pointer z-25 opacity-0 group-hover:opacity-100 sm:opacity-75 focus:opacity-100"
+              aria-label="Previous slide"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>            
                   <button
-                type="button"
-                onClick={() => setHeroIndex((prev) => (prev + 1) % heroImages.length)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-brand-black/50 hover:bg-[#F5C518] hover:text-brand-black text-white flex items-center justify-center transition border border-white/10 cursor-pointer z-25 opacity-0 group-hover:opacity-100 sm:opacity-80 focus:opacity-100"
-                aria-label="Next slide"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </button>              
-               
-              <div className="space-y-8 flex flex-col items-center max-w-3xl">
-                <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#F5C518]/10 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-xs tracking-widest uppercase font-black mx-auto">
-                  <span className="w-2 h-2 rounded-full bg-[#F5C518] animate-ping shrink-0"></span>
+              type="button"
+              onClick={() => setHeroIndex((prev) => (prev + 1) % heroImages.length)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-black/50 hover:bg-[#F5C518] hover:text-brand-black text-white hidden sm:flex items-center justify-center transition border border-white/10 cursor-pointer z-25 opacity-0 group-hover:opacity-100 sm:opacity-75 focus:opacity-100"
+              aria-label="Next slide"
+            >
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+
+            <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 w-full py-12 sm:py-20 lg:py-32 text-center flex flex-col items-center justify-center">
+
+              <div className="space-y-5 sm:space-y-8 flex flex-col items-center max-w-3xl">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#F5C518]/10 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-[10px] sm:text-xs tracking-wider sm:tracking-widest uppercase font-black mx-auto">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#F5C518] animate-ping shrink-0"></span>
                   Angwan Rukuba Community
                 </span>
                 
-                <h1 className="font-sans font-black text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center">
-                  GUARDIAN INITIATIVE <span className="text-[#F5C518] block mt-1">FOR COMMUNITY DEVELOPMENT</span>
+                <h1 className="font-sans font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center px-2">
+                  GUARDIAN INITIATIVE <span className="text-[#F5C518] sm:block sm:mt-1">FOR COMMUNITY DEVELOPMENT</span>
                 </h1>
                 
-                <p className="text-sm sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl">
+                <p className="text-xs sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl px-3">
                   Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to sustainable community development, child protection, education, public health, and interreligious youth peacebuilding.
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
                   <button
                     type="button"
                     onClick={openDonate}
-                    className="px-7 py-3.5 bg-brand-yellow hover:bg-brand-yellow/90 active:scale-95 transition font-sans font-black text-brand-black text-xs uppercase tracking-widest rounded-full shadow-lg cursor-pointer flex items-center gap-2"
+                    className="px-5 py-3 sm:px-7 sm:py-3.5 bg-brand-yellow hover:bg-brand-yellow/90 active:scale-95 transition font-sans font-black text-brand-black text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest rounded-full shadow-lg cursor-pointer flex items-center gap-1.5 sm:gap-2"
                     id="hero-donate-btn"
                   >
                     <span>SUPPORT OUR CAUSE</span>
-                    <Heart className="w-4 h-4 fill-brand-black" />
+                    <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-brand-black" />
                   </button>
                   
                   <button
                     type="button"
                     onClick={openVolunteer}
-                    className="px-7 py-3.5 bg-white/10 hover:bg-white/20 active:scale-95 transition font-sans font-black text-white text-xs uppercase tracking-widest rounded-full border border-white/20 cursor-pointer flex items-center gap-2"
+                    className="px-5 py-3 sm:px-7 sm:py-3.5 bg-white/10 hover:bg-white/20 active:scale-95 transition font-sans font-black text-white text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest rounded-full border border-white/20 cursor-pointer flex items-center gap-1.5 sm:gap-2"
                     id="hero-volunteer-btn"
                   >
                     <span>JOIN AS A VOLUNTEER</span>
-                    <HelpingHand className="w-4 h-4" />
+                    <HelpingHand className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </button>
                 </div>
               </div>
            {/* Slider indicator dots */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-20">
                 {heroImages.map((_, dotIdx) => (
                   <button
                     key={dotIdx}
                     type="button"
                     onClick={() => setHeroIndex(dotIdx)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer border-0 p-0 ${
-                      dotIdx === heroIndex ? "bg-[#F5C518] w-7" : "bg-white/30 hover:bg-white/50"
+                    className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all cursor-pointer border-0 p-0 ${
+                      dotIdx === heroIndex ? "bg-[#F5C518] w-5 sm:w-7" : "bg-white/30 hover:bg-white/50"
                     }`}
                     aria-label={`Go to slide ${dotIdx + 1}`}
                   />
