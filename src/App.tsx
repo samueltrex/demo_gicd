@@ -1201,13 +1201,8 @@ export default function App() {
           >
             {/* Ambient video background with image poster fallback */}
             <div className="absolute inset-0 z-0 overflow-hidden">
-              <video 
-                src="/asset/social vid.mp4" 
-                poster="/asset/cover.jpg"
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
+              <img
+                scr="/asset/cover.jpg"
                 className="w-full h-full object-cover object-top opacity-30"
               />
               <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
