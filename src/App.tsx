@@ -1200,12 +1200,12 @@ export default function App() {
             id="home-hero"
           >
             {/* Ambient video background with image poster fallback */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
+            <div className="absolute inset-0 z-0">
               <img
                 scr="/asset/cover.jpg"
                 className="w-full h-full object-cover object-top opacity-30"
               />
-              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-40 " />
               <div className="absolute inset-0 bg-brand-black/45" />
             </div>
 
