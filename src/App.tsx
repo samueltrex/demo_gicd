@@ -957,11 +957,11 @@ export default function App() {
   // Hero Carousel Index State and automated transitions
   const [heroIndex, setHeroIndex] = useState(0);
   const heroImages = [
-    "/asset/1.jpg",
-    "/asset/2.jpg",
-    "/asset/3.jpg",
-    "/asset/4.jpg",
-    "/asset/5.jpg"
+    "/asset/cover.jpg",
+    "/asset/match 18.jpg",
+    "/asset/new 1.jpg",
+    "/asset/future 2.jpg",
+    "/asset/hon 5.jpg"
   ];
 useEffect(() => {
     if (view !== "home") return;
