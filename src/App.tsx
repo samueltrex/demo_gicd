@@ -1338,7 +1338,7 @@ export default function App() {
 
             {/* Micro Highlight section: Back-to-School or Child protective focus */}
             <div className="bg-brand-black text-white relative py-12 select-none overflow-hidden">
-              <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: "url('/asset/cover.jpg')" }} />
+              <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: "url('/asset/tik 2.jpg')" }} />
               <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-4">
                 <span className="text-[10px] font-mono text-[#F5C518] tracking-widest uppercase font-bold px-2 py-0.5 bg-[#F5C518]/10 rounded border border-[#F5C518]/20">CURRENT HIGH-IMPACT DRIVE</span>
                 <h3 className="font-sans font-black text-xl sm:text-2xl uppercase tracking-tight text-white leading-tight">Back-to-School Distribution in Jos North</h3>
@@ -1942,7 +1942,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
             
             <div className="space-y-4 max-w-2xl mx-auto">
-              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">TESTIMONIES OF GRACE</span>
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">TESTIMONIES</span>
               <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight text-center leading-none">
                 VOICES FROM THE COMMUNITIES
               </h2>
