@@ -1106,8 +1106,6 @@ useEffect(() => {
           <span>Plateau CAC Reg NO: CAC/IT/NO/141566</span>
         </div>
         <div className="hidden sm:flex items-center gap-4">
-          <span>Head Office: Rayfield, Jos, Nigeria</span>
-          <span>•</span>
           <span>Email: info@gicdnigeria.org</span>
         </div>
       </div>
@@ -2133,7 +2131,7 @@ useEffect(() => {
                     VISIT OUR JOS OFFICE
                   </h2>
                   <p className="text-xs sm:text-sm text-gray-600 font-sans leading-relaxed">
-                    Guardian Initiative for Community Development is headquartered in Rayfield, Jos. We welcome stakeholders, local authority delegates, international monitors, and individual donors to review field logs, audit receipts, and discuss collaborative frameworks.
+                    Guardian Initiative for Community Development is headquartered in Jos, Plateau State. We welcome stakeholders, local authority delegates, international monitors, and individual donors to review field logs, audit receipts, and discuss collaborative frameworks.
                   </p>
                 </div>
 
@@ -2142,7 +2140,7 @@ useEffect(() => {
                     <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-sans font-bold text-slate-800 text-xs uppercase">Physical Coordinates</p>
-                      <p className="mt-1 leading-relaxed">Directly behind Federal Government College, Rayfield Road, Jos, Plateau State, Nigeria.</p>
+                      <p className="mt-1 leading-relaxed">No. 28A Tafawa Balewa Street, Opp United Baptist Church Jos, Plateau State., Jos, Nigeria</p>
                     </div>
                   </div>
 
@@ -2600,7 +2598,7 @@ useEffect(() => {
                     {reportPage === 0 && (
                       <>
                         <p>
-                          This snapshot documents the foundational reach of the Guardian Initiative for Community Development (GICD) during our Maiden Edition 2025 results summary. Operating in the Rayfield/Angwan Rukuba sectors of Jos, Plateau State, we have prioritized localized interventions.
+                          This snapshot documents the foundational reach of the Guardian Initiative for Community Development (GICD) during our Maiden Edition 2025 results summary. Operating in the Angwan Rukuba sectors of Jos, Plateau State, we have prioritized localized interventions.
                         </p>
                         <p>
                           Each milestone listed has been validated through on-the-ground volunteer coordination, ensuring secondary risk mitigation for youngsters in high-density suburban communities.
@@ -2791,7 +2789,7 @@ useEffect(() => {
 
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[10px] font-mono gap-4 text-center md:text-left">
             <p>© {new Date().getFullYear()} Guardian Initiative for Community Development (GICD). Registered under laws of Nigeria.</p>
-            <p>Rayfield Office, Jos, Plateau State, Nigeria | CAC IT/NO/141566</p>
+            <p>No. 28A Tafawa Balewa Street, Opp United Baptist Church Jos, Plateau State., Jos, Nigeria | CAC IT/NO/141566</p>
           </div>
 
         </div>
