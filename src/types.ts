@@ -189,24 +189,10 @@ export const GALLERY_DATA: GalleryItem[] = [
 export const TESTIMONIALS_DATA: TestimonialItem[] = [
   {
     id: "test1",
-    quote: "GICD changed my daughter's life. Because of their writing materials and high school scholarship, she is now the first child in our family to study at the University of Jos. We are forever grateful.",
-    author: "Mama Ngozi",
-    role: "Beneficiary Parent",
-    location: "Angwan Rogo, Jos"
-  },
-  {
-    id: "test2",
-    quote: "Volunteering with the GICD medical outreach in Plateau communities opened my eyes to the real challenges in our neighborhood. The leadership's structure and absolute execution are truly transformational.",
-    author: "Ibrahim Musa",
-    role: "Volunteer Pharmacist",
-    location: "Rayfield, Jos"
-  },
-  {
-    id: "test3",
-    quote: "As an international development auditor, we value rigorous compliance and clear progress data. GICD's financial stewardship and grassroots reach represent a shining model for West African NGOs.",
-    author: "Grace Adebayo",
-    role: "Partner Organization Representative",
-    location: "Abuja Office"
+    quote: "Today we spotlight the action of a generous donor, on whose request we visited two orphanages in Jos East and Jos North to extend care, promote dignity of life and encouragement to the children.\n\nOn the donor's goodwill we delivered food items that ensured the children could go to bed with warm stomachs, strengthened bodies, and a renewed sense of dignity. For many of them, having enough to eat is not just about nutrition, it is about feeling cared for.\n\nWAEC and JAMB registrations of 16 boys and girls, were also covered, removing a major financial barrier that often limits the chances of children from low income backgrounds to beat illiteracy. This scholarship allows them to complete their secondary education and places them on the vantage position to pursue higher learning.\n\n\"Aunty, we are speechless… we won’t fail you,” they said.",
+    author: "Community Goodwill Mission",
+    role: "Spotlight Orphanage Outreach",
+    location: "Jos East & North"
   }
 ];
 
