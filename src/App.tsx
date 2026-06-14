@@ -38,7 +38,6 @@ import {
 import { 
   PROGRAMS_DATA, 
   STATS_DATA, 
-  TEAM_DATA, 
   TRUSTEES_DATA,
   GALLERY_DATA, 
   TESTIMONIALS_DATA, 
@@ -1137,7 +1136,7 @@ useEffect(() => {
             <span>2025 Results</span>
           </button>
           <button onClick={() => setView("media")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "media" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Media Center</button>
-          <button onClick={() => setView("trustees")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Board & Team</button>
+          <button onClick={() => setView("trustees")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Board of Trustees</button>
           <button onClick={() => setView("careers")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "careers" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Careers</button>
           <button onClick={() => setView("contact")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "contact" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Contact</button>
         </div>
@@ -1204,7 +1203,7 @@ useEffect(() => {
               onClick={() => { setView("trustees"); setMobileMenuOpen(false); }}
               className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600" : "text-brand-black"}`}
             >
-              Trustees & Team
+              Board of Trustees
             </button>
             <button 
               onClick={() => { setView("media"); setMobileMenuOpen(false); }}
@@ -1420,7 +1419,7 @@ useEffect(() => {
                   >
                     <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">03</div>
                     <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">GOVERNANCE</h3>
-                    <p className="text-xs text-gray-500 leading-normal font-sans">Inspect our qualified board trustees, specialists, and implementation team.</p>
+                    <p className="text-xs text-gray-500 leading-normal font-sans">Inspect our qualified board trustees and advisory specialists.</p>
                   </div>
 
                   <div 
@@ -1936,40 +1935,8 @@ useEffect(() => {
                 </div>
               ))}
             </div>
-
-            <hr className="border-gray-100 max-w-2xl mx-auto" />
-
-            {/* Management leaders strip */}
-            <div className="space-y-8 text-center">
-              <h3 className="font-sans font-black text-lg text-brand-black uppercase tracking-tight">
-                EXECUTIVE IMPLEMENTATION TEAM
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-                {TEAM_DATA.map((tm) => (
-                  <div 
-                    key={tm.id}
-                    className="p-5 bg-[#111111] text-white border border-gray-900 rounded-2xl relative overflow-hidden"
-                  >
-                    <div className="absolute right-0 top-0 opacity-10 font-bold font-sans text-xl text-brand-yellow mt-2 mr-2">
-                      GICD
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 bg-[#F5C518] text-[#111111] rounded-lg flex items-center justify-center font-black text-xs">
-                          {tm.initials}
-                        </div>
-                        <div>
-                          <h4 className="font-sans font-bold text-xs uppercase text-white leading-tight">{tm.name}</h4>
-                          <p className="text-[9px] text-[#F5C518] font-mono uppercase font-black">{tm.role}</p>
-                        </div>
-                      </div>
-                      <p className="text-[11px] text-gray-400 font-sans leading-relaxed line-clamp-3">{tm.bio}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+      {/* Executive Implementation section removed on request */}
+          
           </div>
         </section>
       )}
