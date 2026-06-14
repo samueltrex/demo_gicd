@@ -484,7 +484,7 @@ export function VolunteerModal({ isOpen, onClose }: VolunteerModalProps) {
             <div className="space-y-1">
               <h4 className="font-sans font-extrabold text-lg text-brand-black">Volunteer Registration Successful!</h4>
               <p className="text-xs text-gray-500 max-w-xs mx-auto">
-                Welcome to the movement, <span className="font-bold text-brand-black">{formData.name}</span>! Our programs team in Rayfield, Jos will review your application.
+                Welcome to the movement, <span className="font-bold text-brand-black">{formData.name}</span>! Our programs team in Jos will review your application.
               </p>
             </div>
 
