@@ -2047,22 +2047,23 @@ useEffect(() => {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
+           <div className="max-w-3xl mx-auto text-left">
               {TESTIMONIALS_DATA.map((test) => (
                 <div 
                   key={test.id}
-                  className="p-6 bg-gray-50 border border-gray-150 rounded-2xl flex flex-col justify-between space-y-4"
+                  className="p-6 sm:p-10 bg-gray-50 border border-gray-150 rounded-2xl flex flex-col justify-between space-y-6 shadow-sm relative overflow-hidden"
                 >
-                  <p className="text-xs text-gray-650 leading-relaxed font-sans italic">
-                    &quot;{test.quote}&quot;
+                  <div className="absolute -top-2 -right-2 text-gray-200/40 text-8xl font-serif pointer-events-none select-none">“</div>
+                  <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed font-sans whitespace-pre-line">
+                    {test.quote}
                   </p>
                   
-                  <div className="flex justify-between items-center border-t border-gray-200/60 pt-4">
+                  <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between border-t border-gray-200/60 pt-5">
                     <div>
-                      <h5 className="font-bold text-xs uppercase text-brand-black">{test.author}</h5>
-                      <p className="text-[10px] text-slate-500 font-mono">{test.role}</p>
+                      <h5 className="font-bold text-xs sm:text-sm uppercase text-brand-black tracking-wide">{test.author}</h5>
+                      <p className="text-[10px] sm:text-xs text-slate-500 font-mono mt-0.5">{test.role}</p>
                     </div>
-                    <span className="text-[9px] text-[#F5C518] bg-brand-black px-1.5 py-0.5 font-bold font-mono rounded">
+                    <span className="self-start sm:self-center text-[10px] sm:text-xs text-[#F5C518] bg-brand-black px-3 py-1 font-bold font-mono rounded">
                       {test.location}
                     </span>
                   </div>
