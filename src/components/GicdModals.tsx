@@ -18,7 +18,7 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
   if (!isOpen) return null;
 
   const handleCopyBank = () => {
-    navigator.clipboard.writeText("9020850040"); // Placeholder GICD NGO account
+        navigator.clipboard.writeText("1028793174"); // UBA account number
     setCopiedBank(true);
     setTimeout(() => setCopiedBank(false), 2000);
   };
@@ -117,37 +117,8 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
               </div>
             </div>
 
-            {/* Payment Method Selector */}
-            <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Payment Method</p>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod("bank")}
-                  className={`py-2 text-xs font-semibold rounded-lg border transition flex items-center justify-center gap-2 ${
-                    paymentMethod === "bank"
-                      ? "bg-gray-100 text-brand-black border-brand-black"
-                      : "border-gray-200 text-gray-500 hover:bg-gray-50"
-                  }`}
-                >
-                  Bank Transfer / Cash
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod("card")}
-                  className={`py-2 text-xs font-semibold rounded-lg border transition flex items-center justify-center gap-2 ${
-                    paymentMethod === "card"
-                      ? "bg-gray-100 text-brand-black border-brand-black"
-                      : "border-gray-200 text-gray-500 hover:bg-gray-50"
-                  }`}
-                >
-                  Pay Online (Card)
-                </button>
-              </div>
-            </div>
-
             {/* Donor Personal Information */}
-            <div className="space-y-3 pt-2 border-t border-gray-100">
+            <div className="space-y-3 pt-2 border-t border-gray-100 animate-fade-in">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Donor Details</p>
               
               <div className="grid grid-cols-2 gap-3">
