@@ -782,7 +782,7 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     title: "Call for Volunteers: Community Child & Adolescent Mentors",
     tag: "Volunteer Opportunities",
     date: "October 15, 2025",
-    details: "CALL FOR VOLUNTEERS! Are you passionate about Children and Community Development? The Guardian Initiative for Community Development (GICD) is looking for dedicated individuals to serve as Mentors to children and adolescents. Requirements: Prospective Volunteers must hold a BSc, HND, or ND certificate; must reside in the community; and must be of proven character and integrity verifiable by the community. No experience? No problem, training will be provided! Deadline: Thursday, 23rd October 2025. Apply via: gicdoperations@gmail.com or submit a hard-copy application letter at GICD Office: No 28A, Tafawa Balewa Street, Opp. United Baptist Church, Jos. Let's build a brighter future, together. #VolunteerOpportunity #GICD #AngwanRukuba #CommunityDevelopment #LifeSkills #Resilience #ChildProtection",
+    details: "CALL FOR VOLUNTEERS! Are you passionate about Children and Community Development? The Guardian Initiative for Community Development (GICD) is looking for dedicated individuals to serve as Mentors to children and adolescents. Requirements: Prospective Volunteers must hold a BSc, HND, or ND certificate; must reside in the community; and must be of proven character and integrity verifiable by the community. No experience? No problem, training will be provided! Deadline: Thursday, 23rd October 2025. Apply via: samueldavid09020850040@gmail.com or submit a hard-copy application letter at GICD Office: No 28A, Tafawa Balewa Street, Opp. United Baptist Church, Jos. Let's build a brighter future, together. #VolunteerOpportunity #GICD #AngwanRukuba #CommunityDevelopment #LifeSkills #Resilience #ChildProtection",
     loc: "Angwan Rukuba Community, Jos North",
     images: [
       "/asset/vol 1.jpg",
@@ -1079,7 +1079,11 @@ useEffect(() => {
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "", message: "" });
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    triggerToast("Thank you! Your message has been routed to GICD Relations office in Jos.");
+    const subject = `GICD Contact: Message from ${contactData.name}`;
+    const body = `Hello GICD Admin,\n\nYou have received a new contact submission from your website:\n\nName: ${contactData.name}\nEmail: ${contactData.email}\nPhone: ${contactData.phone || "N/A"}\n\nMessage:\n${contactData.message}\n\nRegards.`;
+    const mailtoUrl = `mailto:samueldavid09020850040@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+    triggerToast("Thank you! Opening your email client to send this message to samueldavid09020850040@gmail.com");
     setContactData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -1106,7 +1110,7 @@ useEffect(() => {
           <span>Plateau CAC Reg NO: CAC/IT/NO/141566</span>
         </div>
         <div className="hidden sm:flex items-center gap-4">
-          <span>Email: info@gicdnigeria.org</span>
+          <span>Email: samueldavid09020850040@gmail.com</span>
         </div>
       </div>
 
@@ -2089,8 +2093,7 @@ useEffect(() => {
                     <Mail className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-sans font-bold text-slate-800 text-xs uppercase">Electronic Inbox</p>
-                      <p className="mt-1 text-slate-900">info@gicdnigeria.org</p>
-                      <p className="text-gray-400">gicdnigeria@gmail.com</p>
+                      <p className="mt-1 text-slate-900">samueldavid09020850040@gmail.com</p>
                     </div>
                   </div>
 
@@ -2706,10 +2709,9 @@ useEffect(() => {
             {/* Direct office Coordinates */}
             <div className="lg:col-span-3 space-y-4 text-xs font-mono text-gray-400">
               <h4 className="font-sans font-bold text-xs uppercase tracking-wider text-white">Direct Coordinates</h4>
-              
               <div className="space-y-1.5 leading-relaxed text-[11px]">
                 <p>Office: <span className="text-white">Directly behind Fed. Gov. College, Rayfield rd, Jos</span></p>
-                <p>Email: <span className="text-white">info@gicdnigeria.org / gicdnigeria@gmail.com</span></p>
+                <p>Email: <span className="text-white">samueldavid09020850040@gmail.com</span></p>
                 <p>Mobile: <span className="text-white">+234 (0) 902 085 0040</span></p>
                 <p>Direct Bank: <span className="text-brand-yellow">United Bank for Africa / Acc: 1028793174</span></p>
               </div>
