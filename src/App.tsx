@@ -1939,67 +1939,6 @@ useEffect(() => {
         </section>
       )}
 
-      {/* SECTION 10 — PORTFOLIO GALLERY ARCHIVE GRID */}
-      {view === "media" && (
-        <section className="py-20 bg-gray-50 border-y border-gray-100 shadow-sm animate-fade-in" id="gallery">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-            
-            <div className="space-y-4 max-w-2xl mx-auto">
-              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">PHOTO ARCHIVE</span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-                PORTFOLIO ARCHIVE & TILES
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-                Explore past program events structured in gradients representing the photographic collections of medical outreach, trees, and youth counseling.
-              </p>
-            </div>
-
-            {/* Gallery categories tabs */}
-            <div className="flex flex-wrap justify-center items-center gap-1.5 pt-2 select-none">
-              {["All", "Education", "Health Outreach", "Economic Empowerment", "Environment", "Youth Development"].map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setGalleryFilter(cat)}
-                  className={`px-3 py-1 bg-white hover:bg-gray-50 text-[10px] font-semibold tracking-wider font-mono uppercase border rounded-md transition cursor-pointer ${
-                    galleryFilter === cat 
-                      ? "border-brand-black text-brand-black bg-slate-100" 
-                      : "border-gray-200 text-gray-500"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            {/* Gallery Grids */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-left">
-              {GALLERY_DATA.filter((item) => galleryFilter === "All" || item.category === galleryFilter).map((item) => (
-                <div
-                  key={item.id}
-                  onClick={() => setSelectedGalleryItem(item)}
-                  className="group relative h-28 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition border border-gray-150 flex flex-col justify-between p-3.5"
-                  style={{ background: item.gradient || "linear-gradient(135deg, #111 0%, #333 100%)" }}
-                >
-                  <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:12px_12px] opacity-60 pointer-events-none" />
-                  
-                  <span className="text-[8px] font-mono text-brand-yellow tracking-wider font-bold uppercase bg-brand-black/45 px-1.5 py-0.5 rounded self-start">
-                    {item.category}
-                  </span>
-
-                  <div>
-                    <h4 className="text-white font-sans font-bold text-[11px] leading-snug tracking-tight line-clamp-2 drop-shadow-md">
-                      {item.title}
-                    </h4>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
-      )}
-
       {/* SECTION 11 — TESTIMONIALS */}
       {view === "about" && (
         <section className="py-20 bg-white shadow-sm animate-fade-in" id="testimonials">
