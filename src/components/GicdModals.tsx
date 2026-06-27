@@ -189,8 +189,8 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
                 </div>
 
                 <p className="text-[11px] text-gray-500 text-center italic">
-                  *Please type &quot;GICD Donate&quot; as your transfer note. Send screenshot to info@gicdnigeria.org or submit form below for verification.
-                </p>
+                  *Please type &quot;GICD Donate&quot; as your transfer note. Send screenshot to samueldavid09020850040@gmail.com or submit form below for verification.
+              </p>
               </div>
             
             {/* Submit Button */}
@@ -238,10 +238,19 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
               </div>
             </div>
 
-            <p className="text-[11px] text-gray-400 italic">
-              Official tax-deductible contribution receipt has been dispatched to {formData.email}.
-            </p>
-
+            <div className="text-center space-y-3 w-full">
+              <p className="text-[11px] text-gray-500 italic leading-relaxed">
+                * Please email your bank transfer receipt/screenshot to: <span className="underline font-bold text-brand-black">samueldavid09020850040@gmail.com</span> for verification.
+              </p>
+              
+              <a
+                href={`mailto:samueldavid09020850040@gmail.com?subject=GICD Donation Proof: ₦${Number(activeAmount).toLocaleString()} - ${formData.name}&body=Hello GICD Admin,%0D%0A%0D%0AI have made a direct bank transfer of ₦${Number(activeAmount).toLocaleString()} for GICD Community projects.%0D%0A%0D%0AName: ${formData.name}%0D%0AEmail: ${formData.email}`}
+                className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 font-semibold rounded-lg text-xs transition active:scale-95"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Email Transfer Receipt</span>
+              </a>
+            </div>
             <button
               onClick={() => {
                 setStep("form");
@@ -278,6 +287,10 @@ export function VolunteerModal({ isOpen, onClose }: VolunteerModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = `GICD Volunteer Sign-up: ${formData.name}`;
+    const body = `Hello GICD Admin,\n\nWe have a new Volunteer sign-up request:\n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nAssign Department: ${formData.area}\nExperience: ${formData.experience || "N/A"}\nMotivation:\n${formData.motivation || "N/A"}\n\nTicket ID: ${ticketId}\n\nRegards.`;
+    const mailtoUrl = `mailto:samueldavid09020850040@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
     setStep("success");
   };
 
@@ -425,7 +438,7 @@ export function VolunteerModal({ isOpen, onClose }: VolunteerModalProps) {
             </div>
 
             <p className="text-[10px] text-gray-500 italic max-w-xs">
-              Next step: Please watch for a WhatsApp/SMS invitation and an introductory materials packet sent to <span className="underline">{formData.email}</span>.
+              Next step: Your application has been sent to our volunteer coordination team at <span className="font-semibold text-brand-black">samueldavid09020850040@gmail.com</span>. Please check your inbox or WhatsApp for an invitation shortly.
             </p>
 
             <button
@@ -463,6 +476,10 @@ export function PartnerModal({ isOpen, onClose }: PartnerModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = `GICD Partnership Proposal: ${formData.orgName}`;
+    const body = `Hello GICD Admin,\n\nWe have a new Partnership proposal:\n\nOrganization: ${formData.orgName}\nContact Officer: ${formData.contactName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nProposal Type: ${formData.proposalType}\n\nMessage/Proposal:\n${formData.msg}\n\nRegards.`;
+    const mailtoUrl = `mailto:samueldavid09020850040@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
     setStep("success");
   };
 
@@ -610,7 +627,7 @@ export function PartnerModal({ isOpen, onClose }: PartnerModalProps) {
             </div>
 
             <p className="text-[10px] text-gray-400 max-w-xs">
-              Our Executive Directorate and Public Relations team will contact you at <span className="underline">{formData.email}</span> within 48 hours with technical compliance documents and audited reports of past projects.
+              Your proposal has been routed to <span className="font-semibold text-brand-black">samueldavid09020850040@gmail.com</span>. Our Public Relations team will contact you within 48 hours with technical compliance documents.
             </p>
 
             <button
@@ -654,6 +671,11 @@ export function JobsModal({ isOpen, onClose, selectedJobId }: JobsModalProps) {
 
   const handleApply = (e: React.FormEvent) => {
     e.preventDefault();
+    const activeRole = positions.find((p) => p.id === selectedJob) || positions[0];
+    const subject = `GICD Job Application: ${activeRole.title} - ${formData.name}`;
+    const body = `Hello GICD Admin,\n\nWe have a new Job Application:\n\nRole: ${activeRole.title}\nApplicant: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nExperience: ${formData.experience}\n\nCover Letter/Motivation:\n${formData.coverLetter}\n\nRegards.`;
+    const mailtoUrl = `mailto:samueldavid09020850040@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
     setStep("success");
   };
 
@@ -827,7 +849,7 @@ export function JobsModal({ isOpen, onClose, selectedJobId }: JobsModalProps) {
             </div>
 
             <p className="text-[10px] text-gray-400 max-w-xs leading-relaxed text-center">
-              Our Recruitment Desk led by Iliya John Dayok (licensed CIPM professional) will contact you at <span className="underline">{formData.email}</span> within 5–7 working days for initial screening.
+              Your application has been routed to our recruitment desk at <span className="font-semibold text-brand-black">samueldavid09020850040@gmail.com</span>. Our Recruitment Desk led by Iliya John Dayok (licensed CIPM professional) will contact you within 5–7 working days for initial screening.
             </p>
 
             <button
