@@ -2772,7 +2772,7 @@ useEffect(() => {
                 <p>Office: <span className="text-white">Directly behind Fed. Gov. College, Rayfield rd, Jos</span></p>
                 <p>Email: <span className="text-white">info@gicdnigeria.org / gicdnigeria@gmail.com</span></p>
                 <p>Mobile: <span className="text-white">+234 (0) 902 085 0040</span></p>
-                <p>Direct Bank: <span className="text-brand-yellow">United Bank of Africa / Acc: 1028793174</span></p>
+                <p>Direct Bank: <span className="text-brand-yellow">United Bank for Africa / Acc: 1028793174</span></p>
               </div>
 
               <div className="pt-2">
