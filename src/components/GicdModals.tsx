@@ -9,7 +9,7 @@ interface DonateModalProps {
 export function DonateModal({ isOpen, onClose }: DonateModalProps) {
   const [amount, setAmount] = useState<string>("10000");
   const [customAmount, setCustomAmount] = useState<string>("");
-  const [paymentMethod, setPaymentMethod] = useState<"card" | "bank">("bank");
+  const [paymentMethod] = useState<"bank">("bank");
   const [copiedBank, setCopiedBank] = useState(false);
   const [step, setStep] = useState<"form" | "success">("form");
   const [formData, setFormData] = useState({ name: "", email: "", cardName: "", cardNumber: "", expiry: "", cvv: "" });
@@ -18,7 +18,7 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
   if (!isOpen) return null;
 
   const handleCopyBank = () => {
-        navigator.clipboard.writeText("1028793174"); // UBA account number
+    navigator.clipboard.writeText("1028793174"); // UBA account number
     setCopiedBank(true);
     setTimeout(() => setCopiedBank(false), 2000);
   };
@@ -153,8 +153,7 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
               </div>
             </div>
 
-            {/* Conditional Payment Panels */}
-            {paymentMethod === "bank" ? (
+            {/* Bank Transfer Panel Only */}
               <div className="p-4 bg-amber-50/70 border border-amber-100 rounded-xl space-y-3">
                 <div className="flex items-start justify-between">
                   <div>
@@ -167,19 +166,19 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
                 <div className="bg-white p-3 rounded-lg border border-amber-200 space-y-1.5 text-xs text-slate-700">
                   <div className="flex justify-between">
                     <span className="text-gray-400">Bank Name:</span>
-                    <span className="font-semibold text-brand-black">Zenith Bank PLC</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Account Name:</span>
-                    <span className="font-semibold text-brand-black">Guardian Initiative Comms Dev</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Account Number:</span>
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-mono font-bold text-brand-black text-sm">1024567890</span>
-                      <button
-                        type="button"
-                        onClick={handleCopyBank}
+                    <span className="font-semibold text-brand-black">United Bank for Africa</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-400">Account Name:</span>
+                  <span className="font-semibold text-brand-black">The Guardian Initiative for Community Development</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400">Account Number:</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-mono font-bold text-brand-black text-sm">1028793174</span>
+                    <button
+                      type="button"
+                      onClick={handleCopyBank}
                         className="p-1 hover:bg-gray-100 rounded text-amber-600 active:scale-95 transition"
                         title="Copy Account Number"
                       >
@@ -193,68 +192,7 @@ export function DonateModal({ isOpen, onClose }: DonateModalProps) {
                   *Please type &quot;GICD Donate&quot; as your transfer note. Send screenshot to info@gicdnigeria.org or submit form below for verification.
                 </p>
               </div>
-            ) : (
-              <div className="p-4 bg-gray-50 rounded-xl space-y-3 border border-gray-100">
-                <p className="text-xs font-bold text-gray-700 flex items-center gap-1.5">
-                  Secure Debit/Credit Checkout <span className="text-[10px] text-green-600 font-normal">● 256-bit SSL</span>
-                </p>
-                
-                <div className="space-y-2">
-                  <div>
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Cardholder Name</label>
-                    <input
-                      type="text"
-                      placeholder="As printed on card"
-                      value={formData.cardName}
-                      onChange={(e) => setFormData({ ...formData, cardName: e.target.value })}
-                      className="w-full px-3 py-1.5 text-xs border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-yellow bg-white"
-                    />
-                    {errors.cardName && <span className="text-[10px] text-red-500 mt-0.5 block">{errors.cardName}</span>}
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Card Number</label>
-                    <input
-                      type="text"
-                      maxLength={16}
-                      placeholder="4123 4567 8901 2345"
-                      value={formData.cardNumber}
-                      onChange={(e) => setFormData({ ...formData, cardNumber: e.target.value.replace(/\D/g, '') })}
-                      className="w-full px-3 py-1.5 text-xs border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-yellow font-mono bg-white"
-                    />
-                    {errors.cardNumber && <span className="text-[10px] text-red-500 mt-0.5 block">{errors.cardNumber}</span>}
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-medium text-gray-500 mb-1">Expiry Date</label>
-                      <input
-                        type="text"
-                        placeholder="MM/YY"
-                        maxLength={5}
-                        value={formData.expiry}
-                        onChange={(e) => setFormData({ ...formData, expiry: e.target.value })}
-                        className="w-full px-3 py-1.5 text-xs border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-yellow font-mono text-center bg-white"
-                      />
-                      {errors.expiry && <span className="text-[10px] text-red-500 mt-0.5 block">{errors.expiry}</span>}
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-gray-500 mb-1">CVV Security Code</label>
-                      <input
-                        type="password"
-                        placeholder="123"
-                        maxLength={3}
-                        value={formData.cvv}
-                        onChange={(e) => setFormData({ ...formData, cvv: e.target.value.replace(/\D/g, '') })}
-                        className="w-full px-3 py-1.5 text-xs border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-yellow font-mono text-center bg-white"
-                      />
-                      {errors.cvv && <span className="text-[10px] text-red-500 mt-0.5 block">{errors.cvv}</span>}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
+            
             {/* Submit Button */}
             <button
               type="submit"
