@@ -1303,7 +1303,7 @@ useEffect(() => {
                 </h1>
                 
                 <p className="text-xs sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl px-3">
-                  Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to sustainable community development, child protection, education, public health, and interreligious youth peacebuilding.
+                  Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to Community development, Child protection, Education and sustainable Youth Development & Empowerment.
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
