@@ -2788,8 +2788,8 @@ useEffect(() => {
           </div>
 
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[10px] font-mono gap-4 text-center md:text-left">
-            <p>© 2025 Guardian Initiative for Community Development (GICD). <br> Registered under laws of Nigeria.</p>
-            <p>No. 28A Tafawa Balewa Street, Opp United Baptist Church Jos, Plateau State., Jos, Nigeria. <br> | CAC IT/NO/141566</p>
+            <p>© 2025 Guardian Initiative for Community Development (GICD). Registered under laws of Nigeria.</p>
+            <p>No. 28A Tafawa Balewa Street, Opp United Baptist Church Jos, Plateau State., Jos, Nigeria | CAC IT/NO/141566</p>
           </div>
 
         </div>
