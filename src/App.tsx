@@ -1112,7 +1112,7 @@ useEffect(() => {
         <div className="hidden sm:flex items-center gap-4">
           <span>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">gicdoperations@gmail.com</a></span>
         </div>
-      </div>
+       </div>
 
       {/* SECTION 2 — DOCKABLE NAVIGATION HEADER */}
       <nav className="sticky top-0 bg-white/95 backdrop-blur-md z-40 border-b border-gray-100 shadow-sm px-6 py-3.5 flex justify-between items-center transition duration-200" id="gicd-navbar">
@@ -2096,8 +2096,8 @@ useEffect(() => {
                       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com" target="_blank" rel="noopener noreferrer" className="mt-1 block text-slate-900 hover:text-amber-600 underline">
                         gicdoperations@gmail.com
                       </a>
+                     </div>
                     </div>
-                  </div>
 
                   <hr className="border-gray-200 my-3" />
 
@@ -2108,6 +2108,7 @@ useEffect(() => {
                       <p className="mt-1 text-slate-900 font-black">+234 903 019 9199</p>
                     </div>
                   </div>
+                </div>
 
                 <div className="p-5 bg-brand-black text-white rounded-2xl space-y-3">
                   <h4 className="font-bold text-xs uppercase tracking-wide text-[#F5C518]">Accountability Guarantee</h4>
