@@ -2182,12 +2182,10 @@ useEffect(() => {
                   </button>
                 </form>
               </div>
-
             </div>
           </div>
         </section>
       )}
-
       {/* SECTION 13.7 — INTERACTIVE ANNUAL REPORT VIEWER */}
       {view === "annual-report" && (
         <section className="py-10 sm:py-16 bg-white min-h-[500px] animate-fade-in" id="annual-report-view">
@@ -2775,7 +2773,6 @@ useEffect(() => {
           <span>{toastMessage}</span>
         </div>
       )}
-
     </div>
   );
 }
