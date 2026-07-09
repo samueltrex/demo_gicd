@@ -2182,20 +2182,6 @@ useEffect(() => {
                     ))}
                   </div>
                 </div>
-                
-                {/* Quick link to contact for inquiries */}
-                <div className="p-4 sm:p-5 bg-brand-black text-white rounded-2xl text-left border border-gray-800 space-y-2.5 sm:space-y-3">
-                  <h5 className="font-bold text-[10px] sm:text-xs text-[#F5C518] uppercase">Full Audit Verification</h5>
-                  <p className="text-[10px] sm:text-[11px] text-gray-400 font-sans leading-relaxed">
-                    We provide raw invoices, volunteer time sheets, and localized video check points to institutional donors. Request full ledger access directly.
-                  </p>
-                  <button
-                    onClick={() => { setView("contact"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                    className="text-[10px] text-brand-black bg-[#F5C518] hover:bg-[#F5C518]/90 py-1.5 px-3 font-bold uppercase rounded-md tracking-wider border-none cursor-pointer transition"
-                  >
-                    Contact Audit Dept
-                  </button>
-                </div>
               </div>
 
               {/* Right column: Interactive slide preview and text description */}
@@ -2582,10 +2568,6 @@ useEffect(() => {
                   <span className="text-[8px] text-gray-500 font-mono uppercase tracking-widest mt-1">FOR COMMUNITY DEVELOPMENT</span>
                 </div>
               </div>
-              <p className="text-[11px] text-gray-400 font-sans leading-relaxed tracking-wide">
-                We are structured, transparent, and persistent in rehabilitating community development metrics across northern sectors of Nigeria. Contact us or visit our headquarters to inspect our live campaign portfolios.
-              </p>
-              
               <div className="flex items-center gap-2 pt-1 font-mono text-[10px] text-[#F5C518]">
                 <span>CONNECT:</span>
                 <a href="https://www.facebook.com/share/1BqVaP3TVA/" target="_blank" rel="noreferrer" className="p-1 hover:text-white transition">
@@ -2669,7 +2651,7 @@ useEffect(() => {
 
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[10px] font-mono gap-4 text-center md:text-left">
             <p>© 2025 Guardian Initiative for Community Development (GICD). Registered under laws of Nigeria.</p>
-            <p>No 28A. Tafawa Balewa Street, opposite United Baptist Church, Jos, Plateau State, Nigeria | CAC IT/NO/141566</p>
+            <p>No 28A. Tafawa Balewa Street, opposite United Baptist Church, Jos, Plateau State, Nigeria</p>
           </div>
 
         </div>
