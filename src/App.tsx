@@ -1104,12 +1104,8 @@ useEffect(() => {
     <div className="min-h-screen bg-white transition duration-300 relative font-sans flex flex-col antialiased" id="gicd-app-root">
       
       {/* SECTION 1 — TOP HEADER / FLOATING ADVOCACY STRIP */}
-      <div className="bg-brand-black text-[#F5C518] text-[11px] font-mono py-2 px-4 flex justify-between items-center z-40 border-b border-gray-900 select-none" id="gicd-top-info-banner">
-        <div className="flex items-center gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#F5C518] animate-pulse"></span>
-          <span>Plateau CAC Reg NO: CAC/IT/NO/141566</span>
-        </div>
-        <div className="hidden sm:flex items-center gap-4">
+      <div className="bg-brand-black text-[#F5C518] text-[11px] font-mono py-2 px-4 flex justify-center sm:justify-end items-center z-40 border-b border-gray-900 select-none" id="gicd-top-info-banner">
+        <div className="flex items-center gap-4">
           <span>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">gicdoperations@gmail.com</a></span>
         </div>
        </div>
@@ -1120,7 +1116,7 @@ useEffect(() => {
           <img src="/asset/logo.jpg" alt="GICD Logo" className="w-10 h-10 rounded-full bg-slate-50 border border-brand-yellow/30" />
           <div className="flex flex-col text-left">
             <span className="font-sans font-black tracking-tight text-brand-black text-xl leading-none uppercase">GUARDIAN INITIATIVE</span>
-            <span className="text-[9px] text-gray-400 font-mono tracking-wide uppercase mt-0.5">FOR COMMUNITY DEVELOPMENT</span>
+            <span className="text-[9px] text-brand-black font-mono tracking-wide uppercase mt-0.5">FOR COMMUNITY DEVELOPMENT</span>
           </div>
         </button>
 
@@ -1261,7 +1257,7 @@ useEffect(() => {
                 <div
                   key={img}
                   className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    idx === heroIndex ? "opacity-35" : "opacity-0 pointer-events-none"
+                   idx === heroIndex ? "opacity-80" : "opacity-0 pointer-events-none"
                   }`}
                 >
                   <img
@@ -1273,7 +1269,7 @@ useEffect(() => {
                 </div>
               ))}
               {/* Overlay shading to guarantee highly legible text contrast */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/65 to-brand-black/60 z-[1]" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/35 to-brand-black/25 z-[1]" />
             </div>
 
             {/* Prev/Next arrows with subtle styling (Hidden on cellular mobile view to bypass overlapping) */}
@@ -1297,13 +1293,9 @@ useEffect(() => {
             <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 w-full py-12 sm:py-20 lg:py-32 text-center flex flex-col items-center justify-center">
 
               <div className="space-y-5 sm:space-y-8 flex flex-col items-center max-w-3xl">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#F5C518]/10 border border-[#F5C518]/30 rounded-full text-[#F5C518] font-mono text-[10px] sm:text-xs tracking-wider sm:tracking-widest uppercase font-black mx-auto">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#F5C518] animate-ping shrink-0"></span>
-                  Angwan Rukuba Community
-                </span>
-                
+                                
                 <h1 className="font-sans font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-tight uppercase font-extrabold text-center px-2">
-                  GUARDIAN INITIATIVE <span className="text-[#F5C518] sm:block sm:mt-1">FOR COMMUNITY DEVELOPMENT</span>
+                  GUARDIAN INITIATIVE <span className="text-white sm:block sm:mt-1">FOR COMMUNITY DEVELOPMENT</span>
                 </h1>
                 
                 <p className="text-xs sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl px-3">
