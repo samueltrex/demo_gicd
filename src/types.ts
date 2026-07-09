@@ -19,6 +19,7 @@ export interface TeamMember {
   role: string;
   bio: string;
   initials: string;
+  image?: string;
 }
 
 export interface GalleryItem {
@@ -101,49 +102,56 @@ export const TRUSTEES_DATA: TeamMember[] = [
     name: "Rev Fr Hilary Naankot Longs",
     role: "Catholic Priest & Episcopal Vicar",
     bio: "Catholic priest, Cathedral Administrator and Episcopal vicar, Director of Pontifical Mission Societies, advancing youth development, faith-based leadership and community-centered pastoral engagement.",
-    initials: "HL"
+    initials: "HL",
+    image: "/asset/a.jpg"
   },
   {
     id: "trust2",
     name: "Ejilayomi Omokorede Damoeroem",
     role: "PhD Science Educator & Lecturer",
     bio: "PhD Science educator and University lecturer at Adeyemi Federal University of Education, advancing STEM education, teacher development and evidence-based learning strategies in Nigeria.",
-    initials: "ED"
+    initials: "ED",
+    image: "/asset/b.jpg"
   },
   {
     id: "trust3",
     name: "Abdulrazak Ishola",
     role: "Child Protection & Humanitarian Leader",
     bio: "Child protection and humanitarian leader with 10+ years of experience, currently serving as Child Protector Sub-Cluster Coordinator in Afghanistan, managing multi-million dollar donor portfolios and integrated protection programs.",
-    initials: "AI"
+    initials: "AI",
+    image: "/asset/c.jpg"
   },
   {
     id: "trust4",
     name: "Iliya John Dayok",
     role: "Licensed Human Resources Professional",
     bio: "A licensed HR professional with CIPM, specializing in HR and organizational management with 10+ years of experience in systems strengthening, people management, and operational effectiveness across humanitarian and development settings.",
-    initials: "ID"
+    initials: "ID",
+    image: "/asset/d.jpg"
   },
   {
     id: "trust5",
     name: "Atihong Lois Yengoet",
     role: "Economist & Director General",
     bio: "Economist and Director General, Plateau State Debt Management Department, providing government leadership in fiscal responsibility, debt strategy, risk management, and transparent public financial governance.",
-    initials: "AY"
+    initials: "AY",
+    image: "/asset/e.jpg"
   },
   {
     id: "trust6",
     name: "Dr. Terna Abege (PhD)",
     role: "Head of MHPSS & Mental Health Specialist",
     bio: "Head of MHPSS at Action Against Hunger, global mental health specialist, leading donor-funded psychosocial programs aligned with WHO, IASC, and Sphere standards.",
-    initials: "TA"
+    initials: "TA",
+    image: "/asset/f.jpg"
   },
   {
     id: "trust7",
     name: "Dorcas Bello (Sheffy)",
     role: "Award-winning Journalist & Founder",
     bio: "Award-winning multimedia journalist and founder of Unzipped Stories Africa, media strategist and youth mentor who has trained 3,700+ young Africans in digital storytelling and entrepreneurship.",
-    initials: "DB"
+    initials: "DB",
+    image: "/asset/g.jpg"
   }
 ];
 
