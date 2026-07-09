@@ -1843,11 +1843,8 @@ useEffect(() => {
             <div className="space-y-4 max-w-2xl mx-auto">
               <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">STRENGTH IN STRUCTURE</span>
               <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-                TRUSTEES & BOARD COUNCIL
+                TRUSTEES & BOARD
               </h2>
-              <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-                A highly qualified board of specialists, journalists, religious delegates, and debt management directors ensuring high accountability.
-              </p>
             </div>
 
             {/* Grid of Trustees */}
@@ -1859,8 +1856,17 @@ useEffect(() => {
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-brand-black text-brand-yellow rounded-xl flex items-center justify-center font-sans font-black text-xs border border-brand-yellow/30">
-                        {tr.initials}
+                      <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center shrink-0 border border-brand-yellow/30 bg-brand-black">
+                        {tr.image ? (
+                          <img 
+                            src={tr.image} 
+                            alt={tr.name} 
+                            className="w-full h-full object-cover" 
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <span className="font-sans font-black text-brand-yellow text-xs">{tr.initials}</span>
+                        )}
                       </div>
                       <div>
                         <h4 className="font-sans font-bold text-xs uppercase text-brand-black leading-tight line-clamp-1">{tr.name}</h4>
