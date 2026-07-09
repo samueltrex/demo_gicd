@@ -2025,7 +2025,7 @@ useEffect(() => {
                     <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                     <div>
                       <p className="font-sans font-bold text-slate-800 text-xs uppercase">Physical Coordinates</p>
-                      <p className="mt-1 leading-relaxed">No. 28A Tafawa Balewa Street, Opp United Baptist Church Jos, Plateau State., Jos, Nigeria</p>
+                      <p className="mt-1 leading-relaxed">No 28A. Tafawa Balewa Street, opposite United Baptist Church, Jos, Plateau State, Nigeria</p>
                     </div>
                   </div>
 
@@ -2652,7 +2652,7 @@ useEffect(() => {
             <div className="lg:col-span-3 space-y-4 text-xs font-mono text-gray-400">
               <h4 className="font-sans font-bold text-xs uppercase tracking-wider text-white">Direct Coordinates</h4>
               <div className="space-y-1.5 leading-relaxed text-[11px]">
-                <p>Office: <span className="text-white">Directly behind Fed. Gov. College, Rayfield rd, Jos</span></p>
+                <p>Office: <span className="text-white">No 28A. Tafawa Balewa Street, opposite United Baptist Church, Jos, Plateau State, Nigeria</span></p>
                 <p>Email: <span className="text-white"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow underline">gicdoperations@gmail.com</a></span></p>
                 <p>Mobile: <span className="text-white">+2349030199199</span></p>
                 <p>Direct Bank: <span className="text-brand-yellow">United Bank for Africa / Acc: 1028793174</span></p>
@@ -2672,7 +2672,7 @@ useEffect(() => {
 
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-[10px] font-mono gap-4 text-center md:text-left">
             <p>© 2025 Guardian Initiative for Community Development (GICD). Registered under laws of Nigeria.</p>
-            <p>No. 28A Tafawa Balewa Street, Opp United Baptist Church Jos, Plateau State., Jos, Nigeria | CAC IT/NO/141566</p>
+            <p>No 28A. Tafawa Balewa Street, opposite United Baptist Church, Jos, Plateau State, Nigeria | CAC IT/NO/141566</p>
           </div>
 
         </div>
