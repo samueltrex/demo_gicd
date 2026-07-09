@@ -1136,7 +1136,6 @@ useEffect(() => {
           <button onClick={() => setView("media")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "media" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Media Center</button>
           <button onClick={() => setView("trustees")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Board of Trustees</button>
           <button onClick={() => setView("careers")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "careers" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Careers</button>
-          <button onClick={() => setView("contact")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "contact" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Contact</button>
         </div>
 
         {/* Call to action */}
@@ -1215,13 +1214,7 @@ useEffect(() => {
             >
               Careers
             </button>
-            <button 
-              onClick={() => { setView("contact"); setMobileMenuOpen(false); }}
-              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "contact" ? "text-amber-600" : "text-brand-black"}`}
-            >
-              Contact Office
-            </button>
-
+            
             <div className="grid grid-cols-2 gap-3 pt-3">
               <button 
                 onClick={() => { setMobileMenuOpen(false); openDonate(); }}
@@ -1468,7 +1461,6 @@ useEffect(() => {
                 {view === "media" && "Media Center"}
                 {view === "trustees" && "Board & Trustees"}
                 {view === "careers" && "Careers & Internships"}
-                {view === "contact" && "Geographic Coordinates"}
                 {view === "annual-report" && "2025 Annual Results Summary"}
               </h1>
             </div>
@@ -2004,134 +1996,7 @@ useEffect(() => {
           </div>
         </section>
       )}
-
-      {/* SECTION 13.5 — DEDICATED CONTACT FORM BODY */}
-      {view === "contact" && (
-        <section className="py-20 bg-white shadow-sm animate-fade-in" id="contact-page">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-              
-              {/* Coordinates & Location Details */}
-              <div className="lg:col-span-5 space-y-8 text-left">
-                <div>
-                  <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block mb-2">HEADQUARTERS</span>
-                  <h2 className="font-sans font-black text-2xl sm:text-3xl text-brand-black uppercase tracking-tight mb-4">
-                    VISIT OUR JOS OFFICE
-                  </h2>
-                  <p className="text-xs sm:text-sm text-gray-600 font-sans leading-relaxed">
-                    Guardian Initiative for Community Development is headquartered in Jos, Plateau State. We welcome stakeholders, local authority delegates, international monitors, and individual donors to review field logs, audit receipts, and discuss collaborative frameworks.
-                  </p>
-                </div>
-
-                <div className="space-y-4 font-mono text-xs text-slate-650 bg-slate-50 p-6 rounded-2xl border border-gray-150">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-sans font-bold text-slate-800 text-xs uppercase">Physical Coordinates</p>
-                      <p className="mt-1 leading-relaxed">No 28A. Tafawa Balewa Street, opposite United Baptist Church, Jos, Plateau State, Nigeria</p>
-                    </div>
-                  </div>
-
-                  <hr className="border-gray-200 my-3" />
-
-                  <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-sans font-bold text-slate-800 text-xs uppercase">Electronic Inbox</p>
-                      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com" target="_blank" rel="noopener noreferrer" className="mt-1 block text-slate-900 hover:text-amber-600 underline">
-                        gicdoperations@gmail.com
-                      </a>
-                     </div>
-                    </div>
-
-                  <hr className="border-gray-200 my-3" />
-
-                  <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-sans font-bold text-slate-800 text-xs uppercase">Direct Mobile Hotlines</p>
-                      <p className="mt-1 text-slate-900 font-black">+234 903 019 9199</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-5 bg-brand-black text-white rounded-2xl space-y-3">
-                  <h4 className="font-bold text-xs uppercase tracking-wide text-[#F5C518]">Accountability Guarantee</h4>
-                  <p className="text-[11px] text-gray-400 leading-relaxed font-sans">
-                    All GICD transactions are processed under certified national audits. Receipts, distribution lists, and field video validations are fully accessible to verification partners.
-                  </p>
-                </div>
-              </div>
-
-              {/* Contact Message Box */}
-              <div className="lg:col-span-7 bg-slate-50 p-6 sm:p-8 rounded-3xl border border-gray-150 text-left">
-                <span className="text-[10px] font-mono text-amber-700 tracking-widest uppercase font-bold block mb-1">DIRECT PORTAL</span>
-                <h3 className="font-sans font-black text-xl uppercase text-brand-black tracking-tight mb-4 text-left leading-none">
-                  Send an Official Inquiry
-                </h3>
-
-                <form onSubmit={handleContactSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-mono uppercase text-slate-400 font-bold">Your Name</label>
-                      <input 
-                        type="text" 
-                        required 
-                        placeholder="e.g. John Doe" 
-                        value={contactData.name}
-                        onChange={(e) => setContactData({ ...contactData, name: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-mono uppercase text-slate-400 font-bold">Your Email Address</label>
-                      <input 
-                        type="email" 
-                        required 
-                        placeholder="e.g. john@domain.com" 
-                        value={contactData.email}
-                        onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
-                        className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-1 block md:text-left">
-                    <label className="text-[10px] font-mono uppercase text-slate-400 font-bold block text-left">WhatsApp or Phone (Optional)</label>
-                    <input 
-                      type="text" 
-                      placeholder="e.g. +234 902..." 
-                      value={contactData.phone}
-                      onChange={(e) => setContactData({ ...contactData, phone: e.target.value })}
-                      className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm"
-                    />
-                  </div>
-
-                  <div className="space-y-1 block md:text-left">
-                    <label className="text-[10px] font-mono uppercase text-slate-400 font-bold block text-left">Detailed Message</label>
-                    <textarea 
-                      required 
-                      rows={5} 
-                      placeholder="Specify if your request concerns direct field sponsorship, strategic partnerships, volunteer applications, or program auditing..." 
-                      value={contactData.message}
-                      onChange={(e) => setContactData({ ...contactData, message: e.target.value })}
-                      className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs text-brand-black focus:outline-none focus:ring-1 focus:ring-brand-yellow font-sans shadow-sm resize-none"
-                    />
-                  </div>
-
-                  <button 
-                    type="submit" 
-                    className="w-full sm:w-auto px-8 py-3 bg-brand-yellow hover:brightness-105 font-sans font-black text-brand-black text-xs uppercase tracking-wider rounded-lg transition active:scale-95 cursor-pointer block text-center border-none shadow-sm"
-                    id="contact-page-submit-btn"
-                  >
-                    Send Verified Message
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      
       {/* SECTION 13.7 — INTERACTIVE ANNUAL REPORT VIEWER */}
       {view === "annual-report" && (
         <section className="py-10 sm:py-16 bg-white min-h-[500px] animate-fade-in" id="annual-report-view">
