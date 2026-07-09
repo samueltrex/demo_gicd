@@ -1489,10 +1489,9 @@ useEffect(() => {
         <section className="py-20 bg-white shadow-sm" id="about">
           <div className="max-w-7xl mx-auto px-6 sm:px-8">
             
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+           <div className="max-w-3xl mx-auto space-y-8 text-left">
               
-              <div className="lg:col-span-7 space-y-8 text-left">
-                <div>
+              <div>
                   <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block mb-2">ABOUT US</span>
                   <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-tight mb-4">
                     GUARDIAN INITIATIVE FOR <span className="text-brand-yellow block mt-1">COMMUNITY DEVELOPMENT</span>
@@ -1541,56 +1540,7 @@ useEffect(() => {
                       To protect children’s rights, drive sustainable development, and build resilient communities through evidence-based approaches.
                     </p>
                   </div>
-                </div>
-              </div>
-
-              {/* Premium action photos layout from the uploaded files */}
-              <div className="lg:col-span-5 grid grid-cols-12 gap-4">
-                <div className="col-span-7 space-y-4">
-                  <div 
-                    className="h-56 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                    onClick={() => setExpandedImage({ src: "/asset/1.jpg", caption: "GICD fieldwork and adolescent life support forum" })}
-                  >
-                    <img src="/asset/1.jpg" alt="Field session" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
-                      <span className="text-[10px] text-brand-yellow font-mono block">Field Session</span>
-                      <p className="text-[11px] text-white font-semibold line-clamp-1">Peer peacebuilding and coexistence workshops</p>
-                    </div>
-                  </div>
-
-                  <div 
-                    className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                    onClick={() => setExpandedImage({ src: "/asset/2.jpg", caption: "Direct maternal outreach and parent meetings" })}
-                  >
-                    <img src="/asset/2.jpg" alt="Staff dialogue" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
-                      <span className="text-[10px] text-brand-yellow font-mono block">Outreach</span>
-                      <p className="text-[11px] text-white font-semibold line-clamp-1">Direct community engagement meetings</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-span-5 flex flex-col justify-between">
-                  <div 
-                    className="h-44 rounded-2xl overflow-hidden shadow-md border border-gray-150 cursor-pointer group relative"
-                    onClick={() => setExpandedImage({ src: "/asset/3.jpg", caption: "Educator safety and child shielding audits" })}
-                  >
-                    <img src="/asset/3.jpg" alt="Children support" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-3 text-left">
-                      <span className="text-[10px] text-brand-yellow font-mono block">Interviews</span>
-                      <p className="text-[11px] text-white font-semibold line-clamp-1">NGO staff consulting stakeholders</p>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-brand-black to-slate-900 rounded-2xl p-4 text-left border border-brand-yellow/30 shadow-md">
-                    <Award className="w-7 h-7 text-[#F5C518]" />
-                    <h4 className="font-bold text-white text-xs mt-3 uppercase">CAC Registered</h4>
-                    <p className="text-[10px] text-gray-400 mt-1 leading-snug">
-                      Operating on robust frameworks approved by the Plateau state ministry of education.
-                    </p>
-                  </div>
-                </div>
-
+              
               </div>
 
             </div>
