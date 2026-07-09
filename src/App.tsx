@@ -1557,11 +1557,8 @@ useEffect(() => {
             <div className="space-y-4 max-w-2xl mx-auto">
               <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">WHAT WE DO</span>
               <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-                GICD CORE PROGRAMS MATRIX
+                GICD CORE PROGRAMS
               </h2>
-              <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-                We align our activities with global developmental criteria and standard national guidelines to ensure audited progress of each donor contribution.
-              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
@@ -1583,11 +1580,11 @@ useEffect(() => {
                 return (
                   <div 
                     key={prog.id}
-                    className="bg-white p-6 rounded-2xl border border-gray-150 hover:border-brand-yellow transition duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
+                    className="bg-white p-6 rounded-2xl transition duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
                     id={`program-card-${prog.id}`}
                   >
                     <div className="space-y-4">
-                      <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center border border-brand-yellow/30">
+                      <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center">
                         <IconComp className="w-5 h-5 text-amber-600" />
                       </div>
                       <div>
