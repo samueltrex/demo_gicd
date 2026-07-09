@@ -1852,11 +1852,11 @@ useEffect(() => {
               {TRUSTEES_DATA.map((tr) => (
                 <div 
                   key={tr.id}
-                  className="p-5 bg-gray-50 border border-gray-150 rounded-2xl hover:border-brand-yellow transition flex flex-col justify-between"
+                  className="p-5 bg-gray-50 rounded-2xl hover:bg-slate-100 transition duration-300 flex flex-col justify-between shadow-sm"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center shrink-0 border border-brand-yellow/30 bg-brand-black">
+                      <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center shrink-0 bg-brand-black">
                         {tr.image ? (
                           <img 
                             src={tr.image} 
@@ -1876,8 +1876,8 @@ useEffect(() => {
                     <p className="text-[11px] text-gray-500 leading-relaxed font-sans line-clamp-4">{tr.bio}</p>
                   </div>
                   
-                  <div className="pt-3 mt-4 border-t border-gray-200/60 text-[9px] font-mono text-gray-400 uppercase tracking-wider">
-                    Board Trustee
+                  <div className="pt-3 mt-4 text-[9px] font-mono text-amber-700 uppercase tracking-wider font-bold">
+                    {tr.name.includes("Dayok") ? "Board Chairman" : tr.name.includes("Atihong") ? "Board Secretary" : "Board Trustee"}
                   </div>
                 </div>
               ))}
