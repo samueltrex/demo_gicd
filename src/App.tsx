@@ -30,6 +30,8 @@ import {
   HelpingHand, 
   Info,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Sparkles,
   BookOpen,
   Award as AwardIcon
@@ -1014,6 +1016,7 @@ useEffect(() => {
   // Filter states
   const [activeActivityTag, setActiveActivityTag] = useState<string>("All");
   const [galleryFilter, setGalleryFilter] = useState<string>("All");
+  const [expandedPosts, setExpandedPosts] = useState<Record<string, boolean>>({});
 
   // Interaction Lightboxes
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
@@ -1127,7 +1130,7 @@ useEffect(() => {
           <button onClick={() => setView("programs")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "programs" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Core Programs</button>
           <button onClick={() => setView("activities")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none flex items-center gap-1 ${view === "activities" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>
             <Sparkles className="w-3.5 h-3.5 text-brand-yellow fill-brand-yellow shrink-0" />
-            <span>Activities</span>
+            <span>Program Update</span>
           </button>
           <button onClick={() => setView("annual-report")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none flex items-center gap-1 ${view === "annual-report" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>
             <AwardIcon className="w-3.5 h-3.5 text-brand-yellow" />
@@ -1186,7 +1189,7 @@ useEffect(() => {
               onClick={() => { setView("activities"); setMobileMenuOpen(false); }}
               className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider flex items-center justify-between cursor-pointer bg-transparent border-none ${view === "activities" ? "text-amber-600" : "text-brand-black"}`}
             >
-              <span>Field Activities</span>
+              <span>Program Update</span>
               <span className="px-2 py-0.5 bg-[#F5C518] text-brand-black text-[9px] font-black rounded">NEW</span>
             </button>
             <button 
@@ -1396,8 +1399,8 @@ useEffect(() => {
                     className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
                   >
                     <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">02</div>
-                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">LIVE ACTIVITIES</h3>
-                    <p className="text-xs text-gray-500 leading-normal font-sans">Browse certified, un-edited photographs from our recent campaigns.</p>
+                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">PROGRAM UPDATE</h3>
+                    <p className="text-xs text-gray-500 leading-normal font-sans">Browse live reports and photos from our active community programs.</p>
                   </div>
 
                   <div 
@@ -1457,7 +1460,7 @@ useEffect(() => {
               <h1 className="font-sans font-black text-2xl sm:text-3xl text-white uppercase tracking-tight mt-1 leading-none">
                 {view === "about" && "Who We Are"}
                 {view === "programs" && "GICD Core Programs"}
-                {view === "activities" && "Field Chronicles"}
+                {view === "activities" && "Program Update"}
                 {view === "media" && "Media Center"}
                 {view === "trustees" && "Board & Trustees"}
                 {view === "careers" && "Careers & Internships"}
@@ -1610,12 +1613,12 @@ useEffect(() => {
           <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
             
             <div className="space-y-4 max-w-2xl mx-auto">
-              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">LIVE CHRONICLES</span>
+              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black">PROGRAM UPDATES</span>
               <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-                FIELD CHRONICLES & LIVE PHOTOS
+                LATEST PROGRAM UPDATES
               </h2>
               <p className="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto leading-relaxed">
-                Below are the actual, un-edited photographs from our recent campaigns in Jos. Filter the activities to audit direct field photos and notes.
+                Stay updated with the real-time outcomes and field photographs from our community programs in Plateau State. Click on any program title to expand and read the full update.
               </p>
             </div>
 
@@ -1627,7 +1630,7 @@ useEffect(() => {
                   onClick={() => handleActivityClick(tag)}
                   className={`px-3 py-1.5 rounded-full text-[10px] font-semibold tracking-wider font-mono uppercase border transition cursor-pointer ${
                     activeActivityTag === tag 
-                      ? "bg-brand-black text-[#F5C518] border-brand-black shadow-md" 
+                      ? "bg-brand-black text-[#F5C518] border-none shadow-md" 
                       : "border-gray-200 text-gray-500 hover:bg-gray-50 hover:border-gray-400"
                   }`}
                 >
@@ -1638,21 +1641,21 @@ useEffect(() => {
 
             {/* Activities List */}
             <div className="space-y-12 text-left pt-6 max-w-5xl mx-auto">
-              {filteredActivities.map((act) => (
-                <div 
-                  key={act.id}
-                  className="bg-gray-50 rounded-2xl border border-gray-150 p-6 sm:p-8 space-y-6 hover:shadow-md transition duration-300"
-                  id={`activity-feed-${act.id}`}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-gray-200/60 pb-4">
-                    <div>
-                      <span className="px-2.5 py-0.5 bg-[#F5C518]/20 border border-[#F5C518]/30 rounded text-amber-700 font-mono text-[9px] uppercase tracking-wider font-extrabold mr-2">
-                        {act.tag}
-                      </span>
-                      <h3 className="font-sans font-black text-base sm:text-lg text-brand-black mt-2 leading-tight uppercase font-extrabold text-left">
-                        {act.title}
-                      </h3>
-                    </div>
+              {filteredActivities.map((act) => {
+                const isExpanded = !!expandedPosts[act.id];
+                return (
+                  <div 
+                    key={act.id}
+                    className="bg-gray-50 rounded-2xl p-6 sm:p-8 space-y-6 hover:shadow-md transition duration-300 shadow-sm"
+                    id={`activity-feed-${act.id}`}
+                  >
+                    {/* Header meta parameters */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-2">
+                      <div>
+                        <span className="px-2.5 py-0.5 bg-[#F5C518]/20 border border-[#F5C518]/30 rounded text-amber-700 font-mono text-[9px] uppercase tracking-wider font-extrabold mr-2">
+                          {act.tag}
+                        </span>
+                   </div>
                     <div className="flex flex-col text-slate-500 font-mono text-[10px] sm:text-right shrink-0 text-left">
                       <span className="flex items-center sm:justify-end gap-1 font-semibold text-slate-800">
                         <MapPin className="w-3.5 h-3.5 text-brand-yellow shrink-0" />
@@ -1664,7 +1667,46 @@ useEffect(() => {
                       </span>
                     </div>
                   </div>
+                    {/* Interactive Clickable Title */}
+                    <h3 
+                      onClick={() => setExpandedPosts(prev => ({ ...prev, [act.id]: !isExpanded }))}
+                      className="font-sans font-black text-base sm:text-lg text-brand-black leading-tight uppercase font-extrabold text-left cursor-pointer hover:text-amber-600 transition flex items-center justify-between gap-4 select-none group"
+                    >
+                      <span className="group-hover:underline">{act.title}</span>
+                      <span className="shrink-0 text-amber-500 bg-white shadow-xs p-1.5 rounded-full flex items-center justify-center">
+                        {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      </span>
+                    </h3>
 
+                    {/* COLLAPSED VIEW: Title and exactly one picture */}
+                    {!isExpanded && (
+                    <div className="space-y-4 animate-fade-in">
+                        {act.images && act.images.length > 0 && (
+                          <div 
+                            onClick={() => setExpandedPosts(prev => ({ ...prev, [act.id]: true }))}
+                            className="relative h-48 sm:h-64 md:h-80 w-full rounded-xl overflow-hidden cursor-pointer shadow-sm group bg-slate-100"
+                          >
+                            <img 
+                              src={act.images[0]} 
+                              alt={act.title} 
+                              className="w-full h-full object-cover group-hover:scale-[1.01] transition duration-300"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
+                            <div className="absolute bottom-4 right-4 bg-brand-black/90 text-[#F5C518] px-4 py-2 rounded-xl text-[10px] font-mono font-bold uppercase tracking-wider shadow-md flex items-center gap-1.5 transition group-hover:brightness-110">
+                              <span>Read Full Update</span>
+                              <ChevronRight className="w-3.5 h-3.5" />
+                            </div>
+                            </div>
+                        )}
+                        <p className="text-xs text-gray-500 font-sans italic">
+                          Click on the title or image to read the full update and view more photos.
+                        </p>
+                      </div>
+                    )}
+
+                    {/* EXPANDED VIEW: Details text, at most 3 images, videos */}
+                    {isExpanded && (
+                      <div className="space-y-6 animate-fade-in">
                   <p className="text-xs text-gray-600 sm:text-sm font-sans leading-relaxed tracking-wide">
                     {act.details}
                   </p>
@@ -1687,30 +1729,30 @@ useEffect(() => {
                     </div>
                   )}
 
-                  {/* Grid of actual photographs representing this event */}
-                  {act.images && act.images.length > 0 && (
-                    <div>
-                      <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase mb-3 text-left">
-                        Verified Field Photos (Click to Enlarge)
-                      </span>
-                      
-                      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                        {act.images.map((imgSrc, imgIdx) => {
-                          const caption = act.subtitles[imgIdx] || `Field photo of ${act.title}`;
-                          return (
-                            <div
-                              key={imgSrc}
-                              onClick={() => setExpandedImage({ src: imgSrc, caption: caption })}
-                              className="group h-24 sm:h-28 rounded-xl overflow-hidden shadow-sm border border-gray-150 cursor-pointer relative bg-slate-100"
-                            >
+                  {/* Grid of actual photographs representing this event - AT MOST THREE */}
+                        {act.images && act.images.length > 0 && (
+                          <div>
+                            <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase mb-3 text-left">
+                              Verified Field Photos (At Most 3 - Click to Enlarge)
+                            </span>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                              {act.images.slice(0, 3).map((imgSrc, imgIdx) => {
+                                const caption = act.subtitles[imgIdx] || `Field photo of ${act.title}`;
+                                return (
+                                  <div
+                                    key={imgSrc}
+                                    onClick={() => setExpandedImage({ src: imgSrc, caption: caption })}
+                                    className="group h-44 sm:h-48 rounded-xl overflow-hidden shadow-sm cursor-pointer relative bg-slate-100"
+                                  >
                               <img 
                                 src={imgSrc} 
                                 alt={caption} 
                                 className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                               />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition flex items-center justify-center">
-                                <span className="text-white opacity-0 group-hover:opacity-100 text-[10px] font-mono border border-white/40 px-2 py-1 rounded bg-black/40">
-                                  View
+                                <span className="text-white opacity-0 group-hover:opacity-100 text-[10px] font-mono border border-white/40 px-2.5 py-1 rounded bg-black/40">
+                                        Enlarge
                                 </span>
                               </div>
                             </div>
@@ -1730,8 +1772,8 @@ useEffect(() => {
                         {act.videos.map((vidSrc, vidIdx) => {
                           const caption = act.videoSubtitles?.[vidIdx] || `Field video of ${act.title}`;
                           return (
-                            <div key={vidSrc} className="rounded-xl overflow-hidden border border-gray-150 shadow-sm bg-black max-w-lg">
-                              <video 
+                                  <div key={vidSrc} className="rounded-xl overflow-hidden shadow-sm bg-black max-w-lg">
+                                    <video  
                                 src={vidSrc} 
                                 controls 
                                 className="w-full h-auto aspect-video object-cover"
@@ -1749,9 +1791,22 @@ useEffect(() => {
                       </div>
                     </div>
                   )}
+                            {/* Collapse footer button */}
+                        <div className="flex items-center justify-between pt-4 border-t border-gray-150">
+                          <button
+                            onClick={() => setExpandedPosts(prev => ({ ...prev, [act.id]: false }))}
+                            className="text-[10px] font-mono font-bold text-amber-700 hover:text-amber-800 transition uppercase tracking-wider flex items-center gap-1.5 cursor-pointer bg-transparent border-none p-0"
+                          >
+                            <ChevronUp className="w-3.5 h-3.5" />
+                            <span>Collapse Update</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
 
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
 
           </div>
@@ -2059,7 +2114,7 @@ useEffect(() => {
               <div className="lg:col-span-8 space-y-4 sm:space-y-6 order-1 lg:order-2 w-full">
                 
                 {/* Slide Deck Area */}
-                <div className="bg-white border-2 border-brand-black/99 p-0.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[340px] sm:min-h-[410px]">
+                <div className="bg-white border border-gray-150 p-0.5 sm:p-2 rounded-2xl sm:rounded-3xl shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[340px] sm:min-h-[410px]">
                   
                   {/* Slide Body Wrapper */}
                   <div className="flex-1 p-2 sm:p-6 flex flex-col justify-center">
