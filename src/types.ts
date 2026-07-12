@@ -60,9 +60,9 @@ export const PROGRAMS_DATA: ProgramItem[] = [
 
 export const STATS_DATA: StatItem[] = [
   { id: "lives", number: 613, suffix: "", label: "Children Directly Reached (2025)" },
-  { id: "comm", number: 32, suffix: "", label: "Caregiver Households Advised" },
+  { id: "comm", number: 32, suffix: "", label: "House Holds engaged" },
   { id: "vols", textValue: "$4,046", suffix: "", label: "Resources Mobilized" },
-  { id: "years", number: 543, suffix: "", label: "SGBV & Health Education Pupils" }
+  { id: "years", number: 543, suffix: "", label: "Young People reached with SGBV and SRHR education" }
 ];
 
 export const TEAM_DATA: TeamMember[] = [
