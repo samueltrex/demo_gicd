@@ -660,7 +660,7 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "Students actively engaging in peer discussions on bodily autonomy and rights",
       "Dedicated teachers collaborating with GICD facilitators to support the outreach",
       "Lively Q&A segment reflecting the high curiosity and confidence of the students",
-      "Distributing SGBV advocacy materials and outlining critical care referral channels",
+      "Sharing SGBV advocacy materials and outlining critical care referral channels",
       "Group keepsake emphasizing our shared commitment to safer, informed, and resilient futures"
     ]
   },
@@ -838,28 +838,7 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "Mutual empowerment and trust-building games"
     ]
   },
-  {
-    id: "act-orph",
-    title: "Education Support, Uniforms & sandals Distribution",
-    tag: "Education Support",
-    date: "May 12, 2026",
-    details: "Ensuring zero educational drop-outs on the Plateau. We provided tailored primary school uniforms, sturdy hand-crafted sandals, custom educational canvas bags, notebooks, and writing materials to vulnerable boys and girls from four cluster communities in Jos.",
-    loc: "Jos North Primary Clusters, Plateau State",
-    images: [
-      "/asset/orph 1.jpg",
-      "/asset/orph 2.jpg",
-      "/asset/orph 3.jpg",
-      "/asset/orph 4.jpg",
-      "/asset/orph 5.jpg"
-    ],
-    subtitles: [
-      "Scholars receiving custom uniforms with dignity",
-      "Durable shoes and books distributed on the field",
-      "Excited elementary students holding writing pads",
-      "OVC guardians expressing profound appreciation",
-      "Primary children representing broad school enrollment"
-    ]
-  },
+  
   {
     id: "act-match",
     title: "Peaceful Coexistence Football League & Youth Matches",
@@ -936,11 +915,34 @@ interface VideoItem {
 }
 
 const VIDEOS_DATA: VideoItem[] = [
-  { id: "vid1", url: "/asset/social vid.mp4", title: "Youth Leadership Workshop Highlights", desc: "Peer conflict management and life-skills exercises in Jos North.", duration: "0:45" },
-  { id: "vid2", url: "/asset/vid 2.mp4", title: "Caregivers Circle Live Exchange", desc: "In-session sharing of single parenting challenges and community child support.", duration: "1:12" },
-  { id: "vid3", url: "/asset/vid 3.mp4", title: "Back-to-School Distribution Joy", desc: "Children holding custom canvas bags, uniforms, and shoes with pride.", duration: "0:56" },
-  { id: "vid4", url: "/asset/vid 4.mp4", title: "Coexistence Football Tournament Final", desc: "Youth penalty shootout action representing neighborhood team unity.", duration: "1:04" },
-  { id: "vid5", url: "/asset/vid 5.mp4", title: "Stakeholder Assessment Field Dialogue", desc: "Direct feedback session with community elders and GICD directors.", duration: "0:48" }
+  {
+    id: "social_vid",
+    url: "/asset/social vid.mp4",
+    title: "Resilience & Skill Set",
+    desc: "Children often possess the ability to push through and overcome challenges and setbacks.\n\nAll they need is the skill set.",
+    duration: "0:28"  
+  },
+{
+    id: "vid2",
+    url: "/asset/vid 2.mp4",
+    title: "Media Brief",
+    desc: "The Guardian Initiative for Community Development -GICD and Kavod Relief Initiative Media Brief.",
+    duration: "1:12"
+  },
+{
+    id: "vid4",
+    url: "/asset/vid 4.mp4",
+    title: "Safe Futures Project Survey",
+    desc: "Engaged adolescents enrolled in our Safe Futures Project in Angwan Rukuba Community, in a structured survey designed to better understand their lived realities, aspirations, and challenges.",
+    duration: "1:04"
+  },
+{
+    id: "vid5",
+    url: "/asset/vid 5.mp4",
+    title: "International Women's Day Celebration",
+    desc: "On International Women's Day, we celebrate the remarkable women whose leadership, professionalism, and commitment strengthen the work of GICD.",
+    duration: "0:48"
+  }
 ];
 
 interface HeroSlideItem {
@@ -1388,7 +1390,7 @@ useEffect(() => {
                   >
                     <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">04</div>
                     <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">MEDIA CENTER</h3>
-                    <p className="text-xs text-gray-500 leading-normal font-sans">Play video reports of our live distributions and youth workshops.</p>
+                    <p className="text-xs text-gray-500 leading-normal font-sans">Play video reports of our active community programs and youth workshops.</p>
                   </div>
                 </div>
               </div>
@@ -1399,9 +1401,9 @@ useEffect(() => {
               <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: "url('/asset/orph 5.jpg')" }} />
               <div className="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-4">
                 <span className="text-[10px] font-mono text-[#F5C518] tracking-widest uppercase font-bold px-2 py-0.5 bg-[#F5C518]/10 rounded border border-[#F5C518]/20">CURRENT HIGH-IMPACT DRIVE</span>
-                <h3 className="font-sans font-black text-xl sm:text-2xl uppercase tracking-tight text-white leading-tight">Back-to-School Distribution in Jos North</h3>
+                <h3 className="font-sans font-black text-xl sm:text-2xl uppercase tracking-tight text-white leading-tight">Support Safe Futures in Jos North</h3>
                 <p className="text-xs sm:text-sm text-gray-300 max-w-2xl mx-auto leading-relaxed font-sans">
-                  We are actively distributing primary school uniforms, hand-crafted sandals, educational canvas bags, and notebooks to vulnerable boys and girls in cluster communities. Help us sustain zero drop-outs.
+                  We are actively engaging communities to build child protection systems, provide life-skills education, and prepare essential back-to-school materials for vulnerable boys and girls. Help us sustain safer futures.
                 </p>
                 <div className="pt-2">
                   <button 
@@ -1795,9 +1797,6 @@ useEffect(() => {
               <h2 className="font-sans font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
                 FIELD VIDEO RECORDS
               </h2>
-              <p className="text-xs sm:text-sm text-gray-400 font-sans max-w-lg mx-auto leading-relaxed">
-                Nothing provides audits better than live records. Play clips of GICD project workshops and distributions compiled directly by our field communication leads in Jos.
-              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left max-w-6xl mx-auto">
@@ -1842,7 +1841,7 @@ useEffect(() => {
                       Live Record
                     </span>
                     <h4 className="font-sans font-bold text-xs uppercase text-white mt-1 leading-snug">{video.title}</h4>
-                    <p className="text-[11px] text-gray-400 leading-normal line-clamp-2 pr-2">{video.desc}</p>
+                    <p className="text-[11px] text-gray-400 leading-relaxed whitespace-pre-line pr-2">{video.desc}</p>
                   </div>
                 </div>
               ))}
