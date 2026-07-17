@@ -169,21 +169,28 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     ]
   },
   {
-    id: "act-childrens-day-may-2026",
-    title: "🎈 Happy Children's Day: Raising Our Voices with Child Protection Network (CPN) Plateau State",
-    tag: "Child Protection & Safeguarding",
-    date: "May 27, 2026",
-    details: "Attention Plateau:\nHappy Children's Day!\n\nThis Friday 29th May, the Child Protection Network CPN - Plateau State and members are taking it to the streets to mark this years Children's Day celebration and we need EVERYBODY outside.😁\n\nCome, let's demonstrate that Plateau State stands for its children and commitment to child protection rights.",
-    loc: "Jos, Plateau State",
+    title: "Capacity Development Programme for Non-Profits",
+    tag: "Honors & Certificates",
+    date: "",
+    details: "The Guardian Initiative for Community Development (GICD) is honored to be invited to participate in a two-phased capacity development programme which includes intensive training and mentorship for non-profits, led by Nigeria Network of NGOs with support from TY Danjuma Foundation.\n\nThe program targets non-profit founders, Executives and Senior Managers in Plateau State. Fortunately for us, this opportunity aligns strongly with our organizational capacity development needs and aspirations to strengthen leadership, governance and accountability systems for greater community impact.\n\nWe appreciate the TY Danjuma Foundation for funding this initiative and the Nigeria Network of NGOs for delivering such a valuable learning experience.",
+    loc: "",
     images: [
-      "/asset/part d 1.jpg",
-      "/asset/part d 2.jpg",
-      "/asset/rr.jpg"
+      "/asset/hon 1.jpg",
+      "/asset/hon 2.jpg",
+      "/asset/hon 3.jpg",
+      "/asset/hon 4.jpg",
+      "/asset/hon 5.jpg",
+      "/asset/hon 6.jpg",
+      "/asset/hon 7.jpg"
     ],
     subtitles: [
-      "CPN Plateau State advocacy banner calling for school and family-level child security",
-      "GICD team members and local representatives standing together in support of children's protection rights",
-      "Young advocates and CPN Plateau State members preparing materials for the street march"
+      "GICD representatives participating in the Nigeria Network of NGOs capacity building kickoff",
+      "Intensive workshop on non-profit leadership, governance, and organizational planning",
+      "Deep-dive session focusing on transparent financial accountability systems",
+      "Mentorship circle connecting Plateau State NGO executives with domain specialists",
+      "GICD team leads reviewing strategic guidelines funded by the TY Danjuma Foundation",
+      "Distinguished delegates and non-profit founders sharing developmental best practices",
+      "Group photo of cohort participants in Plateau State eager for community-driven impact"
     ]
   },
   {
@@ -210,32 +217,7 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "A group showing their completed journey maps, celebrating self-awareness and unity in Angwan Rukuba"
     ]
   },
-  {
-    id: "act-child-protection-findings-may-2026",
-    title: "📊 Data for Impact: GICD Releases Child Protection Assessment & Survey Findings",
-    tag: "Child Protection & Safeguarding",
-    date: "May 19, 2026",
-    details: "The Guardian Initiative for Community Development -GICD has released findings from a recent child-focused survey, highlighting critical protection and development gaps affecting children in Angwan Rukuba.\n\nKey insights include:\n• 96.9% of children face at least one active protection risk\n• 65.6% experience physical violence\n• Only 1 in 6 children can access institutional protection\n• 88% of children want to attend school, yet access remains constrained\n\nThese findings point to a high-acuity environment where risks are widespread, reporting systems are weak, and access to essential services is limited despite strong positive aspirations by children.\n\n#ChildProtection #DataForDevelopment #NGO #SocialImpact #Safeguarding #EducationAccess #Partnerships",
-    loc: "Angwan Rukuba Community, Jos, Plateau State",
-    images: [
-      "/asset/summary 1.jpg",
-      "/asset/summary 2.jpg",
-      "/asset/summary 3.jpg",
-      "/asset/summary 4.jpg",
-      "/asset/summary 5.jpg",
-      "/asset/summary 6.jpg",
-      "/asset/summary 7.jpg"
-    ],
-    subtitles: [
-      "Page 1: Baseline Survey Foreword & Community Programme Context",
-      "Page 2: Executive Dashboard & Key Performance Indicators (KPIs)",
-      "Page 3: Demographic Profile of Survey Respondents by Age, Sex, and Living Arrangements",
-      "Page 4: Seven-Domain Analysis covering Education, Labour, and Safety",
-      "Page 5: Consolidated Risk Register & High-Acuity Risk Heat Map",
-      "Page 6: Cross-Domain Vulnerability & Compounding Risk Pathways Analysis",
-      "Page 7: Program Recommendations, Immediate Case Management & Next Steps"
-    ]
-  },
+  
   {
     id: "act-caregivers-meeting-may-2026",
     title: "🗣️ Vulnerability & Connection: Caregivers Strengthening Families",
@@ -258,54 +240,8 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "Strengthening direct communication, resilience networks, and peer support systems"
     ]
   },
-  {
-    id: "act-lifeskills-may-2026",
-    title: "🤝 Interreligious Unity: High-Impact Life Skills Session in Chwelnyap",
-    tag: "Coexistence Workshops",
-    date: "May 1, 2026",
-    details: "Todays was yet another impactful Life Skills session in Chwelnyap-Angwan Rukuba.\n\nWhat made it especially remarkable is Muslim and Christian children coming together, working as a team, navigating complex tasks, and growing side by side. These young people are not just learning social skills, they are demonstrating tolerance, coexistence, and resilience.\n\nWith support from the Plateau State Ministry of Education, our Life Skills Program now reaches both in-school and out-of-school children, increasing motivation to learning, school enrollment, and access to relevant services.\n\n#LifeSkills #Protection #EducationForAll  #YouthDevelopment #Resilience #PeaceBuilding #Nigeria #GICD",
-    loc: "Chwelnyap-Angwan Rukuba, Jos, Plateau State",
-    images: [
-      "/asset/tik 1.jpg",
-      "/asset/tik 2.jpg",
-      "/asset/tik 3.jpg",
-      "/asset/tik 4.jpg",
-      "/asset/tik 5.jpg",
-      "/asset/tik 6.jpg"
-    ],
-    subtitles: [
-      "Muslim and Christian adolescents collaborating beautifully in team challenge tasks",
-      "Youth core teams navigating complex structural life-skills problems together",
-      "Interactive life skills session hosted in a bright and safe learning environment",
-      "Coordination, leadership, and proactive problem-solving exercises in action",
-      "Joyful smiles and genuine teamwork demonstrating tolerance and shared hope",
-      "Group milestone celebration representing robust peacebuilding and community resilience"
-    ]
-  },
-  {
-    id: "act-child-protection-risks-apr-2026",
-    title: "🔍 New Evidence on Child Protection Risks in Angwan Rukuba Community",
-    tag: "Child Protection & Safeguarding",
-    date: "April 20, 2026",
-    details: "New Evidence on Child Protection Risks in Angwan Rukuba community.\n\nKey highlights & critical findings:\n• Uncovered localized risk dynamics and safety gaps affecting vulnerable adolescents.\n• Developed collaborative strategies to strengthen community-based protective networks.\n• Gathered direct qualitative and quantitative data to improve intervention responses.\n• Provided strategic blueprints for localized prevention and timely referral actions.\n\n#ChildProtection #EvidenceForImpact #Safeguarding #SafeFutures #JosPlateauState",
-    loc: "Angwan Rukuba Community, Jos, Plateau State",
-    images: [
-      "/asset/1.jpg",
-      "/asset/2.jpg",
-      "/asset/3.jpg",
-      "/asset/4.jpg",
-      "/asset/5.jpg",
-      "/asset/ss.jpg"
-    ],
-    subtitles: [
-      "GICD research teams organizing community data on localized adolescent safety risks",
-      "Interactive data collection sessions conducted with community focal points",
-      "Analysis of environmental vulnerability factors influencing child safety structures",
-      "Community stakeholders reviewing documented protective mechanisms and support gaps",
-      "Strategic brainstorming with local volunteers and youth team leaders",
-      "Comprehensive research evidence summary detailing actionable child protection goals"
-    ]
-  },
+  
+  
   {
     id: "act-womens-day-mar-2026",
     title: "💜 Celebrating our Leaders: International Women's Day at GICD",
@@ -686,32 +622,7 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "Securing formal caregiver consent forms to establish mutual collaboration and local ownership"
     ]
   },
-  {
-    id: "act-nnngo-capacity",
-    title: "GICD Selected for Nigeria Network of NGOs & TY Danjuma Foundation Capacity Training Program",
-    tag: "Honors & Certificates",
-    date: "June 12, 2026",
-    details: "The Guardian Initiative for Community Development -GICD is honored to be invited to participate in a two-phased capacity development programme which includes intensive training and mentorship for non-profits, led by Nigeria Network of NGOs with support from TY Danjuma Foundation.\n\nThe program targets non-profit founders, Executives and Senior Managers in Plateau State. Fortunately for us, this opportunity aligns strongly with our organizational capacity development needs and aspirations to strengthen leadership, governance and accountability systems for greater community impact.\n\nWe appreciate the TY Danjuma Foundation for funding this initiative and the Nigeria Network of NGOs for delivering such a valuable learning experience.\n\n#GICD #NigeriaNetworkofNGOs #TYDanjumaFoundation #NGOCapacityBuilding #NonprofitLeadership #SocialImpact #CommunityDevelopment #OrganizationalStrengthening #GoodGovernance #Accountability #DevelopmentSector #ImpactDriven #PlateauStateNGOs",
-    loc: "Plateau State, Nigeria",
-    images: [
-      "/asset/hon 1.jpg",
-      "/asset/hon 2.jpg",
-      "/asset/hon 3.jpg",
-      "/asset/hon 4.jpg",
-      "/asset/hon 5.jpg",
-      "/asset/hon 6.jpg",
-      "/asset/hon 7.jpg"
-    ],
-    subtitles: [
-      "GICD representatives participating in the Nigeria Network of NGOs capacity building kickoff",
-      "Intensive workshop on non-profit leadership, governance, and organizational planning",
-      "Deep-dive session focusing on transparent financial accountability systems",
-      "Mentorship circle connecting Plateau State NGO executives with domain specialists",
-      "GICD team leads reviewing strategic guidelines funded by the TY Danjuma Foundation",
-      "Distinguished delegates and non-profit founders sharing developmental best practices",
-      "Group photo of cohort participants in Plateau State eager for community-driven impact"
-    ]
-  },
+  
   {
     id: "act-womensaffairs",
     title: "Research Protocol Approved by Plateau State Ministry of Women Affairs",
@@ -1613,7 +1524,12 @@ useEffect(() => {
 
             {/* Activities List */}
             <div className="space-y-12 text-left pt-6 max-w-5xl mx-auto">
-              {filteredActivities.map((act) => {
+              {filteredActivities.map((rawAct) => {
+                const act = {
+                  ...rawAct,
+                  title: rawAct.title.replace(/^[\s✨🗺️🧠🖤🎈🌱📊🗣️🤝🔍💜🏫📝🏛️⚽💻]+/gu, "").trim(),
+                  details: rawAct.details.replace(/#[\w\d]+/g, "").replace(/[\s|•·\-*]+$/g, "").trim()
+                };
                 const isExpanded = !!expandedPosts[act.id];
                 return (
                   <div 
@@ -1628,16 +1544,6 @@ useEffect(() => {
                           {act.tag}
                         </span>
                    </div>
-                    <div className="flex flex-col text-slate-500 font-mono text-[10px] sm:text-right shrink-0 text-left">
-                      <span className="flex items-center sm:justify-end gap-1 font-semibold text-slate-800">
-                        <MapPin className="w-3.5 h-3.5 text-brand-yellow shrink-0" />
-                        {act.loc}
-                      </span>
-                      <span className="flex items-center sm:justify-end gap-1 mt-1 text-xs">
-                        <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                        {act.date}
-                      </span>
-                    </div>
                   </div>
                     {/* Interactive Clickable Title */}
                     <h3 
