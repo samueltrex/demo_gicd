@@ -304,7 +304,7 @@ export function VolunteerModal({ isOpen, onClose }: VolunteerModalProps) {
         <div className="px-6 py-4 bg-brand-black text-white flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Award className="w-5 h-5 text-brand-yellow" />
-            <h3 className="font-sans font-bold text-lg text-brand-yellow">Join GICD Volunteers Squad</h3>
+            <h3 className="font-sans font-bold text-lg text-brand-yellow">Join GICD Volunteers</h3>
           </div>
           <button 
             onClick={onClose}
