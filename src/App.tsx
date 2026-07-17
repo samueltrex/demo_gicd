@@ -43,7 +43,6 @@ import {
   TRUSTEES_DATA,
   GALLERY_DATA, 
   TESTIMONIALS_DATA, 
-  PARTNERS_DATA,
   GalleryItem,
   ProgramItem
 } from "./types";
@@ -1106,13 +1105,6 @@ useEffect(() => {
   return (
     <div className="min-h-screen bg-white transition duration-300 relative font-sans flex flex-col antialiased" id="gicd-app-root">
       
-      {/* SECTION 1 — TOP HEADER / FLOATING ADVOCACY STRIP */}
-      <div className="bg-brand-black text-[#F5C518] text-[11px] font-mono py-2 px-4 flex justify-center sm:justify-end items-center z-40 border-b border-gray-900 select-none" id="gicd-top-info-banner">
-        <div className="flex items-center gap-4">
-          <span>Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">gicdoperations@gmail.com</a></span>
-        </div>
-       </div>
-
       {/* SECTION 2 — DOCKABLE NAVIGATION HEADER */}
       <nav className="sticky top-0 bg-white/95 backdrop-blur-md z-40 border-b border-gray-100 shadow-sm px-6 py-3.5 flex justify-between items-center transition duration-200" id="gicd-navbar">
         <button onClick={() => setView("home")} className="flex items-center gap-3 active:scale-98 transition text-left cursor-pointer bg-transparent border-0">
@@ -1297,28 +1289,6 @@ useEffect(() => {
                 <p className="text-xs sm:text-base text-gray-300 tracking-wide font-sans leading-relaxed text-center max-w-2xl px-3">
                   Guardian Initiative for Community Development (GICD) is a frontline NGO in Jos, Nigeria dedicated to Community development, Child protection, Education and sustainable Youth Development & Empowerment.
                 </p>
-
-                <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
-                  <button
-                    type="button"
-                    onClick={openDonate}
-                    className="px-5 py-3 sm:px-7 sm:py-3.5 bg-brand-yellow hover:bg-brand-yellow/90 active:scale-95 transition font-sans font-black text-brand-black text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest rounded-full shadow-lg cursor-pointer flex items-center gap-1.5 sm:gap-2"
-                    id="hero-donate-btn"
-                  >
-                    <span>SUPPORT OUR CAUSE</span>
-                    <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-brand-black" />
-                  </button>
-                  
-                  <button
-                    type="button"
-                    onClick={openVolunteer}
-                    className="px-5 py-3 sm:px-7 sm:py-3.5 bg-white/10 hover:bg-white/20 active:scale-95 transition font-sans font-black text-white text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest rounded-full border border-white/20 cursor-pointer flex items-center gap-1.5 sm:gap-2"
-                    id="hero-volunteer-btn"
-                  >
-                    <span>JOIN AS A VOLUNTEER</span>
-                    <HelpingHand className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </button>
-                </div>
               </div>
            {/* Slider indicator dots */}
               <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-20">
@@ -1409,7 +1379,7 @@ useEffect(() => {
                   >
                     <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">03</div>
                     <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">GOVERNANCE</h3>
-                    <p className="text-xs text-gray-500 leading-normal font-sans">Inspect our qualified board trustees and advisory specialists.</p>
+                     <p className="text-xs text-gray-500 leading-normal font-sans">Our Trustees and Advisors</p>
                   </div>
 
                   <div 
@@ -2030,28 +2000,7 @@ useEffect(() => {
           </div>
         </section>
       )}
-
-      {/* SECTION 13 — SYMMETRICAL MARQUEE PARTNERS */}
-      {view === "home" && (
-        <section className="py-12 bg-white" id="partners">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-6">
-            <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase mb-1 block">SYMMETRICAL COLLABORATORS DIRECTORY</span>
             
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 items-center">
-              {PARTNERS_DATA.map((partner, idx) => (
-                <div 
-                  key={idx}
-                  className="p-3 bg-gray-50 border border-gray-150 rounded-lg text-[10px] font-mono text-gray-600 uppercase tracking-wider font-semibold hover:border-brand-yellow/30 hover:bg-white transition flex items-center justify-center text-center leading-tight min-h-[46px]"
-                >
-                  {partner.name}
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
-      )}
-      
       {/* SECTION 13.7 — INTERACTIVE ANNUAL REPORT VIEWER */}
       {view === "annual-report" && (
         <section className="py-10 sm:py-16 bg-white min-h-[500px] animate-fade-in" id="annual-report-view">
