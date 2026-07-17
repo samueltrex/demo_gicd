@@ -176,8 +176,8 @@ export const GALLERY_DATA: GalleryItem[] = [
   },
   {
     id: "gal4",
-    title: "Women empowerment workshop",
-    category: "Economic Empowerment",
+    title: "Back-to-school educational support",
+    category: "Education",
     gradient: "linear-gradient(135deg, #221401 0%, #fcd23 a 100%)"
   },
   {
