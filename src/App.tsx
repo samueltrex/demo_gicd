@@ -354,34 +354,7 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "Collaborative support circle reinforcing the integrated adolescent protection model"
     ]
   },
-  {
-    id: "act-results-summary-2025",
-    title: "📊 GICD 2025 Annual Results Summary & Report",
-    tag: "Child Protection & Safeguarding",
-    date: "January 28, 2026",
-    details: "In 2025, GICD worked with communities and partners to strengthen child protection systems and secure safer futures for children and families.\n\nOur results summary captures the outcome of our work. It contains structural data, program successes, outreach coverage, and policy achievements across our focal operational zones in Plateau State.",
-    loc: "GICD Head Office, Jos, Plateau State",
-    images: [
-      "/asset/sum 1.jpg",
-      "/asset/sum 2.jpg",
-      "/asset/sum 3.jpg",
-      "/asset/sum 4.jpg",
-      "/asset/sum 5.jpg",
-      "/asset/sum 6.jpg",
-      "/asset/sum 7.jpg",
-      "/asset/sum 8.jpg"
-    ],
-    subtitles: [
-      "GICD 2025 Annual Results Summary: Key achievements and strategic program pillars",
-      "Overview of direct child protection interventions, case management, and safe spaces mapping",
-      "Community engagements and advocacy sessions reach statistics for parents and caregivers",
-      "Empowerment indicators, youth enrollment numbers, and educational support outcomes",
-      "Partnership and collaborative framework outputs with state ministries and local organizations",
-      "Governance, transparency compliance, and financial management highlights",
-      "Looking forward to 2026: Continuing our commitment to lasting community-led stability",
-      "Community acknowledgment and gratitude to our donors, stakeholders, and community leaders"
-    ]
-  },
+  
   {
     id: "act-football-tech-highlights",
     title: "⚽💻 Goals for Skills: Football Meets Tech Official Highlights",
@@ -1138,7 +1111,7 @@ useEffect(() => {
                 <div
                   key={img}
                   className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                   idx === heroIndex ? "opacity-80" : "opacity-0 pointer-events-none"
+                    idx === heroIndex ? "opacity-80" : "opacity-0 pointer-events-none"
                   }`}
                 >
                   <img
@@ -1150,7 +1123,7 @@ useEffect(() => {
                 </div>
               ))}
               {/* Overlay shading to guarantee highly legible text contrast */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/35 to-brand-black/25 z-[1]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/35 to-brand-black/25 z-[1]" />
             </div>
 
             {/* Prev/Next arrows with subtle styling (Hidden on cellular mobile view to bypass overlapping) */}
