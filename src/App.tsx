@@ -1780,15 +1780,15 @@ useEffect(() => {
                         {tr.image ? (
                           <div 
                         onClick={() => setExpandedImage({ src: tr.image, caption: `${tr.name} — ${tr.role}` })}
-                        className="w-full h-44 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center shrink-0 cursor-pointer group relative border border-slate-200"
+                        className="w-full h-44 rounded-xl overflow-hidden bg-slate-100 flex items-center justify-center shrink-0 cursor-pointer group relative border border-slate-200"
                         title="Click to expand biography"
                       >
-                          <img 
-                            src={tr.image} 
-                            alt={tr.name} 
-                          className="w-full h-full object-contain group-hover:scale-[1.02] transition duration-300" 
-                            referrerPolicy="no-referrer"
-                          />
+                        <img 
+                          src={tr.image} 
+                          alt={tr.name} 
+                          className="w-full h-full object-cover group-hover:scale-[1.05] transition duration-300" 
+                          referrerPolicy="no-referrer"
+                        />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center">
                           <span className="text-white opacity-0 group-hover:opacity-100 text-[10px] font-mono border border-white/40 px-2.5 py-1 rounded bg-black/60 backdrop-blur-sm shadow-lg">
                             Click to Enlarge
@@ -1796,7 +1796,7 @@ useEffect(() => {
                         </div>
                       </div>
                         ) : (
-                          <div className="w-full h-44 rounded-xl bg-slate-900 flex items-center justify-center border border-slate-200">
+                      <div className="w-full h-44 rounded-xl bg-slate-100 flex items-center justify-center border border-slate-200">
                         <span className="font-sans font-black text-brand-yellow text-3xl">{tr.initials}</span>
                        </div>
                       )}
