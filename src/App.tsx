@@ -1774,31 +1774,40 @@ useEffect(() => {
               {TRUSTEES_DATA.map((tr) => (
                 <div 
                   key={tr.id}
-                  className="p-5 bg-gray-50 rounded-2xl hover:bg-slate-100 transition duration-300 flex flex-col justify-between shadow-sm"
+                  className="p-5 bg-gray-50 border border-slate-100 rounded-2xl hover:bg-slate-100 hover:border-amber-200 hover:shadow-md transition duration-300 flex flex-col justify-between shadow-sm"
                 >
                   <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center shrink-0 bg-brand-black">
                         {tr.image ? (
+                          <div 
+                        onClick={() => setExpandedImage({ src: tr.image, caption: `${tr.name} — ${tr.role}` })}
+                        className="w-full h-44 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center shrink-0 cursor-pointer group relative border border-slate-200"
+                        title="Click to expand biography"
+                      >
                           <img 
                             src={tr.image} 
                             alt={tr.name} 
-                            className="w-full h-full object-cover" 
+                          className="w-full h-full object-contain group-hover:scale-[1.02] transition duration-300" 
                             referrerPolicy="no-referrer"
                           />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center">
+                          <span className="text-white opacity-0 group-hover:opacity-100 text-[10px] font-mono border border-white/40 px-2.5 py-1 rounded bg-black/60 backdrop-blur-sm shadow-lg">
+                            Click to Enlarge
+                          </span>
+                        </div>
+                      </div>
                         ) : (
-                          <span className="font-sans font-black text-brand-yellow text-xs">{tr.initials}</span>
-                        )}
-                      </div>
+                          <div className="w-full h-44 rounded-xl bg-slate-900 flex items-center justify-center border border-slate-200">
+                        <span className="font-sans font-black text-brand-yellow text-3xl">{tr.initials}</span>
+                       </div>
+                      )}
                       <div>
-                        <h4 className="font-sans font-bold text-xs uppercase text-brand-black leading-tight line-clamp-1">{tr.name}</h4>
-                        <p className="text-[10px] text-amber-600 font-mono font-semibold mt-0.5">{tr.role}</p>
-                      </div>
+                        <h4 className="font-sans font-bold text-sm uppercase text-brand-black leading-tight">{tr.name}</h4>
+                      <p className="text-[10px] text-amber-600 font-mono font-semibold mt-1">{tr.role}</p>
                     </div>
-                    <p className="text-[11px] text-gray-500 leading-relaxed font-sans line-clamp-4">{tr.bio}</p>
+                    <p className="text-[11px] text-gray-500 leading-relaxed font-sans line-clamp-4 hover:line-clamp-none transition duration-300">{tr.bio}</p>
                   </div>
                   
-                  <div className="pt-3 mt-4 text-[9px] font-mono text-amber-700 uppercase tracking-wider font-bold">
+                  <div className="pt-3 mt-4 text-[9px] font-mono text-amber-700 uppercase tracking-wider font-bold border-t border-slate-200">
                     {tr.name.includes("Dayok") ? "Board Chairman" : tr.name.includes("Atihong") ? "Board Secretary" : "Board Trustee"}
                   </div>
                 </div>
