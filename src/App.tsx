@@ -793,26 +793,6 @@ const ACTIVITIES_DATA: ActivityItem[] = [
       "Data enumerators auditing local household needs",
       "Direct family interviews for rigorous development data"
     ]
-  },
-  {
-    id: "act-honors",
-    title: "Safeguarding Seminar & Volunteer Certification Ceremony",
-    tag: "Honors & Certificates",
-    date: "March 18, 2026",
-    details: "Strengthening community child protection protocols. GICD convened community tutors, neighborhood association leaders, and religious focal points for rigorous safeguarding briefings, culminating in honors presented to GICD support champions.",
-    loc: "GICD Head Office conference Hall, Jos",
-    images: [
-      "/asset/hon 1.jpg",
-      "/asset/hon 2.jpg",
-      "/asset/hon 3.jpg",
-      "/asset/hon 4.jpg"
-    ],
-    subtitles: [
-      "Local tutors engaging during safeguarding lectures",
-      "Volunteers receiving formal NGO service certifications",
-      "Group photo of certified community tutors and monitors",
-      "Honors presented for outstanding field leadership"
-    ]
   }
 ];
 
