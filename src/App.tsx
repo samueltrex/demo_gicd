@@ -667,7 +667,7 @@ const ACTIVITIES_DATA: ActivityItem[] = [
     title: "Call for Volunteers: Community Child & Adolescent Mentors",
     tag: "Volunteer Opportunities",
     date: "October 15, 2025",
-    details: "CALL FOR VOLUNTEERS! Are you passionate about Children and Community Development? The Guardian Initiative for Community Development (GICD) is looking for dedicated individuals to serve as Mentors to children and adolescents. Requirements: Prospective Volunteers must hold a BSc, HND, or ND certificate; must reside in the community; and must be of proven character and integrity verifiable by the community. No experience? No problem, training will be provided! Deadline: Thursday, 23rd October 2025. Apply via: gicdoperations@gmail.com or submit a hard-copy application letter at GICD Office: No 28A, Tafawa Balewa Street, Opp. United Baptist Church, Jos. Let's build a brighter future, together. #VolunteerOpportunity #GICD #AngwanRukuba #CommunityDevelopment #LifeSkills #Resilience #ChildProtection",
+    details: "CALL FOR VOLUNTEERS! Are you passionate about Children and Community Development? The Guardian Initiative for Community Development (GICD) is looking for dedicated individuals to serve as Mentors to children and adolescents. Requirements: Prospective Volunteers must hold a BSc, HND, or ND certificate; must reside in the community; and must be of proven character and integrity verifiable by the community. No experience? No problem, training will be provided! Deadline: Thursday, 23rd October 2025. Apply via: info@thegicd.org or submit a hard-copy application letter at GICD Office: No 28A, Tafawa Balewa Street, Opp. United Baptist Church, Jos. Let's build a brighter future, together. #VolunteerOpportunity #GICD #AngwanRukuba #CommunityDevelopment #LifeSkills #Resilience #ChildProtection",
     loc: "Angwan Rukuba Community, Jos North",
     images: [
       "/asset/vol 1.jpg",
@@ -949,9 +949,9 @@ useEffect(() => {
     e.preventDefault();
     const subject = `GICD Contact: Message from ${contactData.name}`;
     const body = `Hello GICD Admin,\n\nYou have received a new contact submission from your website:\n\nName: ${contactData.name}\nEmail: ${contactData.email}\nPhone: ${contactData.phone || "N/A"}\n\nMessage:\n${contactData.message}\n\nRegards.`;
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@thegicd.org&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(gmailUrl, '_blank');
-    triggerToast("Thank you! Opening Gmail to send this message to gicdoperations@gmail.com");
+    triggerToast("Thank you! Opening Gmail to send this message to info@thegicd.org");
     setContactData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -2470,9 +2470,9 @@ useEffect(() => {
               <h4 className="font-sans font-bold text-xs uppercase tracking-wider text-white">Direct Coordinates</h4>
               <div className="space-y-1.5 leading-relaxed text-[11px]">
                 <p>Office: <span className="text-white">No 28A. Tafawa Balewa Street, opposite United Baptist Church, Jos, Plateau State, Nigeria</span></p>
-                <p>Email: <span className="text-white"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=gicdoperations@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow underline">gicdoperations@gmail.com</a></span></p>
+                <p>Email: <span className="text-white"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@thegicd.org" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow underline">info@thegicd.org</a></span></p>
                 <p>Mobile: <span className="text-white">+2349030199199</span></p>
-                <p>Direct Bank: <span className="text-brand-yellow">United Bank for Africa / Acc: 1028793174</span></p>
+
               </div>
 
               <div className="pt-2">
