@@ -986,14 +986,8 @@ useEffect(() => {
           <button onClick={() => setView("home")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "home" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Home</button>
           <button onClick={() => setView("about")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "about" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>About Us</button>
           <button onClick={() => setView("programs")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "programs" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Core Programs</button>
-          <button onClick={() => setView("activities")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none flex items-center gap-1 ${view === "activities" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>
-            <Sparkles className="w-3.5 h-3.5 text-brand-yellow fill-brand-yellow shrink-0" />
-            <span>Program Update</span>
-          </button>
-          <button onClick={() => setView("annual-report")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none flex items-center gap-1 ${view === "annual-report" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>
-            <AwardIcon className="w-3.5 h-3.5 text-brand-yellow" />
-            <span>2025 Results</span>
-          </button>
+          <button onClick={() => setView("activities")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "activities" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Program Update</button>
+          <button onClick={() => setView("annual-report")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "annual-report" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Reports & Resources</button>
           <button onClick={() => setView("media")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "media" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Media Center</button>
           <button onClick={() => setView("trustees")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Board of Trustees</button>
           <button onClick={() => setView("careers")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "careers" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Careers</button>
@@ -1054,8 +1048,8 @@ useEffect(() => {
               onClick={() => { setView("annual-report"); setMobileMenuOpen(false); }}
               className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider flex items-center justify-between cursor-pointer bg-transparent border-none ${view === "annual-report" ? "text-amber-600" : "text-brand-black"}`}
             >
-              <span>2025 Annual Results</span>
-              <span className="px-2 py-0.5 bg-brand-yellow text-brand-black text-[9px] font-black rounded font-bold">REPORT</span>
+              <span>Reports & Resources</span>
+              <span className="px-2 py-0.5 bg-brand-yellow text-brand-black text-[9px] font-black rounded font-bold">DOCS</span>
             </button>
             <button 
               onClick={() => { setView("trustees"); setMobileMenuOpen(false); }}
@@ -1300,7 +1294,7 @@ useEffect(() => {
                 {view === "media" && "Media Center"}
                 {view === "trustees" && "Board & Trustees"}
                 {view === "careers" && "Careers & Internships"}
-                {view === "annual-report" && "2025 Annual Results Summary"}
+                {view === "annual-report" && "Reports & Resources"}
               </h1>
             </div>
             <div className="text-left">
@@ -1874,15 +1868,15 @@ useEffect(() => {
           <div className="max-w-7xl mx-auto px-4 sm:px-8">
             
             {/* Narrative Intro */}
-            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
               <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black px-2.5 py-1 bg-amber-50 rounded-full border border-amber-200 inline-block mb-3">
-                Evidence-Based Progress Snapshot
+                Official Repository & Technical Publications
               </span>
               <h2 className="font-sans font-black text-2xl sm:text-4xl text-brand-black uppercase tracking-tight">
-                2025 RESULTS SNAPSHOT
+                REPORTS & TECHNICAL RESOURCES
               </h2>
               <p className="text-[11px] sm:text-sm text-gray-500 font-sans leading-relaxed mt-2">
-                Review our Maiden Edition 2025 Annual Results Summary covering community child protection, technical education partnerships, reproductive safety, and financial stewardship.
+                Access GICD's annual impact reports, technical policy frameworks, research publications, child protection guidelines, and strategic development resources.
               </p>
             </div>
 
@@ -2290,8 +2284,110 @@ useEffect(() => {
               </div>
 
             </div>
+        {/* TECHNICAL DOCUMENTS & POLICY RESOURCES REPOSITORY */}
+            <div className="mt-16 pt-12 border-t border-gray-150">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 text-left">
+                <div>
+                  <span className="text-[10px] font-mono text-amber-600 tracking-widest uppercase font-black px-2 py-0.5 bg-amber-50 rounded border border-amber-200">
+                    Technical Library & Publications
+                  </span>
+                  <h3 className="font-sans font-black text-xl sm:text-2xl text-brand-black uppercase tracking-tight mt-1.5">
+                    POLICY FRAMEWORKS & TECHNICAL RESOURCES
+                  </h3>
+                  <p className="text-xs text-gray-500 font-sans mt-0.5">
+                    Browse technical manuals, research reports, policy briefs, and community development frameworks.
+                  </p>
+                </div>
+              </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
+                {[
+                  {
+                    title: "2025 Annual Results & Impact Report",
+                    category: "Annual Report",
+                    tag: "PDF / Presentation",
+                    date: "January 2026",
+                    desc: "Comprehensive results breakdown covering community child protection, technical education partnerships, reproductive safety, and financial stewardship.",
+                    fileSize: "4.2 MB",
+                    action: "Interactive Deck Above"
+                  },
+                  {
+                    title: "Child Safeguarding & Protection Policy Framework",
+                    category: "Policy & Governance",
+                    tag: "Technical Policy",
+                    date: "Updated 2026",
+                    desc: "Operational guidelines and reporting mechanisms for community tutors, neighborhood association leaders, and religious focal points.",
+                    fileSize: "1.8 MB",
+                    action: "Request Technical Doc"
+                  },
+                  {
+                    title: "Community Baseline Needs Assessment: Jos North",
+                    category: "Research & Survey",
+                    tag: "Field Study",
+                    date: "Late 2025",
+                    desc: "Socioeconomic survey data, vulnerability mapping, and household analysis across Angwan Rukuba and peri-urban sectors of Plateau State.",
+                    fileSize: "3.1 MB",
+                    action: "Request Technical Doc"
+                  },
+                  {
+                    title: "GICD Strategic Plan 2026–2028",
+                    category: "Strategy & Roadmap",
+                    tag: "Multi-Year Strategy",
+                    date: "2026–2028",
+                    desc: "Strategic roadmap detailing multi-year goals, resource allocation targets, partnership expansion models, and regional impact projections.",
+                    fileSize: "2.5 MB",
+                    action: "Request Technical Doc"
+                  },
+                  {
+                    title: "SGBV Prevention & Reproductive Health Manual",
+                    category: "Training Manual",
+                    tag: "Facilitator Guide",
+                    date: "2025 Edition",
+                    desc: "Facilitator handbook for conducting adolescent rights education, body safety awareness, and gender-based violence prevention workshops.",
+                    fileSize: "2.0 MB",
+                    action: "Request Technical Doc"
+                  },
+                  {
+                    title: "Goals for Skills: ICT & Tech Mentorship Syllabus",
+                    category: "Curriculum & Skills",
+                    tag: "Training Module",
+                    date: "2025/2026",
+                    desc: "Integrated digital literacy and technical mentorship curriculum designed for vulnerable adolescents combining sports discipline and ICT skills.",
+                    fileSize: "1.5 MB",
+                    action: "Request Technical Doc"
+                  }
+                ].map((doc, i) => (
+                  <div key={i} className="p-5 bg-slate-50 border border-gray-150 rounded-2xl flex flex-col justify-between hover:border-amber-400 hover:shadow-sm transition duration-200">
+                    <div className="space-y-2.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="px-2 py-0.5 bg-amber-100/80 text-amber-800 text-[9px] font-mono font-bold rounded uppercase">
+                          {doc.category}
+                        </span>
+                        <span className="text-[9px] font-mono text-gray-400">{doc.date}</span>
+                      </div>
+                      <h4 className="font-sans font-bold text-sm text-brand-black leading-snug">
+                        {doc.title}
+                      </h4>
+                      <p className="text-[11px] text-gray-500 font-sans leading-relaxed">
+                        {doc.desc}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 mt-4 border-t border-gray-200 flex items-center justify-between">
+                      <span className="text-[10px] font-mono text-gray-400">{doc.fileSize} • {doc.tag}</span>
+                      <button
+                        onClick={openPartner}
+                        className="px-3 py-1.5 bg-white border border-gray-200 hover:border-brand-yellow hover:bg-amber-50 text-brand-black font-sans font-bold text-[10px] uppercase tracking-wider rounded-lg transition cursor-pointer"
+                      >
+                        {doc.action}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+          
         </section>
       )}
 
