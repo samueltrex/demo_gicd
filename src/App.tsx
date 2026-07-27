@@ -1188,21 +1188,15 @@ useEffect(() => {
 
           {/* HOME VIEW: focused, concise and modern */}
           <div className="space-y-16 py-16 bg-white animate-fade-in" id="gicd-home-content">
-            {/* Core intro bento or cards */}
-            <div className="max-w-7xl mx-auto px-6 sm:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-6 space-y-6 text-left">
+            {/* Core intro */}
+            <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center space-y-6">
                   <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black block">WELCOME TO GICD</span>
                   <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-tight">
                     BUILDING SECURE AND RESILIENT <span className="text-[#F5C518]">COMMUNITIES</span>
                   </h2>
-                  <p className="text-sm text-gray-600 font-sans leading-relaxed">
-                    We intervene early and deliberately to safeguard child rights, expand the worldview of young people on the Plateau, and empower caregivers through grassroots, evidence-driven initiatives.
+                    We intervene early and deliberately to safeguard child rights, expand the worldview of young people on the Plateau, and empower caregivers through grassroots, evidence-driven initiatives. By translating global protection frameworks into meaningful local action, GICD ensures vulnerable children and families find sustainable safety, proper education support, and peer coexistence opportunities directly inside Angwan Rukuba and wider Jos North communities.
                   </p>
-                  <p className="text-sm text-gray-600 font-sans leading-relaxed">
-                    By translating global protection frameworks into meaningful local action, GICD ensures vulnerable children and families find sustainable safety, proper education support, and peer coexistence opportunities directly inside Angwan Rukuba and wider Jos North communities.
-                  </p>
-                  <div className="pt-2 flex flex-wrap gap-3">
+                  <div className="pt-2 flex flex-wrap justify-center gap-3">
                     <button 
                       onClick={() => setView("about")} 
                       className="px-5 py-2.5 bg-brand-black text-[#F5C518] rounded-xl font-sans font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-97 cursor-pointer border-none"
@@ -1215,47 +1209,7 @@ useEffect(() => {
                     >
                       Explore Programs
                     </button>
-                  </div>
                 </div>
-
-                <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-                  <div 
-                    onClick={() => setView("about")}
-                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
-                  >
-                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">01</div>
-                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">WHO WE ARE</h3>
-                    <p className="text-xs text-gray-500 leading-normal font-sans">Learn how exposure serves as a powerful instrument of child protection.</p>
-                  </div>
-
-                  <div 
-                    onClick={scrollToProgramUpdates}
-                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
-                  >
-                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">02</div>
-                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">PROGRAM UPDATE</h3>
-                    <p className="text-xs text-gray-500 leading-normal font-sans">Browse live reports and photos from our active community programs.</p>
-                  </div>
-
-                  <div 
-                    onClick={() => setView("trustees")}
-                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
-                  >
-                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">03</div>
-                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">GOVERNANCE</h3>
-                     <p className="text-xs text-gray-500 leading-normal font-sans">Our Trustees and Advisors</p>
-                  </div>
-
-                  <div 
-                    onClick={() => setView("media")}
-                    className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
-                  >
-                    <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">04</div>
-                    <h3 className="font-sans font-black text-xs uppercase tracking-wider text-brand-black">MEDIA CENTER</h3>
-                    <p className="text-xs text-gray-500 leading-normal font-sans">Play video reports of our active community programs and youth workshops.</p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Micro Highlight section: Back-to-School or Child protective focus */}
