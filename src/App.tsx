@@ -1194,6 +1194,7 @@ useEffect(() => {
                   <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight leading-tight">
                     BUILDING SECURE AND RESILIENT <span className="text-[#F5C518]">COMMUNITIES</span>
                   </h2>
+                  <p className="text-sm sm:text-base text-gray-600 font-sans leading-relaxed max-w-3xl mx-auto">
                     We intervene early and deliberately to safeguard child rights, expand the worldview of young people on the Plateau, and empower caregivers through grassroots, evidence-driven initiatives. By translating global protection frameworks into meaningful local action, GICD ensures vulnerable children and families find sustainable safety, proper education support, and peer coexistence opportunities directly inside Angwan Rukuba and wider Jos North communities.
                   </p>
                   <div className="pt-2 flex flex-wrap justify-center gap-3">
