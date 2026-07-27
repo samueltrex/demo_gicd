@@ -63,7 +63,7 @@ export function StatCounter({ targetNumber, textValue, suffix, label }: StatCoun
       className="flex flex-col items-center justify-center text-center p-4 sm:p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm min-w-0 w-full hover:border-[#F5C518]/30 transition-all duration-300"
       id={`stat-card-${label.replace(/\s+/g, '-').toLowerCase()}`}
     >
-      <div className={`font-sans font-black ${textValue ? 'text-base sm:text-xl md:text-2xl' : 'text-2xl sm:text-4xl md:text-5xl'} text-[#F5C518] tracking-tight leading-none`}>
+      <div className="font-sans font-black text-2xl sm:text-3xl md:text-4xl text-[#F5C518] tracking-tight leading-none">
         {textValue ? (
           <span>{textValue}</span>
         ) : (
