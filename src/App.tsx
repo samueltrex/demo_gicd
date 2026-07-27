@@ -1173,7 +1173,7 @@ useEffect(() => {
 
           {/* SECTION 4 — STAT COUNTERS STRIP */}
           <section className="bg-brand-black py-6 sm:py-10 border-y border-gray-900 select-none" id="gicd-quick-impact-stats">
-            <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6">
               {STATS_DATA.map((st) => (
                 <StatCounter 
                   key={st.id} 
