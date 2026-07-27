@@ -817,8 +817,8 @@ interface HeroSlideItem {
 }
 
 export default function App() {
-  // View/Tab control: home, about, programs, activities, media, trustees, careers, contact, annual-report
-  const [view, setView] = useState<"home" | "about" | "programs" | "activities" | "media" | "trustees" | "careers" | "contact" | "annual-report">("home");
+  // View/Tab control: home, about, programs, activities, media, trustees, contact, annual-report
+  const [view, setView] = useState<"home" | "about" | "programs" | "activities" | "media" | "trustees" | "contact" | "annual-report">("home");
 
   // Hero Carousel Index State and automated transitions
   const [heroIndex, setHeroIndex] = useState(0);
@@ -990,7 +990,6 @@ useEffect(() => {
           <button onClick={() => setView("annual-report")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "annual-report" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Reports & Resources</button>
           <button onClick={() => setView("media")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "media" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Media Center</button>
           <button onClick={() => setView("trustees")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Board of Trustees</button>
-          <button onClick={() => setView("careers")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "careers" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Careers</button>
         </div>
 
         {/* Call to action */}
@@ -1063,13 +1062,7 @@ useEffect(() => {
             >
               Media Center
             </button>
-            <button 
-              onClick={() => { setView("careers"); setMobileMenuOpen(false); }}
-              className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider cursor-pointer bg-transparent border-none ${view === "careers" ? "text-amber-600" : "text-brand-black"}`}
-            >
-              Careers
-            </button>
-            
+                        
             <div className="grid grid-cols-2 gap-3 pt-3">
               <button 
                 onClick={() => { setMobileMenuOpen(false); openDonate(); }}
@@ -1293,7 +1286,6 @@ useEffect(() => {
                 {view === "activities" && "Program Update"}
                 {view === "media" && "Media Center"}
                 {view === "trustees" && "Board & Trustees"}
-                {view === "careers" && "Careers & Internships"}
                 {view === "annual-report" && "Reports & Resources"}
               </h1>
             </div>
@@ -1798,62 +1790,6 @@ useEffect(() => {
                       {test.location}
                     </span>
                   </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
-      )}
-
-      {/* SECTION 12 — CAREERS AND ROLES IN JOS */}
-      {view === "careers" && (
-        <section className="py-20 bg-gray-50 border-y border-gray-100 shadow-sm animate-fade-in" id="careers">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
-            
-            <div className="space-y-4 max-w-2xl mx-auto">
-              <span className="text-xs font-mono text-amber-600 tracking-widest uppercase font-black font-extrabold pb-1 block">CAREERS</span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-brand-black uppercase tracking-tight">
-                GICD CAREER INTERNSHIPS
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-500 font-sans max-w-lg mx-auto leading-relaxed">
-                We seek certified, dedicated, and community-connected specialists in Jos. Join a verified team that delivers.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
-              {[
-                { id: "child_protection", title: "Child Protection Program Officer", type: "Full-Time", location: "Jos HQ, Plateau State", pay: "Competitive NGO Scale" },
-                { id: "education_facilitator", title: "Education Development Facilitator", type: "Contract", location: "Plateau Rural Districts", pay: "Contract Rate" },
-                { id: "me_specialist", title: "Monitoring & Evaluation Specialist", type: "Part-Time", location: "Jos / Remote Friendly", pay: "Pro-Rated Scale" }
-              ].map((position) => (
-                <div 
-                  key={position.id}
-                  className="bg-white p-5 rounded-2xl border border-gray-150 hover:border-brand-yellow/80 hover:shadow-md transition flex flex-col justify-between"
-                >
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="px-2 py-0.5 bg-brand-black text-brand-yellow text-[9px] font-mono rounded font-bold uppercase tracking-wide">
-                        {position.type}
-                      </span>
-                      <span className="text-[10px] text-slate-400 font-mono">{position.pay}</span>
-                    </div>
-                    <div>
-                      <h3 className="font-sans font-bold text-sm text-brand-black uppercase leading-tight">{position.title}</h3>
-                      <p className="text-[10px] text-slate-500 font-mono mt-1 flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-brand-yellow" />
-                        {position.location}
-                      </p>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => openJobs(position.id)}
-                    className="w-full bg-slate-50 hover:bg-brand-yellow hover:text-brand-black transition text-brand-black font-bold uppercase tracking-wider text-[10px] py-2 rounded-lg text-center mt-5 cursor-pointer block border border-gray-150"
-                    id={`apply-btn-job-${position.id}`}
-                  >
-                    Quick Apply
-                  </button>
                 </div>
               ))}
             </div>
