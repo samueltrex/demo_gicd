@@ -944,6 +944,17 @@ useEffect(() => {
     setSelectedGalleryItem(filtered[prevIndex]);
   };
 
+  const scrollToProgramUpdates = () => {
+    if (view !== "home") {
+      setView("home");
+    }
+    setTimeout(() => {
+      const el = document.getElementById("activities");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 60);
+  };
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "", message: "" });
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -986,7 +997,7 @@ useEffect(() => {
           <button onClick={() => setView("home")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "home" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Home</button>
           <button onClick={() => setView("about")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "about" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>About Us</button>
           <button onClick={() => setView("programs")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "programs" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Core Programs</button>
-          <button onClick={() => setView("activities")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "activities" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Program Update</button>
+          <button onClick={scrollToProgramUpdates} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "activities" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Program Update</button>
           <button onClick={() => setView("annual-report")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "annual-report" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Reports & Resources</button>
           <button onClick={() => setView("media")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "media" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Media Center</button>
           <button onClick={() => setView("trustees")} className={`hover:text-amber-600 transition tracking-wide uppercase cursor-pointer bg-transparent border-none ${view === "trustees" ? "text-amber-600 font-black border-b-2 border-brand-yellow pb-1 px-1" : ""}`}>Board of Trustees</button>
@@ -1037,7 +1048,7 @@ useEffect(() => {
               Core Programs
             </button>
             <button 
-              onClick={() => { setView("activities"); setMobileMenuOpen(false); }}
+              onClick={() => { scrollToProgramUpdates(); setMobileMenuOpen(false); }}
               className={`text-sm font-bold py-1.5 border-b border-gray-50 text-left uppercase font-mono tracking-wider flex items-center justify-between cursor-pointer bg-transparent border-none ${view === "activities" ? "text-amber-600" : "text-brand-black"}`}
             >
               <span>Program Update</span>
@@ -1218,7 +1229,7 @@ useEffect(() => {
                   </div>
 
                   <div 
-                    onClick={() => setView("activities")}
+                    onClick={scrollToProgramUpdates}
                     className="p-6 bg-slate-50 hover:bg-amber-50/50 hover:border-brand-yellow transition duration-300 rounded-2xl border border-gray-150 text-left cursor-pointer space-y-3"
                   >
                     <div className="w-9 h-9 bg-amber-50/70 rounded-lg flex items-center justify-center text-amber-600 font-bold border border-brand-yellow/20">02</div>
@@ -1430,8 +1441,8 @@ useEffect(() => {
       )}
 
       {/* SECTION 7 — INTERACTIVE RECENT FIELD ACTIVITIES AND LIVE PHOTOS */}
-      {view === "activities" && (
-        <section className="py-20 bg-white shadow-sm animate-fade-in" id="activities">
+      {(view === "home" || view === "activities") && (
+        <section className="py-20 bg-white shadow-sm animate-fade-in border-t border-gray-100" id="activities">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center space-y-12">
             
             <div className="space-y-4 max-w-2xl mx-auto">
